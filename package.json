@@ -1,0 +1,25 @@
+{
+    "name": "hrm-system",
+    "version": "1.0.0",
+    "description": "Решение домашнего задания в рамках прохождения FE School T-Systems 2018",
+    "main": "index.js",
+    "scripts": {
+        "build": "concurrently \"cd client && npm run build\" \"cd server && npm run build\"",
+        "install": "(cd client && npm install) && (cd server && npm install)",
+        "start": "concurrently \"cd client && PORT=3000 npm run start\" \"cd server && PORT=3001 npm run start\"",
+        "start:prod": "cd server && npm run start:prod"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/AlexanderFSP/hrm-system.git"
+    },
+    "author": "AlexanderFSP",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/AlexanderFSP/hrm-system/issues"
+    },
+    "homepage": "https://gitlab.com/AlexanderFSP/hrm-system#readme",
+    "dependencies": {
+        "concurrently": "^4.0.1"
+    }
+}
