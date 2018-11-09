@@ -11,6 +11,9 @@ import Spinner from 'react-spinner-material';
 import Dashboard from './containers/Dashboard';
 import Auth from './containers/Auth';
 
+import checkCookies from './additional/checkCookies';
+import fetchRest from './additional/fetchRest';
+
 class App extends Component {
   static propTypes = {
     fetchEmployees: PropTypes.func.isRequired,
@@ -34,10 +37,30 @@ class App extends Component {
 
   componentDidMount() {
     const { fetchEmployees, fetchProjects, fetchSkills, setAuthStatusIn, setAuthStatusOut } = this.props;
-    fetchEmployees();
+    fetchEmployees().then(employees => {
+      this.setAuthStatus(employees, setAuthStatusIn, setAuthStatusOut)
+    });
     fetchProjects();
     fetchSkills();
-    checkCookies(setAuthStatusIn, setAuthStatusOut);
+  }
+
+  setAuthStatus = (employees, setAuthStatusIn, setAuthStatusOut) => {
+    const user = checkCookies(['login', 'password']);
+    if (user.isValid) {
+      for (let i = 0; i < employees.length; i++) {
+        if (employees[i].login === user.login && employees[i].password === user.password) {
+          return setAuthStatusIn({
+            id: employees[i].id,
+            login: employees[i].login,
+            password: employees[i].password,
+            name: employees[i].name,
+            surname: employees[i].surname,
+            gender: employees[i].gender
+          });
+        }
+      }
+    }
+    return setAuthStatusOut();
   }
 
   render() {
@@ -82,62 +105,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEmployees:  () => { fetchRest(dispatch, '/rest/employees', fetchEmployeesBegin, fetchEmployeesSuccess, fetchEmployeesFailure) },
+  fetchEmployees:  () => {
+    return fetchRest(dispatch, '/rest/employees', fetchEmployeesBegin, fetchEmployeesSuccess, fetchEmployeesFailure)
+      .then(json => {
+        return json;
+      });
+  },
   fetchProjects:  () => { fetchRest(dispatch, '/rest/projects', fetchProjectsBegin, fetchProjectsSuccess, fetchProjectsFailure) },
   fetchSkills: () => { fetchRest(dispatch, '/rest/skills', fetchSkillsBegin, fetchSkillsSuccess, fetchSkillsFailure )},
   setAuthStatusIn: (cookies) => { dispatch(setAuthStatusIn(cookies)); },
   setAuthStatusOut: () => { dispatch(setAuthStatusOut()); }
 });
-
-/* Very useful functions (nope) */
-function fetchRest(dispatch, restPath, fetchBegin, fetchSuccess, fetchFailure) {
-  dispatch(fetchBegin());
-  fetch(restPath)
-    .then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(json => {
-      dispatch(fetchSuccess(json));
-    })
-    .catch(error => dispatch(fetchFailure(error)));
-}
-
-function checkCookies(setLoggedIn, setLoggedOut) {
-  // FIXME: Валидация cookies, на основе пары login:password
-  const user = {
-    id: Number(getCookie('id')),
-    login: getCookie('login'),
-    password: getCookie('password'),
-    name: getCookie('name'),
-    surname: getCookie('surname'),
-    gender: getCookie('gender')
-  };
-
-  for (let key in user) {
-    if (user[key] === '') {
-      return setLoggedOut();
-    }
-  }
-  return setLoggedIn(user);
-}
-
-function getCookie(cookiesName) {
-  const name = cookiesName + '=';
-  const ca = decodeURIComponent(document.cookie).split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return '';
-}
-/* </> */
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(App);

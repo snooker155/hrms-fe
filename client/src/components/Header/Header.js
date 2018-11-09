@@ -18,6 +18,19 @@ class Header extends Component {
     setAuthStatusOut: PropTypes.func.isRequired
   };
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.changeBgcOnScroll, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.changeBgcOnScroll, false);
+  }
+
+  changeBgcOnScroll = () => {
+    const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    document.querySelector('.header').style.backgroundColor = (scrolled == 0) ? 'hsl(211, 30%, 20%)' : 'hsla(211, 30%, 20%, .9)';
+  }
+
   onClickOutsideHandler(e) {
     const { changeDropdownVisibility, isDropDownVisible } = this.props;
     if (!e.target.classList.contains('js-profileToogle')) {

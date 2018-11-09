@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 
+import decodePassword from '../../additional/decodePassword';
+
 export default class componentName extends Component {
   static propTypes = {
     employees: PropTypes.array.isRequired,
@@ -19,11 +21,11 @@ export default class componentName extends Component {
 
     if (usernameInp.value && passwordInp.value) {
       const login = usernameInp.value;
-      const password = this.decodePassword(passwordInp.value);
+      const password = decodePassword(passwordInp.value);
 
       for (let i = 0; i < employees.length; i++) {
-        if ((login === employees[i].login) && (password === employees[i].password)) {
-          const cookies = {
+        if (login === employees[i].login && password === employees[i].password) {
+          const newCookies = {
             id: employees[i].id,
             login:  employees[i].login,
             password: employees[i].password,
@@ -35,15 +37,14 @@ export default class componentName extends Component {
           let expiresDate = 0;
           if (rememberInp.checked) {
             expiresDate = new Date;
-            expiresDate.setDate(expiresDate.getDate() + 1);
+            expiresDate.setDate(expiresDate.getDate() + 30);
             expiresDate = expiresDate.toUTCString();
           }
 
-          for (let key in cookies) {
-            this.setCookie(key, cookies[key], expiresDate);
-          }
+          document.cookie = `login=${ newCookies.login }; path=/; expires=${ expiresDate }`;
+          document.cookie = `password=${ newCookies.password }; path=/; expires=${ expiresDate }`;
 
-          setAuthStatusIn(cookies);
+          setAuthStatusIn(newCookies);
           return;
         }
       }
@@ -52,20 +53,6 @@ export default class componentName extends Component {
     usernameInp.classList.add('invalid');
     passwordInp.classList.add('invalid');
     signInInp.focus();
-  }
-
-  decodePassword = str => {
-    let h = 0, l = str.length, i = 0;
-    if ( l > 0 ) {
-      while (i < l) {
-        h = (h << 5) - h + str.charCodeAt(i++) | 0;
-      }
-    }
-    return h.toString();
-  }
-
-  setCookie = (name, value, expiresDate = 0) => {
-    document.cookie = `${ name }=${ value }; path=/; expires=${ expiresDate }`;
   }
 
   removeInvalidEffects = () => {
