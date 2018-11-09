@@ -1,0 +1,9 @@
+main {
+  margin-top: 7rem;
+
+  @media screen and (max-width: 430px) {
+      & {
+          margin-top: 10.5rem;
+      }
+  }
+}
