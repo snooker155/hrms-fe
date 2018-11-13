@@ -44,7 +44,7 @@ class Auth extends Component {
 }
 
 const mapStateToProps = state => ({
-  employees: state.employees.employees.data
+  employees: state.initialData.employees.data,
 });
 
 const mapDispatchToProps = dispatch => ({

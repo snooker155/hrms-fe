@@ -1,0 +1,26 @@
+.pagination {
+  @media only screen and (max-width: 992px) {
+    & {
+      width: initial;
+    }
+  }
+
+  .active-element {
+    &:hover {
+      transition: all .4s;
+      background: hsla(211, 31%, 20%, .2);
+    }
+  }
+
+  li:not(:last-child) {
+    margin-right: .5rem;
+
+    &.active {
+      background: hsla(211, 31%, 20%, .8);
+    }
+  }
+
+  .material-icons {
+    vertical-align: -.55rem;
+  }
+}

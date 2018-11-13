@@ -11,7 +11,55 @@ html {
 body {
   background: #f3f3f4;
   font-family: 'Roboto', sans-serif;
+  color: rgb(103, 106, 108);
   font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: .02rem;
+}
+
+a {
+  color: rgb(103, 106, 108);
+
+  &.link {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    padding-bottom: .1rem;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      transition: transform .2s ease-out;
+    }
+
+    &:before {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: .1rem;
+      background: rgb(103, 106, 108);
+      transform: translateX(-101%);
+    }
+
+    &:hover:before {
+      transform: translateX(0);
+    }
+
+  }
+}
+
+::-webkit-scrollbar {
+  width: .2rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: .9rem;
+}
+
+::-webkit-scrollbar-thumb {
+  opacity: 0.1;
+  border-radius: 0.9rem;
+  background: rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 0.5rem rgba(0,0,0,0.5);
 }

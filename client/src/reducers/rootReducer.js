@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
-import employees from './fetchEmployees';
-import projects from './fetchProjects';
-import skills from './fetchSkills';
+import initialData from './fetchData';
 import user from './setAuthStatus';
-import dropDown from './changeDropdownVisibility';
+import appStatus from './setAppStatus';
 
 export default combineReducers({
-  employees,
-  projects,
-  skills,
+  initialData,
   user,
-  dropDown
+  appStatus
 });

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 
-import decodePassword from '../../additional/decodePassword';
+import decodePassword from '../../utils/decodePassword';
 
 export default class componentName extends Component {
   static propTypes = {
@@ -62,11 +62,10 @@ export default class componentName extends Component {
 
   render() {
     return (
-      <section className="authorization">
+      <section className="authorization animated fadeInRight slow">
         <form className="form z-depth-1" action="javascript:void(0);" method="get">
           <div className="form__line form__line--title">
             <h3 className="form__headline">Sign In</h3>
-            <p className="form__paragraph">Welcome back to HRM-System!</p>
           </div>
           <div className="form__line form__line--username">
             <div className="input-field">
@@ -93,7 +92,7 @@ export default class componentName extends Component {
             <input type="submit" className="btn waves-effect waves-light form__input--signIn js-form__input-signIn" onClick={ this.onSignInClick } value="SIGN IN" />
           </div>
           <div className="form__line form__line--reset">
-            <Link to={ '/auth/recover' }>Forgot your password?</Link>
+            <Link to={ '/auth/recover' } className="link">Forgot your password?</Link>
           </div>
         </form>
     </section>
