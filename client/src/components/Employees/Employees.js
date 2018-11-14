@@ -6,7 +6,6 @@ import './Employees.scss';
 import Employee from '../Employee';
 import Pagination from '../Pagination';
 
-
 export default class Employees extends Component {
   static propTypes = {
     employees: PropTypes.array.isRequired,
@@ -33,7 +32,7 @@ export default class Employees extends Component {
       secondaryPlaceholder: 'Add skill',
       autocompleteOptions: {
         data,
-        limit: Infinity,
+        limit: 8,
         minLength: 1
       },
       onChipAdd: (undefined, chip) => {
@@ -57,6 +56,8 @@ export default class Employees extends Component {
     M.FormSelect.init(document.querySelector('.js-select-department'));
     M.FormSelect.init(document.querySelector('.js-select-project'));
     M.FormSelect.init(document.querySelector('.js-select-sorting'));
+
+    window.scroll(0, 0);
   }
 
   handlePageChange = (newActivePage) => {
@@ -137,72 +138,70 @@ export default class Employees extends Component {
 
     return (
       <section className="employees">
-        <div className="wrapper">
-          <div className="employees__toolbar z-depth-1 animated fadeInRight slow">
-            <div className="tools">
-              <div className="tools__filtering">
-                <div className="input-field input-field--department">
-                  <i className="material-icons prefix">group</i>
-                  <select className="select js-select-department" onChange={ this.updateCatalog }>
-                    <option value="all">All departments</option>
-                    { departmentsOptions }
-                  </select>
-                  <label>Filtering by department</label>
-                </div>
-                <div className="input-field input-field--projects">
-                  <i className="material-icons prefix">folder</i>
-                  <select className="select js-select-project" onChange={ this.updateCatalog }>
-                    <option value="all">All projects</option>
-                    { projectsOptions }
-                  </select>
-                  <label>Filtering by project</label>
-                </div>
+        <div className="employees__toolbar z-depth-1 animated fadeInRight slow">
+          <div className="tools">
+            <div className="tools__filtering">
+              <div className="input-field input-field--department">
+                <i className="material-icons prefix">group</i>
+                <select className="select js-select-department" onChange={ this.updateCatalog }>
+                  <option value="all">All departments</option>
+                  { departmentsOptions }
+                </select>
+                <label>Filtering by department</label>
               </div>
-
-              <div className="tools__sorting">
-                <div className="input-field input-field--sorting">
-                  <i className="material-icons prefix">unfold_more</i>
-                  <select className="select js-select-sorting" onChange={ this.updateCatalog }>
-                    <option value="0">By default</option>
-                    <option value="1">Employee names (A - Z)</option>
-                    <option value="2">Employee names (Z - A)</option>
-                    <option value="3">Employee surnames (A - Z)</option>
-                    <option value="4">Employee surnames (Z - A)</option>
-                    <option value="5">Department names (A - Z)</option>
-                    <option value="6">Department names (Z - A)</option>
-                  </select>
-                  <label>Sorting</label>
-                </div>
+              <div className="input-field input-field--projects">
+                <i className="material-icons prefix">folder</i>
+                <select className="select js-select-project" onChange={ this.updateCatalog }>
+                  <option value="all">All projects</option>
+                  { projectsOptions }
+                </select>
+                <label>Filtering by project</label>
               </div>
             </div>
-            <div className="chips chips-placeholder chips-autocomplete">
-              <input className="js-chips-input" />
+
+            <div className="tools__sorting">
+              <div className="input-field input-field--sorting">
+                <i className="material-icons prefix">import_export</i>
+                <select className="select js-select-sorting" onChange={ this.updateCatalog }>
+                  <option value="0">By default</option>
+                  <option value="1">Employee names (A - Z)</option>
+                  <option value="2">Employee names (Z - A)</option>
+                  <option value="3">Employee surnames (A - Z)</option>
+                  <option value="4">Employee surnames (Z - A)</option>
+                  <option value="5">Department names (A - Z)</option>
+                  <option value="6">Department names (Z - A)</option>
+                </select>
+                <label>Sorting</label>
+              </div>
             </div>
           </div>
-
-          <div className="employees__catalog">
-            {
-              catalog.length
-                ? catalog.slice((activePage - 1) * itemsCountPerPage, activePage * itemsCountPerPage).map(employee => {
-                    return (
-                      <Employee key={ employee.id } employee={ employee } />
-                    );
-                  })
-                : <p className="notFound">No employees were found for a given critetia.</p>
-            }
+          <div className="chips chips-placeholder chips-autocomplete">
+            <input className="js-chips-input" />
           </div>
+        </div>
 
-          <div className="employees__pagination animated fadeInRight slow">
-            { catalog.length
-                ? <Pagination
-                    activePage={ this.state.activePage }
-                    itemsCountPerPage={ itemsCountPerPage }
-                    totalItemsCount={ catalog.length }
-                    onChange={ this.handlePageChange }
-                  />
-                : null
-            }
-          </div>
+        <div className="employees__catalog">
+          {
+            catalog.length
+              ? catalog.slice((activePage - 1) * itemsCountPerPage, activePage * itemsCountPerPage).map(employee => {
+                  return (
+                    <Employee key={ employee.id } employee={ employee } />
+                  );
+                })
+              : <p className="notFound">No employees were found for a given critetia.</p>
+          }
+        </div>
+
+        <div className="employees__pagination animated fadeInRight slow">
+          { Math.ceil(catalog.length / itemsCountPerPage) > 1
+              ? <Pagination
+                  activePage={ activePage }
+                  itemsCountPerPage={ itemsCountPerPage }
+                  totalItemsCount={ catalog.length }
+                  onChange={ this.handlePageChange }
+                />
+              : null
+          }
         </div>
       </section>
     );

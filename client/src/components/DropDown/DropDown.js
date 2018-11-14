@@ -16,7 +16,7 @@ function DropDown(props) {
   return (
     <div className="dropDown animated zoomIn faster">
       <div className="dropDown__menu z-depth-1">
-        <Link to={ `/employee/${ id }` } className="dropDown__item" onClick={ onClickOutside }>My profile</Link>
+        <Link to={ `/employees/${ id }` } className="dropDown__item" onClick={ onClickOutside }>My profile</Link>
         <hr />
         <a className="dropDown__item" href="javascript:void(0);" onClick={ onClickOutside } >Edit profile</a>
         <a className="dropDown__item" href="javascript:void(0);" onClick={ onClickOutside } >Settings</a>

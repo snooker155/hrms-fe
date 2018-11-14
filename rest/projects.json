@@ -7,23 +7,23 @@
     "manager": 2,
     "technologies": [
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "React",
+        "title": "React",
         "version": "16.5.2"
       },
       {
-        "name": "Bootstrap",
+        "title": "Bootstrap",
         "version": "3.3.7"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "Yarn",
+        "title": "Yarn",
         "version": "1.10.1"
       }
     ],
@@ -70,23 +70,23 @@
     "manager": 3,
     "technologies": [
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Ember.js",
+        "title": "Ember.js",
         "version": "3.5.0"
       },
       {
-        "name": "Rollup",
+        "title": "Rollup",
         "version": "0.66.6"
       },
       {
-        "name": "npm",
+        "title": "npm",
         "version": "6.1.0"
       },
       {
-        "name": "Grunt",
+        "title": "Grunt",
         "version": "1.0.3"
       }
     ],
@@ -137,23 +137,23 @@
     "manager": 2,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Sass",
+        "title": "Sass",
         "version": "3.5.6"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES5"
       },
       {
-        "name": "Gulp",
+        "title": "Gulp",
         "version": "4.0.0"
       },
       {
-        "name": "npm",
+        "title": "npm",
         "version": "6.1.0"
       }
     ],
@@ -188,19 +188,19 @@
     "manager": 4,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "CSS",
+        "title": "CSS",
         "version": "3"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES5"
       },
       {
-        "name": "jQuery",
+        "title": "jQuery",
         "version": "3.2.7"
       }
     ],
@@ -243,31 +243,31 @@
     "manager": 1,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Haml",
+        "title": "Haml",
         "version": "5.0.4"
       },
       {
-        "name": "PostCSS",
+        "title": "PostCSS",
         "version": "7.0.5"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "React",
+        "title": "React",
         "version": "16.5.0"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "Yarn",
+        "title": "Yarn",
         "version": "1.10.1"
       }
     ],
@@ -302,11 +302,11 @@
     "manager": 4,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "4.01"
       },
       {
-        "name": "CSS",
+        "title": "CSS",
         "version": "2.1"
       }
     ],
@@ -337,31 +337,31 @@
     "manager": 1,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Handlebars.js",
+        "title": "Handlebars.js",
         "version": "4.0.12"
       },
       {
-        "name": "Less",
+        "title": "Less",
         "version": "3.7.1"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Vue.js",
+        "title": "Vue.js",
         "version": "2.5.17"
       },
       {
-        "name": "Gulp",
+        "title": "Gulp",
         "version": "4.0.0"
       },
       {
-        "name": "npm",
+        "title": "npm",
         "version": "6.1.0"
       }
     ],
@@ -400,23 +400,23 @@
     "manager": 1,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Pug",
+        "title": "Pug",
         "version": "2.0.3"
       },
       {
-        "name": "Stylus",
+        "title": "Stylus",
         "version": "0.54.5"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "jQuery",
+        "title": "jQuery",
         "version": "3.2.7"
       }
     ],
@@ -451,35 +451,35 @@
     "manager": 1,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "CSS",
+        "title": "CSS",
         "version": "3"
       },
       {
-        "name": "Semantic UI",
+        "title": "Semantic UI",
         "version": "2.4"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Vue.js",
+        "title": "Vue.js",
         "version": "2.5.17"
       },
       {
-        "name": "Rollup",
+        "title": "Rollup",
         "version": "0.66.6"
       },
       {
-        "name": "npm",
+        "title": "npm",
         "version": "6.1.0"
       },
       {
-        "name": "Jest",
+        "title": "Jest",
         "version": "23.6.0"
       }
     ],
@@ -510,27 +510,27 @@
     "manager": 2,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "PostCSS",
+        "title": "PostCSS",
         "version": "7.0.5"
       },
       {
-        "name": "Materialize",
+        "title": "Materialize",
         "version": "1.0.0"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "jQuery",
+        "title": "jQuery",
         "version": "3.2.7"
       },
       {
-        "name": "Browserify",
+        "title": "Browserify",
         "version": "16.2.3"
       }
     ],
@@ -581,31 +581,31 @@
     "manager": 3,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Handlebars.js",
+        "title": "Handlebars.js",
         "version": "4.0.12"
       },
       {
-        "name": "Sass",
+        "title": "Sass",
         "version": "3.5.6"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "React",
+        "title": "React",
         "version": "16.5.2"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "Mocha",
+        "title": "Mocha",
         "version": "5.2.0"
       }
     ],
@@ -644,35 +644,35 @@
     "manager": 1,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Haml",
+        "title": "Haml",
         "version": "5.0.4"
       },
       {
-        "name": "Less",
+        "title": "Less",
         "version": "3.7.1"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "TypeScript",
+        "title": "TypeScript",
         "version": "3.1"
       },
       {
-        "name": "Angular",
+        "title": "Angular",
         "version": "6.1.10"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "Yarn",
+        "title": "Yarn",
         "version": "1.10.1"
       }
     ],
@@ -715,35 +715,35 @@
     "manager": 4,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Pug",
+        "title": "Pug",
         "version": "2.0.3"
       },
       {
-        "name": "Stylus",
+        "title": "Stylus",
         "version": "0.54.5"
       },
       {
-        "name": "Materialize",
+        "title": "Materialize",
         "version": "1.0.0"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Flow",
+        "title": "Flow",
         "version": "0.83.0"
       },
       {
-        "name": "Grunt",
+        "title": "Grunt",
         "version": "1.0.3"
       },
       {
-        "name": "Jasmine",
+        "title": "Jasmine",
         "version": "2.9"
       }
     ],
@@ -778,31 +778,31 @@
     "manager": 2,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Handlebars.js",
+        "title": "Handlebars.js",
         "version": "4.0.12"
       },
       {
-        "name": "Sass",
+        "title": "Sass",
         "version": "3.5.6"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Ember.js",
+        "title": "Ember.js",
         "version": "3.5.0"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "Yarn",
+        "title": "Yarn",
         "version": "1.10.1"
       }
     ],
@@ -853,39 +853,39 @@
     "manager": 3,
     "technologies": [
       {
-        "name": "HTML",
+        "title": "HTML",
         "version": "5"
       },
       {
-        "name": "Handlebars.js",
+        "title": "Handlebars.js",
         "version": "4.0.12"
       },
       {
-        "name": "Less",
+        "title": "Less",
         "version": "3.7.1"
       },
       {
-        "name": "JavaScript",
+        "title": "JavaScript",
         "version": "ES2015"
       },
       {
-        "name": "Vue.js",
+        "title": "Vue.js",
         "version": "2.5.17"
       },
       {
-        "name": "Gulp",
+        "title": "Gulp",
         "version": "4.0.0"
       },
       {
-        "name": "Webpack",
+        "title": "Webpack",
         "version": "4.20.2"
       },
       {
-        "name": "npm",
+        "title": "npm",
         "version": "6.1.0"
       },
       {
-        "name": "Mocha",
+        "title": "Mocha",
         "version": "5.2.0"
       }
     ],

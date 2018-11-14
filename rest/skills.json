@@ -1,271 +1,271 @@
 [
   {
     "title": "HTML",
-    "description": "HTML — стандартизированный язык разметки документов во Всемирной паутине. Большинство веб-страниц содержат описание разметки на языке HTML. Язык HTML интерпретируется браузерами; полученный в результате интерпретации форматированный текст отображается на экране монитора компьютера или мобильного устройства.",
+    "description": "Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web.",
     "relatedSkills": [],
     "type": "technology",
-    "link": "https://www.w3.org/html/"
+    "officialSite": "https://www.w3.org/html/"
   },
   {
     "title": "CSS",
-    "description": "CSS — формальный язык описания внешнего вида документа, написанного с использованием языка разметки. Преимущественно используется как средство описания, оформления внешнего вида веб-страниц, написанных с помощью языков разметки HTML и XHTML, но может также применяться к любым XML-документам, например, к SVG или XUL.",
+    "description": "Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.",
     "relatedSkills": [],
     "type": "technology",
-    "link": "https://www.w3.org/Style/CSS/"
+    "officialSite": "https://www.w3.org/Style/CSS/"
   },
   {
     "title": "JavaScript",
-    "description": "JavaScript — мультипарадигменный язык программирования. Поддерживает объектно-ориентированный, императивный и функциональный стили. Является реализацией языка ECMAScript. JavaScript обычно используется как встраиваемый язык для программного доступа к объектам приложений.",
+    "description": "JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the three core technologies of the World Wide Web.",
     "relatedSkills": [],
     "type": "technology",
-    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    "officialSite": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
   },
   {
     "title": "Haml",
-    "description": "Haml — язык разметки для упрощённой генерации HTML. HAML компилируется в HTML. Эквивалент Haml для CSS — это LESS или Sass.",
+    "description": "Haml (HTML Abstraction Markup Language) is a templating system that is designed to avoid writing inline code in a web document and make the HTML cleaner. Haml gives the flexibility to have some dynamic content in HTML.",
     "relatedSkills": [
       "HTML"
     ],
     "type": "technology",
-    "link": "http://haml.info/"
+    "officialSite": "http://haml.info/"
   },
   {
     "title": "Pug",
-    "description": "Pug - это препроцессор HTML и шаблонизатор, который был написан на JavaScript для Node.js. Pug имеет некоторые полезные функции, позволяющие писать модульный многоразовый (с возможностью многоразового использования) код.",
+    "description": "Pug is a breed of dog with physically distinctive features of a wrinkly, short-muzzled face, and curled tail. The breed has a fine, glossy coat that comes in a variety of colours, most often fawn or black, and a compact square body with well-developed muscles.",
     "relatedSkills": [
       "HTML"
     ],
     "type": "technology",
-    "link": "https://pugjs.org/api/getting-started.html"
+    "officialSite": "https://pugjs.org/api/getting-started.html"
   },
   {
     "title": "Handlebars.js",
-    "description": "Handlebars.js — это клиентский шаблонизатор для JavaScript (однако ничего не мешает использовать его на стороне сервера). Он принимает на вход любую строку, состоящую из HTML-тегов и специальных выражений и компилирует их в функцию JavaScript. Эта функция в свою очередь принимает один параметр — объект данных и возвращает строку HTML, где определенные свойства объекта с данными уже вставлены в нужные места шаблона.",
+    "description": "Handlebars.js is a popular templating engine that is powerful, simple to use and has a large community. It is based on the Mustache template language, but improves it in several important ways. With Handlebars, you can separate the generation of HTML from the rest of your JavaScript and write cleaner code.",
     "relatedSkills": [
       "HTML"
     ],
     "type": "technology",
-    "link": "http://handlebarsjs.com/"
+    "officialSite": "http://handlebarsjs.com/"
   },
   {
     "title": "Sass",
-    "description": "Sass — модуль, включенный в Haml. Sass — это метаязык на основе CSS, предназначенный для увеличения уровня абстракции CSS кода и упрощения файлов каскадных таблиц стилей. Язык имеет два синтаксиса: SASS и SCSS.",
+    "description": "Sass (Syntactically awesome style sheets) is a style sheet language initially designed by Hampton Catlin and developed by Natalie Weizenbaum. After its initial versions, Weizenbaum and Chris Eppstein have continued to extend Sass with SassScript, a simple scripting language used in Sass files.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "https://sass-lang.com/"
+    "officialSite": "https://sass-lang.com/"
   },
   {
     "title": "Less",
-    "description": "LESS — это динамический язык стилей, который разработал Alexis Sellier. Он создан под влиянием языка стилей Sass, и, в свою очередь, оказал влияние на его новый синтаксис «SCSS», в котором также использован синтаксис, являющийся расширением СSS.",
+    "description": "Less (Leaner Style Sheets; sometimes stylized as LESS) is a dynamic preprocessor style sheet language that can be compiled into Cascading Style Sheets (CSS) and run on the client side or server side. Less is open source.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "http://lesscss.org/"
+    "officialSite": "http://lesscss.org/"
   },
   {
     "title": "Stylus",
-    "description": "Stylus - это язык препроцессора динамической таблицы стилей, который скомпилирован в каскадные таблицы стилей. Его дизайн зависит от Sass и LESS. Он рассматривается как четвертый наиболее используемый синтаксис препроцессора CSS. Он был создан TJ Holowaychuk, бывшим программистом для Node.js и создателем языка Luna.",
+    "description": "Stylus is a revolutionary new language, providing an efficient, dynamic, and expressive way to generate CSS. Supporting both an indented syntax and regular CSS style.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "http://stylus-lang.com/"
+    "officialSite": "http://stylus-lang.com/"
   },
   {
     "title": "PostCSS",
-    "description": "PostCSS — программа, которая автоматизирует рутинные операции с CSS с помощью расширений, написанных на языке JavaScript. Используется при разработке Википедии, Facebook и GitHub. Один из самых часто загружаемых с npm инструментов для работы с CSS. Разработана Андреем Ситником в компании «Злые марсиане».",
+    "description": "PostCSS is a software development tool that uses JavaScript-based plugins to automate routine CSS operations. The tool has been used to develop the code of Wikipedia, Facebook, and GitHub. PostCSS is a top-favored CSS tool among npm users.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "https://postcss.org/"
+    "officialSite": "https://postcss.org/"
   },
   {
     "title": "Bootstrap",
-    "description": "Bootstrap — свободный набор инструментов для создания сайтов и веб-приложений. Включает в себя HTML- и CSS-шаблоны оформления для типографики, веб-форм, кнопок, меток, блоков навигации и прочих компонентов веб-интерфейса, включая JavaScript-расширения.",
+    "description": "Bootstrap is a free and open-source front-end framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "https://getbootstrap.com/"
+    "officialSite": "https://getbootstrap.com/"
   },
   {
     "title": "Materialize",
-    "description": "Materialize – это новый фреймворк, который использует большое количество стилей, элементов, компонентов, анимации и, конечно, принципы Материального дизайна от Google. Есть две доступные версии – Standard, включающий в себя уменьшенные и не уменьшенные файлы CSS и JS, и версия SASS, предоставляющая Вам полную свободу выбора компонентов, которые Вы хотите использовать.",
+    "description": "Materialize is an open source responsive front-end framework that offers slick material design out-of-the-box. This tool is based on Google’s Material Design Language. It is primarily a UX framework that dictates how elements will appear and behave on the page. ",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "https://materializecss.com/"
+    "officialSite": "https://materializecss.com/"
   },
   {
     "title": "Semantic UI",
-    "description": "Semantic UI - это фреймворк создания адаптивных и удобных веб интерфейсов. Данный фраймеворк ускоряет процесс разработки так как содержит в себе большое число часто используемых компонентов таких как: кнопки, иконки, изображения, надписи и т.д.",
+    "description": "Semantic UI framework is a front-end development framework that is used to design beautiful and responsive layouts using Hyper-Text Markup Language with a lot of themes.",
     "relatedSkills": [
       "CSS"
     ],
     "type": "technology",
-    "link": "https://semantic-ui.com/"
+    "officialSite": "https://semantic-ui.com/"
   },
   {
     "title": "TypeScript",
-    "description": "TypeScript — язык программирования, представленный Microsoft в 2012 году и позиционируемый как средство разработки веб-приложений, расширяющее возможности JavaScript. Разработчиком языка TypeScript является Андерс Хейлсберг, создавший ранее Turbo Pascal, Delphi и C#.",
+    "description": "TypeScript is an open-source programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language. TypeScript is designed for development of large applications and transcompiles to JavaScript.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://www.typescriptlang.org/"
+    "officialSite": "https://www.typescriptlang.org/"
   },
   {
     "title": "Flow",
-    "description": "Flow — это статический анализатор кода и набор синтаксических конструкций, для прямого указания типа переменной. Flow умеет вычислять тип переменной, без внесения изменений в код (в отличии от TypeScript) что позволяет начать использовать его уже сейчас в любом проекте. Также есть возможность самостоятельно указывать типы в стиле TypeScript.",
+    "description": "Flow is a static type checker for your JavaScript code. It is developed at Facebook and is often used with React. It lets you annotate the variables, functions, and React components with a special type syntax, and catch mistakes early.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://flow.org/"
+    "officialSite": "https://flow.org/"
   },
   {
     "title": "jQuery",
-    "description": "jQuery — библиотека JavaScript, фокусирующаяся на взаимодействии JavaScript и HTML. Библиотека jQuery помогает легко получать доступ к любому элементу DOM, обращаться к атрибутам и содержимому элементов DOM, манипулировать ими. Также библиотека jQuery предоставляет удобный API для работы с AJAX.",
+    "description": "Query is a JavaScript library designed to simplify the client-side scripting of HTML. It is free, open-source software using the permissive MIT License. Web analysis indicates that it is the most widely deployed JavaScript library by a large margin.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://jquery.com/"
+    "officialSite": "https://jquery.com/"
   },
   {
     "title": "Angular",
-    "description": "Angular - это открытая и свободная платформа для разработки веб-приложений, написанная на языке TypeScript, разрабатываемая командой из компании Google, а также сообществом разработчиков из различных компании. Angular - это полностью переписанный фреймворк от той же команды, который назывался AngularJS.",
+    "description": "Angular (commonly referred to as 'Angular 2+' or 'Angular v2 and above') is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://angular.io/"
+    "officialSite": "https://angular.io/"
   },
   {
     "title": "React",
-    "description": "React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов. React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций. React может использоваться для разработки одностраничных и мобильных приложений.",
+    "description": "React (also known as React.js or ReactJS) is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://reactjs.org/"
+    "officialSite": "https://reactjs.org/"
   },
   {
     "title": "Vue.js",
-    "description": "Vue.js — JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов. Легко интегрируется в проекты с использованием других JavaScript-библиотек. Может функционировать как веб-фреймворк, помогающий разрабатывать продвинутые одностраничные приложения.",
+    "description": "Vue.js (commonly referred to as Vue) is an open-source JavaScript framework for building user interfaces. Integration into projects that use other JavaScript libraries is simplified with Vue because it is designed to be incrementally adoptable.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://vuejs.org/"
+    "officialSite": "https://vuejs.org/"
   },
   {
     "title": "Ember.js",
-    "description": "Ember.js — свободный JavaScript каркас веб-приложений, реализующий MVC шаблон, предназначенный для упрощения создания масштабируемых одностраничных веб-приложений. Фреймворк используется такими компаниями как TED, Yahoo!, Twitch.tv и Groupon.",
+    "description": "Ember.js is an open-source JavaScript web framework, based on the Model–view–viewmodel (MVVM) pattern. It allows developers to create scalable single-page web applications by incorporating common idioms and best practices into the framework.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://www.emberjs.com/"
+    "officialSite": "https://www.emberjs.com/"
   },
   {
     "title": "npm",
-    "description": "npm (Node.js Package Manager)  —  это менеджер пакетов, используемый Node.js-приложениями. В нём вы можете найти массу готовых модулей, поэтому вам не нужно изобретать колесо. Это похоже на Maven для Java или Composer для PHP.",
+    "description": "npm (Node.js Package Manager)  s a package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://www.npmjs.com/"
+    "officialSite": "https://www.npmjs.com/"
   },
   {
     "title": "Yarn",
-    "description": "Yarn - менеджер пакетов для javascript, аналог npm, созданный для решения ряда проблем. Особенности: автономный режим; детерминированность; производительность сети; наличие нескольких реестров, в том числе каталог NPM; сетевая гибкость; наличие Flat Mode.",
+    "description": "Yarn is a package manager for your code. It allows you to use and share code with other developers from around the world. Yarn does this quickly, securely, and reliably so you don’t ever have to worry.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://yarnpkg.com/lang/en/"
+    "officialSite": "https://yarnpkg.com/lang/en/"
   },
   {
     "title": "Gulp",
-    "description": "Gulp — это таск-менеджер для автоматического выполнения часто используемых задач, написанный на языке программирования JavaScript. Программное обеспечение использует командную строку для запуска задач, определённых в файле Gulpfile. Создан как ответвление от проекта Grunt, чтоб взять из него лучшие практики.",
+    "description": "Gulp is a javascript task runner that lets you automate tasks such as: bundling and minifying libraries and stylesheets; refreshing your browser when you save a file; quickly running unit tests; running code analysis Less/Sass to CSS compilation; copying modified files to an output directory.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://gulpjs.com/"
+    "officialSite": "https://gulpjs.com/"
   },
   {
     "title": "Grunt",
-    "description": "Grunt — менеджер задач для автоматического выполнения рутинных операций, написанный на языке программирования JavaScript. Программное обеспечение использует командную строку для запуска задач, определённых в файле Gruntfile. Распространяется через менеджер пакетов NPM под лицензией MIT.",
+    "description": "Grunt is a JavaScript task runner, a tool used to automatically perform frequent tasks such as minification, compilation, unit testing, and linting. It uses a command-line interface to run custom tasks defined in a file (known as a Gruntfile). Grunt was created by Ben Alman and is written in Node.js.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://gruntjs.com/"
+    "officialSite": "https://gruntjs.com/"
   },
   {
     "title": "Webpack",
-    "description": "Webpack - это модуль с открытым исходным кодом для JavaScript-модулей. Его основная цель - объединить файлы JavaScript для использования в браузере, но он также способен преобразовывать, связывать или упаковывать практически любые ресурсы или активы.",
+    "description": "Webpack is an open-source JavaScript module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset. Webpack takes modules with dependencies and generates static assets representing those modules.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://webpack.js.org/"
+    "officialSite": "https://webpack.js.org/"
   },
   {
     "title": "Rollup",
-    "description": "Rollup — это инструмент следующего поколение для пакетной обработки JavaScript-модулей. Создайте свое приложение или библиотеку с помощью модулей ES2015, затем объедините их в один файл для эффективного использования в браузерах и Node.js. Это похоже на использование Browserify и webpack.",
+    "description": "Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application. ",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://rollupjs.org/guide/en"
+    "officialSite": "https://rollupjs.org/guide/en"
   },
   {
     "title": "Browserify",
-    "description": "Browserify - это инструмент JavaScript с открытым исходным кодом, который позволяет разработчикам писать модули стиля Node.js, которые компилируются для использования в браузере. Browserify позволяет использовать запрос в браузере, так же, как вы его используете в узле.",
+    "description": "Browserify is an open-source JavaScript tool that allows developers to write Node.js-style modules that compile for use in the browser. Browserify lets you use require in the browser, the same way you'd use it in Node. It's not just syntactic sugar for loading scripts on the client.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "http://browserify.org/"
+    "officialSite": "http://browserify.org/"
   },
   {
     "title": "Jest",
-    "description": "Jest был создан в Facebook и представляет собой фреймворк для тестирования кода JavaScript и React-приложений",
+    "description": "Jest is a library for testing JavaScript code. It's an open source project maintained by Facebook, and it's especially well suited for React code testing, although not limited to that: it can test any JavaScript code. Jest is very fast and easy to use.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://jestjs.io/"
+    "officialSite": "https://jestjs.io/"
   },
   {
     "title": "Mocha",
-    "description": "Mocha - это тестовая среда JavaScript для программ Node.js с поддержкой браузера, асинхронным тестированием, отчетами об охвате тестирования и использованием любой библиотеки утверждений.",
+    "description": "Mocha is a JavaScript test framework for Node.js programs, featuring browser support, asynchronous testing, test coverage reports, and use of any assertion library.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://mochajs.org/"
+    "officialSite": "https://mochajs.org/"
   },
   {
     "title": "Jasmine",
-    "description": "Jasmine это BDD фреймворк (Behavior-Driven Development — Разработка на Основе Поведений) для тестирования JavaScript кода, позаимствовавший многие черты из RSpec.",
+    "description": "Jasmine is an open source testing framework for JavaScript. It aims to run on any JavaScript-enabled platform, to not intrude on the application nor the IDE, and to have easy-to-read syntax. It is heavily influenced by other unit testing frameworks, such as ScrewUnit, JSSpec, JSpec, and RSpec.",
     "relatedSkills": [
       "JavaScript"
     ],
     "type": "technology",
-    "link": "https://jasmine.github.io/"
+    "officialSite": "https://jasmine.github.io/"
   },
   {
     "title": "English",
-    "description": "Английский язык — язык англо-фризской подгруппы западной группы германской ветви индоевропейской языковой семьи. Английский язык — важнейший международный язык, что является следствием колониальной политики Британской империи в XIX веке и мировым влиянием США в XX—XXI веках.",
+    "description": "English is a West Germanic language that was first spoken in early medieval England and is now a global lingua franca. Named after the Angles, one of the Germanic tribes that migrated to the area of Britain that would later take their name, England, both names ultimately deriving from the Anglia peninsula in the Baltic Sea.",
     "relatedSkills": [
       "Personnel management",
       "SEO"
@@ -274,13 +274,13 @@
   },
   {
     "title": "Database",
-    "description": "Базы данных — представленная в объективной форме совокупность самостоятельных материалов, систематизированных таким образом, чтобы эти материалы могли быть найдены и обработаны с помощью электронной вычислительной машины.",
+    "description": "A database is an organized collection of data, generally stored and accessed electronically from a computer system. Where databases are more complex they are often developed using formal design and modeling techniques.",
     "relatedSkills": [],
     "type": "soft-skills"
   },
   {
     "title": "Personnel management",
-    "description": "Управление персоналом — область знаний и практической деятельности, направленная на обеспечение организации качественным персоналом, способным выполнять возложенные на него трудовые функции, и оптимальное его использование. Управление персоналом является неотъемлемой частью качественных систем управления организации.",
+    "description": "Human resource management (HRM or HR) is the strategic approach to the effective management of organization workers so that they help the business gain a competitive advantage, Commonly known as the HR Department, it is designed to maximize employee performance in service of an employer's strategic objectives.",
     "relatedSkills": [
       "English"
     ],
@@ -288,13 +288,13 @@
   },
   {
     "title": "Graphic design",
-    "description": "Графический дизайн — художественно-проектная деятельность, направленная на создание визуальной графической программы или системы. Графический дизайн поддерживает развитие социально-экономической и культурной сфер жизни, способствуя формированию значимого визуального ландшафта.",
+    "description": "Graphic symbols are often functionalist and anonymous, as these pictographs from the US National Park Service illustrate. Graphic design is the process of visual communication and problem-solving through the use of typography, photography and illustration. The field is considered a subset of visual communication and communication design, but sometimes the term 'graphic design' is used synonymously.",
     "relatedSkills": [],
     "type": "soft-skills"
   },
   {
     "title": "SEO",
-    "description": "Поисковая оптимизация (англ. search engine optimization, SEO) — комплекс мер по внутренней и внешней оптимизации для поднятия позиций сайта в результатах выдачи поисковых систем по определённым запросам пользователей, с целью увеличения сетевого трафика (для информационных ресурсов) и потенциальных клиентов (для коммерческих ресурсов) и последующей монетизации (получение дохода) этого трафика.",
+    "description": "Search engine optimization (SEO) is the process of affecting the online visibility of a website or a web page in a web search engine's unpaid results—often referred to as 'natural', 'organic', or 'earned' results.",
     "relatedSkills": [
       "English"
     ],

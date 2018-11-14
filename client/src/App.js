@@ -12,6 +12,7 @@ import Auth from './containers/Auth';
 
 import checkCookies from './utils/checkCookies';
 import formatEmployeesData from './utils/formatEmployeesData';
+import formatSkillsData from './utils/formatSkillsData';
 
 class App extends Component {
   static propTypes = {
@@ -50,8 +51,8 @@ class App extends Component {
             setAllDataLoadedStatus,
             setErrorOccuredStatus
     } = this.props;
-    let employees, projects, skills;
 
+    let employees, projects, skills;
     fetchDataBegin({ employees: { data: [], status: 'fetching', error: null }});
     fetch('/rest/employees').then(response => {
       if (response.status !== 200) {
@@ -98,7 +99,7 @@ class App extends Component {
     }).then(data => {
       skills = data;
 
-      // TODO: formatSkillsData
+      formatSkillsData(skills, projects);
       fetchDataSuccess({ skills: { data: skills, status: 'fetched', error: false }});
 
       setAllDataLoadedStatus();

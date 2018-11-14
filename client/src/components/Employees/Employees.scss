@@ -1,10 +1,8 @@
 .employees {
-  .wrapper {
-    margin: 0 auto;
-    padding: 0 1rem;
-    max-width: 96rem;
-    min-width: 40rem;
-  }
+  margin: 0 auto;
+  max-width: 96rem;
+  min-width: 40rem;
+  padding: 0 1rem;
 
   &__toolbar {
     position: relative;
@@ -95,19 +93,21 @@
         margin-bottom: 0;
         padding-left: 0;
 
-        .select-wrapper input.select-dropdown {
-          font-size: 1.2rem !important;
+        .select-wrapper {
+          input.select-dropdown {
+            font-size: 1.2rem !important;
 
-          &:focus {
-            border-bottom: .1rem solid hsl(211, 50%, 50%);
+            &:focus {
+              border-bottom: .1rem solid hsl(211, 50%, 50%);
+            }
           }
-        }
 
-        .select-wrapper + label {
-          position: absolute;
-          top: -2.4rem;
-          font-size: 1.2rem;
-          left: 0;
+          & + label {
+            position: absolute;
+            top: -2.4rem;
+            font-size: 1.2rem;
+            left: 0;
+          }
         }
 
         .dropdown-content.select-dropdown {
@@ -180,7 +180,7 @@
   margin-bottom: .4rem;
 
   .autocomplete-content.dropdown-content {
-    max-height: 17.5rem;
+    max-height: 25.6rem;
     width: 20rem !important;
 
     li {
@@ -199,6 +199,7 @@
     height: 3.7rem;
     font-size: 1.4rem;
     vertical-align: -.1rem;
+    color: black;
   }
 
   .chip {

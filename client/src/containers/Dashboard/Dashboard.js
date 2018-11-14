@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 import { setAuthStatusOut } from '../../actions/setAuthStatus';
 
-import './Dashboard.scss';
 import Header from '../../components/Header';
 import Employees from '../../components/Employees';
+import Technologies from '../../components/Technologies';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -23,31 +23,31 @@ class Dashboard extends Component {
     const { employees, projects, skills } = this.props;
 
     return (
-      <div className="Dashboard">
+      <>
         <Header
-          { ...this.props.user }
-          setAuthStatusOut={ setAuthStatusOut }
-        />
+            { ...this.props.user }
+            setAuthStatusOut={ setAuthStatusOut }
+          />
 
-        <main>
-          <Switch>
-            <Route exact={ true } path='/employee/:id' />
-            <Route exact={ true } path='/project/:id' />
-            <Route exact={ true } path='/skill/:title' />
-            <Route exact={ true } path='/department/:title' />
+        <Switch>
+          <Route exact={ true } path='/employees/:id' />
+          <Route exact={ true } path='/projects/:id' />
+          <Route exact={ true } path='/skills/:title' />
+          <Route exact={ true } path='/departments/:title' />
 
-            <Route exact={ true } path='/dashboard/employees' render={ () => (
-              <Employees employees={ employees } projects={ projects } skills={ skills } />
-            )} />
-            <Route exact={ true } path='/dashboard/projects'/>
-            <Route exact={ true } path='/dashboard/technologies' />
+          <Route exact={ true } path='/employees' render={ () => (
+            <Employees employees={ employees } projects={ projects } skills={ skills } />
+          )} />
+          <Route exact={ true } path='/projects'/>
+          <Route exact={ true } path='/skills' render={ () => (
+            <Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />
+          )} />
 
-            <Route path='*'>
-              <Redirect to={ `/employee/${ id }` } />
-            </Route>
-          </Switch>
-        </main>
-      </div>
+          <Route path='*'>
+            <Redirect to={ `/employees/${ id }` } />
+          </Route>
+        </Switch>
+      </>
     );
   }
 }

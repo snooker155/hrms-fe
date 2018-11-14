@@ -1,0 +1,54 @@
+.technology {
+  width: 100%;
+  display: flex;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: white;
+
+  &__presentation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logo {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 2rem;
+    border-radius: .5rem;
+  }
+
+  &__popularity {
+    width: 8rem;
+    text-align: center;
+    padding-top: .8rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+
+    .material-icons {
+      color: #ef6534;
+      font-size: 1.6rem;
+      vertical-align: -.25rem;
+      margin-right: .2rem;
+    }
+  }
+
+  &__img {
+    width: 6rem;
+    margin: 1rem;
+  }
+
+  &__info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__title {
+    margin: 0;
+    margin-top: .2rem;
+    font-size: 2.6rem;
+  }
+
+  &__description {
+    line-height: 2rem;
+  }
+}

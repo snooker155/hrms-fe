@@ -45,7 +45,6 @@ a {
     &:hover:before {
       transform: translateX(0);
     }
-
   }
 }
 
@@ -55,7 +54,7 @@ a {
 
 ::-webkit-scrollbar-track {
   border-radius: .9rem;
-}
+  }
 
 ::-webkit-scrollbar-thumb {
   opacity: 0.1;

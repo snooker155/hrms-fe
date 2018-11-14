@@ -60,10 +60,11 @@ class Header extends Component {
     const { id, name, surname, gender, setAuthStatusOut } = this.props;
 
     return (
+      <>
       <header className="header">
         <div className="wrapper">
           <div className="logotype">
-            <Link to={ `/employee/${ id }` }>
+            <Link to={ `/employees/${ id }` }>
               <img className="logotype__image" src={ logo } alt="HRM-System" />
             </Link>
           </div>
@@ -71,13 +72,13 @@ class Header extends Component {
           <div className="nav-wrapper">
             <ul className="nav">
               <li className="nav__item">
-                <NavLink to="/dashboard/employees" className="nav__link" activeClassName="nav__link--active">Employees</NavLink>
+                <NavLink to="/employees" exact={ true } className="nav__link" activeClassName="nav__link--active">Employees</NavLink>
               </li>
               <li className="nav__item">
-                <NavLink to="/dashboard/projects" className="nav__link" activeClassName="nav__link--active">Projects</NavLink>
+                <NavLink to="/projects" exact={ true } className="nav__link" activeClassName="nav__link--active">Projects</NavLink>
               </li>
               <li className="nav__item">
-                <NavLink to="/dashboard/technologies" className="nav__link" activeClassName="nav__link--active">Technologies</NavLink>
+                <NavLink to="/skills" exact={ true } className="nav__link" activeClassName="nav__link--active">Technologies</NavLink>
               </li>
             </ul>
 
@@ -97,6 +98,9 @@ class Header extends Component {
           </div>
         </div>
       </header>
+
+      <div className="fix-indent"></div>
+      </>
     );
   }
 }
