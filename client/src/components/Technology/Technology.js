@@ -17,7 +17,7 @@ function Technology(props) {
   const { technology } = props;
 
   return (
-    <div className="technology z-depth-1">
+    <div className="technology z-depth-1 animated fadeIn fast">
       <div className="technology__presentation">
           <div className="technology__logo z-depth-1">
               <Link to={ technology.link }>

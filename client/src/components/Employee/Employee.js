@@ -34,7 +34,7 @@ function Employee(props) {
   const { employee } = props;
 
   return (
-    <div className="card employee z-depth-1 animated fadeInRight slow">
+    <div className="card employee z-depth-1 animated fadeIn fast">
       <div className="card-content">
         <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
         <div className="employee__presentation">
@@ -45,7 +45,7 @@ function Employee(props) {
         </div>
         <div className="employee__info">
           <p className="employee__fullname"><Link to={ employee.link } className="link">{ `${ employee.name } ${ employee.surname }` }</Link></p>
-          <p className="employee__department"><i className="material-icons">group</i><Link to={ employee.department.link } className="link">{ employee.department.title }</Link></p>
+          <p className="employee__department"><i className="material-icons">group</i><Link to={ employee.department.link } >{ employee.department.title }</Link></p>
 
           <h3><i className="material-icons">contact_mail</i>Contacts:</h3>
           <div className="employee__contacts">

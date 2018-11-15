@@ -79,7 +79,7 @@ export default class Technologies extends Component {
     const { catalog, activePage, itemsCountPerPage } = this.state;
 
     return (
-      <section className="technologies animated fadeInRight slow">
+      <section className="technologies">
         <div className="technologies__toolbar z-depth-1">
           <div className="tools">
             <div className="tools__filtering">
@@ -100,7 +100,7 @@ export default class Technologies extends Component {
                   <option value="3">Tech titles (A - Z)</option>
                   <option value="4">Tech titles (Z - A)</option>
                 </select>
-                <label>Sorting</label>
+                <label>Sort by</label>
               </div>
             </div>
           </div>

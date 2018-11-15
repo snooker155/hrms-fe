@@ -62,7 +62,7 @@ export default class componentName extends Component {
 
   render() {
     return (
-      <section className="authorization animated fadeInRight slow">
+      <section className="authorization animated fadeInRight fast">
         <form className="form z-depth-1" action="javascript:void(0);" method="get">
           <div className="form__line form__line--title">
             <h3 className="form__headline">Sign In</h3>

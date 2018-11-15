@@ -1,0 +1,123 @@
+.projects {
+  margin: 0 auto;
+  max-width: 96rem;
+  min-width: 40rem;
+  padding: 0 1rem;
+
+  &__toolbar {
+    position: relative;
+    z-index: 100;
+    background: white;
+    padding: 1rem;
+    border-bottom: .1rem solid #e7eaec;
+
+    .tools {
+      margin-bottom: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      @media screen and (max-width: 550px) {
+        flex-flow: column nowrap;
+      }
+
+      &__filtering {
+        .input-field {
+          &--department {
+            width: 25.3rem;
+
+            .dropdown-content.select-dropdown {
+              width: 22.7rem !important;
+            }
+
+            @media screen and (max-width: 550px) {
+              width: 100%;
+
+              .dropdown-content.select-dropdown {
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+
+      &__sorting {
+        .input-field {
+          &--sorting {
+            width: 25.3rem;
+
+            .dropdown-content.select-dropdown {
+              width: 22.7rem !important;
+            }
+
+            @media screen and (max-width: 550px) {
+              width: 100%;
+
+              .dropdown-content.select-dropdown {
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+
+      /* Переопределение стилей Materialize.css */
+      .input-field {
+        margin-bottom: 0;
+        padding-left: 0;
+
+        .select-wrapper {
+          input.select-dropdown {
+            font-size: 1.2rem !important;
+
+            &:focus {
+              border-bottom: .1rem solid hsl(211, 50%, 50%);
+            }
+          }
+
+          & + label {
+            position: absolute;
+            top: -2.4rem;
+            font-size: 1.2rem;
+            left: 0;
+          }
+        }
+
+        .dropdown-content.select-dropdown {
+          top: .8rem !important;
+          left: -.4rem !important;
+          max-height: 17.5rem;
+
+          li {
+            min-height: 0;
+            line-height: 0;
+
+            & > span {
+              font-size: 1.3rem;
+              color: rgb(103, 106, 108);
+              padding: .5rem .8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__catalog {
+    background-color: white;
+
+    .notFound {
+      text-align: center;
+      padding: 5rem 0;
+    }
+  }
+
+  &__pagination {
+    background-color: white;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 1.2rem 0;
+    margin-bottom: 1.5rem;
+  }
+}

@@ -7,6 +7,7 @@ import { setAuthStatusOut } from '../../actions/setAuthStatus';
 
 import Header from '../../components/Header';
 import Employees from '../../components/Employees';
+import Projects from '../../components/Projects';
 import Technologies from '../../components/Technologies';
 
 class Dashboard extends Component {
@@ -24,10 +25,7 @@ class Dashboard extends Component {
 
     return (
       <>
-        <Header
-            { ...this.props.user }
-            setAuthStatusOut={ setAuthStatusOut }
-          />
+        <Header { ...this.props.user } setAuthStatusOut={ setAuthStatusOut } />
 
         <Switch>
           <Route exact={ true } path='/employees/:id' />
@@ -38,7 +36,9 @@ class Dashboard extends Component {
           <Route exact={ true } path='/employees' render={ () => (
             <Employees employees={ employees } projects={ projects } skills={ skills } />
           )} />
-          <Route exact={ true } path='/projects'/>
+          <Route exact={ true } path='/projects' render={ () => (
+            <Projects employees={ employees } projects={ projects } skills={ skills } />
+          )}/>
           <Route exact={ true } path='/skills' render={ () => (
             <Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />
           )} />

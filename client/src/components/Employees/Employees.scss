@@ -111,6 +111,7 @@
         }
 
         .dropdown-content.select-dropdown {
+          z-index: 3000 !important;
           top: .8rem !important;
           left: -.4rem !important;
           max-height: 17.5rem;

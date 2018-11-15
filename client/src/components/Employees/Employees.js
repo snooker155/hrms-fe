@@ -138,7 +138,7 @@ export default class Employees extends Component {
 
     return (
       <section className="employees">
-        <div className="employees__toolbar z-depth-1 animated fadeInRight slow">
+        <div className="employees__toolbar z-depth-1">
           <div className="tools">
             <div className="tools__filtering">
               <div className="input-field input-field--department">
@@ -147,7 +147,7 @@ export default class Employees extends Component {
                   <option value="all">All departments</option>
                   { departmentsOptions }
                 </select>
-                <label>Filtering by department</label>
+                <label>Filter by department</label>
               </div>
               <div className="input-field input-field--projects">
                 <i className="material-icons prefix">folder</i>
@@ -155,7 +155,7 @@ export default class Employees extends Component {
                   <option value="all">All projects</option>
                   { projectsOptions }
                 </select>
-                <label>Filtering by project</label>
+                <label>Filter by project</label>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ export default class Employees extends Component {
               <div className="input-field input-field--sorting">
                 <i className="material-icons prefix">import_export</i>
                 <select className="select js-select-sorting" onChange={ this.updateCatalog }>
-                  <option value="0">By default</option>
+                  <option value="0">Default</option>
                   <option value="1">Employee names (A - Z)</option>
                   <option value="2">Employee names (Z - A)</option>
                   <option value="3">Employee surnames (A - Z)</option>
@@ -171,7 +171,7 @@ export default class Employees extends Component {
                   <option value="5">Department names (A - Z)</option>
                   <option value="6">Department names (Z - A)</option>
                 </select>
-                <label>Sorting</label>
+                <label>Sort by</label>
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default class Employees extends Component {
           }
         </div>
 
-        <div className="employees__pagination animated fadeInRight slow">
+        <div className="employees__pagination">
           { Math.ceil(catalog.length / itemsCountPerPage) > 1
               ? <Pagination
                   activePage={ activePage }

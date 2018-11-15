@@ -61,6 +61,17 @@
         .employee__department {
           font-size: 1.25rem;
 
+          a {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+         }
+
           .material-icons {
             vertical-align: .1rem;
           }

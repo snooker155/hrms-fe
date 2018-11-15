@@ -13,6 +13,7 @@ import Auth from './containers/Auth';
 import checkCookies from './utils/checkCookies';
 import formatEmployeesData from './utils/formatEmployeesData';
 import formatSkillsData from './utils/formatSkillsData';
+import formatProjectsData from './utils/formatProjectsData';
 
 class App extends Component {
   static propTypes = {
@@ -83,7 +84,7 @@ class App extends Component {
       formatEmployeesData(employees, projects);
       fetchDataSuccess({ employees: { data: employees, status: 'fetched', error: false }});
 
-      // TODO: formatProjectsData
+      formatProjectsData(projects, employees);
       fetchDataSuccess({ projects: { data: projects, status: 'fetched', error: false }});
 
       fetchDataBegin({ skills: { data: [], status: 'fetching', error: null }});
