@@ -36,7 +36,7 @@ export default class Employees extends Component {
         minLength: 1
       },
       onChipAdd: (undefined, chip) => {
-        const chipContent = chip.innerText.split('\n')[0];
+        const chipContent = chip.innerText.slice(0, -5);
         this.setState(state => ({
           chips: [ ...state.chips, chipContent ]
         }));

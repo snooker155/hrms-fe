@@ -10,6 +10,27 @@ export default function formatEmployeesData(employees, projects) {
         }
       }
     });
+
+    const manager = employees.find((employee) => employee.id === employees[i].manager);
+    if (manager) {
+      employees[i].manager = {
+        id: employees[i].manager,
+        name: manager.name,
+        surname: manager.surname,
+        link: manager.link || manager
+      };
+    } else {
+      employees[i].manager = { id: 0 };
+
+      employees[i].subordinates = [ ];
+      for (let j = 0; j < employees.length; j++) {
+        const managerId = employees[j].manager.id || employees[j].manager;
+        if (managerId === employees[i].id) {
+          employees[i].subordinates.push(Object.assign(employees[j]));
+        }
+      }
+    }
+
     employees[i].skills = employees[i].skills.map(skill => ({ title: skill.title, link: encodeURI(`/skills/${ skill.title }`)}));
   }
 }

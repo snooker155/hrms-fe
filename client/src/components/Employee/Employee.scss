@@ -4,7 +4,13 @@
   &-title {
     position: absolute;
     right: .5rem;
-    top: .7rem;
+    top: -.1rem;
+
+    .material-icons {
+      user-select: none;
+      font-size: 2rem;
+      color: rgb(103, 106, 108);
+    }
   }
 
   &.employee {
@@ -33,7 +39,6 @@
       .employee__presentation {
         width: 23%;
         text-align: center;
-
 
         .employee__image {
           width: 6.5rem;

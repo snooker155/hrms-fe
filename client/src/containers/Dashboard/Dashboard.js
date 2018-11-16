@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { setAuthStatusOut } from '../../actions/setAuthStatus';
 
 import Header from '../../components/Header';
+import EmployeeCard from '../../components/EmployeeCard';
 import Employees from '../../components/Employees';
 import Projects from '../../components/Projects';
 import Technologies from '../../components/Technologies';
@@ -28,7 +29,9 @@ class Dashboard extends Component {
         <Header { ...this.props.user } setAuthStatusOut={ setAuthStatusOut } />
 
         <Switch>
-          <Route exact={ true } path='/employees/:id' />
+          <Route exact={ true } path='/employees/:id' render={ () => (
+            <EmployeeCard employees={ employees } projects={ projects } id={ id }/>
+          )} />
           <Route exact={ true } path='/projects/:id' />
           <Route exact={ true } path='/skills/:title' />
           <Route exact={ true } path='/departments/:title' />

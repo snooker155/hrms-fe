@@ -1,0 +1,14 @@
+.ec-info {
+  .content {
+    display: flex;
+    flex-flow: row nowrap;
+
+    span:not(:last-child) {
+        margin-right: 2rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

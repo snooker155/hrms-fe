@@ -1,0 +1,30 @@
+.ec-info__employees {
+  display: flex;
+  flex-flow: row wrap;
+
+  .card {
+    &:not(:nth-child(3n)) {
+      margin-right: 2%;
+
+      @media screen and (max-width: 910px) {
+        & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      @media screen and (max-width: 910px) {
+        & {
+          margin-right: 2%;
+        }
+      }
+
+      @media screen and (max-width: 610px) {
+        & {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

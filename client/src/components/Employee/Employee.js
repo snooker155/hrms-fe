@@ -36,7 +36,7 @@ function Employee(props) {
   return (
     <div className="card employee z-depth-1 animated fadeIn fast">
       <div className="card-content">
-        <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
+        <span className="card-title activator grey-text text-darken-4"><i className="material-icons">info</i></span>
         <div className="employee__presentation">
           <Link to={ employee.link }>
             <img className="employee__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/${ employee.id }.jpg` } />
@@ -75,8 +75,7 @@ function Employee(props) {
         </div>
       </div>
       <div className="card-reveal">
-        <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>
-
+        <span className="card-title grey-text text-darken-4"><i className="material-icons">close</i></span>
         <h3><i className="material-icons">folder</i>Projects:</h3>
         <div className="employee__projects">
           { employee.projects.map(project => {

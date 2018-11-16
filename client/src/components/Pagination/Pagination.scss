@@ -5,15 +5,12 @@
     }
   }
 
-  .active-element {
-    &:hover {
-      transition: all .4s;
-      background: hsla(211, 31%, 20%, .2);
-    }
-  }
+  li {
+    cursor: pointer;
 
-  li:not(:last-child) {
-    margin-right: .5rem;
+    &:not(:last-child) {
+      margin-right: .5rem;
+    }
 
     &.active {
       background: hsla(211, 31%, 20%, .8);
