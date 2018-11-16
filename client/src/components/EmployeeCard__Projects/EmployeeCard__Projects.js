@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './EmployeeCard__Project.scss';
+import './EmployeeCard__Projects.scss';
 
 const propTypes = {
   project: PropTypes.shape({
@@ -14,7 +14,7 @@ const propTypes = {
   position: PropTypes.string.isRequired
 }
 
-function EmployeeCard__Project(props) {
+function EmployeeCard__Projects(props) {
   const { project, position } = props;
 
   return (
@@ -52,6 +52,6 @@ function EmployeeCard__Project(props) {
   );
 }
 
-EmployeeCard__Project.propTypes = propTypes;
+EmployeeCard__Projects.propTypes = propTypes;
 
-export default EmployeeCard__Project;
+export default EmployeeCard__Projects;

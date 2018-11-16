@@ -31,6 +31,6 @@ export default function formatEmployeesData(employees, projects) {
       }
     }
 
-    employees[i].skills = employees[i].skills.map(skill => ({ title: skill.title, link: encodeURI(`/skills/${ skill.title }`)}));
+    employees[i].skills = employees[i].skills.map(skill => ({ ...skill, link: encodeURI(`/skills/${ skill.title }`)}));
   }
 }

@@ -1,0 +1,22 @@
+.star-rating {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  &__item {
+    &--edit {
+      .material-icons {
+        color: hsl(211, 50%, 55%) !important;
+      }
+    }
+  }
+
+  .material-icons {
+    user-select: none;
+    vertical-align: 0;
+    padding-right: 0;
+    font-size: 2.4rem;
+    color: #ffeb3b;
+    vertical-align: -.5rem;
+  }
+}

@@ -94,7 +94,7 @@ export default class Technologies extends Component {
               <div className="input-field input-field--sorting">
                 <i className="material-icons prefix">import_export</i>
                 <select className="select js-select-sorting" onChange={ this.updateCatalog }>
-                  <option value="0">By default</option>
+                  <option value="0">Default</option>
                   <option value="1">Tech popularity (descending)</option>
                   <option value="2">Tech popularity (ascending)</option>
                   <option value="3">Tech titles (A - Z)</option>

@@ -12,13 +12,14 @@ import whatsapp from '../../static-assets/img/socialMediaIcons/whatsapp.png';
 
 import './EmployeeCard.scss';
 import EmployeeCard__Info from '../EmployeeCard__Info';
-import EmployeeCard__Project from '../EmployeeCard__Project';
+import EmployeeCard__Skills from '../EmployeeCard__Skills';
+import EmployeeCard__Projects from '../EmployeeCard__Projects';
 
 export default class EmployeeCard extends Component {
   static propTypes = {
     employees: PropTypes.array.isRequired,
     projects: PropTypes.array.isRequired,
-    id: PropTypes.number.isRequired
+    currentUserId: PropTypes.number.isRequired
   }
 
   state = {
@@ -39,9 +40,9 @@ export default class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employees, projects, id } = this.props;
-    const [ user ] = employees.filter(employee => employee.id === +location.pathname.split('/').pop());
+    const { employees, projects, currentUserId } = this.props;
 
+    const [ user ] = employees.filter(employee => employee.id === Number(location.pathname.split('/').pop()));
     for (let i = 0; i < user.projects.length; i++) {
       const { description, technologies } = projects.find(project => project.id === user.projects[i].id);
       user.projects[i] = {
@@ -110,14 +111,15 @@ export default class EmployeeCard extends Component {
               </div>
 
               <div className={ activeTab === 2 ? 'EmployeeCard__skills animated fadeIn fast' : 'hidden' }>
-                <h3>{ user.id === id ? 'My' : null } Skills</h3>
+                <h3>{ user.id === currentUserId ? 'My' : null } Skills</h3>
+                <EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>
               </div>
 
               <div className={ activeTab === 3 ? 'EmployeeCard__projects animated fadeIn fast' : 'hidden' }>
-                <h3>{ user.id === id ? 'My' : null } Projects</h3>
+                <h3>{ user.id === currentUserId ? 'My' : null } Projects</h3>
                 {
                   user.projects.map(project => (
-                    <EmployeeCard__Project key={ project.id } project={ project } position={ user.position} />
+                    <EmployeeCard__Projects key={ project.id } project={ project } position={ user.position } />
                   ))
                 }
               </div>

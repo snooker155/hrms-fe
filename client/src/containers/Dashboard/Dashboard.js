@@ -30,7 +30,7 @@ class Dashboard extends Component {
 
         <Switch>
           <Route exact={ true } path='/employees/:id' render={ () => (
-            <EmployeeCard employees={ employees } projects={ projects } id={ id }/>
+            <EmployeeCard employees={ employees } projects={ projects } currentUserId={ id }/>
           )} />
           <Route exact={ true } path='/projects/:id' />
           <Route exact={ true } path='/skills/:title' />

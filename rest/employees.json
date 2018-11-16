@@ -17,14 +17,31 @@
     "skills": [
       {
         "title": "Personnel management",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-08-21T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 0,
+            "date": "2018-09-02T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Database",
         "degree": [
           {
-            "value": 4,
-            "source": 0
+            "value": 5,
+            "source": 3,
+            "date": "2018-09-19T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 0,
+            "date": null
           }
         ]
       },
@@ -33,11 +50,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 3
+            "source": 3,
+            "date": "2018-09-04T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 0
+            "value": 5,
+            "source": 0,
+            "date": "2018-10-25T21:00:00.000Z"
           }
         ]
       },
@@ -45,48 +64,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 4,
-            "source": 3
+            "value": 0,
+            "source": 3,
+            "date": null
           },
           {
             "value": 3,
-            "source": 0
+            "source": 0,
+            "date": "2018-08-31T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "done"
-      },
-      {
-        "title": "Работать в компании. Цели компании помогают реализовать ваши мечты.",
-        "status": "not performed"
-      },
-      {
-        "title": "Быть спонтанным. Не боятся выглядеть глупо.",
-        "status": "not performed"
-      },
-      {
-        "title": "Организовать вечер настольных игр.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пробежать 10 км.",
-        "status": "done"
-      },
-      {
-        "title": "Любить жизнеутверждающе. Излечить невротичность.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -119,11 +106,13 @@
         "degree": [
           {
             "value": 3,
-            "source": 8
+            "source": 8,
+            "date": "2018-07-13T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 3
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
@@ -132,24 +121,43 @@
         "degree": [
           {
             "value": 4,
-            "source": 8
+            "source": 8,
+            "date": "2018-10-02T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-07-25T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "Rollup",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 8,
+            "date": "2018-09-20T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 3,
+            "date": null
+          }
+        ]
       },
       {
         "title": "npm",
         "degree": [
           {
+            "value": 3,
+            "source": 8,
+            "date": "2018-10-20T21:00:00.000Z"
+          },
+          {
             "value": 5,
-            "source": 8
+            "source": 3,
+            "date": "2018-07-14T21:00:00.000Z"
           }
         ]
       },
@@ -158,7 +166,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 8
+            "source": 8,
+            "date": "2018-08-27T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
@@ -166,52 +180,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 5,
-            "source": 8
+            "value": 3,
+            "source": 8,
+            "date": "2018-07-11T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 3
+            "value": 3,
+            "source": 3,
+            "date": "2018-08-09T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "done"
-      },
-      {
-        "title": "Подучиться играть в настольный и большой теннис.",
-        "status": "not performed"
-      },
-      {
-        "title": "Царь горы – залезть на пирамиду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Укрепиться в жизненной позиции Я в порядке, другие в порядке.",
-        "status": "done"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -241,14 +219,31 @@
     "skills": [
       {
         "title": "HTML",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 9,
+            "date": "2018-07-22T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-09-30T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Handlebars.js",
         "degree": [
           {
             "value": 4,
-            "source": 9
+            "source": 9,
+            "date": "2018-08-12T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
@@ -257,11 +252,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 9
+            "source": 9,
+            "date": "2018-07-16T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 3
+            "value": 4,
+            "source": 3,
+            "date": "2018-08-08T21:00:00.000Z"
           }
         ]
       },
@@ -269,12 +266,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 4,
-            "source": 9
+            "value": 0,
+            "source": 9,
+            "date": null
           },
           {
-            "value": 4,
-            "source": 3
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
@@ -283,11 +282,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 9
+            "source": 9,
+            "date": "2018-10-19T21:00:00.000Z"
           },
           {
             "value": 4,
-            "source": 3
+            "source": 3,
+            "date": "2018-10-28T21:00:00.000Z"
           }
         ]
       },
@@ -295,12 +296,14 @@
         "title": "Webpack",
         "degree": [
           {
-            "value": 4,
-            "source": 9
+            "value": 3,
+            "source": 9,
+            "date": "2018-07-12T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-10-22T21:00:00.000Z"
           }
         ]
       },
@@ -308,45 +311,46 @@
         "title": "Mocha",
         "degree": [
           {
-            "value": 5,
-            "source": 3
+            "value": 4,
+            "source": 9,
+            "date": "2018-10-11T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-07-19T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "English",
-        "degree": []
+        "degree": [
+          {
+            "value": 0,
+            "source": 9,
+            "date": null
+          },
+          {
+            "value": 0,
+            "source": 3,
+            "date": null
+          }
+        ]
       },
       {
         "title": "Database",
         "degree": [
           {
-            "value": 4,
-            "source": 9
+            "value": 3,
+            "source": 9,
+            "date": "2018-08-05T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Умение преодоления старой привычки. Переучить себя в чём-то.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пожить 2+ месяца в незнакомой стране.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -379,28 +383,43 @@
         "degree": [
           {
             "value": 4,
-            "source": 10
+            "source": 10,
+            "date": "2018-10-11T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 3
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
       {
         "title": "Handlebars.js",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 10,
+            "date": "2018-10-15T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-09-09T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Less",
         "degree": [
           {
-            "value": 5,
-            "source": 10
+            "value": 4,
+            "source": 10,
+            "date": "2018-08-15T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-09-15T21:00:00.000Z"
           }
         ]
       },
@@ -408,12 +427,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 5,
-            "source": 10
+            "value": 0,
+            "source": 10,
+            "date": null
           },
           {
-            "value": 3,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-08-25T21:00:00.000Z"
           }
         ]
       },
@@ -422,11 +443,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 10
+            "source": 10,
+            "date": "2018-07-15T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-08-20T21:00:00.000Z"
           }
         ]
       },
@@ -434,12 +457,14 @@
         "title": "Gulp",
         "degree": [
           {
-            "value": 3,
-            "source": 10
+            "value": 4,
+            "source": 10,
+            "date": "2018-07-08T21:00:00.000Z"
           },
           {
             "value": 5,
-            "source": 3
+            "source": 3,
+            "date": "2018-10-01T21:00:00.000Z"
           }
         ]
       },
@@ -448,7 +473,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 10
+            "source": 10,
+            "date": "2018-10-16T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-09-22T21:00:00.000Z"
           }
         ]
       },
@@ -457,11 +488,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 10
+            "source": 10,
+            "date": "2018-07-21T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 3
+            "value": 5,
+            "source": 3,
+            "date": "2018-07-29T21:00:00.000Z"
           }
         ]
       },
@@ -470,7 +503,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 10
+            "source": 10,
+            "date": "2018-08-04T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 3,
+            "date": "2018-09-01T21:00:00.000Z"
           }
         ]
       },
@@ -479,11 +518,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 10
+            "source": 10,
+            "date": "2018-07-21T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 3
+            "value": 0,
+            "source": 3,
+            "date": null
           }
         ]
       },
@@ -491,8 +532,14 @@
         "title": "SEO",
         "degree": [
           {
-            "value": 3,
-            "source": 3
+            "value": 5,
+            "source": 10,
+            "date": "2018-07-05T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 3,
+            "date": "2018-07-29T21:00:00.000Z"
           }
         ]
       },
@@ -500,8 +547,14 @@
         "title": "Personnel management",
         "degree": [
           {
+            "value": 0,
+            "source": 10,
+            "date": null
+          },
+          {
             "value": 4,
-            "source": 10
+            "source": 3,
+            "date": "2018-08-14T21:00:00.000Z"
           }
         ]
       },
@@ -509,40 +562,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 4,
-            "source": 10
+            "value": 0,
+            "source": 10,
+            "date": null
+          },
+          {
+            "value": 5,
+            "source": 3,
+            "date": "2018-08-24T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "not performed"
-      },
-      {
-        "title": "Поужинать в топ-ресторане города и не оставить чаевых.",
-        "status": "not performed"
-      },
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "done"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -573,12 +602,14 @@
         "title": "English",
         "degree": [
           {
-            "value": 5,
-            "source": 4
+            "value": 3,
+            "source": 4,
+            "date": "2018-07-18T21:00:00.000Z"
           },
           {
             "value": 3,
-            "source": 0
+            "source": 0,
+            "date": "2018-08-12T21:00:00.000Z"
           }
         ]
       },
@@ -586,8 +617,14 @@
         "title": "Personnel management",
         "degree": [
           {
-            "value": 4,
-            "source": 4
+            "value": 3,
+            "source": 4,
+            "date": "2018-09-11T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 0,
+            "date": null
           }
         ]
       },
@@ -595,8 +632,14 @@
         "title": "SEO",
         "degree": [
           {
-            "value": 3,
-            "source": 0
+            "value": 5,
+            "source": 4,
+            "date": "2018-08-15T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 0,
+            "date": "2018-09-06T21:00:00.000Z"
           }
         ]
       },
@@ -605,31 +648,15 @@
         "degree": [
           {
             "value": 5,
-            "source": 4
+            "source": 4,
+            "date": "2018-08-09T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 0,
+            "date": "2018-07-30T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "not performed"
-      },
-      {
-        "title": "Получить водительское удостоверение. Поездить по серпантину.",
-        "status": "not performed"
-      },
-      {
-        "title": "Практиковать медитации. Пройти курс или семинар.",
-        "status": "not performed"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -659,8 +686,14 @@
         "title": "HTML",
         "degree": [
           {
+            "value": 0,
+            "source": 5,
+            "date": null
+          },
+          {
             "value": 3,
-            "source": 4
+            "source": 4,
+            "date": "2018-08-14T21:00:00.000Z"
           }
         ]
       },
@@ -669,11 +702,13 @@
         "degree": [
           {
             "value": 3,
-            "source": 5
+            "source": 5,
+            "date": "2018-07-05T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 4
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -681,8 +716,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 5,
-            "source": 5
+            "value": 4,
+            "source": 5,
+            "date": "2018-08-15T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 4,
+            "date": "2018-09-21T21:00:00.000Z"
           }
         ]
       },
@@ -690,8 +731,14 @@
         "title": "jQuery",
         "degree": [
           {
-            "value": 5,
-            "source": 5
+            "value": 4,
+            "source": 5,
+            "date": "2018-09-17T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -699,32 +746,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 3,
-            "source": 5
+            "value": 0,
+            "source": 5,
+            "date": null
           },
           {
-            "value": 3,
-            "source": 4
+            "value": 5,
+            "source": 4,
+            "date": "2018-10-22T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "done"
-      },
-      {
-        "title": "Обучиться играть на музыкальном инструменте. Сыграть мелодию на флейте, клавишах, гитаре, ударных.",
-        "status": "done"
-      },
-      {
-        "title": "Организовать вечер настольных игр.",
-        "status": "done"
-      },
-      {
-        "title": "Выбрать хобби и размышлять как получать в будущем с него доход.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -755,7 +786,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 4
+            "source": 6,
+            "date": "2018-06-29T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 4,
+            "date": "2018-07-01T21:00:00.000Z"
           }
         ]
       },
@@ -764,11 +801,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 6
+            "source": 6,
+            "date": "2018-08-22T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 4
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -776,36 +815,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 3,
-            "source": 6
+            "value": 0,
+            "source": 6,
+            "date": null
+          },
+          {
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Привести колесо баланса жизни в 7–10 пунктов.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пассивный доход. 100$+ / месяц.",
-        "status": "done"
-      },
-      {
-        "title": "Прочитать Новый Завет. Сформировать мнение.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -837,8 +856,14 @@
         "title": "HTML",
         "degree": [
           {
-            "value": 3,
-            "source": 7
+            "value": 5,
+            "source": 7,
+            "date": "2018-08-08T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 4,
+            "date": "2018-09-10T21:00:00.000Z"
           }
         ]
       },
@@ -846,12 +871,14 @@
         "title": "Haml",
         "degree": [
           {
-            "value": 3,
-            "source": 7
+            "value": 4,
+            "source": 7,
+            "date": "2018-10-09T21:00:00.000Z"
           },
           {
             "value": 5,
-            "source": 4
+            "source": 4,
+            "date": "2018-10-02T21:00:00.000Z"
           }
         ]
       },
@@ -859,25 +886,44 @@
         "title": "Less",
         "degree": [
           {
-            "value": 3,
-            "source": 7
+            "value": 4,
+            "source": 7,
+            "date": "2018-09-11T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 4,
+            "date": "2018-09-01T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "JavaScript",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 7,
+            "date": "2018-07-19T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 4,
+            "date": "2018-07-24T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "TypeScript",
         "degree": [
           {
-            "value": 5,
-            "source": 7
+            "value": 4,
+            "source": 7,
+            "date": "2018-09-26T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 4
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -885,12 +931,14 @@
         "title": "Angular",
         "degree": [
           {
-            "value": 3,
-            "source": 7
+            "value": 5,
+            "source": 7,
+            "date": "2018-08-09T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 4
+            "value": 4,
+            "source": 4,
+            "date": "2018-10-29T21:00:00.000Z"
           }
         ]
       },
@@ -898,8 +946,14 @@
         "title": "Webpack",
         "degree": [
           {
-            "value": 3,
-            "source": 4
+            "value": 5,
+            "source": 7,
+            "date": "2018-10-17T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 4,
+            "date": "2018-07-05T21:00:00.000Z"
           }
         ]
       },
@@ -908,11 +962,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 7
+            "source": 7,
+            "date": "2018-09-26T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 4
+            "value": 4,
+            "source": 4,
+            "date": "2018-10-06T21:00:00.000Z"
           }
         ]
       },
@@ -920,12 +976,14 @@
         "title": "Personnel management",
         "degree": [
           {
-            "value": 3,
-            "source": 7
+            "value": 5,
+            "source": 7,
+            "date": "2018-10-22T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 4
+            "value": 5,
+            "source": 4,
+            "date": "2018-10-28T21:00:00.000Z"
           }
         ]
       },
@@ -933,8 +991,14 @@
         "title": "Graphic design",
         "degree": [
           {
-            "value": 5,
-            "source": 7
+            "value": 0,
+            "source": 7,
+            "date": null
+          },
+          {
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -942,8 +1006,14 @@
         "title": "SEO",
         "degree": [
           {
-            "value": 5,
-            "source": 7
+            "value": 4,
+            "source": 7,
+            "date": "2018-08-09T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 4,
+            "date": null
           }
         ]
       },
@@ -952,31 +1022,15 @@
         "degree": [
           {
             "value": 4,
-            "source": 7
+            "source": 7,
+            "date": "2018-10-04T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 4,
+            "date": "2018-09-29T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Проплыть 500 метров. Нырять на 8 метров.",
-        "status": "done"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "not performed"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -1008,12 +1062,14 @@
         "title": "English",
         "degree": [
           {
-            "value": 5,
-            "source": 2
+            "value": 3,
+            "source": 2,
+            "date": "2018-07-07T21:00:00.000Z"
           },
           {
             "value": 3,
-            "source": 0
+            "source": 0,
+            "date": "2018-08-01T21:00:00.000Z"
           }
         ]
       },
@@ -1021,12 +1077,14 @@
         "title": "Personnel management",
         "degree": [
           {
-            "value": 3,
-            "source": 2
+            "value": 5,
+            "source": 2,
+            "date": "2018-07-14T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 0
+            "value": 0,
+            "source": 0,
+            "date": null
           }
         ]
       },
@@ -1035,7 +1093,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 2
+            "source": 2,
+            "date": "2018-09-01T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 0,
+            "date": "2018-08-17T21:00:00.000Z"
           }
         ]
       },
@@ -1043,32 +1107,16 @@
         "title": "Graphic design",
         "degree": [
           {
-            "value": 5,
-            "source": 2
+            "value": 4,
+            "source": 2,
+            "date": "2018-07-12T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 0
+            "value": 3,
+            "source": 0,
+            "date": "2018-06-30T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Царь горы – залезть на пирамиду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Практиковать медитации. Пройти курс или семинар.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пробежать 10 км.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -1099,8 +1147,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 4,
-            "source": 11
+            "value": 5,
+            "source": 11,
+            "date": "2018-07-30T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 2,
+            "date": "2018-09-14T21:00:00.000Z"
           }
         ]
       },
@@ -1108,8 +1162,14 @@
         "title": "React",
         "degree": [
           {
-            "value": 5,
-            "source": 11
+            "value": 3,
+            "source": 11,
+            "date": "2018-10-11T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
@@ -1117,12 +1177,14 @@
         "title": "Bootstrap",
         "degree": [
           {
-            "value": 4,
-            "source": 11
+            "value": 0,
+            "source": 11,
+            "date": null
           },
           {
-            "value": 4,
-            "source": 2
+            "value": 3,
+            "source": 2,
+            "date": "2018-09-29T21:00:00.000Z"
           }
         ]
       },
@@ -1130,8 +1192,14 @@
         "title": "Webpack",
         "degree": [
           {
+            "value": 0,
+            "source": 11,
+            "date": null
+          },
+          {
             "value": 3,
-            "source": 11
+            "source": 2,
+            "date": "2018-07-09T21:00:00.000Z"
           }
         ]
       },
@@ -1139,8 +1207,14 @@
         "title": "Yarn",
         "degree": [
           {
+            "value": 0,
+            "source": 11,
+            "date": null
+          },
+          {
             "value": 4,
-            "source": 11
+            "source": 2,
+            "date": "2018-08-12T21:00:00.000Z"
           }
         ]
       },
@@ -1148,48 +1222,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 5,
-            "source": 2
+            "value": 4,
+            "source": 11,
+            "date": "2018-10-16T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Укрепиться в жизненной позиции Я в порядке, другие в порядке.",
-        "status": "not performed"
-      },
-      {
-        "title": "Работать в компании. Цели компании помогают реализовать ваши мечты.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Жениться или выйти замуж по любви.",
-        "status": "not performed"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "not performed"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "not performed"
-      },
-      {
-        "title": "Вырастить устойчиво крепкую самооценку. Любить и уважать себя.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -1219,14 +1261,31 @@
     "skills": [
       {
         "title": "HTML",
-        "degree": []
+        "degree": [
+          {
+            "value": 3,
+            "source": 12,
+            "date": "2018-09-05T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 2,
+            "date": "2018-09-06T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Sass",
         "degree": [
           {
-            "value": 5,
-            "source": 2
+            "value": 4,
+            "source": 12,
+            "date": "2018-08-16T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 2,
+            "date": "2018-10-12T21:00:00.000Z"
           }
         ]
       },
@@ -1235,7 +1294,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 12
+            "source": 12,
+            "date": "2018-07-08T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 2,
+            "date": "2018-08-25T21:00:00.000Z"
           }
         ]
       },
@@ -1243,8 +1308,14 @@
         "title": "Gulp",
         "degree": [
           {
-            "value": 4,
-            "source": 12
+            "value": 3,
+            "source": 12,
+            "date": "2018-09-26T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 2,
+            "date": "2018-10-06T21:00:00.000Z"
           }
         ]
       },
@@ -1252,12 +1323,14 @@
         "title": "npm",
         "degree": [
           {
-            "value": 4,
-            "source": 12
+            "value": 5,
+            "source": 12,
+            "date": "2018-08-27T21:00:00.000Z"
           },
           {
             "value": 5,
-            "source": 2
+            "source": 2,
+            "date": "2018-08-11T21:00:00.000Z"
           }
         ]
       },
@@ -1265,40 +1338,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 4,
-            "source": 12
+            "value": 5,
+            "source": 12,
+            "date": "2018-08-01T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 2
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "not performed"
-      },
-      {
-        "title": "Учиться преодолевать страхи. Преодолеть 5 страхов.",
-        "status": "not performed"
-      },
-      {
-        "title": "Увеличить доход в 2 раза.",
-        "status": "done"
-      },
-      {
-        "title": "Любить жизнеутверждающе. Излечить невротичность.",
-        "status": "not performed"
-      },
-      {
-        "title": "Качалка. Позаниматься 2–3 месяца. Получить разряд.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пожить 2+ месяца в незнакомой стране.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -1329,25 +1378,44 @@
         "title": "HTML",
         "degree": [
           {
-            "value": 3,
-            "source": 13
+            "value": 5,
+            "source": 13,
+            "date": "2018-10-09T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
       {
         "title": "PostCSS",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 13,
+            "date": "2018-09-29T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 2,
+            "date": "2018-07-22T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Materialize",
         "degree": [
           {
-            "value": 5,
-            "source": 13
+            "value": 3,
+            "source": 13,
+            "date": "2018-07-25T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 2
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
@@ -1356,20 +1424,43 @@
         "degree": [
           {
             "value": 4,
-            "source": 13
+            "source": 13,
+            "date": "2018-10-23T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
       {
         "title": "jQuery",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 13,
+            "date": "2018-10-16T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
+          }
+        ]
       },
       {
         "title": "Browserify",
         "degree": [
           {
-            "value": 3,
-            "source": 13
+            "value": 4,
+            "source": 13,
+            "date": "2018-07-27T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 2,
+            "date": "2018-09-23T21:00:00.000Z"
           }
         ]
       },
@@ -1377,44 +1468,16 @@
         "title": "Graphic design",
         "degree": [
           {
-            "value": 4,
-            "source": 13
+            "value": 3,
+            "source": 13,
+            "date": "2018-07-03T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 2
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Получить опыт найма и увольнения сотрудника.",
-        "status": "done"
-      },
-      {
-        "title": "Развить способность преодоления убеждённости. Узнать что-то новое, в чём был так уверен.",
-        "status": "done"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Учиться преодолевать страхи. Преодолеть 5 страхов.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "done"
-      },
-      {
-        "title": "Прожить неделю без срочных дел (вне отпуска).",
-        "status": "done"
-      },
-      {
-        "title": "Творчество ручной работы. Поделки из бумаги, ткани, глины, пластилина, кожи.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -1449,11 +1512,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 14
+            "source": 14,
+            "date": "2018-07-15T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 2
+            "value": 4,
+            "source": 2,
+            "date": "2018-07-22T21:00:00.000Z"
           }
         ]
       },
@@ -1461,8 +1526,14 @@
         "title": "Handlebars.js",
         "degree": [
           {
-            "value": 3,
-            "source": 14
+            "value": 5,
+            "source": 14,
+            "date": "2018-08-30T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
@@ -1470,25 +1541,44 @@
         "title": "Sass",
         "degree": [
           {
-            "value": 5,
-            "source": 14
+            "value": 4,
+            "source": 14,
+            "date": "2018-07-23T21:00:00.000Z"
           },
           {
             "value": 5,
-            "source": 2
+            "source": 2,
+            "date": "2018-07-10T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "JavaScript",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 14,
+            "date": "2018-08-03T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 2,
+            "date": "2018-10-07T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Ember.js",
         "degree": [
           {
-            "value": 5,
-            "source": 14
+            "value": 4,
+            "source": 14,
+            "date": "2018-09-20T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 2,
+            "date": "2018-10-08T21:00:00.000Z"
           }
         ]
       },
@@ -1496,12 +1586,14 @@
         "title": "Webpack",
         "degree": [
           {
-            "value": 5,
-            "source": 14
+            "value": 4,
+            "source": 14,
+            "date": "2018-08-16T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 2
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
       },
@@ -1509,66 +1601,76 @@
         "title": "Yarn",
         "degree": [
           {
-            "value": 4,
-            "source": 14
+            "value": 0,
+            "source": 14,
+            "date": null
           },
           {
-            "value": 5,
-            "source": 2
+            "value": 4,
+            "source": 2,
+            "date": "2018-09-22T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "Personnel management",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 14,
+            "date": "2018-07-30T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 2,
+            "date": null
+          }
+        ]
       },
       {
         "title": "SEO",
         "degree": [
           {
             "value": 4,
-            "source": 14
+            "source": 14,
+            "date": "2018-09-29T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 2,
+            "date": "2018-10-16T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "Database",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 14,
+            "date": "2018-07-26T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 2,
+            "date": "2018-09-06T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "English",
         "degree": [
           {
-            "value": 5,
-            "source": 14
+            "value": 4,
+            "source": 14,
+            "date": "2018-07-03T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 2
+            "value": 0,
+            "source": 2,
+            "date": null
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Сформулировать своё предназначение.",
-        "status": "done"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "done"
-      },
-      {
-        "title": "Поужинать в топ-ресторане города и не оставить чаевых.",
-        "status": "done"
-      },
-      {
-        "title": "Быть спонтанным. Не боятся выглядеть глупо.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -1602,12 +1704,14 @@
         "title": "English",
         "degree": [
           {
-            "value": 3,
-            "source": 1
+            "value": 4,
+            "source": 1,
+            "date": "2018-07-30T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 0
+            "value": 0,
+            "source": 0,
+            "date": null
           }
         ]
       },
@@ -1615,8 +1719,14 @@
         "title": "Personnel management",
         "degree": [
           {
+            "value": 5,
+            "source": 1,
+            "date": "2018-09-05T21:00:00.000Z"
+          },
+          {
             "value": 3,
-            "source": 1
+            "source": 0,
+            "date": "2018-10-11T21:00:00.000Z"
           }
         ]
       },
@@ -1624,52 +1734,16 @@
         "title": "SEO",
         "degree": [
           {
-            "value": 4,
-            "source": 1
+            "value": 5,
+            "source": 1,
+            "date": "2018-08-27T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 0
+            "value": 5,
+            "source": 0,
+            "date": "2018-07-14T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "done"
-      },
-      {
-        "title": "Целую неделю есть только собственноручно приготовленную еду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "done"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Умение преодоления старой привычки. Переучить себя в чём-то.",
-        "status": "done"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Развить способность преодоления убеждённости. Узнать что-то новое, в чём был так уверен.",
-        "status": "done"
-      },
-      {
-        "title": "Вырастить устойчиво крепкую самооценку. Любить и уважать себя.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -1700,8 +1774,14 @@
         "title": "HTML",
         "degree": [
           {
-            "value": 4,
-            "source": 15
+            "value": 3,
+            "source": 15,
+            "date": "2018-09-05T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -1709,12 +1789,14 @@
         "title": "Haml",
         "degree": [
           {
-            "value": 3,
-            "source": 15
+            "value": 0,
+            "source": 15,
+            "date": null
           },
           {
             "value": 4,
-            "source": 1
+            "source": 1,
+            "date": "2018-10-29T21:00:00.000Z"
           }
         ]
       },
@@ -1722,12 +1804,14 @@
         "title": "PostCSS",
         "degree": [
           {
-            "value": 4,
-            "source": 15
+            "value": 0,
+            "source": 15,
+            "date": null
           },
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -1736,11 +1820,13 @@
         "degree": [
           {
             "value": 3,
-            "source": 15
+            "source": 15,
+            "date": "2018-09-12T21:00:00.000Z"
           },
           {
             "value": 5,
-            "source": 1
+            "source": 1,
+            "date": "2018-08-10T21:00:00.000Z"
           }
         ]
       },
@@ -1748,25 +1834,44 @@
         "title": "React",
         "degree": [
           {
-            "value": 5,
-            "source": 15
+            "value": 3,
+            "source": 15,
+            "date": "2018-08-01T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "Webpack",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 15,
+            "date": "2018-09-13T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 1,
+            "date": "2018-08-26T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Yarn",
         "degree": [
           {
-            "value": 5,
-            "source": 15
+            "value": 3,
+            "source": 15,
+            "date": "2018-10-08T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 1
+            "value": 4,
+            "source": 1,
+            "date": "2018-09-29T21:00:00.000Z"
           }
         ]
       },
@@ -1774,8 +1879,14 @@
         "title": "Graphic design",
         "degree": [
           {
-            "value": 3,
-            "source": 15
+            "value": 5,
+            "source": 15,
+            "date": "2018-10-03T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -1783,52 +1894,31 @@
         "title": "SEO",
         "degree": [
           {
-            "value": 3,
-            "source": 15
+            "value": 4,
+            "source": 15,
+            "date": "2018-10-13T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "English",
-        "degree": []
-      }
-    ],
-    "goals": [
-      {
-        "title": "Сформулировать своё предназначение.",
-        "status": "not performed"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пассивный доход. 100$+ / месяц.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Получить водительское удостоверение. Поездить по серпантину.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "done"
-      },
-      {
-        "title": "Увеличить доход в 2 раза.",
-        "status": "not performed"
+        "degree": [
+          {
+            "value": 0,
+            "source": 15,
+            "date": null
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
+          }
+        ]
       }
     ],
     "socialMedia": [
@@ -1861,12 +1951,14 @@
         "title": "HTML",
         "degree": [
           {
-            "value": 5,
-            "source": 16
+            "value": 4,
+            "source": 16,
+            "date": "2018-07-25T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 1
+            "value": 3,
+            "source": 1,
+            "date": "2018-09-24T21:00:00.000Z"
           }
         ]
       },
@@ -1875,11 +1967,13 @@
         "degree": [
           {
             "value": 3,
-            "source": 16
+            "source": 16,
+            "date": "2018-09-20T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 1
+            "value": 5,
+            "source": 1,
+            "date": "2018-10-19T21:00:00.000Z"
           }
         ]
       },
@@ -1887,12 +1981,14 @@
         "title": "Less",
         "degree": [
           {
-            "value": 3,
-            "source": 16
+            "value": 5,
+            "source": 16,
+            "date": "2018-07-03T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 1
+            "value": 5,
+            "source": 1,
+            "date": "2018-10-05T21:00:00.000Z"
           }
         ]
       },
@@ -1900,12 +1996,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 3,
-            "source": 16
+            "value": 4,
+            "source": 16,
+            "date": "2018-09-28T21:00:00.000Z"
           },
           {
             "value": 3,
-            "source": 1
+            "source": 1,
+            "date": "2018-08-20T21:00:00.000Z"
           }
         ]
       },
@@ -1913,8 +2011,14 @@
         "title": "Vue.js",
         "degree": [
           {
+            "value": 0,
+            "source": 16,
+            "date": null
+          },
+          {
             "value": 5,
-            "source": 16
+            "source": 1,
+            "date": "2018-08-30T21:00:00.000Z"
           }
         ]
       },
@@ -1922,12 +2026,14 @@
         "title": "Gulp",
         "degree": [
           {
-            "value": 3,
-            "source": 16
+            "value": 4,
+            "source": 16,
+            "date": "2018-08-29T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -1935,45 +2041,46 @@
         "title": "npm",
         "degree": [
           {
-            "value": 4,
-            "source": 16
+            "value": 3,
+            "source": 16,
+            "date": "2018-09-13T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "Graphic design",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 16,
+            "date": "2018-10-01T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 1,
+            "date": "2018-09-09T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Database",
         "degree": [
           {
-            "value": 4,
-            "source": 16
+            "value": 0,
+            "source": 16,
+            "date": null
           },
           {
             "value": 4,
-            "source": 1
+            "source": 1,
+            "date": "2018-08-29T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "not performed"
-      },
-      {
-        "title": "Учиться преодолевать страхи. Преодолеть 5 страхов.",
-        "status": "done"
-      },
-      {
-        "title": "Уметь слушать собеседника.",
-        "status": "done"
       }
     ],
     "socialMedia": [
@@ -2005,20 +2112,43 @@
         "degree": [
           {
             "value": 3,
-            "source": 1
+            "source": 17,
+            "date": "2018-10-24T21:00:00.000Z"
+          },
+          {
+            "value": 3,
+            "source": 1,
+            "date": "2018-07-17T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "Pug",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 17,
+            "date": "2018-08-19T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 1,
+            "date": "2018-07-05T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Stylus",
         "degree": [
           {
-            "value": 5,
-            "source": 17
+            "value": 3,
+            "source": 17,
+            "date": "2018-07-09T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2026,12 +2156,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 4,
-            "source": 17
+            "value": 0,
+            "source": 17,
+            "date": null
           },
           {
             "value": 4,
-            "source": 1
+            "source": 1,
+            "date": "2018-07-08T21:00:00.000Z"
           }
         ]
       },
@@ -2039,8 +2171,14 @@
         "title": "jQuery",
         "degree": [
           {
-            "value": 3,
-            "source": 17
+            "value": 4,
+            "source": 17,
+            "date": "2018-07-30T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-09-29T21:00:00.000Z"
           }
         ]
       },
@@ -2049,31 +2187,30 @@
         "degree": [
           {
             "value": 3,
-            "source": 17
+            "source": 17,
+            "date": "2018-08-09T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-07-02T21:00:00.000Z"
           }
         ]
       },
       {
         "title": "English",
-        "degree": []
-      }
-    ],
-    "goals": [
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "not performed"
-      },
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "done"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "done"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
+        "degree": [
+          {
+            "value": 4,
+            "source": 17,
+            "date": "2018-09-26T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-10-29T21:00:00.000Z"
+          }
+        ]
       }
     ],
     "socialMedia": [
@@ -2106,12 +2243,14 @@
         "title": "HTML",
         "degree": [
           {
-            "value": 5,
-            "source": 18
+            "value": 0,
+            "source": 18,
+            "date": null
           },
           {
             "value": 5,
-            "source": 1
+            "source": 1,
+            "date": "2018-07-07T21:00:00.000Z"
           }
         ]
       },
@@ -2119,8 +2258,14 @@
         "title": "CSS",
         "degree": [
           {
+            "value": 5,
+            "source": 18,
+            "date": "2018-10-14T21:00:00.000Z"
+          },
+          {
             "value": 4,
-            "source": 18
+            "source": 1,
+            "date": "2018-07-20T21:00:00.000Z"
           }
         ]
       },
@@ -2128,12 +2273,14 @@
         "title": "Semantic UI",
         "degree": [
           {
-            "value": 5,
-            "source": 18
+            "value": 3,
+            "source": 18,
+            "date": "2018-08-04T21:00:00.000Z"
           },
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2141,8 +2288,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 18,
+            "date": null
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2150,25 +2303,44 @@
         "title": "Vue.js",
         "degree": [
           {
-            "value": 4,
-            "source": 18
+            "value": 5,
+            "source": 18,
+            "date": "2018-10-21T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "Rollup",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 18,
+            "date": "2018-08-10T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
+          }
+        ]
       },
       {
         "title": "npm",
         "degree": [
           {
-            "value": 3,
-            "source": 18
+            "value": 5,
+            "source": 18,
+            "date": "2018-08-17T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2176,12 +2348,14 @@
         "title": "Jest",
         "degree": [
           {
-            "value": 4,
-            "source": 18
+            "value": 0,
+            "source": 18,
+            "date": null
           },
           {
-            "value": 3,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2190,7 +2364,13 @@
         "degree": [
           {
             "value": 3,
-            "source": 18
+            "source": 18,
+            "date": "2018-09-09T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2198,48 +2378,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 4,
-            "source": 18
+            "value": 3,
+            "source": 18,
+            "date": "2018-09-04T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 1
+            "value": 5,
+            "source": 1,
+            "date": "2018-08-29T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Быть спонтанным. Не боятся выглядеть глупо.",
-        "status": "not performed"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "done"
-      },
-      {
-        "title": "Развить способность преодоления убеждённости. Узнать что-то новое, в чём был так уверен.",
-        "status": "not performed"
-      },
-      {
-        "title": "Работать в компании. Цели компании помогают реализовать ваши мечты.",
-        "status": "done"
-      },
-      {
-        "title": "Научиться рисовать. Написать 5 картин.",
-        "status": "done"
-      },
-      {
-        "title": "Привести колесо баланса жизни в 7–10 пунктов.",
-        "status": "done"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "not performed"
-      },
-      {
-        "title": "Увеличить доход в 2 раза.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
@@ -2274,11 +2422,13 @@
         "degree": [
           {
             "value": 4,
-            "source": 19
+            "source": 19,
+            "date": "2018-10-24T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2286,8 +2436,14 @@
         "title": "Haml",
         "degree": [
           {
-            "value": 4,
-            "source": 19
+            "value": 5,
+            "source": 19,
+            "date": "2018-07-02T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 1,
+            "date": "2018-10-19T21:00:00.000Z"
           }
         ]
       },
@@ -2296,11 +2452,13 @@
         "degree": [
           {
             "value": 5,
-            "source": 19
+            "source": 19,
+            "date": "2018-07-10T21:00:00.000Z"
           },
           {
-            "value": 5,
-            "source": 1
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2308,8 +2466,14 @@
         "title": "JavaScript",
         "degree": [
           {
-            "value": 5,
-            "source": 19
+            "value": 4,
+            "source": 19,
+            "date": "2018-10-22T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-08-06T21:00:00.000Z"
           }
         ]
       },
@@ -2317,8 +2481,14 @@
         "title": "TypeScript",
         "degree": [
           {
-            "value": 5,
-            "source": 19
+            "value": 4,
+            "source": 19,
+            "date": "2018-08-20T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
@@ -2326,34 +2496,74 @@
         "title": "Angular",
         "degree": [
           {
-            "value": 3,
-            "source": 19
+            "value": 5,
+            "source": 19,
+            "date": "2018-10-21T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "Webpack",
-        "degree": []
+        "degree": [
+          {
+            "value": 4,
+            "source": 19,
+            "date": "2018-07-21T21:00:00.000Z"
+          },
+          {
+            "value": 5,
+            "source": 1,
+            "date": "2018-09-01T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "Yarn",
         "degree": [
           {
             "value": 4,
-            "source": 19
+            "source": 19,
+            "date": "2018-09-28T21:00:00.000Z"
+          },
+          {
+            "value": 0,
+            "source": 1,
+            "date": null
           }
         ]
       },
       {
         "title": "Personnel management",
-        "degree": []
+        "degree": [
+          {
+            "value": 5,
+            "source": 19,
+            "date": "2018-08-14T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-08-16T21:00:00.000Z"
+          }
+        ]
       },
       {
         "title": "SEO",
         "degree": [
           {
             "value": 5,
-            "source": 1
+            "source": 19,
+            "date": "2018-07-16T21:00:00.000Z"
+          },
+          {
+            "value": 4,
+            "source": 1,
+            "date": "2018-10-03T21:00:00.000Z"
           }
         ]
       },
@@ -2361,52 +2571,16 @@
         "title": "English",
         "degree": [
           {
-            "value": 4,
-            "source": 19
+            "value": 5,
+            "source": 19,
+            "date": "2018-08-17T21:00:00.000Z"
           },
           {
-            "value": 4,
-            "source": 1
+            "value": 5,
+            "source": 1,
+            "date": "2018-07-19T21:00:00.000Z"
           }
         ]
-      }
-    ],
-    "goals": [
-      {
-        "title": "Подучиться играть в настольный и большой теннис.",
-        "status": "not performed"
-      },
-      {
-        "title": "Проплыть 500 метров. Нырять на 8 метров.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "done"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Вырастить устойчиво крепкую самооценку. Любить и уважать себя.",
-        "status": "done"
-      },
-      {
-        "title": "Прожить неделю без срочных дел (вне отпуска).",
-        "status": "not performed"
-      },
-      {
-        "title": "Научиться рисовать. Написать 5 картин.",
-        "status": "not performed"
-      },
-      {
-        "title": "Спеть песню в караоке или в студии.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "not performed"
       }
     ],
     "socialMedia": [
