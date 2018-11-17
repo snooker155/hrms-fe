@@ -4,14 +4,6 @@ import { Link } from 'react-router-dom';
 
 import './Employee.scss';
 
-import facebook from '../../static-assets/img/socialMediaIcons/facebook.png';
-import googlePlus from '../../static-assets/img/socialMediaIcons/google_plus.png';
-import instagram from '../../static-assets/img/socialMediaIcons/instagram.png';
-import linkedin from '../../static-assets/img/socialMediaIcons/linkedin.png';
-import telegram from '../../static-assets/img/socialMediaIcons/telegram.png';
-import twitter from '../../static-assets/img/socialMediaIcons/twitter.png';
-import whatsapp from '../../static-assets/img/socialMediaIcons/whatsapp.png';
-
 const propTypes = {
   employee: PropTypes.shape({
     link: PropTypes.string.isRequired,
@@ -50,26 +42,11 @@ function Employee(props) {
           <h3><i className="material-icons">contact_mail</i>Contacts:</h3>
           <div className="employee__contacts">
             {
-              employee.socialMedia.map(media => {
-                switch(media) {
-                  case 'telegram':
-                    return (<Link key={ media } to={ employee.link }><img src={ telegram } /></Link>);
-                  case 'whatsapp':
-                    return (<Link key={ media } to={ employee.link }><img src={ whatsapp } /></Link>);
-                  case 'facebook':
-                    return (<Link key={ media } to={ employee.link }><img src={ facebook } /></Link>);
-                  case 'googlePlus':
-                    return (<Link key={ media } to={ employee.link }><img src={ googlePlus } /></Link>);
-                  case 'twitter':
-                    return (<Link key={ media } to={ employee.link }><img src={ twitter } /></Link>);
-                  case 'instagram':
-                    return (<Link key={ media } to={ employee.link }><img src={ instagram } /></Link>);
-                  case 'linkedin':
-                    return (<Link key={ media } to={ employee.link }><img src={ linkedin } /></Link>);
-                  default:
-                    return null;
-                }
-              })
+              employee.socialMedia.map(media => (
+                <Link key={ media } to={ '/' }>
+                  <img src={ require(`../../static-assets/img/socialMediaIcons/${ media }.png`) } />
+                </Link>
+              ))
             }
           </div>
         </div>

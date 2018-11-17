@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 
-import facebook from '../../static-assets/img/socialMediaIcons/facebook.png';
-import googlePlus from '../../static-assets/img/socialMediaIcons/google_plus.png';
-import instagram from '../../static-assets/img/socialMediaIcons/instagram.png';
-import linkedin from '../../static-assets/img/socialMediaIcons/linkedin.png';
-import telegram from '../../static-assets/img/socialMediaIcons/telegram.png';
-import twitter from '../../static-assets/img/socialMediaIcons/twitter.png';
-import whatsapp from '../../static-assets/img/socialMediaIcons/whatsapp.png';
-
 import './EmployeeCard.scss';
 import EmployeeCard__Info from '../EmployeeCard__Info';
 import EmployeeCard__Skills from '../EmployeeCard__Skills';
@@ -79,26 +71,11 @@ export default class EmployeeCard extends Component {
             </h3>
             <div className="EmployeeCard__contacts-images">
               {
-                user.socialMedia.map(media => {
-                  switch(media) {
-                    case 'telegram':
-                      return (<Link key={ media } to={ '/' }><img src={ telegram } /></Link>);
-                    case 'whatsapp':
-                      return (<Link key={ media } to={ '/' }><img src={ whatsapp } /></Link>);
-                    case 'facebook':
-                      return (<Link key={ media } to={ '/' }><img src={ facebook } /></Link>);
-                    case 'googlePlus':
-                      return (<Link key={ media } to={ '/' }><img src={ googlePlus } /></Link>);
-                    case 'twitter':
-                      return (<Link key={ media } to={ '/' }><img src={ twitter } /></Link>);
-                    case 'instagram':
-                      return (<Link key={ media } to={ '/' }><img src={ instagram } /></Link>);
-                    case 'linkedin':
-                      return (<Link key={ media } to={ '/' }><img src={ linkedin } /></Link>);
-                    default:
-                      return null;
-                  }
-                })
+                user.socialMedia.map(media => (
+                  <Link key={ media } to={ '/' }>
+                    <img src={ require(`../../static-assets/img/socialMediaIcons/${ media }.png`) } />
+                  </Link>
+                ))
               }
            </div>
           </div>

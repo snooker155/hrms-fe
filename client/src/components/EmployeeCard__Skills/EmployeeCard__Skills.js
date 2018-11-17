@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './EmployeeCard__Skills.scss';
 import StarRating from '../StarRating/StarRating';
-import EmployeeCard__Actions from '../EmployeeCard__Actions/EmployeeCard__Actions';
+import CardTableActions from '../CardTableActions';
 
 export default class EmployeeCard__Skills extends Component {
   static propTypes = {
@@ -47,10 +47,17 @@ export default class EmployeeCard__Skills extends Component {
     }));
   }
 
-  editSkillHandler = index => {
+  onEditClickHandler = index => {
     this.setState({
       editableRow: index
     });
+  }
+
+  onDeleteClickHandler = index => {
+    this.setState((state) => ({
+      skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
+      editableRow: null
+    }));
   }
 
   onApplyClickHandler = index => {
@@ -125,13 +132,6 @@ export default class EmployeeCard__Skills extends Component {
     }
   }
 
-  deleteSkillHandler = index => {
-    this.setState((state) => ({
-      skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
-      editableRow: null
-    }));
-  }
-
   getLateDate(degree, isManager, employeeId) {
     if (degree.every(degree => degree.date === null)) {
       return '—';
@@ -183,7 +183,10 @@ export default class EmployeeCard__Skills extends Component {
               skills.map((skill, i) => {
                 return (
                   <tr key={ `${ skill.title } ${ i }` }
-                      className={ editableRow !== null && editableRow !== i ? 'ec-skills__row ec-skills__row--disabled' : 'ec-skills__row'}>
+                      className={ editableRow !== null && editableRow !== i
+                                 ? 'ec-skills__row ec-skills__row--disabled'
+                                 : 'ec-skills__row'
+                  }>
                     <td className="ec-skills__item">
                       { editableRow === i
                           ? <input type="text" className="input-field" defaultValue={ skill.title } autoFocus={ true } />
@@ -203,12 +206,12 @@ export default class EmployeeCard__Skills extends Component {
                     </td>
                     { currentUserId === employeeId || currentUserId === employeeManagerId
                         ? <td className="ec-skills__item ec-skills__item--edit">
-                            <EmployeeCard__Actions
+                            <CardTableActions
                               isActive={ editableRow === i }
-                              onApplyClickHandler={ () => { this.onApplyClickHandler(i); } }
-                              onCancelClickHandler={ () => { this.onCancelClickHandler(i); } }
-                              editSkillHandler={ () => { this.editSkillHandler(i); } }
-                              deleteSkillHandler={ () => { this.deleteSkillHandler(i); } }
+                              onEditClick={ () => { this.onEditClickHandler(i); } }
+                              onDeleteClick={ () => { this.onDeleteClickHandler(i); } }
+                              onApplyClick={ () => { this.onApplyClickHandler(i); } }
+                              onCancelClick={ () => { this.onCancelClickHandler(i); } }
                             />
                           </td>
                         : null

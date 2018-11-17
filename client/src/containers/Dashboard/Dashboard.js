@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { setAuthStatusOut } from '../../actions/setAuthStatus';
+import createDepartmentsArray from '../../utils/createDepartmentsArray';
 
 import Header from '../../components/Header';
 import EmployeeCard from '../../components/EmployeeCard';
 import TechnologyCard from '../../components/TechnologyCard';
+import DepartmentCard from '../../components/DepartmentCard';
 import Employees from '../../components/Employees';
 import Projects from '../../components/Projects';
 import Technologies from '../../components/Technologies';
@@ -25,6 +27,8 @@ class Dashboard extends Component {
     const { user: { id }, setAuthStatusOut } = this.props;
     const { employees, projects, skills } = this.props;
 
+    const departments = createDepartmentsArray(employees, projects);
+
     return (
       <>
         <Header { ...this.props.user } setAuthStatusOut={ setAuthStatusOut } />
@@ -37,7 +41,9 @@ class Dashboard extends Component {
           <Route exact={ true } path='/skills/:title' render={ () => (
             <TechnologyCard employees={ employees } projects={ projects } skills={ skills } />
           )} />
-          <Route exact={ true } path='/departments/:title' />
+          <Route exact={ true } path='/departments/:title' render={ () => (
+              <DepartmentCard departments={ departments } currentUserId={ id }/>
+          )} />
 
           <Route exact={ true } path='/employees' render={ () => (
             <Employees employees={ employees } projects={ projects } skills={ skills } />
