@@ -1,4 +1,4 @@
-.EmployeeCard {
+.TechnologyCard {
   margin: 0 auto;
   max-width: 96rem;
   min-width: 40rem;
@@ -17,10 +17,9 @@
 
   &__image {
     width: 12rem;
-    border-radius: 6rem;
   }
 
-  &__fullname {
+  &__title {
     margin: 0;
     padding: 0;
     font-size: 2.2rem;
@@ -28,9 +27,7 @@
     margin-bottom: .4rem;
   }
 
-  &__department {
-    margin-bottom: .3rem;
-
+  &__officialSite {
     a {
       font-size: 1.6rem;
     }
@@ -40,25 +37,6 @@
     font-size: 1.7rem;
     vertical-align: -.3rem;
     padding-right: .4rem;
-  }
-
-  &__contacts {
-    margin: 0;
-    padding: 0;
-    font-size: 1.6rem;
-    font-weight: 300;
-    margin-bottom: .8rem;
-  }
-
-  &__contacts-images {
-    display: flex;
-    flex-flow: row wrap;
-
-    img {
-      width: 2rem;
-      height:  2rem;
-      margin-right: .5rem;
-    }
   }
 
   &__tabs {
@@ -92,7 +70,7 @@
           box-shadow: 0 .2rem .2rem 0 rgba(0,0,0,.4);
           transition: all .2s;
 
-          @media screen and (max-width: 421px) {
+          @media screen and (max-width: 470px) {
             padding: .46rem 2.33rem;
           }
 
@@ -138,30 +116,11 @@
         display: none;
       }
 
-      .EmployeeCard__skills, .EmployeeCard__projects {
+      .TechnologyCard__Community, .TechnologyCard__Projects {
         h2 {
           text-align: center;
           font-size: 2.4rem;
           font-weight: 300;
-        }
-      }
-
-      .EmployeeCard__skills {
-        position: relative;
-        .material-icons {
-          &--add {
-            user-select: none;
-            cursor: pointer;
-            position: absolute;
-            font-size: 2.5rem;
-            right: 4.5rem;
-            top: .5rem;
-          }
-
-          &--disabled {
-            pointer-events: none;
-            opacity: 0.4;
-          }
         }
       }
     }

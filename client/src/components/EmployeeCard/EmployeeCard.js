@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import facebook from '../../static-assets/img/socialMediaIcons/facebook.png';
 import googlePlus from '../../static-assets/img/socialMediaIcons/google_plus.png';
@@ -26,10 +26,16 @@ export default class EmployeeCard extends Component {
     activeTab: 1
   }
 
+  componentDidMount() {
+    window.scroll(0, 0);
+  }
+
   componentWillReceiveProps() {
     this.setState({
       activeTab: 1
     });
+
+    window.scroll(0, 0);
   }
 
   onTabClick = (i) => {
@@ -43,6 +49,12 @@ export default class EmployeeCard extends Component {
     const { employees, projects, currentUserId } = this.props;
 
     const [ user ] = employees.filter(employee => employee.id === Number(location.pathname.split('/').pop()));
+
+    // * USER NOT FOUND *
+    if (!user) {
+      return (<Redirect to={'/' } />);
+    }
+
     for (let i = 0; i < user.projects.length; i++) {
       const { description, technologies } = projects.find(project => project.id === user.projects[i].id);
       user.projects[i] = {
@@ -98,32 +110,32 @@ export default class EmployeeCard extends Component {
                 <span>Info</span>
               </li>
               <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
-                <span onClick={ () => this.onTabClick(2) }>Skills</span>
+                <span>Skills</span>
               </li>
               <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>
-                <span onClick={ () => this.onTabClick(3) }>Projects</span>
+                <span>Projects</span>
               </li>
             </ul>
 
             <div className="c-tabs__content">
               { activeTab === 1
-                ? <div className={ activeTab === 1 ? 'EmployeeCard__info animated fadeIn fast' : 'hidden' }>
+                ? <div className='EmployeeCard__info animated fadeIn fast'>
                     <EmployeeCard__Info user={ user } />
                   </div>
                 : null
               }
 
               { activeTab === 2
-                ? <div className={ activeTab === 2 ? 'EmployeeCard__skills animated fadeIn fast' : 'hidden' }>
-                    <h3>{ user.id === currentUserId ? 'My' : null } Skills</h3>
+                ? <div className='EmployeeCard__skills animated fadeIn fast'>
+                    <h2>{ user.id === currentUserId ? 'My' : null } Skills</h2>
                     <EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>
                   </div>
                 : null
               }
 
               { activeTab === 3
-                ? <div className={ activeTab === 3 ? 'EmployeeCard__projects animated fadeIn fast' : 'hidden' }>
-                    <h3>{ user.id === currentUserId ? 'My' : null } Projects</h3>
+                ? <div className='EmployeeCard__projects animated fadeIn fast'>
+                    <h2>{ user.id === currentUserId ? 'My' : null } Projects</h2>
                     {
                       user.projects.map(project => <EmployeeCard__Projects key={ project.id } project={ project } position={ user.position } />)
                     }

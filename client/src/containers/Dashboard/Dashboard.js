@@ -7,6 +7,7 @@ import { setAuthStatusOut } from '../../actions/setAuthStatus';
 
 import Header from '../../components/Header';
 import EmployeeCard from '../../components/EmployeeCard';
+import TechnologyCard from '../../components/TechnologyCard';
 import Employees from '../../components/Employees';
 import Projects from '../../components/Projects';
 import Technologies from '../../components/Technologies';
@@ -33,7 +34,9 @@ class Dashboard extends Component {
             <EmployeeCard employees={ employees } projects={ projects } currentUserId={ id }/>
           )} />
           <Route exact={ true } path='/projects/:id' />
-          <Route exact={ true } path='/skills/:title' />
+          <Route exact={ true } path='/skills/:title' render={ () => (
+            <TechnologyCard employees={ employees } projects={ projects } skills={ skills } />
+          )} />
           <Route exact={ true } path='/departments/:title' />
 
           <Route exact={ true } path='/employees' render={ () => (

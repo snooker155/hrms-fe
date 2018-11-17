@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './EmployeeCard__Skills.scss';
 import StarRating from '../StarRating/StarRating';
@@ -16,8 +17,6 @@ export default class EmployeeCard__Skills extends Component {
     }),
     currentUserId: PropTypes.number.isRequired
   }
-
-  // TODO: разное выделение для сотрудника и менеджера
 
   state = {
     skills: this.props.user.skills,
@@ -41,7 +40,8 @@ export default class EmployeeCard__Skills extends Component {
             source: employeeManagerId,
             date: null
           }
-        ]
+        ],
+        link: '/skills'
       }],
       editableRow: state.skills.length
     }));
@@ -81,7 +81,8 @@ export default class EmployeeCard__Skills extends Component {
           source: currentUserId,
           date: new Date().toJSON()
         }
-      ]
+      ],
+      link: encodeURI(`/skills/${ inputValue }`)
     };
 
     this.setState((state) => ({
@@ -92,7 +93,27 @@ export default class EmployeeCard__Skills extends Component {
 
   onCancelClickHandler = (index) => {
     const { skills } = this.state;
+    const { currentUserId } = this.props;
+
     if (skills[index].title !== '') {
+      let degree = skills[index].degree.filter(degree => degree.source === currentUserId).pop();
+      if (degree.date === null) {
+        degree = skills[index].degree.filter(degree => degree.source !== currentUserId).pop();
+      }
+
+      let value = 0;
+      for (let i = 1; i <= 5; i++) {
+        const star = document.getElementById( `star${ i }__r${ index }` );
+        if (star.checked) {
+          value = Number(star.value);
+          break;
+        }
+      }
+
+      if (value != degree.value) {
+        document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
+      }
+
       this.setState({
         editableRow: null
       });
@@ -166,7 +187,7 @@ export default class EmployeeCard__Skills extends Component {
                     <td className="ec-skills__item">
                       { editableRow === i
                           ? <input type="text" className="input-field" defaultValue={ skill.title } autoFocus={ true } />
-                          : <span>{ skill.title }</span>
+                          : <span><Link to={ skill.link }>{ skill.title }</Link></span>
                       }
                     </td>
                     <td className="ec-skills__item">

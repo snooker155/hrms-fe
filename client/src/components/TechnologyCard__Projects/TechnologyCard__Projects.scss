@@ -1,0 +1,55 @@
+.tc-projects {
+  display: flex;
+  flex-flow: row wrap;
+
+  .project {
+    width: 32%;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    padding: 1rem;
+
+    &__department {
+      font-size: 1.25rem;
+    }
+
+    &__manager {
+      font-size: 1.25rem;
+    }
+
+    @media screen and (max-width: 950px) {
+      & {
+        width: 49%;
+      }
+    }
+
+    @media screen and (max-width: 690px) {
+      & {
+        width: 100%;
+      }
+    }
+
+    &:not(:nth-child(3n)) {
+      margin-right: 2%;
+
+      @media screen and (max-width: 950px) {
+        & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      @media screen and (max-width: 950px) {
+        & {
+          margin-right: 2%;
+        }
+      }
+
+      @media screen and (max-width: 690px) {
+        & {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

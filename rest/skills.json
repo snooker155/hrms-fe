@@ -4,21 +4,30 @@
     "description": "Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web.",
     "relatedSkills": [],
     "type": "technology",
-    "officialSite": "https://www.w3.org/html/"
+    "officialSite": "www.w3.org/html/",
+    "latestVersion": "5",
+    "wiki": "https://en.wikipedia.org/wiki/HTML",
+    "git": "https://github.com/w3c/html"
   },
   {
     "title": "CSS",
     "description": "Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.",
     "relatedSkills": [],
     "type": "technology",
-    "officialSite": "https://www.w3.org/Style/CSS/"
+    "officialSite": "https://www.w3.org/Style/CSS/",
+    "latestVersion": "3",
+    "wiki": "https://en.wikipedia.org/wiki/CSS",
+    "git": "https://github.com/w3c/csswg-drafts"
   },
   {
     "title": "JavaScript",
     "description": "JavaScript, often abbreviated as JS, is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm. Alongside HTML and CSS, JavaScript is one of the three core technologies of the World Wide Web.",
     "relatedSkills": [],
     "type": "technology",
-    "officialSite": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    "officialSite": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "latestVersion": "ECMAScript 2018",
+    "wiki": "https://en.wikipedia.org/wiki/JavaScript",
+    "git": ""
   },
   {
     "title": "Haml",
@@ -27,7 +36,10 @@
       "HTML"
     ],
     "type": "technology",
-    "officialSite": "http://haml.info/"
+    "officialSite": "http://haml.info/",
+    "latestVersion": "5.0.3",
+    "wiki": "https://en.wikipedia.org/wiki/Haml",
+    "git": "https://github.com/haml/haml"
   },
   {
     "title": "Pug",
@@ -36,7 +48,10 @@
       "HTML"
     ],
     "type": "technology",
-    "officialSite": "https://pugjs.org/api/getting-started.html"
+    "officialSite": "https://pugjs.org/api/getting-started.html",
+    "latestVersion": "2.0.3",
+    "wiki": "https://en.wikipedia.org/wiki/Pug",
+    "git": "https://github.com/pugjs/pug"
   },
   {
     "title": "Handlebars.js",
@@ -45,7 +60,10 @@
       "HTML"
     ],
     "type": "technology",
-    "officialSite": "http://handlebarsjs.com/"
+    "officialSite": "http://handlebarsjs.com/",
+    "latestVersion": "4.0.12",
+    "wiki": "https://en.wikipedia.org/wiki/Mustache_(template_system)",
+    "git": "https://github.com/wycats/handlebars.js/"
   },
   {
     "title": "Sass",
@@ -54,7 +72,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "https://sass-lang.com/"
+    "officialSite": "https://sass-lang.com/",
+    "latestVersion": "3.5.6",
+    "wiki": "https://en.wikipedia.org/wiki/Sass_(stylesheet_language)",
+    "git": "https://github.com/sass/sass"
   },
   {
     "title": "Less",
@@ -63,7 +84,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "http://lesscss.org/"
+    "officialSite": "http://lesscss.org/",
+    "latestVersion": "3.8.1",
+    "wiki": "https://en.wikipedia.org/wiki/Less_(stylesheet_language)",
+    "git": "https://github.com/less/less.js"
   },
   {
     "title": "Stylus",
@@ -72,7 +96,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "http://stylus-lang.com/"
+    "officialSite": "http://stylus-lang.com/",
+    "latestVersion": "0.54.5",
+    "wiki": "https://en.wikipedia.org/wiki/Stylus_(stylesheet_language)",
+    "git": "https://github.com/stylus/stylus/"
   },
   {
     "title": "PostCSS",
@@ -81,7 +108,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "https://postcss.org/"
+    "officialSite": "https://postcss.org/",
+    "latestVersion": "7.0.5",
+    "wiki": "https://en.wikipedia.org/wiki/PostCSS",
+    "git": "https://github.com/postcss/postcss"
   },
   {
     "title": "Bootstrap",
@@ -90,7 +120,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "https://getbootstrap.com/"
+    "officialSite": "https://getbootstrap.com/",
+    "latestVersion": "4.1.3",
+    "wiki": "https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)",
+    "git": "https://github.com/twbs/bootstrap"
   },
   {
     "title": "Materialize",
@@ -99,7 +132,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "https://materializecss.com/"
+    "officialSite": "https://materializecss.com/",
+    "latestVersion": "1.0.0",
+    "wiki": "",
+    "git": "https://github.com/Dogfalo/materialize"
   },
   {
     "title": "Semantic UI",
@@ -108,7 +144,10 @@
       "CSS"
     ],
     "type": "technology",
-    "officialSite": "https://semantic-ui.com/"
+    "officialSite": "https://semantic-ui.com/",
+    "latestVersion": "2.4.1",
+    "wiki": "",
+    "git": "https://github.com/Semantic-Org/Semantic-UI"
   },
   {
     "title": "TypeScript",
@@ -117,7 +156,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://www.typescriptlang.org/"
+    "officialSite": "https://www.typescriptlang.org/",
+    "latestVersion": "3.1.6",
+    "wiki": "https://en.wikipedia.org/wiki/TypeScript",
+    "git": "https://github.com/Microsoft/TypeScript"
   },
   {
     "title": "Flow",
@@ -126,7 +168,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://flow.org/"
+    "officialSite": "https://flow.org/",
+    "latestVersion": "0.86.0",
+    "wiki": "",
+    "git": "https://github.com/facebook/flow"
   },
   {
     "title": "jQuery",
@@ -135,7 +180,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://jquery.com/"
+    "officialSite": "https://jquery.com/",
+    "latestVersion": "3.3.1",
+    "wiki": "https://en.wikipedia.org/wiki/JQuery",
+    "git": "https://github.com/jquery/jquery"
   },
   {
     "title": "Angular",
@@ -144,7 +192,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://angular.io/"
+    "officialSite": "https://angular.io/",
+    "latestVersion": "7.1.0-rc.0",
+    "wiki": "https://en.wikipedia.org/wiki/AngularJS",
+    "git": "https://github.com/angular/angular"
   },
   {
     "title": "React",
@@ -153,7 +204,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://reactjs.org/"
+    "officialSite": "https://reactjs.org/",
+    "latestVersion": "16.6.3",
+    "wiki": "https://en.wikipedia.org/wiki/React_(JavaScript_library)",
+    "git": "https://github.com/facebook/react"
   },
   {
     "title": "Vue.js",
@@ -162,7 +216,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://vuejs.org/"
+    "officialSite": "https://vuejs.org/",
+    "latestVersion": "2.5.17",
+    "wiki": "https://en.wikipedia.org/wiki/Vue.js",
+    "git": "https://github.com/vuejs/vue"
   },
   {
     "title": "Ember.js",
@@ -171,7 +228,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://www.emberjs.com/"
+    "officialSite": "https://www.emberjs.com/",
+    "latestVersion": "3.6.0-beta.4",
+    "wiki": "https://en.wikipedia.org/wiki/Ember.js",
+    "git": "https://github.com/emberjs/ember.js"
   },
   {
     "title": "npm",
@@ -180,7 +240,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://www.npmjs.com/"
+    "officialSite": "https://www.npmjs.com/",
+    "latestVersion": "6.2.0-next.1",
+    "wiki": "https://en.wikipedia.org/wiki/Npm_(software)",
+    "git": "https://github.com/npm/npm"
   },
   {
     "title": "Yarn",
@@ -189,7 +252,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://yarnpkg.com/lang/en/"
+    "officialSite": "https://yarnpkg.com/lang/en/",
+    "latestVersion": "1.12.3",
+    "wiki": "",
+    "git": "https://github.com/yarnpkg/yarn"
   },
   {
     "title": "Gulp",
@@ -198,7 +264,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://gulpjs.com/"
+    "officialSite": "https://gulpjs.com/",
+    "latestVersion": "4.0.0",
+    "wiki": "https://en.wikipedia.org/wiki/Gulp",
+    "git": "https://github.com/gulpjs/gulp"
   },
   {
     "title": "Grunt",
@@ -207,7 +276,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://gruntjs.com/"
+    "officialSite": "https://gruntjs.com/",
+    "latestVersion": "1.0.3",
+    "wiki": "https://en.wikipedia.org/wiki/Grunt_(software)",
+    "git": "https://github.com/gruntjs/grunt"
   },
   {
     "title": "Webpack",
@@ -216,7 +288,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://webpack.js.org/"
+    "officialSite": "https://webpack.js.org/",
+    "latestVersion": "4.25.1",
+    "wiki": "https://en.wikipedia.org/wiki/Webpack",
+    "git": "https://github.com/webpack/webpack"
   },
   {
     "title": "Rollup",
@@ -225,7 +300,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://rollupjs.org/guide/en"
+    "officialSite": "https://rollupjs.org/guide/en",
+    "latestVersion": "0.67.3",
+    "wiki": "https://en.wikipedia.org/wiki/Rollup",
+    "git": "https://github.com/rollup/rollup"
   },
   {
     "title": "Browserify",
@@ -234,7 +312,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "http://browserify.org/"
+    "officialSite": "http://browserify.org/",
+    "latestVersion": "16.2.3",
+    "wiki": "https://en.wikipedia.org/wiki/Browserify",
+    "git": "https://github.com/browserify/browserify"
   },
   {
     "title": "Jest",
@@ -243,7 +324,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://jestjs.io/"
+    "officialSite": "https://jestjs.io/",
+    "latestVersion": "24.0.0-alpha.6",
+    "wiki": "",
+    "git": "https://github.com/facebook/jest"
   },
   {
     "title": "Mocha",
@@ -252,7 +336,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://mochajs.org/"
+    "officialSite": "https://mochajs.org/",
+    "latestVersion": "5.2.0",
+    "wiki": "https://en.wikipedia.org/wiki/Mocha_(JavaScript_framework)",
+    "git": "https://github.com/mochajs/mocha"
   },
   {
     "title": "Jasmine",
@@ -261,7 +348,10 @@
       "JavaScript"
     ],
     "type": "technology",
-    "officialSite": "https://jasmine.github.io/"
+    "officialSite": "https://jasmine.github.io/",
+    "latestVersion": "3.3.0",
+    "wiki": "https://en.wikipedia.org/wiki/Jasmine_(JavaScript_testing_framework)",
+    "git": "https://github.com/jasmine/jasmine"
   },
   {
     "title": "English",
@@ -270,13 +360,15 @@
       "Personnel management",
       "SEO"
     ],
-    "type": "soft-skills"
+    "type": "soft-skills",
+    "wiki": "https://en.wikipedia.org/wiki/English_language"
   },
   {
     "title": "Database",
     "description": "A database is an organized collection of data, generally stored and accessed electronically from a computer system. Where databases are more complex they are often developed using formal design and modeling techniques.",
     "relatedSkills": [],
-    "type": "soft-skills"
+    "type": "soft-skills",
+    "wiki": "https://en.wikipedia.org/wiki/Database"
   },
   {
     "title": "Personnel management",
@@ -284,13 +376,15 @@
     "relatedSkills": [
       "English"
     ],
-    "type": "soft-skills"
+    "type": "soft-skills",
+    "wiki": "https://en.wikipedia.org/wiki/Human_resource_management"
   },
   {
     "title": "Graphic design",
     "description": "Graphic symbols are often functionalist and anonymous, as these pictographs from the US National Park Service illustrate. Graphic design is the process of visual communication and problem-solving through the use of typography, photography and illustration. The field is considered a subset of visual communication and communication design, but sometimes the term 'graphic design' is used synonymously.",
     "relatedSkills": [],
-    "type": "soft-skills"
+    "type": "soft-skills",
+    "wiki": "https://en.wikipedia.org/wiki/Graphic_design"
   },
   {
     "title": "SEO",
@@ -298,6 +392,7 @@
     "relatedSkills": [
       "English"
     ],
-    "type": "soft-skills"
+    "type": "soft-skills",
+    "wiki": "https://en.wikipedia.org/wiki/Search_engine_optimization"
   }
 ]

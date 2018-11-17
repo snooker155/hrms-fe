@@ -71,10 +71,6 @@
             position: relative;
             overflow: hidden;
             text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
          }
 
           .material-icons {
@@ -150,7 +146,6 @@
           background: hsla(211, 45%, 45%, .8);
 
           &:hover {
-            text-decoration: none;
             opacity: .9;
           }
         }

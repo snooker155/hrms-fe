@@ -36,7 +36,8 @@ export default class Employees extends Component {
         minLength: 1
       },
       onChipAdd: (undefined, chip) => {
-        const chipContent = chip.innerText.slice(0, -5);
+        const chipContent = chip.innerHTML.split('<i').shift();
+
         this.setState(state => ({
           chips: [ ...state.chips, chipContent ]
         }));
@@ -45,7 +46,7 @@ export default class Employees extends Component {
         document.querySelector('.chips').click();
       },
       onChipDelete: (undefined, chip) => {
-        const chipContent = chip.innerText.slice(0, -5);
+        const chipContent = chip.innerHTML.split('<i').shift();
         this.setState(state => ({
           chips: [ ...state.chips.filter(chip => !(chip.toLowerCase() === chipContent.toLowerCase())) ]
         }));
