@@ -18,7 +18,7 @@ function EmployeeCard__Actions(props) {
     {
       isActive
         ? <>
-            <i className="material-icons material-icons--add" onClick={ onApplyClickHandler }>check</i>
+            <i className="material-icons material-icons--update" onClick={ onApplyClickHandler }>check</i>
             <i className="material-icons material-icons--cancel" onClick={ onCancelClickHandler }>close</i>
           </>
         : <>

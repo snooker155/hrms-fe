@@ -150,6 +150,25 @@
           font-weight: 300;
         }
       }
+
+      .EmployeeCard__skills {
+        position: relative;
+        .material-icons {
+          &--add {
+            user-select: none;
+            cursor: pointer;
+            position: absolute;
+            font-size: 2.5rem;
+            right: 4.5rem;
+            top: .5rem;
+          }
+
+          &--disabled {
+            pointer-events: none;
+            opacity: 0.4;
+          }
+        }
+      }
     }
   }
 }

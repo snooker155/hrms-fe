@@ -94,35 +94,42 @@ export default class EmployeeCard extends Component {
         <div className="EmployeeCard__tabs">
           <div className="c-tabs">
             <ul className="c-tabs__navbar">
-              <li className={ activeTab === 1 ? "current" : null } onClick={ () => this.onTabClick(1) }>
+              <li className={ activeTab === 1 ? 'current' : null } onClick={ () => this.onTabClick(1) }>
                 <span>Info</span>
               </li>
-              <li className={ activeTab === 2 ? "current" : null } onClick={ () => this.onTabClick(2) }>
+              <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
                 <span onClick={ () => this.onTabClick(2) }>Skills</span>
               </li>
-              <li className={ activeTab === 3 ? "current" : null } onClick={ () => this.onTabClick(3) }>
+              <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>
                 <span onClick={ () => this.onTabClick(3) }>Projects</span>
               </li>
             </ul>
 
             <div className="c-tabs__content">
-              <div className={ activeTab === 1 ? 'EmployeeCard__info animated fadeIn fast' : 'hidden' }>
-                <EmployeeCard__Info user={ user } />
-              </div>
+              { activeTab === 1
+                ? <div className={ activeTab === 1 ? 'EmployeeCard__info animated fadeIn fast' : 'hidden' }>
+                    <EmployeeCard__Info user={ user } />
+                  </div>
+                : null
+              }
 
-              <div className={ activeTab === 2 ? 'EmployeeCard__skills animated fadeIn fast' : 'hidden' }>
-                <h3>{ user.id === currentUserId ? 'My' : null } Skills</h3>
-                <EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>
-              </div>
+              { activeTab === 2
+                ? <div className={ activeTab === 2 ? 'EmployeeCard__skills animated fadeIn fast' : 'hidden' }>
+                    <h3>{ user.id === currentUserId ? 'My' : null } Skills</h3>
+                    <EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>
+                  </div>
+                : null
+              }
 
-              <div className={ activeTab === 3 ? 'EmployeeCard__projects animated fadeIn fast' : 'hidden' }>
-                <h3>{ user.id === currentUserId ? 'My' : null } Projects</h3>
-                {
-                  user.projects.map(project => (
-                    <EmployeeCard__Projects key={ project.id } project={ project } position={ user.position } />
-                  ))
-                }
-              </div>
+              { activeTab === 3
+                ? <div className={ activeTab === 3 ? 'EmployeeCard__projects animated fadeIn fast' : 'hidden' }>
+                    <h3>{ user.id === currentUserId ? 'My' : null } Projects</h3>
+                    {
+                      user.projects.map(project => <EmployeeCard__Projects key={ project.id } project={ project } position={ user.position } />)
+                    }
+                  </div>
+                : null
+              }
             </div>
           </div>
         </div>
