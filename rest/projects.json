@@ -27,41 +27,9 @@
         "version": "1.10.1"
       }
     ],
-    "goals": [
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "done"
-      },
-      {
-        "title": "Работать в компании. Цели компании помогают реализовать ваши мечты.",
-        "status": "not performed"
-      },
-      {
-        "title": "Быть спонтанным. Не боятся выглядеть глупо.",
-        "status": "not performed"
-      },
-      {
-        "title": "Организовать вечер настольных игр.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пробежать 10 км.",
-        "status": "done"
-      },
-      {
-        "title": "Любить жизнеутверждающе. Излечить невротичность.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-01-02T21:00:00.000Z",
+    "git": "https://github.com/department-of-urgent-projects/project-№1"
   },
   {
     "id": 2,
@@ -91,45 +59,9 @@
         "version": "1.0.3"
       }
     ],
-    "goals": [
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "done"
-      },
-      {
-        "title": "Подучиться играть в настольный и большой теннис.",
-        "status": "not performed"
-      },
-      {
-        "title": "Царь горы – залезть на пирамиду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Укрепиться в жизненной позиции Я в порядке, другие в порядке.",
-        "status": "done"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-09-06T21:00:00.000Z",
+    "git": "https://github.com/department-of-research/project-№2"
   },
   {
     "id": 3,
@@ -159,29 +91,9 @@
         "version": "6.1.0"
       }
     ],
-    "goals": [
-      {
-        "title": "Умение преодоления старой привычки. Переучить себя в чём-то.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пожить 2+ месяца в незнакомой стране.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-04-11T21:00:00.000Z",
+    "git": "https://github.com/department-of-urgent-projects/project-№3"
   },
   {
     "id": 4,
@@ -207,37 +119,9 @@
         "version": "3.2.7"
       }
     ],
-    "goals": [
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "not performed"
-      },
-      {
-        "title": "Поужинать в топ-ресторане города и не оставить чаевых.",
-        "status": "not performed"
-      },
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "done"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-07-22T21:00:00.000Z",
+    "git": "https://github.com/maintenance-department/project-№4"
   },
   {
     "id": 5,
@@ -275,29 +159,9 @@
         "version": "1.10.1"
       }
     ],
-    "goals": [
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "not performed"
-      },
-      {
-        "title": "Получить водительское удостоверение. Поездить по серпантину.",
-        "status": "not performed"
-      },
-      {
-        "title": "Практиковать медитации. Пройти курс или семинар.",
-        "status": "not performed"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-08-26T21:00:00.000Z",
+    "git": "https://github.com/development-department/project-№5"
   },
   {
     "id": 6,
@@ -315,25 +179,9 @@
         "version": "2.1"
       }
     ],
-    "goals": [
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "done"
-      },
-      {
-        "title": "Обучиться играть на музыкальном инструменте. Сыграть мелодию на флейте, клавишах, гитаре, ударных.",
-        "status": "done"
-      },
-      {
-        "title": "Организовать вечер настольных игр.",
-        "status": "done"
-      },
-      {
-        "title": "Выбрать хобби и размышлять как получать в будущем с него доход.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-10-15T21:00:00.000Z",
+    "git": "https://github.com/maintenance-department/project-№6"
   },
   {
     "id": 7,
@@ -371,33 +219,9 @@
         "version": "6.1.0"
       }
     ],
-    "goals": [
-      {
-        "title": "Привести колесо баланса жизни в 7–10 пунктов.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пассивный доход. 100$+ / месяц.",
-        "status": "done"
-      },
-      {
-        "title": "Прочитать Новый Завет. Сформировать мнение.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прочитать 12+ научно-популярных трудов за год.",
-        "status": "done"
-      }
-    ],
-    "status": "Unactive"
+    "status": "Unactive",
+    "startDate": "2018-08-23T21:00:00.000Z",
+    "git": "https://github.com/development-department/project-№7"
   },
   {
     "id": 8,
@@ -427,29 +251,9 @@
         "version": "3.2.7"
       }
     ],
-    "goals": [
-      {
-        "title": "Проплыть 500 метров. Нырять на 8 метров.",
-        "status": "done"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "not performed"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-07-08T21:00:00.000Z",
+    "git": "https://github.com/development-department/project-№8"
   },
   {
     "id": 9,
@@ -491,25 +295,9 @@
         "version": "23.6.0"
       }
     ],
-    "goals": [
-      {
-        "title": "Царь горы – залезть на пирамиду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Практиковать медитации. Пройти курс или семинар.",
-        "status": "not performed"
-      },
-      {
-        "title": "Перейти в роль отца или матери. Растить, а не воспитывать ребёнка.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пробежать 10 км.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-01-20T21:00:00.000Z",
+    "git": "https://github.com/development-department/project-№9"
   },
   {
     "id": 10,
@@ -543,45 +331,9 @@
         "version": "16.2.3"
       }
     ],
-    "goals": [
-      {
-        "title": "Укрепиться в жизненной позиции Я в порядке, другие в порядке.",
-        "status": "not performed"
-      },
-      {
-        "title": "Работать в компании. Цели компании помогают реализовать ваши мечты.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Жениться или выйти замуж по любви.",
-        "status": "not performed"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "not performed"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Устроить «спонтанное» путешествие.",
-        "status": "not performed"
-      },
-      {
-        "title": "Вырастить устойчиво крепкую самооценку. Любить и уважать себя.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Unactive"
+    "status": "Unactive",
+    "startDate": "2018-02-20T21:00:00.000Z",
+    "git": "https://github.com/department-of-urgent-projects/project-№10"
   },
   {
     "id": 11,
@@ -619,33 +371,9 @@
         "version": "5.2.0"
       }
     ],
-    "goals": [
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "not performed"
-      },
-      {
-        "title": "Учиться преодолевать страхи. Преодолеть 5 страхов.",
-        "status": "not performed"
-      },
-      {
-        "title": "Увеличить доход в 2 раза.",
-        "status": "done"
-      },
-      {
-        "title": "Любить жизнеутверждающе. Излечить невротичность.",
-        "status": "not performed"
-      },
-      {
-        "title": "Качалка. Позаниматься 2–3 месяца. Получить разряд.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пожить 2+ месяца в незнакомой стране.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-01-10T21:00:00.000Z",
+    "git": "https://github.com/department-of-research/project-№11"
   },
   {
     "id": 12,
@@ -687,37 +415,9 @@
         "version": "1.10.1"
       }
     ],
-    "goals": [
-      {
-        "title": "Получить опыт найма и увольнения сотрудника.",
-        "status": "done"
-      },
-      {
-        "title": "Развить способность преодоления убеждённости. Узнать что-то новое, в чём был так уверен.",
-        "status": "done"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Учиться преодолевать страхи. Преодолеть 5 страхов.",
-        "status": "done"
-      },
-      {
-        "title": "Выучить второй иностранный на базовом уровне.",
-        "status": "done"
-      },
-      {
-        "title": "Прожить неделю без срочных дел (вне отпуска).",
-        "status": "done"
-      },
-      {
-        "title": "Творчество ручной работы. Поделки из бумаги, ткани, глины, пластилина, кожи.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-08-23T21:00:00.000Z",
+    "git": "https://github.com/development-department/project-№12"
   },
   {
     "id": 13,
@@ -759,29 +459,9 @@
         "version": "2.9"
       }
     ],
-    "goals": [
-      {
-        "title": "Сформулировать своё предназначение.",
-        "status": "done"
-      },
-      {
-        "title": "Исключить 2–3 вредных продукта из своего рациона.",
-        "status": "not performed"
-      },
-      {
-        "title": "Побывать на другом континенте.",
-        "status": "done"
-      },
-      {
-        "title": "Поужинать в топ-ресторане города и не оставить чаевых.",
-        "status": "done"
-      },
-      {
-        "title": "Быть спонтанным. Не боятся выглядеть глупо.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-03-19T21:00:00.000Z",
+    "git": "https://github.com/maintenance-department/project-№13"
   },
   {
     "id": 14,
@@ -819,45 +499,9 @@
         "version": "1.10.1"
       }
     ],
-    "goals": [
-      {
-        "title": "Выучить английский язык. Уровень разговорного – выше среднего.",
-        "status": "done"
-      },
-      {
-        "title": "Целую неделю есть только собственноручно приготовленную еду.",
-        "status": "not performed"
-      },
-      {
-        "title": "Уметь танцевать. Станцевать постановочный танец 1+ минуту.",
-        "status": "not performed"
-      },
-      {
-        "title": "Искупаться в двух океанах.",
-        "status": "done"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "not performed"
-      },
-      {
-        "title": "Умение преодоления старой привычки. Переучить себя в чём-то.",
-        "status": "done"
-      },
-      {
-        "title": "Понять стихию своего призвания: человек – человек, человек – машина, человек – символы.",
-        "status": "not performed"
-      },
-      {
-        "title": "Развить способность преодоления убеждённости. Узнать что-то новое, в чём был так уверен.",
-        "status": "done"
-      },
-      {
-        "title": "Вырастить устойчиво крепкую самооценку. Любить и уважать себя.",
-        "status": "done"
-      }
-    ],
-    "status": "Active"
+    "status": "Active",
+    "startDate": "2018-09-27T21:00:00.000Z",
+    "git": "https://github.com/department-of-urgent-projects/project-№14"
   },
   {
     "id": 15,
@@ -903,40 +547,8 @@
         "version": "5.2.0"
       }
     ],
-    "goals": [
-      {
-        "title": "Сформулировать своё предназначение.",
-        "status": "not performed"
-      },
-      {
-        "title": "Написать 10 статей.",
-        "status": "not performed"
-      },
-      {
-        "title": "Пассивный доход. 100$+ / месяц.",
-        "status": "not performed"
-      },
-      {
-        "title": "Прожить по плану целей на год с достижением 70%+.",
-        "status": "not performed"
-      },
-      {
-        "title": "Получить водительское удостоверение. Поездить по серпантину.",
-        "status": "not performed"
-      },
-      {
-        "title": "Публичные выступления. Выступить перед аудиторией 30+ человек.",
-        "status": "done"
-      },
-      {
-        "title": "Контроль финансов. Записывать расходы и доходы в течение полугода.",
-        "status": "done"
-      },
-      {
-        "title": "Увеличить доход в 2 раза.",
-        "status": "not performed"
-      }
-    ],
-    "status": "Unactive"
+    "status": "Unactive",
+    "startDate": "2018-10-26T21:00:00.000Z",
+    "git": "https://github.com/department-of-research/project-№15"
   }
 ]

@@ -20,7 +20,7 @@ function TechnologyCard__Info(props) {
     <div className="tc-info">
       { skill.type === 'technology'
         ? <div className="tc-info__main">
-            <h4>Technology Info</h4>
+            <h4>Technology info</h4>
             <div className="content">
                 { skill.wiki
                   ? <span><a href={ skill.wiki } target='_blank' rel='noopener noreferrer'>Wikipedia</a> /</span>

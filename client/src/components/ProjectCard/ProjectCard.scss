@@ -1,4 +1,4 @@
-.DepartmentCard {
+.ProjectCard {
   margin: 0 auto;
   max-width: 96rem;
   min-width: 40rem;
@@ -117,15 +117,7 @@
         display: none;
       }
 
-      .DepartmentCard__Staff, .DepartmentCard__Projects {
-        h2 {
-          text-align: center;
-          font-size: 2.4rem;
-          font-weight: 300;
-        }
-      }
-
-      .DepartmentCard__Staff {
+      .ProjectCard__Members, .ProjectCard__Technologies {
         position: relative;
 
         .material-icons {
@@ -142,6 +134,12 @@
             pointer-events: none;
             opacity: 0.4;
           }
+        }
+
+        h2 {
+          text-align: center;
+          font-size: 2.4rem;
+          font-weight: 300;
         }
       }
     }

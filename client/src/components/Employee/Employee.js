@@ -36,8 +36,15 @@ function Employee(props) {
           <p className="employee__position">{ employee.position }</p>
         </div>
         <div className="employee__info">
-          <p className="employee__fullname"><Link to={ employee.link } className="link">{ `${ employee.name } ${ employee.surname }` }</Link></p>
-          <p className="employee__department"><i className="material-icons">group</i><Link to={ employee.department.link } >{ employee.department.title }</Link></p>
+          <p className="employee__fullname">
+            <Link to={ employee.link } className="link">
+              { `${ employee.name } ${ employee.surname }` }
+            </Link>
+          </p>
+          <p className="employee__department">
+            <i className="material-icons">business</i>
+            <Link to={ employee.department.link } >{ employee.department.title }</Link>
+          </p>
 
           <h3><i className="material-icons">contact_mail</i>Contacts:</h3>
           <div className="employee__contacts">

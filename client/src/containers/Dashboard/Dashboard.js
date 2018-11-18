@@ -8,6 +8,7 @@ import createDepartmentsArray from '../../utils/createDepartmentsArray';
 
 import Header from '../../components/Header';
 import EmployeeCard from '../../components/EmployeeCard';
+import ProjectCard from '../../components/ProjectCard';
 import TechnologyCard from '../../components/TechnologyCard';
 import DepartmentCard from '../../components/DepartmentCard';
 import Employees from '../../components/Employees';
@@ -17,6 +18,8 @@ import Technologies from '../../components/Technologies';
 class Dashboard extends Component {
   static propTypes = {
     employees: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    skills: PropTypes.array.isRequired,
     user: PropTypes.shape({
       id: PropTypes.number.isRequired
     }),
@@ -24,9 +27,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { user: { id }, setAuthStatusOut } = this.props;
-    const { employees, projects, skills } = this.props;
-
+    const { user: { id }, setAuthStatusOut, employees, projects, skills } = this.props;
     const departments = createDepartmentsArray(employees, projects);
 
     return (
@@ -35,14 +36,16 @@ class Dashboard extends Component {
 
         <Switch>
           <Route exact={ true } path='/employees/:id' render={ () => (
-            <EmployeeCard employees={ employees } projects={ projects } currentUserId={ id }/>
+            <EmployeeCard employees={ employees } projects={ projects } currentUserId={ id } />
           )} />
-          <Route exact={ true } path='/projects/:id' />
+          <Route exact={ true } path='/projects/:id' render={ () => (
+            <ProjectCard projects={ projects } currentUserId={ id } />
+          )} />
           <Route exact={ true } path='/skills/:title' render={ () => (
             <TechnologyCard employees={ employees } projects={ projects } skills={ skills } />
           )} />
           <Route exact={ true } path='/departments/:title' render={ () => (
-              <DepartmentCard departments={ departments } currentUserId={ id }/>
+            <DepartmentCard departments={ departments } currentUserId={ id } />
           )} />
 
           <Route exact={ true } path='/employees' render={ () => (

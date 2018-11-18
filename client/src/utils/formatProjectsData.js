@@ -15,7 +15,12 @@ export default function formatProjectsData(projects, employees) {
         projects[i].employees.push({
           id: employees[j].id,
           link: employees[j].link,
-          gender: employees[j].gender
+          name: employees[j].name,
+          surname: employees[j].surname,
+          position: employees[j].position,
+          startDate: employees[j].startDate,
+          gender: employees[j].gender,
+          skills: employees[j].skills
         });
 
         if (projects[i].manager === employees[j].id) {

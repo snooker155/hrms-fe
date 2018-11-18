@@ -29,7 +29,7 @@ function TechnologyCard__Projects(props) {
                   </Link>
                 </h3>
                 <p className="project__department">
-                  <i className="material-icons">group</i>
+                  <i className="material-icons">business</i>
                   <Link to={ project.department.link }>
                     { project.department.title }
                   </Link>

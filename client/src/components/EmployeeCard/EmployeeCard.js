@@ -64,7 +64,12 @@ export default class EmployeeCard extends Component {
           </div>
           <div>
             <h3 className="EmployeeCard__fullname">{ `${ user.name } ${ user.surname}` }</h3>
-            <p className="EmployeeCard__department"><i className="material-icons">group</i><Link to={ user.department.link }>{ user.department.title }</Link></p>
+            <p className="EmployeeCard__department">
+              <i className="material-icons">business</i>
+              <Link to={ user.department.link }>
+                { user.department.title }
+              </Link>
+            </p>
 
             <h3 className="EmployeeCard__contacts">
               <i className="material-icons">contact_mail</i>Contacts:
