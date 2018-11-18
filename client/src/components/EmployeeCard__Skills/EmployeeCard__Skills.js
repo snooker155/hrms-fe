@@ -64,8 +64,9 @@ export default class EmployeeCard__Skills extends Component {
     const { skills } = this.state;
     const { currentUserId } = this.props;
 
-    const inputValue = document.querySelector('.input-field').value;
-    if (inputValue === '') {
+    const inputValue = document.querySelector('.js-input-field-skill');
+    if (inputValue.value.trim() === '') {
+      inputValue.classList.add('invalid');
       return;
     }
 
@@ -80,7 +81,7 @@ export default class EmployeeCard__Skills extends Component {
     }
 
     const newSkill = {
-      title: inputValue,
+      title: inputValue.value.trim(),
       degree: [
         degree,
         {
@@ -89,7 +90,7 @@ export default class EmployeeCard__Skills extends Component {
           date: new Date().toJSON()
         }
       ],
-      link: encodeURI(`/skills/${ inputValue }`)
+      link: encodeURI(`/skills/${ inputValue.value.trim() }`)
     };
 
     this.setState((state) => ({
@@ -189,7 +190,12 @@ export default class EmployeeCard__Skills extends Component {
                   }>
                     <td className="ec-skills__item">
                       { editableRow === i
-                          ? <input type="text" className="input-field" defaultValue={ skill.title } autoFocus={ true } />
+                          ? <input type="text"
+                                   className="input-field js-input-field-skill"
+                                   defaultValue={ skill.title }
+                                   autoFocus={ true }
+                                   onFocus={ e => e.target.classList.remove('invalid') }
+                            />
                           : <span><Link to={ skill.link }>{ skill.title }</Link></span>
                       }
                     </td>

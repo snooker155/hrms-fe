@@ -27,6 +27,10 @@ function TechnologyCard__Projects(props) {
                   <Link to={ project.link } className="link">
                     { project.title }
                   </Link>
+                  <span className={ project.status === 'Active'
+                          ? 'project__status project__status--active'
+                          : 'project__status project__status--unactive'
+                  }>{ project.status }</span>
                 </h3>
                 <p className="project__department">
                   <i className="material-icons">business</i>

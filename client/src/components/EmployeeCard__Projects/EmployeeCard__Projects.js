@@ -8,6 +8,7 @@ const propTypes = {
   project: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     technologies: PropTypes.array.isRequired
   }),
@@ -28,8 +29,12 @@ function EmployeeCard__Projects(props) {
       <div className="ec-project__info">
         <h4 className="ec-project__title">
           <Link to={ project.link } className="link">
-          { project.title }
+            { project.title }
           </Link>
+          <span className={ project.status === 'Active'
+                          ? 'ec-project__status ec-project__status--active'
+                          : 'ec-project__status ec-project__status--unactive'
+          }>{ project.status }</span>
         </h4>
         <p className="ec-project__position">
           Position: { position }

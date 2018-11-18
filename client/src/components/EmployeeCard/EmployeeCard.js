@@ -48,10 +48,11 @@ export default class EmployeeCard extends Component {
     }
 
     for (let i = 0; i < user.projects.length; i++) {
-      const { description, technologies } = projects.find(project => project.id === user.projects[i].id);
+      const { description, technologies, status } = projects.find(project => project.id === user.projects[i].id);
       user.projects[i] = {
         ...user.projects[i],
         description,
+        status,
         technologies
       }
     }
