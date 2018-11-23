@@ -61,7 +61,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "flow": "flow",
+    "flow-typed": "flow-typed"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -73,8 +75,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^5.8.0",
     "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.86.0",
+    "flow-typed": "^2.5.1",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0"
   },
@@ -121,7 +127,8 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "react-app",
+      "flow"
     ]
   }
 }
