@@ -17,7 +17,13 @@ import formatEmployeesData from './utils/formatEmployeesData';
 import formatSkillsData from './utils/formatSkillsData';
 import formatProjectsData from './utils/formatProjectsData';
 
-class App extends Component {
+type AppState = {|
+  employees: any,
+  projects: any,
+  skills: any
+|};
+
+class App extends Component<any, AppState> {
   static propTypes = {
     fetchDataBegin: PropTypes.func.isRequired,
     fetchDataFailure: PropTypes.func.isRequired,
@@ -111,7 +117,7 @@ class App extends Component {
     });
   }
 
-  setAuthStatus = (employees, setAuthStatusIn, setAuthStatusOut) => {
+  setAuthStatus = (employees: Array<any>, setAuthStatusIn: any, setAuthStatusOut: any): void => {
     const user = checkCookies(['login', 'password']);
     if (user.isValid) {
       for (let i = 0; i < employees.length; i++) {
@@ -128,7 +134,7 @@ class App extends Component {
       }
     }
     return setAuthStatusOut();
-  }
+  };
 
   shouldComponentUpdate(nextProps) {
     return (nextProps.appStatus.isDataLoaded || nextProps.appStatus.isErrorOccured);
@@ -136,7 +142,7 @@ class App extends Component {
 
   render() {
     const {
-      user: { isLoggedIn},
+      user: { isLoggedIn },
       appStatus: { isDataLoaded, isErrorOccured }
     } = this.props;
 
