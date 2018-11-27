@@ -1,4 +1,14 @@
+// @flow
+
 import { FETCH_DATA_BEGIN, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions/fetchData';
+import type {EmployeeType} from "../components/Employee";
+import type {Action} from "../types";
+
+type State = {
+  employees: Array<EmployeeType>,
+  projects: Array<any>,
+  skills: Array<any>
+}
 
 const initialState = {
   employees: {
@@ -18,7 +28,7 @@ const initialState = {
   }
 };
 
-export default function initialData(state = initialState, action) {
+export default function initialData(state: State = initialState, action: Action) {
   switch(action.type) {
     case FETCH_DATA_BEGIN:
       return {

@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import M from 'materialize-css';
@@ -5,13 +7,20 @@ import M from 'materialize-css';
 import './Employees.scss';
 import Employee from '../Employee';
 import Pagination from '../Pagination';
+import type {EmployeeType} from "../../types";
 
-export default class Employees extends Component {
-  static propTypes = {
-    employees: PropTypes.array.isRequired,
-    projects: PropTypes.array.isRequired,
-    skills: PropTypes.array.isRequired
-  }
+type EmployeeListProps = {|
+  employees: Array<EmployeeType>,
+  projects: Array<any>,
+  skills: Array<any>
+|};
+
+export default class Employees extends Component<EmployeeListProps> {
+  // static propTypes = {
+  //   employees: PropTypes.array.isRequired,
+  //   projects: PropTypes.array.isRequired,
+  //   skills: PropTypes.array.isRequired
+  // }
 
   state = {
     catalog: this.props.employees.slice(),

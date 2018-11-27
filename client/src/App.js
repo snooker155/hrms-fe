@@ -16,9 +16,10 @@ import checkCookies from './utils/checkCookies';
 import formatEmployeesData from './utils/formatEmployeesData';
 import formatSkillsData from './utils/formatSkillsData';
 import formatProjectsData from './utils/formatProjectsData';
+import type {EmployeeType} from "./components/Employee";
 
 type AppState = {|
-  employees: any,
+  employees: Array<EmployeeType>,
   projects: any,
   skills: any
 |};

@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import type {EmployeeType} from "../../types";
 
 import './Employee.scss';
 
@@ -23,19 +24,6 @@ import './Employee.scss';
 //     skills: PropTypes.array.isRequired
 //   })
 // };
-
-type EmployeeType = {|
-  link: string,
-  gender: string,
-  id: number,
-  position: string,
-  name: string,
-  surname: string,
-  department: any,
-  socialMedia: Array<any>,
-  projects: Array<any>,
-  skills: Array<any>
-|};
 
 type EmployeeProps = {|
   employee: EmployeeType,
