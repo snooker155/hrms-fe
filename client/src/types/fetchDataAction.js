@@ -1,20 +1,20 @@
 // @flow
 
-import {FETCH_DATA_BEGIN, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS} from "../actions/fetchData";
+// import {FETCH_DATA_BEGIN, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS} from "../actions/fetchData";
 
 type fetchDataBegin = {
-  type: FETCH_DATA_BEGIN,
-  payload: Object
+  type: string,
+  payload: any
 }
 
 type fetchDataSuccess = {
-  type: FETCH_DATA_SUCCESS,
-  payload: Array<any>
+  type: string,
+  payload: any
 }
 
 type fetchDataFailure = {
-  type: FETCH_DATA_FAILURE,
-  payload: Error
+  type: string,
+  payload: any
 }
 
 export type fetchDataAction =

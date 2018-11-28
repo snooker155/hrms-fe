@@ -1,4 +1,11 @@
+// @flow
+
 import { AUTHORIZATION_STATUS_IN, AUTHORIZATION_STATUS_OUT } from '../actions/setAuthStatus';
+import type {setAuthStatusAction} from "../types/setAuthStatusAction";
+
+type setAuthStatusState = {
+  user: any
+}
 
 const initialState = {
   user: {
@@ -12,7 +19,7 @@ const initialState = {
   }
 };
 
-export default function user(state = initialState, action) {
+export default function user(state: setAuthStatusState = initialState, action: setAuthStatusAction) {
   switch(action.type) {
     case AUTHORIZATION_STATUS_IN:
       return {
