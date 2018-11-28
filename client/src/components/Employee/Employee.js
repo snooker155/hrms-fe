@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import type {EmployeeType} from "../../types";
+import type {EmployeeType} from "../../_types";
 
 import './Employee.scss';
 

@@ -7,7 +7,7 @@ import M from 'materialize-css';
 import './Employees.scss';
 import Employee from '../Employee';
 import Pagination from '../Pagination';
-import type {EmployeeType} from "../../types";
+import type {EmployeeType} from "../../_types";
 
 type EmployeeListProps = {|
   employees: Array<EmployeeType>,

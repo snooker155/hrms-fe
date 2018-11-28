@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 
 import './EmployeeCard__Info.scss';
-import getYearDiff from '../../utils/getYearDiff';
+import getYearDiff from '../../_helpers/getYearDiff';
 import EmployeeCard__Subordinates from '../EmployeeCard__Subordinates';
 
 const propTypes = {

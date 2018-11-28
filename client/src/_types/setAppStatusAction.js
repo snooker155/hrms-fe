@@ -1,6 +1,6 @@
 // @flow
 
-import { ALL_DATA_LOADED, ERROR_OCCURED } from "../actions/setAppStatus";
+import { ALL_DATA_LOADED, ERROR_OCCURED } from "../_actions/setAppStatus";
 
 type allDataLoaded = {
   type: ALL_DATA_LOADED

@@ -1,19 +1,25 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAuthStatusIn } from '../../actions/setAuthStatus';
+import { setAuthStatusIn } from '../../_actions/setAuthStatus';
 
 import './Auth.scss';
 import LoginForm from '../../components/LoginForm';
 import RecoverForm from '../../components/RecoverForm';
 import logo from '../../static-assets/img/logo.png';
 
-class Auth extends Component {
-  static propTypes = {
-    employees: PropTypes.array.isRequired,
-    setAuthStatusIn: PropTypes.func.isRequired
-  }
+type AuthProps = {|
+  setAuthStatusIn: () => any
+|};
+
+class Auth extends Component<AuthProps> {
+  // static propTypes = {
+  //   employees: PropTypes.array.isRequired,
+  //   setAuthStatusIn: PropTypes.func.isRequired
+  // }
 
   render() {
     return (
@@ -30,8 +36,8 @@ class Auth extends Component {
 
         <div className="wrapper">
           <Switch>
-            <Route exact={ true } path='/auth/login' render={ () => { return <LoginForm { ...this.props } />; }} />
-            <Route exact={ true } path='/auth/recover'render={ () => { return <RecoverForm />; }} />
+            <Route exact={ true } path='/auth/login' render={ () => <LoginForm { ...this.props } /> } />
+            {/*<Route exact={ true } path='/auth/recover' render={ () => <RecoverForm /> }/>*/}
 
             <Route path='*'>
               <Redirect to={ '/auth/login' } />

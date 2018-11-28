@@ -1,5 +1,4 @@
-export const AUTHORIZATION_STATUS_IN = 'AUTHORIZATION_STATUS_IN';
-export const AUTHORIZATION_STATUS_OUT = 'AUTHORIZATION_STATUS_OUT';
+import { AUTHORIZATION_STATUS_IN, AUTHORIZATION_STATUS_OUT } from "../_constants";
 
 export const setAuthStatusIn = cookies => ({
   type: AUTHORIZATION_STATUS_IN,

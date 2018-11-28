@@ -1,7 +1,7 @@
 // @flow
 
-import { AUTHORIZATION_STATUS_IN, AUTHORIZATION_STATUS_OUT } from '../actions/setAuthStatus';
-import type {setAuthStatusAction} from "../types/setAuthStatusAction";
+import { AUTHORIZATION_STATUS_IN, AUTHORIZATION_STATUS_OUT } from "../_constants";
+import type {setAuthStatusAction} from "../_types/setAuthStatusAction";
 
 type setAuthStatusState = {
   user: any

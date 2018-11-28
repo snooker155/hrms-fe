@@ -3,8 +3,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { setAuthStatusOut } from '../../actions/setAuthStatus';
-import createDepartmentsArray from '../../utils/createDepartmentsArray';
+import { setAuthStatusOut } from '../../_actions/setAuthStatus';
+import createDepartmentsArray from '../../_helpers/createDepartmentsArray';
 
 import Header from '../../components/Header';
 import EmployeeCard from '../../components/EmployeeCard';

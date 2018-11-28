@@ -3,7 +3,7 @@ import initialData from './fetchData';
 import user from './setAuthStatus';
 import appStatus from './setAppStatus';
 
-export default combineReducers({
+export const rootReducer = combineReducers({
   initialData,
   user,
   appStatus

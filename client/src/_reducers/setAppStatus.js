@@ -1,7 +1,7 @@
 // @flow
 
-import { ALL_DATA_LOADED, ERROR_OCCURED } from '../actions/setAppStatus';
-import type {setAppStatusAction} from "../types/setAppStatusAction";
+import { ALL_DATA_LOADED, ERROR_OCCURED } from '../_actions/setAppStatus';
+import type {setAppStatusAction} from "../_types/setAppStatusAction";
 
 type setAppStatusState = {
   isDataLoaded: boolean,

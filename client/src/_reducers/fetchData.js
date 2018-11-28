@@ -1,9 +1,8 @@
 // @flow
 
-import { FETCH_DATA_BEGIN, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions/fetchData';
+import { FETCH_DATA_BEGIN, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../_constants';
 import type {EmployeeType} from "../components/Employee";
-import type {Action} from "../types/Action";
-import type {fetchDataAction} from "../types/fetchDataAction";
+import type {fetchDataAction} from "../_types/fetchDataAction";
 
 type fetchState = {
   employees: Array<EmployeeType>,
@@ -35,7 +34,7 @@ const initialState = {
 //   }
 // };
 
-export default function initialData(state: fetchState = initialState, action: fetchDataAction) {
+export default function initialData(state: fetchState = initialState, action: fetchDataAction): fetchState {
   switch(action.type) {
     case FETCH_DATA_BEGIN:
       return {

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "concurrently \"cd client && npm run build\" \"cd server && npm run build\"",
     "install:all": "(cd client && npm install) && (cd server && npm install)",
-    "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\"",
+    "start": "concurrently \"cd server && npm run start\" \"cd client && npm run start\"",
     "start:prod": "cd server && npm run start:prod"
   },
   "repository": {

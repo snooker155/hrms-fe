@@ -9,5 +9,7 @@ flow-typed
 [lints]
 
 [options]
+module.name_mapper='.*\(.s?css\)' -> 'CSSModule'
+module.system=haste
 
 [strict]
