@@ -26,7 +26,7 @@ class Auth extends Component<AuthProps> {
       <div className="Auth">
         <header className="header">
           <div className="wrapper">
-            <div className="logotype auth__logotype">
+            <div className="auth__logotype">
               <Link to={ `/auth/login` }>
                 <img className="logotype__image" src={ logo } alt="HRM-System" />
               </Link>
