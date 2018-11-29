@@ -24,7 +24,7 @@ type AppState = {|
   // skills: any
 |};
 
-class App extends Component<any, AppState> {
+export class App extends Component<any, AppState> {
   // static propTypes = {
   //   fetchDataBegin: PropTypes.func.isRequired,
   //   fetchDataFailure: PropTypes.func.isRequired,
@@ -198,4 +198,3 @@ class App extends Component<any, AppState> {
 // });
 //
 // export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(App);
-export default App;

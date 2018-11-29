@@ -1,5 +1,4 @@
-import config from 'config';
-import { authHeader } from '../_helpers';
+import { environment } from '../_environments/environment';
 
 export const authService = {
   login,
@@ -9,11 +8,13 @@ export const authService = {
 function login(username, password) {
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({ username, password })
   };
 
-  return fetch(`${config.apiUrl}/auth/login`, requestOptions)
+  return fetch(`${environment.apiUrl}/auth/login`, requestOptions)
     .then(handleResponse)
     .then(user => {
       // login successful if there's a jwt token in the response

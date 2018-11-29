@@ -7,20 +7,45 @@ import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 
 import decodePassword from '../../_helpers/decodePassword';
+import {authActions} from "../../_actions";
 
 type LoginFormProps = {|
-  setAuthStatusIn: () => any
+  loggingIn: boolean,
+  loginAction: (username: string, password: string) => void
 |};
 
 export default class LoginForm extends Component<LoginFormProps> {
-  // static propTypes = {
-  //   employees: PropTypes.array.isRequired,
-  //   setAuthStatusIn: PropTypes.func.isRequired
-  // };
-
   usernameInp = document.querySelector('.js-form__input-username');
   passwordInp = document.querySelector('.js-form__input-password');
   signInInp   = document.querySelector('.js-form__input-signIn');
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+      submitted: false
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.setState({ submitted: true });
+    const { username, password } = this.state;
+    if (username && password) {
+      loginAction(username, password);
+    }
+  }
 
   onSignInClick = () => {
     const { employees, setAuthStatusIn } = this.props;
@@ -119,3 +144,8 @@ export default class LoginForm extends Component<LoginFormProps> {
     );
   }
 }
+
+LoginForm.propTypes = {
+  employees: PropTypes.array.isRequired,
+  setAuthStatusIn: PropTypes.func.isRequired
+};

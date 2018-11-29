@@ -5,7 +5,7 @@ import { authConstants } from "../_constants";
 import { alertActions } from "./alert.actions";
 import { authService } from "../_services";
 
-export const loginActions = {
+export const authActions = {
   login,
   logout
 };
@@ -29,10 +29,9 @@ function login(username, password) {
   function request(user) { return { type: authConstants.LOGIN_REQUEST, user } }
   function success(user) { return { type: authConstants.LOGIN_SUCCESS, user } }
   function failure(error) { return { type: authConstants.LOGIN_FAILURE, error } }
-};
+}
 
 function logout() {
   authService.logout();
   return { type: authConstants.LOGOUT };
-};
-
+}
