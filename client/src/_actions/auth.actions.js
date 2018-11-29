@@ -16,8 +16,8 @@ function login(username: string, password: string) {
     dispatch(request({ username }));
 
     authService.login(username, password)
-      .then(user_id => {
-          dispatch(success(user_id));
+      .then(user => {
+          dispatch(success(user));
           history.push('/');
         },
         error => {
@@ -28,7 +28,7 @@ function login(username: string, password: string) {
   };
 
   function request(user) { return { type: authConstants.LOGIN_REQUEST, user } }
-  function success(user_id) { return { type: authConstants.LOGIN_SUCCESS, user_id } }
+  function success(user) { return { type: authConstants.LOGIN_SUCCESS, user } }
   function failure(error) { return { type: authConstants.LOGIN_FAILURE, error } }
 }
 
