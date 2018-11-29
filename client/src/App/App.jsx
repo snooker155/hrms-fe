@@ -21,7 +21,7 @@ class App extends Component<AppProps> {
     super(props);
 
     const { alertClearAction } = this.props;
-    history.listen((location, action) => {
+    history.listen(() => {
       // clear alert on location change
       alertClearAction();
     });

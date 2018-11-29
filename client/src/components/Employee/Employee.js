@@ -7,23 +7,23 @@ import type {EmployeeType} from "../../_types";
 
 import './Employee.scss';
 
-// const propTypes = {
-//   employee: PropTypes.shape({
-//     link: PropTypes.string.isRequired,
-//     gender: PropTypes.string.isRequired,
-//     id: PropTypes.number.isRequired,
-//     position: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-//     surname: PropTypes.string.isRequired,
-//     department: PropTypes.shape({
-//       title: PropTypes.string.isRequired,
-//       link: PropTypes.string.isRequired
-//     }),
-//     socialMedia: PropTypes.array.isRequired,
-//     projects: PropTypes.array.isRequired,
-//     skills: PropTypes.array.isRequired
-//   })
-// };
+const propTypes = {
+  employee: PropTypes.shape({
+    link: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    position: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+    department: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired
+    }),
+    socialMedia: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    skills: PropTypes.array.isRequired
+  })
+};
 
 type EmployeeProps = {|
   employee: EmployeeType,
@@ -105,9 +105,9 @@ class Employee extends PureComponent<EmployeeProps> {
   }
 }
 
-//
-// Employee.propTypes = propTypes;
-//
+
+Employee.propTypes = propTypes;
+
 
 export type { EmployeeType };
 export default Employee;

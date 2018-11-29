@@ -16,11 +16,11 @@ type EmployeeListProps = {|
 |};
 
 export default class Employees extends Component<EmployeeListProps> {
-  // static propTypes = {
-  //   employees: PropTypes.array.isRequired,
-  //   projects: PropTypes.array.isRequired,
-  //   skills: PropTypes.array.isRequired
-  // }
+  static propTypes = {
+    employees: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    skills: PropTypes.array.isRequired
+  }
 
   state = {
     catalog: this.props.employees.slice(),

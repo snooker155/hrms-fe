@@ -15,7 +15,7 @@ export function authReducer(state = initialState, action) {
     case authConstants.LOGIN_SUCCESS:
       return {
         loggedIn: true,
-        user: action.user
+        user_id: action.user
       };
     case authConstants.LOGIN_FAILURE:
       return {};
