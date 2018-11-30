@@ -1,57 +1,81 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
-import { alertActions } from '../_actions';
+import {alertActions, authActions} from '../_actions';
 import { PrivateRoute } from '../_components';
 // import { HomePage } from '../HomePage';
 import { Auth } from '../Auth';
-import Dashboard from "../containers/Dashboard/Dashboard";
+import Dashboard from "../Dashboard";
+import Spinner from "react-spinner-material";
 
 type AppProps = {|
   alert: () => void,
-  alertClearAction: any
+  alertClearAction: any,
+  loggedIn: boolean,
+  isLoggedIn: any,
 |};
 
 class App extends Component<AppProps> {
   constructor(props) {
     super(props);
 
-    const { alertClearAction } = this.props;
-    history.listen(() => {
-      // clear alert on location change
-      alertClearAction();
-    });
+    // const { alertClearAction } = this.props;
+    // history.listen(() => {
+    //   // clear alert on location change
+    //   alertClearAction();
+    // });
+  }
+
+  componentDidMount(): void {
+    const { isLoggedIn } = this.props;
+    setTimeout(() => { isLoggedIn() }, 1000);
   }
 
   render() {
     // const { alert } = this.props;
+    const { loggedIn } = this.props;
+
+    if (this.props.loggedIn === null) {
+      return (
+        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+          <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
+        </div>
+      )
+    }
+
     return (
             // {alert.message &&
             // <div className={`alert ${alert.type}`}>{alert.message}</div>
             // }
+      <>
             <Router history={history}>
               <div>
-                <PrivateRoute exact path="/" component={ Dashboard } />
-                <Route path="/auth/login" component={ Auth } />
+                <Switch>
+                  <Route exact path="/auth/login" component={Auth}/>
+                  <PrivateRoute loggedIn={loggedIn} component={Dashboard}/>
+                </Switch>
               </div>
             </Router>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    alert: state.alert
+    // alert: state.alert,
+    loggedIn: state.auth.loggedIn,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     alertClearAction: () => dispatch(alertActions.clear()),
+    isLoggedIn: () => dispatch(authActions.isLoggedIn()),
   }
 }
 

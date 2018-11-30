@@ -11,7 +11,11 @@ import { authActions } from "../_actions";
 
 type AuthProps = {|
   loggingIn: boolean,
-  loginAction: (username: string, password: string) => void
+  loginAction: (username: string, password: string) => void,
+  loggedIn: boolean,
+  location: {
+    state: any
+  }
 |};
 
 class Auth extends Component<AuthProps> {
@@ -19,11 +23,16 @@ class Auth extends Component<AuthProps> {
     super(props);
 
     // reset login status
-    authActions.logout();
+    // authActions.logout();
   }
 
   render() {
-    const { loggingIn, loginAction } = this.props;
+    const { loggingIn, loginAction, loggedIn } = this.props;
+
+    if (loggedIn) {
+      const { from } = this.props.location.state || { from: { pathname: '/' } }
+      return <Redirect to={from} />
+    }
     return (
       <div className="Auth">
         <header className="header">
@@ -49,7 +58,8 @@ class Auth extends Component<AuthProps> {
 
 const mapStateToProps = state => ({
   // loggingIn: state.authentication.loggingIn
-  loggingIn: state.loggingIn
+  loggingIn: state.auth.loggingIn,
+  loggedIn: state.auth.loggedIn
 });
 
 const mapDispatchToProps = dispatch => ({

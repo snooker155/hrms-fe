@@ -2,7 +2,9 @@ import { environment } from '../_environments/environment';
 
 export const authService = {
   login,
-  logout
+  logout,
+  isLoggedIn,
+  getCurrentUserId
 };
 
 function login(username, password) {
@@ -30,6 +32,21 @@ function login(username, password) {
 function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem('user');
+}
+
+function isLoggedIn() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user && user.token;
+  return !!token;
+}
+
+function getCurrentUserId() {
+  if(isLoggedIn()) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user && user.user;
+  }
+
+  return null;
 }
 
 function handleResponse(response) {

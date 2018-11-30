@@ -2,4 +2,4 @@
 
 export * from './auth-header';
 export * from './configureStore';
-export * from './history';
+export { history } from './history';

@@ -1,3 +1,3 @@
 // @flow
 
-export * from './PrivateRoute'
+export { PrivateRoute } from './PrivateRoute'
