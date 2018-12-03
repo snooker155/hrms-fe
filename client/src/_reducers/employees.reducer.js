@@ -34,20 +34,6 @@ export function employeesReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
-    case employeeConstants.GETCURRENTBYID_REQUEST:
-      return {
-        loading: true
-      };
-    case employeeConstants.GETCURRENTBYID_SUCCESS:
-      return {
-        loading: false,
-        currentEmployee: action.user
-      };
-    case employeeConstants.GETCURRENTBYID_FAILURE:
-      return {
-        loading: false,
-        error: action.error
-      };
     default:
       return state
   }

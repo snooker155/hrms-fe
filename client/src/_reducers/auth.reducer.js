@@ -13,14 +13,12 @@ export function authReducer(state = initialState, action) {
       return {
         ...state,
         loggingIn: true,
-        user: action.user
       };
     case authConstants.LOGIN_SUCCESS:
       return {
         ...state,
         loggingIn: false,
         loggedIn: true,
-        user_id: action.user.user
       };
     case authConstants.LOGIN_FAILURE:
       return {
@@ -33,11 +31,27 @@ export function authReducer(state = initialState, action) {
         loggingIn: false,
         loggedIn: false,
       };
-    case authConstants.ISLOGGEDIN:
+    case authConstants.NOT_LOGGED_IN:
       return {
         loggedIn: action.isLoggedIn,
         loggingIn: false,
-        userId: action.userId
+      };
+    case authConstants.CURRENT_USER_REQUEST:
+      return {
+        loggedIn: action.isLoggedIn,
+        loggingIn: false,
+      };
+    case authConstants.CURRENT_USER_SUCCESS:
+      return {
+        ...state,
+        loggedIn: action.isLoggedIn,
+        loggingIn: false,
+        user: action.user
+      };
+    case authConstants.CURRENT_USER_FAILURE:
+      return {
+        loggedIn: action.isLoggedIn,
+        loggingIn: false,
       };
     default:
       return state

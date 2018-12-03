@@ -1,10 +1,13 @@
 import { environment } from '../_environments/environment';
+import {authHeader} from "../_helpers";
 
 export const authService = {
+  userId: getCurrentUserId(),
   login,
   logout,
   isLoggedIn,
-  getCurrentUserId
+  getCurrentUserId,
+  getCurrentUser
 };
 
 function login(username, password) {
@@ -47,6 +50,16 @@ function getCurrentUserId() {
   }
 
   return null;
+}
+
+function getCurrentUser() {
+  const userId = authService.userId;
+  const requestOptions = {
+    method: 'GET',
+    headers: authHeader()
+  };
+
+  return fetch(`${environment.apiUrl}/users/${userId}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

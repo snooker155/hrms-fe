@@ -9,8 +9,7 @@ import DropDown from '../Dropdown';
 
 class Header extends Component {
   static propTypes = {
-    userId: PropTypes.string.isRequired,
-    currentEmployee: PropTypes.shape({
+    user: PropTypes.shape({
       name: PropTypes.string,
       surname: PropTypes.string,
       gender: PropTypes.boolean,
@@ -59,14 +58,14 @@ class Header extends Component {
 
   render() {
     const { isDropDownVisible } = this.state;
-    const { userId, currentEmployee, logoutAction } = this.props;
+    const { user, logoutAction } = this.props;
 
     return (
       <>
       <header className="header">
         <div className="wrapper">
           <div className="logotype">
-            <Link to={ `/employees/${ userId }` }>
+            <Link to={ `/employees/${ user._id }` }>
               <img className="logotype__image" src={ logo } alt="HRM-System" />
             </Link>
           </div>
@@ -86,13 +85,13 @@ class Header extends Component {
 
             <div className="profile js-profileToogle">
               <div className="profile-link js-profileToogle" onClick={ this.changeDropdownVisibility }>
-                <p className="profile-link__username js-profileToogle">{ `${ currentEmployee.name } ${ currentEmployee.surname }` }</p>
-                <img className="profile-link__image js-profileToogle" src={ `https://randomuser.me/api/portraits/${ currentEmployee.gender ? 'men' : 'women' }/65.jpg` } />
+                <p className="profile-link__username js-profileToogle">{ `${ user.name } ${ user.surname }` }</p>
+                <img className="profile-link__image js-profileToogle" src={ `https://randomuser.me/api/portraits/${ user.gender ? 'men' : 'women' }/65.jpg` } />
                 <i className="profile-link__dropDownBtn js-profileToogle material-icons">expand_more</i>
               </div>
                 { isDropDownVisible
                     ? <ClickOutside onClickOutside={ this.onClickOutsideHandler.bind(this) } >
-                        <DropDown id={ userId } logoutAction={ logoutAction } onClickOutside={ this.onClickOutsideHandler.bind(this) } />
+                        <DropDown id={ user._id } logoutAction={ logoutAction } onClickOutside={ this.onClickOutsideHandler.bind(this) } />
                       </ClickOutside>
                     : null
                 }

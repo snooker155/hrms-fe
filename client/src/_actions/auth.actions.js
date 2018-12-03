@@ -31,8 +31,8 @@ function login(username: string, password: string) {
     }, 3000);
   };
 
-  function request(user) { return { type: authConstants.LOGIN_REQUEST, user } }
-  function success(user) { return { type: authConstants.LOGIN_SUCCESS, user } }
+  function request() { return { type: authConstants.LOGIN_REQUEST } }
+  function success() { return { type: authConstants.LOGIN_SUCCESS } }
   function failure(error) { return { type: authConstants.LOGIN_FAILURE, error } }
 }
 
@@ -42,9 +42,38 @@ function logout() {
 }
 
 function isLoggedIn() {
-  return {
-    type: authConstants.ISLOGGEDIN,
-    isLoggedIn: authService.isLoggedIn(),
-    userId: authService.getCurrentUserId()
+  return dispatch => {
+    if (authService.isLoggedIn()) {
+      dispatch(request());
+      authService.getCurrentUser()
+        .then(user => {
+            dispatch(success(user));
+          }
+          , error => {
+            dispatch(failure(error.toString()));
+            dispatch(alertActions.error(error.toString()));
+          });
+    } else {
+      dispatch(notLoggedIn());
+    }
   }
+
+  function notLoggedIn() { return {
+    type: authConstants.NOT_LOGGED_IN,
+    isLoggedIn: false,
+  } }
+  function request() { return {
+    type: authConstants.CURRENT_USER_REQUEST,
+    isLoggedIn: false,
+  } }
+  function success(user) { return {
+    type: authConstants.CURRENT_USER_SUCCESS,
+    isLoggedIn: true,
+    user: user
+  } }
+  function failure(error) { return {
+    type: authConstants.CURRENT_USER_FAILURE,
+    isLoggedIn: false,
+    error: error
+  } }
 }

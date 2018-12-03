@@ -6,16 +6,27 @@ import './EmployeeCard.scss';
 import EmployeeCard__Info from '../components/EmployeeCard__Info';
 import EmployeeCard__Skills from '../components/EmployeeCard__Skills';
 import EmployeeCard__Projects from '../components/EmployeeCard__Projects';
+import {authActions, employeeActions} from "../_actions";
+import connect from "react-redux/es/connect/connect";
 
-export default class EmployeeCard extends Component {
+class EmployeeCard extends Component {
   static propTypes = {
-    employees: PropTypes.array.isRequired,
+    employee: PropTypes.object,
     projects: PropTypes.array.isRequired,
-    currentUserId: PropTypes.number.isRequired
-  }
+    // currentUserId: PropTypes.number.isRequired,
+    match: PropTypes.object,
+    getEmployeeById: PropTypes.func
+  };
 
   state = {
     activeTab: 1
+  };
+
+  constructor(props){
+    super(props);
+
+    const { match, getEmployeeById } = this.props;
+    getEmployeeById(match.params.userId);
   }
 
   componentDidMount() {
@@ -38,22 +49,21 @@ export default class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employees, projects, currentUserId } = this.props;
+    const { employee, projects } = this.props;
 
-    const [ user ] = employees.filter(employee => employee.id === Number(location.pathname.split('/').pop()));
+    // const [ user ] = employees.filter(employee => employee.id === Number(location.pathname.split('/').pop()));
 
     // * USER NOT FOUND *
-    if (!user) {
-      return (<Redirect to={'/' } />);
+    if (!employee) {
+      return (<em>Loading...</em>);
     }
 
-    for (let i = 0; i < user.projects.length; i++) {
-      const { description, technologies, status } = projects.find(project => project.id === user.projects[i].id);
-      user.projects[i] = {
-        ...user.projects[i],
-        description,
-        status,
-        technologies
+    for (let i = 0; i < employee.projects.length; i++) {
+      employee.projects[i] = {
+        ...employee.projects[i],
+        description: employee.projects[i].description,
+        // status,
+        // technologies
       }
     }
 
@@ -61,14 +71,14 @@ export default class EmployeeCard extends Component {
       <div className="EmployeeCard animated fadeIn fast">
         <div className="EmployeeCard__presentation">
           <div className="EmployeeCard__avatar">
-            <img className="EmployeeCard__image" src={ `https://randomuser.me/api/portraits/${ user.gender }/${ user.id }.jpg` } />
+            <img className="EmployeeCard__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/65.jpg` } />
           </div>
           <div>
-            <h3 className="EmployeeCard__fullname">{ `${ user.name } ${ user.surname}` }</h3>
+            <h3 className="EmployeeCard__fullname">{ `${ employee.name } ${ employee.surname}` }</h3>
             <p className="EmployeeCard__department">
               <i className="material-icons">business</i>
-              <Link to={ user.department.link }>
-                { user.department.title }
+              <Link to={ employee.department.link }>
+                { employee.department.title }
               </Link>
             </p>
 
@@ -103,24 +113,27 @@ export default class EmployeeCard extends Component {
             <div className="c-tabs__content">
               { activeTab === 1
                 ? <div className='EmployeeCard__info animated fadeIn fast'>
-                    <EmployeeCard__Info user={ user } />
+                    <EmployeeCard__Info employee={ employee } />
                   </div>
                 : null
               }
 
               { activeTab === 2
                 ? <div className='EmployeeCard__skills animated fadeIn fast'>
-                    <h2>{ user.id === currentUserId ? 'My' : null } Skills</h2>
-                    <EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>
+                    {/*<h2>{ user.id === currentUserId ? 'My' : null } Skills</h2>*/}
+                    <h2>Skills</h2>
+                    {/*<EmployeeCard__Skills user={ user } currentUserId={ currentUserId }/>*/}
+                    <EmployeeCard__Skills employee={ employee }/>
                   </div>
                 : null
               }
 
               { activeTab === 3
                 ? <div className='EmployeeCard__projects animated fadeIn fast'>
-                    <h2>{ user.id === currentUserId ? 'My' : null } Projects</h2>
+                    {/*<h2>{ user.id === currentUserId ? 'My' : null } Projects</h2>*/}
+                    <h2>Projects</h2>
                     {
-                      user.projects.map(project => <EmployeeCard__Projects key={ project.id } project={ project } position={ user.position } />)
+                      employee.projects.map(project => <EmployeeCard__Projects key={ project.id } project={ project } position={ employee.position } />)
                     }
                   </div>
                 : null
@@ -132,3 +145,13 @@ export default class EmployeeCard extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  employee: state.employees.employee
+});
+
+const mapDispatchToProps = dispatch => ({
+  getEmployeeById: (id) => { dispatch(employeeActions.getById(id)); },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(EmployeeCard);
