@@ -4,24 +4,24 @@ import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 
 import './EmployeeCard__Info.scss';
-import getYearDiff from '../../_helpers/getYearDiff';
-import EmployeeCard__Subordinates from '../EmployeeCard__Subordinates';
+import getYearDiff from '../_helpers/getYearDiff';
+// import EmployeeCard__Subordinates from '../EmployeeCard__Subordinates';
 
 const propTypes = {
   employee: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    employee_number: PropTypes.number.isRequired,
     start_date: PropTypes.string.isRequired,
     gender: PropTypes.boolean,
     birthday: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
     manager: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      _id: PropTypes.string.isRequired,
       link: PropTypes.string,
       name: PropTypes.string,
       surname: PropTypes.string
     }),
     department: PropTypes.shape({
-      link: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired
     })
   })
@@ -37,31 +37,35 @@ function EmployeeCard__Info(props) {
         <div className="ec-info__personal-info">
           <h4>Personal info</h4>
           <div className="content">
-            <span><strong>ID: </strong>{ employee._id }</span>
+            <span><strong>ID: </strong>{ employee.employee_number }</span>
             <span><strong>Start Date: </strong>{ dateFormat(employee.start_date, 'mmmm dS, yyyy') } ({ experience }&nbsp;y.)</span>
-            <span><strong>Gender: </strong>{ employee.gender ? 'Male' : 'Female' }</span>
+            <span><strong>Gender: </strong>{ employee.gender === 'male' ? 'Male' : 'Female' }</span>
             <span><strong>Birthday: </strong>{ dateFormat(employee.birthday, 'mmmm dS, yyyy') } ({ employeeAge }&nbsp;y.o.)</span>
           </div>
         </div>
         <div className="ec-info__job-defatils">
           <h4>Job details</h4>
           <div className="content">
-            <span><strong>Job Title: </strong>{ employee.position }</span>
+            <span><strong>Position: </strong>{ employee.position }</span>
             {
-              employee.manager._id
+              employee.manager
                 ? <span>
                     <strong>Supervisor: </strong>
-                    <Link to={ employee.manager._id } >
+                    <Link to={`/employees/${ employee.manager._id }`} >
                       { `${ employee.manager.name } ${ employee.manager.surname }` }
                     </Link>
                   </span>
                 : null
             }
-            <span><strong>Department: </strong>
-              <Link to={ employee.department._id } >
-                { employee.department.title }
-              </Link>
-            </span>
+            {
+              employee.department
+                ? <span><strong>Department: </strong>
+                    <Link to={`/departments/${ employee.department._id }`} >
+                      { employee.department.title }
+                    </Link>
+                  </span>
+                : null
+            }
           </div>
         </div>
 

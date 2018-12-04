@@ -4,7 +4,9 @@ import { authConstants } from '../_constants';
 
 // let user = JSON.parse(localStorage.getItem('user'));
 const initialState = {
-  loggedIn: null
+  loggedIn: null,
+  user: null,
+  loggingIn: false,
 };
 
 export function authReducer(state = initialState, action) {
@@ -27,31 +29,35 @@ export function authReducer(state = initialState, action) {
       };
     case authConstants.LOGOUT:
       return {
-        ...state,
-        loggingIn: false,
         loggedIn: false,
+        user: null,
+        loggingIn: false,
       };
     case authConstants.NOT_LOGGED_IN:
       return {
+        ...state,
+        loggedIn: action.isLoggedIn,
+        loggingIn: false,
+      };
+    case authConstants.IS_LOGGED_IN:
+      return {
+        ...state,
         loggedIn: action.isLoggedIn,
         loggingIn: false,
       };
     case authConstants.CURRENT_USER_REQUEST:
       return {
-        loggedIn: action.isLoggedIn,
-        loggingIn: false,
+        ...state,
       };
     case authConstants.CURRENT_USER_SUCCESS:
       return {
         ...state,
-        loggedIn: action.isLoggedIn,
-        loggingIn: false,
         user: action.user
       };
     case authConstants.CURRENT_USER_FAILURE:
       return {
-        loggedIn: action.isLoggedIn,
-        loggingIn: false,
+        ...state,
+        error: action.error
       };
     default:
       return state

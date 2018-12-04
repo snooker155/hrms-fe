@@ -2,7 +2,6 @@ import { environment } from '../_environments/environment';
 import {authHeader} from "../_helpers";
 
 export const authService = {
-  userId: getCurrentUserId(),
   login,
   logout,
   isLoggedIn,
@@ -53,7 +52,7 @@ function getCurrentUserId() {
 }
 
 function getCurrentUser() {
-  const userId = authService.userId;
+  const userId = authService.getCurrentUserId();
   const requestOptions = {
     method: 'GET',
     headers: authHeader()

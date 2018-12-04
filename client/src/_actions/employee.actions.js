@@ -15,8 +15,12 @@ function getAll() {
 
     employeeService.getAll()
       .then(
-        users => dispatch(success(users)),
-        error => dispatch(failure(error.toString()))
+        users => {
+          dispatch(success(users))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
       );
   };
 
@@ -31,8 +35,12 @@ function getById(id: string) {
 
     employeeService.getById(id)
       .then(
-        employee => dispatch(success(employee)),
-        error => dispatch(failure(id, error.toString()))
+        employee => {
+          dispatch(success(employee))
+        },
+        error => {
+          dispatch(failure(id, error.toString()))
+        }
       );
   };
 

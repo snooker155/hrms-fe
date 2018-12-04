@@ -10,6 +10,7 @@ export const authActions = {
   login,
   logout,
   isLoggedIn,
+  getCurrentUser
 };
 
 function login(username: string, password: string) {
@@ -32,7 +33,7 @@ function login(username: string, password: string) {
   };
 
   function request() { return { type: authConstants.LOGIN_REQUEST } }
-  function success() { return { type: authConstants.LOGIN_SUCCESS } }
+  function success(user) { return { type: authConstants.LOGIN_SUCCESS, user } }
   function failure(error) { return { type: authConstants.LOGIN_FAILURE, error } }
 }
 
@@ -44,36 +45,54 @@ function logout() {
 function isLoggedIn() {
   return dispatch => {
     if (authService.isLoggedIn()) {
-      dispatch(request());
-      authService.getCurrentUser()
-        .then(user => {
-            dispatch(success(user));
-          }
-          , error => {
-            dispatch(failure(error.toString()));
-            dispatch(alertActions.error(error.toString()));
-          });
+      dispatch(loggedIn());
     } else {
       dispatch(notLoggedIn());
     }
-  }
+  };
 
   function notLoggedIn() { return {
     type: authConstants.NOT_LOGGED_IN,
     isLoggedIn: false,
   } }
-  function request() { return {
-    type: authConstants.CURRENT_USER_REQUEST,
-    isLoggedIn: false,
-  } }
-  function success(user) { return {
-    type: authConstants.CURRENT_USER_SUCCESS,
+
+  function loggedIn() { return {
+    type: authConstants.IS_LOGGED_IN,
     isLoggedIn: true,
-    user: user
   } }
-  function failure(error) { return {
-    type: authConstants.CURRENT_USER_FAILURE,
-    isLoggedIn: false,
-    error: error
-  } }
+}
+
+function getCurrentUser() {
+  return dispatch => {
+    dispatch(request());
+
+    authService.getCurrentUser()
+      .then(user => {
+          dispatch(success(user));
+        }
+        , error => {
+          dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        });
+  };
+
+  function request() {
+    return {
+      type: authConstants.CURRENT_USER_REQUEST,
+    }
+  }
+
+  function success(user) {
+    return {
+      type: authConstants.CURRENT_USER_SUCCESS,
+      user: user
+    }
+  }
+
+  function failure(error) {
+    return {
+      type: authConstants.CURRENT_USER_FAILURE,
+      error: error
+    }
+  }
 }

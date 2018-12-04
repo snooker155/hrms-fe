@@ -15,11 +15,13 @@ import EmployeeCard from '../EmployeeCard';
 // import Projects from '../../components/Projects';
 // import Technologies from '../../components/Technologies';
 import { authActions } from "../_actions";
+import Spinner from "react-spinner-material";
 
 class Dashboard extends Component {
   static propTypes = {
     logoutAction: PropTypes.func.isRequired,
     user: PropTypes.object,
+    getCurrentUser: PropTypes.func.isRequired,
     // employees: PropTypes.array.isRequired,
     // projects: PropTypes.array.isRequired,
     // skills: PropTypes.array.isRequired,
@@ -27,48 +29,58 @@ class Dashboard extends Component {
     //   id: PropTypes.number.isRequired
     // }),
     // setAuthStatusOut: PropTypes.func.isRequired
-  }
+  };
 
-  componentWillMount() {
-    // const { userId, user } = this.props;
+  componentDidMount(): void {
+    const { getCurrentUser } = this.props;
+    setTimeout(() => { getCurrentUser() }, 1000);
   }
 
   render() {
     const { user, logoutAction } = this.props;
     // const departments = createDepartmentsArray(employees, projects);
 
+    if ( user === null ) {
+      return (
+        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+          <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
+        </div>
+      )
+    }
+
     return (
       <>
-        { !user && <em>Loading...</em>}
         { user && <Header logoutAction={ logoutAction } user={ user } /> }
 
+        { user &&
         <Switch>
-          <Route exact={ true } path='/employees/:userId' component={EmployeeCard} />
+          <Route path="/employees/:employeeId" component={EmployeeCard}/>
 
           {/*<Route exact={ true } path='/projects/:id' render={ () => (*/}
-            {/*<ProjectCard projects={ projects } currentUserId={ user_id } />*/}
+          {/*<ProjectCard projects={ projects } currentUserId={ user_id } />*/}
           {/*)} />*/}
           {/*<Route exact={ true } path='/skills/:title' render={ () => (*/}
-            {/*<TechnologyCard employees={ employees } projects={ projects } skills={ skills } />*/}
+          {/*<TechnologyCard employees={ employees } projects={ projects } skills={ skills } />*/}
           {/*)} />*/}
           {/*<Route exact={ true } path='/departments/:title' render={ () => (*/}
-            {/*<DepartmentCard departments={ departments } currentUserId={ user_id } />*/}
+          {/*<DepartmentCard departments={ departments } currentUserId={ user_id } />*/}
           {/*)} />*/}
 
           {/*<Route exact={ true } path='/employees' render={ () => (*/}
-            {/*<Employees employees={ employees } projects={ projects } skills={ skills } />*/}
+          {/*<Employees employees={ employees } projects={ projects } skills={ skills } />*/}
           {/*)} />*/}
           {/*<Route exact={ true } path='/projects' render={ () => (*/}
-            {/*<Projects employees={ employees } projects={ projects } skills={ skills } />*/}
+          {/*<Projects employees={ employees } projects={ projects } skills={ skills } />*/}
           {/*)}/>*/}
           {/*<Route exact={ true } path='/skills' render={ () => (*/}
-            {/*<Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />*/}
+          {/*<Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />*/}
           {/*)} />*/}
 
           <Route path='*'>
-            <Redirect to={ `/employees/${ user._id }` } />
+            <Redirect to={`/employees/${user._id}`}/>
           </Route>
         </Switch>
+        }
       </>
     );
   }
@@ -80,6 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logoutAction: () => { dispatch(authActions.logout()); },
+  getCurrentUser: () => { dispatch(authActions.getCurrentUser()); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Dashboard);

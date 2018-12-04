@@ -4,6 +4,7 @@ import { employeeConstants } from '../_constants';
 
 const initialState = {
   loading: false,
+  employee: null,
 };
 
 export function employeesReducer(state = initialState, action) {
