@@ -5,21 +5,22 @@ import './StarRating.scss';
 
 
 const propTypes = {
-  degrees: PropTypes.array.isRequired,
+  employee_degree: PropTypes.number.isRequired,
+  manager_degree: PropTypes.number.isRequired,
   isManager: PropTypes.bool.isRequired,
-  employeeId: PropTypes.number.isRequired,
+  employeeId: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   editableRow: PropTypes.bool.isRequired
 };
 
 function StarRating(props) {
-  const { degrees, isManager, employeeId, index, editableRow } = props;
+  const { employee_degree, manager_degree, isManager, employeeId, index, editableRow } = props;
   const radioIds = [ ];
   for (let i = 1; i <= 5; i++) {
     radioIds.push (`star${ i }__r${ index }` );
   }
-  let employeeDegreeValue = degrees.find(degree => degree.source === employeeId).value;
-  let managerDegreeValue = degrees.find(degree => degree.source !== employeeId).value;
+  let employeeDegreeValue = employee_degree;
+  let managerDegreeValue = manager_degree;
 
   if (isManager) {
     return (

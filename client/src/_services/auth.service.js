@@ -10,11 +10,11 @@ export const authService = {
 };
 
 function login(username, password) {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-type", "application/json");
   const requestOptions = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: myHeaders,
     body: JSON.stringify({ username, password })
   };
 
@@ -53,9 +53,11 @@ function getCurrentUserId() {
 
 function getCurrentUser() {
   const userId = authService.getCurrentUserId();
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
   const requestOptions = {
     method: 'GET',
-    headers: authHeader()
+    headers: myHeaders
   };
 
   return fetch(`${environment.apiUrl}/users/${userId}`, requestOptions).then(handleResponse);

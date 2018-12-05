@@ -9,7 +9,7 @@ const propTypes = {
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    description: PropTypes.string,
     // technologies: PropTypes.array.isRequired
   }),
   position: PropTypes.string.isRequired

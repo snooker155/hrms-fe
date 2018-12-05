@@ -6,7 +6,7 @@ import './EmployeeCard.scss';
 import EmployeeCard__Info from '../EmployeeCard__Info';
 import EmployeeCard__Skills from '../EmployeeCard__Skills';
 import EmployeeCard__Projects from '../EmployeeCard__Projects';
-import {employeeActions} from "../_actions";
+import {employeeActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 
 class EmployeeCard extends Component {
@@ -17,7 +17,10 @@ class EmployeeCard extends Component {
     match: PropTypes.object,
     getEmployeeById: PropTypes.func,
     employeeId: PropTypes.string,
-    currentUserId: PropTypes.string
+    currentUserId: PropTypes.string,
+    editSkill: PropTypes.func,
+    createSkill: PropTypes.func,
+    deleteSkill: PropTypes.func
   };
 
   state = {
@@ -36,9 +39,9 @@ class EmployeeCard extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      activeTab: 1
-    });
+    // this.setState({
+    //   activeTab: 1
+    // });
 
     window.scroll(0, 0);
 
@@ -64,7 +67,7 @@ class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserId } = this.props;
+    const { employee, currentUserId, editSkill, createSkill, deleteSkill } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
@@ -135,7 +138,13 @@ class EmployeeCard extends Component {
               { activeTab === 3
                 ? <div className='EmployeeCard__skills animated fadeIn fast'>
                     <h2>{ employee._id === currentUserId ? 'My' : null } Skills</h2>
-                    <EmployeeCard__Skills employee={ employee } currentUserId={ currentUserId }/>
+                    <EmployeeCard__Skills
+                      employee={ employee }
+                      currentUserId={ currentUserId }
+                      editSkill={editSkill}
+                      createSkill={createSkill}
+                      deleteSkill={deleteSkill}
+                    />
                   </div>
                 : null
               }
@@ -156,6 +165,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   getEmployeeById: (id) => { dispatch(employeeActions.getById(id)); },
+  // editSkill: () => { dispatch(); },
+  // createSkill: () => { dispatch(); },
+  deleteSkill: (employee) => { dispatch(skillActions.delete(employee)); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(EmployeeCard);

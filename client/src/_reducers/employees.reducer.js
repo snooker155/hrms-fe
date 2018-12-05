@@ -1,6 +1,6 @@
 // @flow
 
-import { employeeConstants } from '../_constants';
+import {employeeConstants, skillConstants} from '../_constants';
 
 const initialState = {
   loading: false,
@@ -31,6 +31,22 @@ export function employeesReducer(state = initialState, action) {
         employee: action.employee
       };
     case employeeConstants.GETBYID_FAILURE:
+      return {
+        loading: false,
+        error: action.error
+      };
+    case skillConstants.DELETE_SKILL_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case skillConstants.DELETE_SKILL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        employee: action.employee
+      };
+    case skillConstants.DELETE_SKILL_FAILURE:
       return {
         loading: false,
         error: action.error

@@ -7,24 +7,43 @@ import { authService } from "./auth.service";
 export const employeeService = {
   getAll,
   getById,
+  update
 };
 
 function getAll() {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
   const requestOptions = {
     method: 'GET',
-    headers: authHeader()
+    headers: myHeaders
   };
 
   return fetch(`${environment.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
 function getById(id: string) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
   const requestOptions = {
     method: 'GET',
-    headers: authHeader()
+    headers: myHeaders
   };
 
   return fetch(`${environment.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+}
+
+function update(employee: any) {
+  console.log(employee);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  myHeaders.append("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+  const requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: JSON.stringify(employee)
+  };
+
+  return fetch(`${environment.apiUrl}/users/${employee._id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

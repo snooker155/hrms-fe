@@ -15,13 +15,15 @@ export default class EmployeeCard__Skills extends Component {
       }),
       skills: PropTypes.array.isRequired
     }),
-    currentUserId: PropTypes.string.isRequired
-  }
+    currentUserId: PropTypes.string.isRequired,
+    editSkill: PropTypes.func,
+    createSkill: PropTypes.func,
+    deleteSkill: PropTypes.func
+  };
 
   state = {
-    skills: this.props.employee.skills,
     editableRow: null
-  }
+  };
 
   addSkill = () => {
     const { _id: employeeId, manager: { _id: employeeManagerId } } = this.props.employee;
@@ -45,20 +47,22 @@ export default class EmployeeCard__Skills extends Component {
       }],
       editableRow: state.skills.length
     }));
-  }
+  };
 
   onEditClickHandler = index => {
     this.setState({
       editableRow: index
     });
-  }
+  };
 
   onDeleteClickHandler = index => {
-    this.setState((state) => ({
-      skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
+    const { employee, deleteSkill } = this.props;
+    employee.skills.splice(index, 1);
+    deleteSkill(employee);
+    this.setState({
       editableRow: null
-    }));
-  }
+    });
+  };
 
   onApplyClickHandler = index => {
     const { skills } = this.state;
@@ -97,60 +101,48 @@ export default class EmployeeCard__Skills extends Component {
       skills: [ ...state.skills.slice(0, index), newSkill, ...state.skills.slice(index + 1) ],
       editableRow: null
     }));
-  }
+  };
 
-  onCancelClickHandler = (index) => {
-    const { skills } = this.state;
-    const { currentUserId } = this.props;
-
-    if (skills[index].title !== '') {
-      let degree = skills[index].degree.filter(degree => degree.source === currentUserId).pop();
-      if (degree.date === null) {
-        degree = skills[index].degree.filter(degree => degree.source !== currentUserId).pop();
-      }
-
-      let value = 0;
-      for (let i = 1; i <= 5; i++) {
-        const star = document.getElementById( `star${ i }__r${ index }` );
-        if (star.checked) {
-          value = Number(star.value);
-          break;
-        }
-      }
-
-      if (value != degree.value) {
-        document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
-      }
-
-      this.setState({
-        editableRow: null
-      });
-    } else {
-      this.setState((state) => ({
-        skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
-        editableRow: null
-      }));
-    }
-  }
-
-  getLateDate(degree, isManager, employeeId) {
-    if (degree.every(degree => degree.date === null)) {
-      return '—';
-    } else if (isManager) {
-      return new Date(degree.sort((a, b) => new Date(b.date) - new Date(a.date))[0].date).toLocaleDateString();
-    } else {
-      const employeeDegreeLastUpdate = degree.find(degree => degree.source === employeeId).date;
-      if (employeeDegreeLastUpdate === null) {
-        return '—';
-      } else {
-        return new Date(degree.find(degree => degree.source === employeeId).date).toLocaleDateString();
-      }
-    }
-  }
+  onCancelClickHandler = () => {
+    this.setState({
+      editableRow: null
+    });
+    // const { skills } = this.state;
+    // const { currentUserId } = this.props;
+    //
+    // if (skills[index].title !== '') {
+    //   let degree = skills[index].degree.filter(degree => degree.source === currentUserId).pop();
+    //   if (degree.date === null) {
+    //     degree = skills[index].degree.filter(degree => degree.source !== currentUserId).pop();
+    //   }
+    //
+    //   let value = 0;
+    //   for (let i = 1; i <= 5; i++) {
+    //     const star = document.getElementById( `star${ i }__r${ index }` );
+    //     if (star.checked) {
+    //       value = Number(star.value);
+    //       break;
+    //     }
+    //   }
+    //
+    //   if (value != degree.value) {
+    //     document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
+    //   }
+    //
+    //   this.setState({
+    //     editableRow: null
+    //   });
+    // } else {
+    //   this.setState((state) => ({
+    //     skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
+    //     editableRow: null
+    //   }));
+    // }
+  };
 
   render() {
-    const { skills, editableRow } = this.state;
-    const { employee: { _id: employeeId, manager: { _id: employeeManagerId } },  currentUserId } = this.props;
+    const { editableRow } = this.state;
+    const { employee: { _id: employeeId, skills: skills, manager: { _id: employeeManagerId } },  currentUserId } = this.props;
 
     return (
       <>
@@ -183,7 +175,7 @@ export default class EmployeeCard__Skills extends Component {
             {
               skills.map((skill, i) => {
                 return (
-                  <tr key={ `${ skill.title } ${ i }` }
+                  <tr key={ `${ skill.skill.title } ${ i }` }
                       className={ editableRow !== null && editableRow !== i
                                  ? 'ec-skills__row ec-skills__row--disabled'
                                  : 'ec-skills__row'
@@ -192,23 +184,24 @@ export default class EmployeeCard__Skills extends Component {
                       { editableRow === i
                           ? <input type="text"
                                    className="input-field js-input-field-skill"
-                                   defaultValue={ skill.title }
+                                   defaultValue={ skill.skill.title }
                                    autoFocus={ true }
                                    onFocus={ e => e.target.classList.remove('invalid') }
                             />
-                          : <span><Link to={ skill._id }>{ skill.title }</Link></span>
+                          : <span><Link to={ `/skills/${ skill.skill._id}` }>{ skill.skill.title }</Link></span>
                       }
                     </td>
                     <td className="ec-skills__item">
                       <StarRating
-                        degrees={ skill.degree }
+                        employee_degree={ skill.employee_degree }
+                        manager_degree={ skill.manager_degree }
                         isManager={ currentUserId === employeeManagerId }
                         employeeId={ employeeId }
                         index={ i }
                         editableRow={ editableRow === i } />
                     </td>
                     <td className="ec-skills__item">
-                      <span>{ this.getLateDate(skill.degree, currentUserId === employeeManagerId, employeeId) }</span>
+                      <span>{ new Date(skill.updated).toLocaleDateString() }</span>
                     </td>
                     { currentUserId === employeeId || currentUserId === employeeManagerId
                         ? <td className="ec-skills__item ec-skills__item--edit">
