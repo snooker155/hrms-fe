@@ -5,14 +5,17 @@ import PropTypes from 'prop-types';
 import ClickOutside from 'react-click-outside';
 import './Header.scss';
 import logo from '../static-assets/img/logo.png';
+import avatar from '../static-assets/img/avatar-default.png'
 import DropDown from '../Dropdown';
 
 class Header extends Component {
   static propTypes = {
     user: PropTypes.shape({
-      name: PropTypes.string,
-      surname: PropTypes.string,
-      gender: PropTypes.boolean,
+      attributes: PropTypes.shape({
+        name: PropTypes.string,
+        surname: PropTypes.string,
+        gender: PropTypes.string,
+      }),
     }),
     logoutAction: PropTypes.func.isRequired
   };
@@ -65,7 +68,7 @@ class Header extends Component {
       <header className="header">
         <div className="wrapper">
           <div className="logotype">
-            <Link to={ `/employees/${ user._id }` }>
+            <Link to={ `/employees/${ user.attributes.login }` }>
               <img className="logotype__image" src={ logo } alt="HRM-System" />
             </Link>
           </div>
@@ -85,13 +88,14 @@ class Header extends Component {
 
             <div className="profile js-profileToogle">
               <div className="profile-link js-profileToogle" onClick={ this.changeDropdownVisibility }>
-                <p className="profile-link__username js-profileToogle">{ `${ user.name } ${ user.surname }` }</p>
-                <img className="profile-link__image js-profileToogle" src={ `https://randomuser.me/api/portraits/${ user.gender ? 'men' : 'women' }/65.jpg` } />
+                <p className="profile-link__username js-profileToogle">{ `${ user.attributes.name } ${ user.attributes.surname }` }</p>
+                {/*<img className="profile-link__image js-profileToogle" src={ `https://randomuser.me/api/portraits/${ user.attributes.gender === 'м' ? 'men' : 'women' }/65.jpg` } />*/}
+                <img className="profile-link__image js-profileToogle" src={ avatar } />
                 <i className="profile-link__dropDownBtn js-profileToogle material-icons">expand_more</i>
               </div>
                 { isDropDownVisible
                     ? <ClickOutside onClickOutside={ this.onClickOutsideHandler.bind(this) } >
-                        <DropDown id={ user._id } logoutAction={ logoutAction } onClickOutside={ this.onClickOutsideHandler.bind(this) } />
+                        <DropDown id={ user.attributes.login } logoutAction={ logoutAction } onClickOutside={ this.onClickOutsideHandler.bind(this) } />
                       </ClickOutside>
                     : null
                 }

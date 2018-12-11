@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
         { user &&
         <Switch>
-          <Route path="/employees/:employeeId" component={EmployeeCard}/>
+          <Route path="/employees/:employeeUsername" component={EmployeeCard}/>
 
           {/*<Route exact={ true } path='/projects/:id' render={ () => (*/}
           {/*<ProjectCard projects={ projects } currentUserId={ user_id } />*/}
@@ -77,7 +77,7 @@ class Dashboard extends Component {
           {/*)} />*/}
 
           <Route path='*'>
-            <Redirect to={`/employees/${user._id}`}/>
+            <Redirect to={`/employees/${user.attributes.login}`}/>
           </Route>
         </Switch>
         }

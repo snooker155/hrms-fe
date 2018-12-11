@@ -6,7 +6,7 @@ import { authService } from "./auth.service";
 
 export const employeeService = {
   getAll,
-  getById,
+  getByUsername,
   update
 };
 
@@ -21,7 +21,7 @@ function getAll() {
   return fetch(`${environment.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
-function getById(id: string) {
+function getByUsername(username: string) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -29,21 +29,22 @@ function getById(id: string) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/users/${username}`, requestOptions).then(handleResponse);
 }
 
 function update(employee: any) {
-  console.log(employee);
+  const { skills: skills } = employee;
+  console.log(skills);
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
-  myHeaders.append("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+  myHeaders.append("Content-type", "application/json");
   const requestOptions = {
     method: 'PUT',
     headers: myHeaders,
-    body: JSON.stringify(employee)
+    body: JSON.stringify({skills: skills})
   };
 
-  return fetch(`${environment.apiUrl}/users/${employee._id}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/users/${employee.attributes.login}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

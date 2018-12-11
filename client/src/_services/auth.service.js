@@ -5,7 +5,7 @@ export const authService = {
   login,
   logout,
   isLoggedIn,
-  getCurrentUserId,
+  getCurrentUsername,
   getCurrentUser
 };
 
@@ -42,17 +42,17 @@ function isLoggedIn() {
   return !!token;
 }
 
-function getCurrentUserId() {
+function getCurrentUsername() {
   if(isLoggedIn()) {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user && user.user;
+    return user && user.user.username;
   }
 
   return null;
 }
 
 function getCurrentUser() {
-  const userId = authService.getCurrentUserId();
+  const username = authService.getCurrentUsername();
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -60,7 +60,7 @@ function getCurrentUser() {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/users/${userId}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/users/${username}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

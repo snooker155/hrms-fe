@@ -8,6 +8,8 @@ import EmployeeCard__Skills from '../EmployeeCard__Skills';
 import EmployeeCard__Projects from '../EmployeeCard__Projects';
 import {employeeActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
+import avatar from '../static-assets/img/avatar-default.png'
+import Spinner from "react-spinner-material";
 
 class EmployeeCard extends Component {
   static propTypes = {
@@ -15,9 +17,9 @@ class EmployeeCard extends Component {
     // projects: PropTypes.array.isRequired,
     // currentUserId: PropTypes.number.isRequired,
     match: PropTypes.object,
-    getEmployeeById: PropTypes.func,
-    employeeId: PropTypes.string,
-    currentUserId: PropTypes.string,
+    getEmployeeByUsername: PropTypes.func,
+    employeeUsername: PropTypes.string,
+    currentUserUsername: PropTypes.string,
     editSkill: PropTypes.func,
     createSkill: PropTypes.func,
     deleteSkill: PropTypes.func
@@ -34,8 +36,8 @@ class EmployeeCard extends Component {
   componentDidMount() {
     window.scroll(0, 0);
 
-    const { employeeId, getEmployeeById } = this.props;
-    getEmployeeById(employeeId);
+    const { employeeUsername, getEmployeeByUsername } = this.props;
+    getEmployeeByUsername(employeeUsername);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,9 +55,9 @@ class EmployeeCard extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { employeeId, getEmployeeById } = this.props;
-    if( prevProps.match.params.employeeId !== employeeId ) {
-      getEmployeeById(employeeId);
+    const { employeeUsername, getEmployeeByUsername } = this.props;
+    if( prevProps.match.params.employeeUsername !== employeeUsername ) {
+      getEmployeeByUsername(employeeUsername);
     }
   }
 
@@ -67,19 +69,25 @@ class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserId, editSkill, createSkill, deleteSkill } = this.props;
+    const { employee, currentUserUsername, editSkill, createSkill, deleteSkill } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
-      return (<em>Loading...</em>);
+      return (
+        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+          <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
+        </div>
+      )
     }
 
-    for (let i = 0; i < employee.projects.length; i++) {
-      employee.projects[i] = {
-        ...employee.projects[i],
-        description: employee.projects[i].description,
-        // status,
-        // technologies
+    if(employee.projects && employee.project.length !== 0) {
+      for (let i = 0; i < employee.projects.length; i++) {
+        employee.projects[i] = {
+          ...employee.projects[i],
+          description: employee.projects[i].description,
+          // status,
+          // technologies
+        }
       }
     }
 
@@ -87,19 +95,20 @@ class EmployeeCard extends Component {
       <div className="EmployeeCard animated fadeIn fast">
         <div className="EmployeeCard__presentation">
           <div className="EmployeeCard__avatar">
-            <img className="EmployeeCard__image" src={ `https://randomuser.me/api/portraits/${ employee.gender ? 'men' : 'women' }/65.jpg` } />
+            {/*<img className="EmployeeCard__image" src={ `https://randomuser.me/api/portraits/${ employee.attributes.gender === 'м' ? 'men' : 'women' }/65.jpg` } />*/}
+            <img className="EmployeeCard__image" src={ avatar } />
           </div>
           <div>
-            <h3 className="EmployeeCard__fullname">{ `${ employee.name } ${ employee.surname}` }</h3>
+            <h3 className="EmployeeCard__fullname">{ `${ employee.attributes.name } ${ employee.attributes.surname}` }</h3>
             <p className="EmployeeCard__department">
               <i className="material-icons">business</i>
-              <Link to={`/departments/${ employee.department._id }`} >
-                { employee.department.title }
+              <Link to={`/departments/${ employee.relationships.unit.data.id }`} >
+                { employee.relationships.unit.data.name }
               </Link>
             </p>
 
             <h3 className="EmployeeCard__contacts">
-              <i className="material-icons">contact_mail</i>Email: { employee.email }
+              <i className="material-icons">contact_mail</i>Email: { employee.attributes.email }
             </h3>
           </div>
         </div>
@@ -110,10 +119,10 @@ class EmployeeCard extends Component {
                 <span>Info</span>
               </li>
               <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
-                <span>Projects</span>
+                <span>Skills</span>
               </li>
               <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>
-                <span>Skills</span>
+                <span>Projects</span>
               </li>
             </ul>
 
@@ -126,26 +135,26 @@ class EmployeeCard extends Component {
               }
 
               { activeTab === 2
-                ? <div className='EmployeeCard__projects animated fadeIn fast'>
-                  <h2>{ employee._id === currentUserId ? 'My' : null } Projects</h2>
-                  {
-                    employee.projects.map(project => <EmployeeCard__Projects key={ project._id } project={ project } position={ employee.position } />)
-                  }
+                ? <div className='EmployeeCard__skills animated fadeIn fast'>
+                  <h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Skills</h2>
+                  <EmployeeCard__Skills
+                    employee={ employee }
+                    currentUserUsername={ currentUserUsername }
+                    editSkill={editSkill}
+                    createSkill={createSkill}
+                    deleteSkill={deleteSkill}
+                  />
                 </div>
                 : null
               }
 
               { activeTab === 3
-                ? <div className='EmployeeCard__skills animated fadeIn fast'>
-                    <h2>{ employee._id === currentUserId ? 'My' : null } Skills</h2>
-                    <EmployeeCard__Skills
-                      employee={ employee }
-                      currentUserId={ currentUserId }
-                      editSkill={editSkill}
-                      createSkill={createSkill}
-                      deleteSkill={deleteSkill}
-                    />
-                  </div>
+                ? <div className='EmployeeCard__projects animated fadeIn fast'>
+                  <h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Projects</h2>
+                  {
+                    employee.projects.map(project => <EmployeeCard__Projects key={ project._id } project={ project } position={ employee.position } />)
+                  }
+                </div>
                 : null
               }
             </div>
@@ -158,13 +167,13 @@ class EmployeeCard extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   employee: state.employees.employee,
-  employeeId: ownProps.match.params.employeeId,
-  currentUserId: state.auth.user._id
+  employeeUsername: ownProps.match.params.employeeUsername,
+  currentUserUsername: state.auth.user.attributes.login
   // currentUserId: ownProps.match.params.employeeId
 });
 
 const mapDispatchToProps = dispatch => ({
-  getEmployeeById: (id) => { dispatch(employeeActions.getById(id)); },
+  getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
   // editSkill: () => { dispatch(); },
   // createSkill: () => { dispatch(); },
   deleteSkill: (employee) => { dispatch(skillActions.delete(employee)); }

@@ -9,59 +9,68 @@ import getYearDiff from '../_helpers/getYearDiff';
 
 const propTypes = {
   employee: PropTypes.shape({
-    employee_number: PropTypes.number.isRequired,
-    start_date: PropTypes.string.isRequired,
-    gender: PropTypes.boolean,
-    birthday: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    manager: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      link: PropTypes.string,
-      name: PropTypes.string,
-      surname: PropTypes.string
+    id: PropTypes.string,
+    attributes: PropTypes.shape({
+      'acc-id': PropTypes.number,
+      'start-date': PropTypes.string,
+      gender: PropTypes.string,
+      birthday: PropTypes.string,
+      manager: PropTypes.number,
     }),
-    department: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
-    })
+    relationships: PropTypes.shape({
+      unit: PropTypes.shape({
+        data: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string
+        }),
+      }),
+      position: PropTypes.shape({
+        data: PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string
+        }),
+      }),
+    }),
+    manager: PropTypes.object,
   })
 }
 
 function EmployeeCard__Info(props) {
   const { employee } = props;
-  const employeeAge = getYearDiff(employee.birthday);
-  const experience = getYearDiff(employee.start_date);
+  const employeeAge = getYearDiff(employee.attributes.birthday);
+  const experience = getYearDiff(employee.attributes['start-date']);
 
   return (
       <div className="ec-info">
         <div className="ec-info__personal-info">
           <h4>Personal info</h4>
           <div className="content">
-            <span><strong>ID: </strong>{ employee.employee_number }</span>
-            <span><strong>Start Date: </strong>{ dateFormat(employee.start_date, 'mmmm dS, yyyy') } ({ experience }&nbsp;y.)</span>
-            <span><strong>Gender: </strong>{ employee.gender === 'male' ? 'Male' : 'Female' }</span>
-            <span><strong>Birthday: </strong>{ dateFormat(employee.birthday, 'mmmm dS, yyyy') } ({ employeeAge }&nbsp;y.o.)</span>
+            <span><strong>ID: </strong>{ employee.id }</span>
+            <span><strong>ACC-ID: </strong>{ employee.attributes['acc-id'] }</span>
+            <span><strong>Start Date: </strong>{ dateFormat(employee.attributes['start-date'], 'mmmm dS, yyyy') } ({ experience }&nbsp;y.)</span>
+            <span><strong>Gender: </strong>{ employee.attributes.gender === 'м' ? 'Male' : 'Female' }</span>
+            <span><strong>Birthday: </strong>{ dateFormat(employee.attributes.birthday, 'mmmm dS, yyyy') } ({ employeeAge }&nbsp;y.o.)</span>
           </div>
         </div>
         <div className="ec-info__job-defatils">
           <h4>Job details</h4>
           <div className="content">
-            <span><strong>Position: </strong>{ employee.position }</span>
+            <span><strong>Position: </strong>{ employee.relationships.position.data.title }</span>
             {
               employee.manager
                 ? <span>
                     <strong>Supervisor: </strong>
-                    <Link to={`/employees/${ employee.manager._id }`} >
-                      { `${ employee.manager.name } ${ employee.manager.surname }` }
+                    <Link to={`/employees/${ employee.manager.attributes.login }`} >
+                      { `${ employee.manager.attributes.name } ${ employee.manager.attributes.surname }` }
                     </Link>
                   </span>
                 : null
             }
             {
-              employee.department
+              employee.relationships.unit
                 ? <span><strong>Department: </strong>
-                    <Link to={`/departments/${ employee.department._id }`} >
-                      { employee.department.title }
+                    <Link to={`/departments/${ employee.relationships.unit.data.id }`} >
+                      { employee.relationships.unit.data.name }
                     </Link>
                   </span>
                 : null

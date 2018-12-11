@@ -9,41 +9,48 @@ import CardTableActions from '../CardTableActions';
 export default class EmployeeCard__Skills extends Component {
   static propTypes = {
     employee: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      manager: PropTypes.shape({
-        _id: PropTypes.string.isRequired
+      id: PropTypes.string,
+      attributes: PropTypes.shape({
+        login: PropTypes.string,
+        manager: PropTypes.number,
       }),
-      skills: PropTypes.array.isRequired
+      skills: PropTypes.array.isRequired,
+      manager: PropTypes.shape({
+        username: PropTypes.string
+      }),
     }),
-    currentUserId: PropTypes.string.isRequired,
+    currentUserUsername: PropTypes.string,
     editSkill: PropTypes.func,
     createSkill: PropTypes.func,
     deleteSkill: PropTypes.func
   };
 
   state = {
-    editableRow: null
+    editableRow: null,
+    skills: this.props.employee.skills,
   };
 
   addSkill = () => {
-    const { _id: employeeId, manager: { _id: employeeManagerId } } = this.props.employee;
+    const { login: employeeUsername, manager: { username: employeeManagerUsername } } = this.props.employee.attributes;
 
     this.setState(state => ({
       skills: [ ...state.skills, {
-        title: '',
-        degree: [
-          {
-            value: 0,
-            source: employeeId,
-            date: null
-          },
-          {
-            value: 0,
-            source: employeeManagerId,
-            date: null
-          }
-        ],
-        link: '/skills'
+        skill: {
+          title: '',
+        },
+        employee_degree: 0,
+        manager_degree: 0,
+        updated: Date.now()
+        // employee_degree: {
+        //     value: 0,
+        //     source: employeeUsername,
+        //     date: null
+        // },
+        // manager_degree: {
+        //     value: 0,
+        //     source: employeeManagerUsername,
+        //     date: null
+        // },
       }],
       editableRow: state.skills.length
     }));
@@ -66,7 +73,7 @@ export default class EmployeeCard__Skills extends Component {
 
   onApplyClickHandler = index => {
     const { skills } = this.state;
-    const { currentUserId } = this.props;
+    const { currentUserUsername } = this.props;
 
     const inputValue = document.querySelector('.js-input-field-skill');
     if (inputValue.value.trim() === '') {
@@ -74,7 +81,7 @@ export default class EmployeeCard__Skills extends Component {
       return;
     }
 
-    const degree = skills[index].degree.filter(degree => degree.source !== currentUserId).pop();
+    const degree = skills[index].degree.filter(degree => degree.source !== currentUserUsername).pop();
     let value = 0;
     for (let i = 1; i <= 5; i++) {
       const star = document.getElementById( `star${ i }__r${ index }` );
@@ -90,7 +97,7 @@ export default class EmployeeCard__Skills extends Component {
         degree,
         {
           value: value,
-          source: currentUserId,
+          source: currentUserUsername,
           date: new Date().toJSON()
         }
       ],
@@ -103,50 +110,46 @@ export default class EmployeeCard__Skills extends Component {
     }));
   };
 
-  onCancelClickHandler = () => {
-    this.setState({
-      editableRow: null
-    });
-    // const { skills } = this.state;
-    // const { currentUserId } = this.props;
-    //
-    // if (skills[index].title !== '') {
-    //   let degree = skills[index].degree.filter(degree => degree.source === currentUserId).pop();
-    //   if (degree.date === null) {
-    //     degree = skills[index].degree.filter(degree => degree.source !== currentUserId).pop();
-    //   }
-    //
-    //   let value = 0;
-    //   for (let i = 1; i <= 5; i++) {
-    //     const star = document.getElementById( `star${ i }__r${ index }` );
-    //     if (star.checked) {
-    //       value = Number(star.value);
-    //       break;
-    //     }
-    //   }
-    //
-    //   if (value != degree.value) {
-    //     document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
-    //   }
-    //
-    //   this.setState({
-    //     editableRow: null
-    //   });
-    // } else {
-    //   this.setState((state) => ({
-    //     skills: [ ...state.skills.slice(0, index), ...state.skills.slice(index + 1) ],
-    //     editableRow: null
-    //   }));
-    // }
+  onCancelClickHandler = (index) => {
+    const { skills } = this.state;
+    const { currentUserUsername, employee: { skills: originalSkills } } = this.props;
+
+    if (skills[index].skill.title !== '') {
+      let degree = skills[index].degree.filter(degree => degree.source === currentUserUsername).pop();
+      if (degree.date === null) {
+        degree = skills[index].degree.filter(degree => degree.source !== currentUserUsername).pop();
+      }
+
+      let value = 0;
+      for (let i = 1; i <= 5; i++) {
+        const star = document.getElementById( `star${ i }__r${ index }` );
+        if (star.checked) {
+          value = Number(star.value);
+          break;
+        }
+      }
+
+      if (value != degree.value) {
+        document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
+      }
+
+      this.setState({
+        editableRow: null
+      });
+    } else {
+      this.setState((state) => ({
+        skills: originalSkills ,
+        editableRow: null
+      }));
+    }
   };
 
   render() {
-    const { editableRow } = this.state;
-    const { employee: { _id: employeeId, skills: skills, manager: { _id: employeeManagerId } },  currentUserId } = this.props;
-
+    const { editableRow, skills } = this.state;
+    const { employee: { attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
     return (
       <>
-        { currentUserId === employeeId || currentUserId === employeeManagerId
+        { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
           ? <i className={ editableRow !== null ? 'material-icons material-icons--add material-icons--disabled' : 'material-icons material-icons--add'} onClick={ this.addSkill }>note_add</i>
           : null
         }
@@ -162,7 +165,7 @@ export default class EmployeeCard__Skills extends Component {
                 <th className="ec-skills__item">
                   <span>Last update</span>
                 </th>
-                { currentUserId === employeeId || currentUserId === employeeManagerId
+                { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
                   ?  <th className="ec-skills__item">
                         <span>Actions</span>
                       </th>
@@ -173,7 +176,8 @@ export default class EmployeeCard__Skills extends Component {
 
             <tbody>
             {
-              skills.map((skill, i) => {
+              skills.length !== 0
+              ? skills.map((skill, i) => {
                 return (
                   <tr key={ `${ skill.skill.title } ${ i }` }
                       className={ editableRow !== null && editableRow !== i
@@ -195,15 +199,15 @@ export default class EmployeeCard__Skills extends Component {
                       <StarRating
                         employee_degree={ skill.employee_degree }
                         manager_degree={ skill.manager_degree }
-                        isManager={ currentUserId === employeeManagerId }
-                        employeeId={ employeeId }
+                        isManager={ currentUserUsername === employeeManagerUsername }
+                        employeeUsername={ employeeUsername }
                         index={ i }
                         editableRow={ editableRow === i } />
                     </td>
                     <td className="ec-skills__item">
                       <span>{ new Date(skill.updated).toLocaleDateString() }</span>
                     </td>
-                    { currentUserId === employeeId || currentUserId === employeeManagerId
+                    { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
                         ? <td className="ec-skills__item ec-skills__item--edit">
                             <CardTableActions
                               isActive={ editableRow === i }
@@ -218,6 +222,7 @@ export default class EmployeeCard__Skills extends Component {
                   </tr>
                 );
               })
+              : null
             }
           </tbody>
         </table>

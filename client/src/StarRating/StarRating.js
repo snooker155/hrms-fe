@@ -8,13 +8,13 @@ const propTypes = {
   employee_degree: PropTypes.number.isRequired,
   manager_degree: PropTypes.number.isRequired,
   isManager: PropTypes.bool.isRequired,
-  employeeId: PropTypes.string.isRequired,
+  employeeUsername: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   editableRow: PropTypes.bool.isRequired
 };
 
 function StarRating(props) {
-  const { employee_degree, manager_degree, isManager, employeeId, index, editableRow } = props;
+  const { employee_degree, manager_degree, isManager, employeeUsername, index, editableRow } = props;
   const radioIds = [ ];
   for (let i = 1; i <= 5; i++) {
     radioIds.push (`star${ i }__r${ index }` );

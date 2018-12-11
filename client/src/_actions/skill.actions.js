@@ -17,7 +17,7 @@ function _delete(employee) {
       .then(
         employee => {
           console.log(employee);
-          // dispatch(success(employee))
+          dispatch(success(employee))
         },
         error => {
           dispatch(failure(error.toString()))

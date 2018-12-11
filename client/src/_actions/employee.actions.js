@@ -6,7 +6,7 @@ import { employeeService } from "../_services";
 
 export const employeeActions = {
   getAll,
-  getById,
+  getByUsername,
 };
 
 function getAll() {
@@ -29,22 +29,22 @@ function getAll() {
   function failure(error) { return { type: employeeConstants.GETALL_FAILURE, error } }
 }
 
-function getById(id: string) {
+function getByUsername(username: string) {
   return dispatch => {
-    dispatch(request(id));
+    dispatch(request(username));
 
-    employeeService.getById(id)
+    employeeService.getByUsername(username)
       .then(
         employee => {
           dispatch(success(employee))
         },
         error => {
-          dispatch(failure(id, error.toString()))
+          dispatch(failure(username, error.toString()))
         }
       );
   };
 
-  function request(id) { return { type: employeeConstants.GETBYID_REQUEST, id } }
+  function request(username) { return { type: employeeConstants.GETBYID_REQUEST, username } }
   function success(employee) { return { type: employeeConstants.GETBYID_SUCCESS, employee } }
-  function failure(id, error) { return { type: employeeConstants.GETBYID_FAILURE, id, error } }
+  function failure(username, error) { return { type: employeeConstants.GETBYID_FAILURE, username, error } }
 }
