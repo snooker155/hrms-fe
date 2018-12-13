@@ -14,7 +14,7 @@ const propTypes = {
 };
 
 function StarRating(props) {
-  const { employee_degree, manager_degree, isManager, employeeUsername, index, editableRow } = props;
+  const { employee_degree, manager_degree, isManager, employeeUsername, index, editableRow, onChangeDegree } = props;
   const radioIds = [ ];
   for (let i = 1; i <= 5; i++) {
     radioIds.push (`star${ i }__r${ index }` );
@@ -57,7 +57,7 @@ function StarRating(props) {
         {
           radioIds.map((item, i)=> (
             <Fragment key={ item }>
-              <input type="radio" id={ item } name={ `star-rating__r${ index }` } value={ 5 - i } defaultChecked={ employeeDegreeValue === (5 - i)} />
+              <input type="radio" id={ item } name={ `star-rating__r${ index }` } onChange={ onChangeDegree } value={ 5 - i } checked={ employeeDegreeValue === (5 - i)} />
               <label htmlFor={ item }></label>
             </Fragment>
           ))

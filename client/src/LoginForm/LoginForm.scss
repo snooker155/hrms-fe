@@ -54,7 +54,25 @@
     &__input {
       &--signIn {
         background-color: hsl(211, 50%, 55%);
+        border-color: #2e6da4;
         width: 15rem;
+        outline: none;
+
+        &:hover{
+          background-color: #2e6da4;
+          outline: none;
+        }
+
+        &:focus{
+          background-color: #2e6da4;
+          outline: none;
+        }
+
+        &.disabled {
+          background-color: #ddd;
+          border-color: #ddd;
+          outline: none;
+        }
       }
     }
   }
@@ -78,7 +96,7 @@
   }
 
   .input-field > label {
-    top: -.6rem !important;
+    top: .3rem !important;
     font-size: 1.5rem;
   }
 

@@ -105,7 +105,7 @@ class Header extends Component {
       </header>
 
       <div className="fix-indent"></div>
-      </>
+    </>
     );
   }
 }

@@ -20,8 +20,7 @@ class EmployeeCard extends Component {
     getEmployeeByUsername: PropTypes.func,
     employeeUsername: PropTypes.string,
     currentUserUsername: PropTypes.string,
-    editSkill: PropTypes.func,
-    createSkill: PropTypes.func,
+    updateSkill: PropTypes.func,
     deleteSkill: PropTypes.func
   };
 
@@ -69,7 +68,7 @@ class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserUsername, editSkill, createSkill, deleteSkill } = this.props;
+    const { employee, currentUserUsername, updateSkill, deleteSkill } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
@@ -121,9 +120,9 @@ class EmployeeCard extends Component {
               <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
                 <span>Skills</span>
               </li>
-              <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>
-                <span>Projects</span>
-              </li>
+              {/*<li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>*/}
+                {/*<span>Projects</span>*/}
+              {/*</li>*/}
             </ul>
 
             <div className="c-tabs__content">
@@ -140,23 +139,22 @@ class EmployeeCard extends Component {
                   <EmployeeCard__Skills
                     employee={ employee }
                     currentUserUsername={ currentUserUsername }
-                    editSkill={editSkill}
-                    createSkill={createSkill}
-                    deleteSkill={deleteSkill}
+                    updateSkill={ updateSkill }
+                    deleteSkill={ deleteSkill }
                   />
                 </div>
                 : null
               }
 
-              { activeTab === 3
-                ? <div className='EmployeeCard__projects animated fadeIn fast'>
-                  <h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Projects</h2>
-                  {
-                    employee.projects.map(project => <EmployeeCard__Projects key={ project._id } project={ project } position={ employee.position } />)
-                  }
-                </div>
-                : null
-              }
+              {/*{ activeTab === 3*/}
+                {/*? <div className='EmployeeCard__projects animated fadeIn fast'>*/}
+                  {/*<h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Projects</h2>*/}
+                  {/*{*/}
+                    {/*employee.projects.map(project => <EmployeeCard__Projects key={ project._id } project={ project } position={ employee.position } />)*/}
+                  {/*}*/}
+                {/*</div>*/}
+                {/*: null*/}
+              {/*}*/}
             </div>
           </div>
         </div>
@@ -174,9 +172,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
-  // editSkill: () => { dispatch(); },
-  // createSkill: () => { dispatch(); },
-  deleteSkill: (employee) => { dispatch(skillActions.delete(employee)); }
+  updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
+  deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(EmployeeCard);

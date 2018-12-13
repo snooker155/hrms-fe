@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 import { authReducer } from "./auth.reducer";
 import { alertReducer } from "./alert.reducer";
 import { employeesReducer } from "./employees.reducer";
+import {skillsReducer} from "./skills.reducer";
 
 export const rootReducer = combineReducers({
   alert: alertReducer,
   auth: authReducer,
-  employees: employeesReducer
+  employees: employeesReducer,
+  skills: skillsReducer,
 });

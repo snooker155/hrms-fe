@@ -7,6 +7,8 @@ import { employeeService } from "../_services";
 export const employeeActions = {
   getAll,
   getByUsername,
+  update,
+  delete: _delete,
 };
 
 function getAll() {
@@ -47,4 +49,48 @@ function getByUsername(username: string) {
   function request(username) { return { type: employeeConstants.GETBYID_REQUEST, username } }
   function success(employee) { return { type: employeeConstants.GETBYID_SUCCESS, employee } }
   function failure(username, error) { return { type: employeeConstants.GETBYID_FAILURE, username, error } }
+}
+
+function update(employee) {
+  return dispatch => {
+    dispatch(request());
+    console.log(employee);
+
+    employeeService.update(employee)
+      .then(
+        employee => {
+          console.log(employee);
+          dispatch(success(employee))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.UPDATE_SKILL_REQUEST } }
+  function success(employee) { return { type: employeeConstants.UPDATE_SKILL_SUCCESS, employee } }
+  function failure(error) { return { type: employeeConstants.UPDATE_SKILL_FAILURE, error } }
+}
+
+function _delete(employee) {
+  return dispatch => {
+    dispatch(request());
+    console.log(employee);
+
+    employeeService.update(employee)
+      .then(
+        employee => {
+          console.log(employee);
+          dispatch(success(employee))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.DELETE_SKILL_REQUEST } }
+  function success(employee) { return { type: employeeConstants.DELETE_SKILL_SUCCESS, employee } }
+  function failure(error) { return { type: employeeConstants.DELETE_SKILL_FAILURE, error } }
 }

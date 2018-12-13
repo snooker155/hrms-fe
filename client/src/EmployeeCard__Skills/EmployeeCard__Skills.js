@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -5,6 +7,8 @@ import { Link } from 'react-router-dom';
 import './EmployeeCard__Skills.scss';
 import StarRating from '../StarRating';
 import CardTableActions from '../CardTableActions';
+import SkillForm from '../SkillForm';
+import { Modal, Button } from 'react-bootstrap';
 
 export default class EmployeeCard__Skills extends Component {
   static propTypes = {
@@ -20,39 +24,45 @@ export default class EmployeeCard__Skills extends Component {
       }),
     }),
     currentUserUsername: PropTypes.string,
-    editSkill: PropTypes.func,
-    createSkill: PropTypes.func,
+    updateSkill: PropTypes.func,
     deleteSkill: PropTypes.func
   };
 
   state = {
+    stateSkills: JSON.parse(JSON.stringify(this.props.employee.skills)),
     editableRow: null,
-    skills: this.props.employee.skills,
+    showModal: false,
   };
 
-  addSkill = () => {
-    const { login: employeeUsername, manager: { username: employeeManagerUsername } } = this.props.employee.attributes;
+  constructor(props) {
+    super(props);
+  }
 
+  addSkill = () => {
     this.setState(state => ({
-      skills: [ ...state.skills, {
+      stateSkills: [ ...state.stateSkills, {
         skill: {
           title: '',
         },
         employee_degree: 0,
         manager_degree: 0,
         updated: Date.now()
-        // employee_degree: {
-        //     value: 0,
-        //     source: employeeUsername,
-        //     date: null
-        // },
-        // manager_degree: {
-        //     value: 0,
-        //     source: employeeManagerUsername,
-        //     date: null
-        // },
       }],
-      editableRow: state.skills.length
+      editableRow: state.stateSkills.length
+    }));
+  };
+
+  showModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showModal: true,
+    }));
+  };
+
+  hideModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showModal: false,
     }));
   };
 
@@ -67,90 +77,70 @@ export default class EmployeeCard__Skills extends Component {
     employee.skills.splice(index, 1);
     deleteSkill(employee);
     this.setState({
+      stateSkills: JSON.parse(JSON.stringify(employee.skills)),
+      editableRow: null,
+    });
+  };
+
+  onChangeDegree = (e) => {
+    const value = +e.target.value;
+    const { stateSkills, editableRow } = this.state;
+    const { employee: { attributes: { manager: { username: employeeManagerUsername }}}, currentUserUsername } = this.props;
+    if(currentUserUsername === employeeManagerUsername){
+      stateSkills[editableRow].manager_degree = value;
+    }else{
+      stateSkills[editableRow].employee_degree = value;
+    }
+    this.setState({
+      stateSkills: stateSkills,
+      editableRow: editableRow,
+    });
+  };
+
+  onChangeSkillTitle = (e) => {
+    const title = e.target.value;
+    const { stateSkills, editableRow } = this.state;
+    stateSkills[editableRow].skill.title = title;
+    this.setState({
+      stateSkills: stateSkills,
+      editableRow: editableRow,
+    });
+  };
+
+  onApplyClickHandler = () => {
+    const { stateSkills } = this.state;
+    const { employee, updateSkill } = this.props;
+
+    // const inputValue = document.querySelector('.js-input-field-skill');
+    // if (inputValue.value.trim() === '') {
+    //   inputValue.classList.add('invalid');
+    //   return;
+    // }
+
+    employee.skills = stateSkills;
+    updateSkill(employee);
+
+    this.setState({
+      editableRow: null,
+    });
+  };
+
+  onCancelClickHandler = () => {
+    const { employee: { skills: skills } } = this.props;
+
+    this.setState({
+      stateSkills: JSON.parse(JSON.stringify(skills)),
       editableRow: null
     });
   };
 
-  onApplyClickHandler = index => {
-    const { skills } = this.state;
-    const { currentUserUsername } = this.props;
-
-    const inputValue = document.querySelector('.js-input-field-skill');
-    if (inputValue.value.trim() === '') {
-      inputValue.classList.add('invalid');
-      return;
-    }
-
-    const degree = skills[index].degree.filter(degree => degree.source !== currentUserUsername).pop();
-    let value = 0;
-    for (let i = 1; i <= 5; i++) {
-      const star = document.getElementById( `star${ i }__r${ index }` );
-      if (star.checked) {
-        value = Number(star.value);
-        break;
-      }
-    }
-
-    const newSkill = {
-      title: inputValue.value.trim(),
-      degree: [
-        degree,
-        {
-          value: value,
-          source: currentUserUsername,
-          date: new Date().toJSON()
-        }
-      ],
-      link: encodeURI(`/skills/${ inputValue.value.trim() }`)
-    };
-
-    this.setState((state) => ({
-      skills: [ ...state.skills.slice(0, index), newSkill, ...state.skills.slice(index + 1) ],
-      editableRow: null
-    }));
-  };
-
-  onCancelClickHandler = (index) => {
-    const { skills } = this.state;
-    const { currentUserUsername, employee: { skills: originalSkills } } = this.props;
-
-    if (skills[index].skill.title !== '') {
-      let degree = skills[index].degree.filter(degree => degree.source === currentUserUsername).pop();
-      if (degree.date === null) {
-        degree = skills[index].degree.filter(degree => degree.source !== currentUserUsername).pop();
-      }
-
-      let value = 0;
-      for (let i = 1; i <= 5; i++) {
-        const star = document.getElementById( `star${ i }__r${ index }` );
-        if (star.checked) {
-          value = Number(star.value);
-          break;
-        }
-      }
-
-      if (value != degree.value) {
-        document.getElementById( `star${ 6 - degree.value }__r${ index }` ).click();
-      }
-
-      this.setState({
-        editableRow: null
-      });
-    } else {
-      this.setState((state) => ({
-        skills: originalSkills ,
-        editableRow: null
-      }));
-    }
-  };
-
   render() {
-    const { editableRow, skills } = this.state;
+    const { editableRow, stateSkills } = this.state;
     const { employee: { attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
     return (
       <>
         { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
-          ? <i className={ editableRow !== null ? 'material-icons material-icons--add material-icons--disabled' : 'material-icons material-icons--add'} onClick={ this.addSkill }>note_add</i>
+          ? <i className={ editableRow !== null ? 'material-icons material-icons--add material-icons--disabled' : 'material-icons material-icons--add'} onClick={ this.showModal }>note_add</i>
           : null
         }
         <table className="ec-skills striped">
@@ -176,8 +166,8 @@ export default class EmployeeCard__Skills extends Component {
 
             <tbody>
             {
-              skills.length !== 0
-              ? skills.map((skill, i) => {
+              stateSkills.length !== 0
+              ? stateSkills.map((skill, i) => {
                 return (
                   <tr key={ `${ skill.skill.title } ${ i }` }
                       className={ editableRow !== null && editableRow !== i
@@ -185,15 +175,17 @@ export default class EmployeeCard__Skills extends Component {
                                  : 'ec-skills__row'
                   }>
                     <td className="ec-skills__item">
-                      { editableRow === i
-                          ? <input type="text"
-                                   className="input-field js-input-field-skill"
-                                   defaultValue={ skill.skill.title }
-                                   autoFocus={ true }
-                                   onFocus={ e => e.target.classList.remove('invalid') }
-                            />
-                          : <span><Link to={ `/skills/${ skill.skill._id}` }>{ skill.skill.title }</Link></span>
-                      }
+                      {/*{ editableRow === i*/}
+                          {/*? <input type="text"*/}
+                                   {/*className="input-field js-input-field-skill"*/}
+                                   {/*value={ skill.skill.title }*/}
+                                   {/*onChange={ this.onChangeSkillTitle }*/}
+                                   {/*autoFocus={ true }*/}
+                                   {/*onFocus={ e => e.target.classList.remove('invalid') }*/}
+                            {/*/>*/}
+                          {/*: <span><Link to={ `/skills/${ skill.skill._id}` }>{ skill.skill.title }</Link></span>*/}
+                      {/*}*/}
+                      <span><Link to={ `/skills/${ skill.skill._id}` }>{ skill.skill.title }</Link></span>
                     </td>
                     <td className="ec-skills__item">
                       <StarRating
@@ -202,7 +194,8 @@ export default class EmployeeCard__Skills extends Component {
                         isManager={ currentUserUsername === employeeManagerUsername }
                         employeeUsername={ employeeUsername }
                         index={ i }
-                        editableRow={ editableRow === i } />
+                        editableRow={ editableRow === i }
+                        onChangeDegree={ this.onChangeDegree }/>
                     </td>
                     <td className="ec-skills__item">
                       <span>{ new Date(skill.updated).toLocaleDateString() }</span>
@@ -226,6 +219,21 @@ export default class EmployeeCard__Skills extends Component {
             }
           </tbody>
         </table>
+
+        <Modal
+          dialogClassName="add-skill-modal"
+          show={this.state.showModal}>
+          <Modal.Header>
+            <Modal.Title>Add skill</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <SkillForm/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button bsStyle="success" onClick={this.hideModal}>Save</Button>
+            <Button onClick={this.hideModal}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </>
     );
   }

@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { history } from '../_helpers';
 import {alertActions, authActions} from '../_actions';
 import { PrivateRoute } from '../_components';
-// import { HomePage } from '../HomePage';
 import { Auth } from '../Auth';
 import Dashboard from "../Dashboard";
 import Spinner from "react-spinner-material";

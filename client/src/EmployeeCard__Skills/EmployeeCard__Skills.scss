@@ -21,6 +21,11 @@
     border-top: .1rem solid #ddd;
     border-bottom: .1rem solid #ddd;
 
+    span a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     input[type=text] {
       text-align: center;
       margin: 0;
@@ -53,4 +58,8 @@
       }
     }
   }
+}
+
+.add-skill-modal {
+  margin-top: 15%;
 }

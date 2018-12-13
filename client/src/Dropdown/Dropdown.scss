@@ -3,6 +3,7 @@
 
   &__menu {
     position: absolute;
+    top: .3rem;
     right: -.3rem;
     display: flex;
     flex-flow: column nowrap;
@@ -34,9 +35,11 @@
     text-decoration: none;
     padding: .4rem 1.1rem;
     width: 100%;
+    cursor: pointer;
 
     &:hover {
       background: hsl(211, 30%, 80%);
+      text-decoration: none;
     }
   }
 }

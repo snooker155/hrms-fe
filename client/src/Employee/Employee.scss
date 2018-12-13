@@ -71,7 +71,11 @@
             position: relative;
             overflow: hidden;
             text-decoration: none;
-         }
+
+            &:hover{
+              text-decoration: none;
+            }
+          }
 
           .material-icons {
             vertical-align: .1rem;

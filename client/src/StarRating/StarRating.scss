@@ -3,6 +3,12 @@
   flex-flow: row-reverse nowrap;
   justify-content: center;
 
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   &--disabled {
     pointer-events: none;
   }
