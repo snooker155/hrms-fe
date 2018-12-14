@@ -23,6 +23,23 @@ export function skillsReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case skillConstants.GETALL_SKILLS_TYPES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case skillConstants.GETALL_SKILLS_TYPES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        skillsTypes: action.skillsTypes
+      };
+    case skillConstants.GETALL_SKILLS_TYPES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     case skillConstants.GETBYTYPE_REQUEST:
       return {
         loading: true

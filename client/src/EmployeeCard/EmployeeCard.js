@@ -21,7 +21,11 @@ class EmployeeCard extends Component {
     employeeUsername: PropTypes.string,
     currentUserUsername: PropTypes.string,
     updateSkill: PropTypes.func,
-    deleteSkill: PropTypes.func
+    deleteSkill: PropTypes.func,
+    skills: PropTypes.array,
+    getAllSkills: PropTypes.func,
+    skillsTypes: PropTypes.array,
+    getSkillsTypes: PropTypes.func
   };
 
   state = {
@@ -35,8 +39,10 @@ class EmployeeCard extends Component {
   componentDidMount() {
     window.scroll(0, 0);
 
-    const { employeeUsername, getEmployeeByUsername } = this.props;
+    const { employeeUsername, getEmployeeByUsername, getAllSkills, getSkillsTypes } = this.props;
     getEmployeeByUsername(employeeUsername);
+    getAllSkills();
+    getSkillsTypes();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -68,7 +74,7 @@ class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserUsername, updateSkill, deleteSkill } = this.props;
+    const { employee, currentUserUsername, updateSkill, deleteSkill, skills, skillsTypes } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
@@ -141,6 +147,8 @@ class EmployeeCard extends Component {
                     currentUserUsername={ currentUserUsername }
                     updateSkill={ updateSkill }
                     deleteSkill={ deleteSkill }
+                    skills={ skills }
+                    skillsTypes = { skillsTypes }
                   />
                 </div>
                 : null
@@ -166,14 +174,19 @@ class EmployeeCard extends Component {
 const mapStateToProps = (state, ownProps) => ({
   employee: state.employees.employee,
   employeeUsername: ownProps.match.params.employeeUsername,
-  currentUserUsername: state.auth.user.attributes.login
-  // currentUserId: ownProps.match.params.employeeId
+  currentUserUsername: state.auth.user.attributes.login,
+  // currentUserId: ownProps.match.params.employeeId,
+  skills: state.skills.skills,
+  skillsTypes: state.skills.skillsTypes,
 });
 
 const mapDispatchToProps = dispatch => ({
   getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
   updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
-  deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); }
+  deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },
+  getAllSkills: () => { dispatch(skillActions.getAll()); },
+  getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
+  // getSkillsByType: (skillType) => { dispatch(skillActions.getByType(skillType)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(EmployeeCard);

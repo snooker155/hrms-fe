@@ -6,6 +6,7 @@ import { skillService } from "../_services/skill.service";
 
 export const skillActions = {
   getAll,
+  getSkillsTypes,
   getByType,
   // update,
   // delete: _delete,
@@ -29,6 +30,26 @@ function getAll() {
   function request() { return { type: skillConstants.GETALL_REQUEST } }
   function success(skills) { return { type: skillConstants.GETALL_SUCCESS, skills } }
   function failure(error) { return { type: skillConstants.GETALL_FAILURE, error } }
+}
+
+function getSkillsTypes() {
+  return dispatch => {
+    dispatch(request());
+
+    skillService.getSkillsTypes()
+      .then(
+        skills => {
+          dispatch(success(skills))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: skillConstants.GETALL_SKILLS_TYPES_REQUEST } }
+  function success(skillsTypes) { return { type: skillConstants.GETALL_SKILLS_TYPES_SUCCESS, skillsTypes } }
+  function failure(error) { return { type: skillConstants.GETALL_SKILLS_TYPES_FAILURE, error } }
 }
 
 function getByType(skillType: string) {

@@ -25,7 +25,9 @@ export default class EmployeeCard__Skills extends Component {
     }),
     currentUserUsername: PropTypes.string,
     updateSkill: PropTypes.func,
-    deleteSkill: PropTypes.func
+    deleteSkill: PropTypes.func,
+    skills: PropTypes.array,
+    skillsTypes: PropTypes.array,
   };
 
   state = {
@@ -136,7 +138,8 @@ export default class EmployeeCard__Skills extends Component {
 
   render() {
     const { editableRow, stateSkills } = this.state;
-    const { employee: { attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
+    const { skills, skillsTypes, employee: { attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
+
     return (
       <>
         { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
@@ -227,7 +230,7 @@ export default class EmployeeCard__Skills extends Component {
             <Modal.Title>Add skill</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <SkillForm/>
+            <SkillForm skills={ skills } skillsTypes={ skillsTypes } />
           </Modal.Body>
           <Modal.Footer>
             <Button bsStyle="success" onClick={this.hideModal}>Save</Button>

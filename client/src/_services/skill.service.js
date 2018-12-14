@@ -6,6 +6,7 @@ import { authService } from "./auth.service";
 
 export const skillService = {
   getAll,
+  getSkillsTypes,
   getByType,
   // update
 };
@@ -19,6 +20,17 @@ function getAll() {
   };
 
   return fetch(`${environment.apiUrl}/skills`, requestOptions).then(handleResponse);
+}
+
+function getSkillsTypes() {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/skills/types`, requestOptions).then(handleResponse);
 }
 
 function getByType(skillType: string) {
