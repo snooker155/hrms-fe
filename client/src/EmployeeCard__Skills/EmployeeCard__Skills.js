@@ -28,6 +28,7 @@ export default class EmployeeCard__Skills extends Component {
     deleteSkill: PropTypes.func,
     skills: PropTypes.array,
     skillsTypes: PropTypes.array,
+    getSkillsByType: PropTypes.func,
   };
 
   state = {
@@ -40,19 +41,12 @@ export default class EmployeeCard__Skills extends Component {
     super(props);
   }
 
-  addSkill = () => {
+  componentWillReceiveProps(nextProps, nextContext) {
     this.setState(state => ({
-      stateSkills: [ ...state.stateSkills, {
-        skill: {
-          title: '',
-        },
-        employee_degree: 0,
-        manager_degree: 0,
-        updated: Date.now()
-      }],
-      editableRow: state.stateSkills.length
+      ...state,
+      stateSkills: JSON.parse(JSON.stringify(this.props.employee.skills)),
     }));
-  };
+  }
 
   showModal = () => {
     this.setState((state) => ({
@@ -78,10 +72,11 @@ export default class EmployeeCard__Skills extends Component {
     const { employee, deleteSkill } = this.props;
     employee.skills.splice(index, 1);
     deleteSkill(employee);
-    this.setState({
+    this.setState(state => ({
+      ...state,
       stateSkills: JSON.parse(JSON.stringify(employee.skills)),
       editableRow: null,
-    });
+    }));
   };
 
   onChangeDegree = (e) => {
@@ -93,10 +88,11 @@ export default class EmployeeCard__Skills extends Component {
     }else{
       stateSkills[editableRow].employee_degree = value;
     }
-    this.setState({
+    this.setState(state => ({
+      ...state,
       stateSkills: stateSkills,
       editableRow: editableRow,
-    });
+    }));
   };
 
   onChangeSkillTitle = (e) => {
@@ -112,12 +108,6 @@ export default class EmployeeCard__Skills extends Component {
   onApplyClickHandler = () => {
     const { stateSkills } = this.state;
     const { employee, updateSkill } = this.props;
-
-    // const inputValue = document.querySelector('.js-input-field-skill');
-    // if (inputValue.value.trim() === '') {
-    //   inputValue.classList.add('invalid');
-    //   return;
-    // }
 
     employee.skills = stateSkills;
     updateSkill(employee);
@@ -136,9 +126,26 @@ export default class EmployeeCard__Skills extends Component {
     });
   };
 
+  addSkill = (skillId) => {
+    const { employee, updateSkill } = this.props;
+    const skill = {
+      skill: skillId,
+      employee_degree: 1,
+      manager_degree: 1,
+    };
+
+    employee.skills.push(skill);
+    updateSkill(employee);
+
+    this.setState((state) => ({
+      ...state,
+      showModal: false,
+    }));
+  };
+
   render() {
     const { editableRow, stateSkills } = this.state;
-    const { skills, skillsTypes, employee: { attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
+    const { skills, skillsTypes, getSkillsByType, employee: { skills: employeeSkills, attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
 
     return (
       <>
@@ -226,16 +233,12 @@ export default class EmployeeCard__Skills extends Component {
         <Modal
           dialogClassName="add-skill-modal"
           show={this.state.showModal}>
-          <Modal.Header>
-            <Modal.Title>Add skill</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <SkillForm skills={ skills } skillsTypes={ skillsTypes } />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button bsStyle="success" onClick={this.hideModal}>Save</Button>
-            <Button onClick={this.hideModal}>Close</Button>
-          </Modal.Footer>
+            <SkillForm
+              skills={ skills }
+              skillsTypes={ skillsTypes }
+              getSkillsByType={ getSkillsByType }
+              hideModal={ this.hideModal }
+              addSkill={ this.addSkill }/>
         </Modal>
       </>
     );

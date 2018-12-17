@@ -54,12 +54,12 @@ function getByUsername(username: string) {
 function update(employee) {
   return dispatch => {
     dispatch(request());
-    console.log(employee);
+    console.log(employee.skills);
 
     employeeService.update(employee)
       .then(
         employee => {
-          console.log(employee);
+          console.log(employee.skills);
           dispatch(success(employee))
         },
         error => {

@@ -41,7 +41,7 @@ function getByType(skillType: string) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/skills/${skillType}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/skills?type=${skillType}`, requestOptions).then(handleResponse);
 }
 
 // function update(employee: any) {

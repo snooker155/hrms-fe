@@ -25,7 +25,8 @@ class EmployeeCard extends Component {
     skills: PropTypes.array,
     getAllSkills: PropTypes.func,
     skillsTypes: PropTypes.array,
-    getSkillsTypes: PropTypes.func
+    getSkillsTypes: PropTypes.func,
+    getSkillsByType: PropTypes.func,
   };
 
   state = {
@@ -74,7 +75,7 @@ class EmployeeCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserUsername, updateSkill, deleteSkill, skills, skillsTypes } = this.props;
+    const { employee, currentUserUsername, updateSkill, deleteSkill, skills, skillsTypes, getSkillsByType } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
@@ -149,6 +150,7 @@ class EmployeeCard extends Component {
                     deleteSkill={ deleteSkill }
                     skills={ skills }
                     skillsTypes = { skillsTypes }
+                    getSkillsByType = { getSkillsByType }
                   />
                 </div>
                 : null
@@ -186,7 +188,7 @@ const mapDispatchToProps = dispatch => ({
   deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },
   getAllSkills: () => { dispatch(skillActions.getAll()); },
   getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
-  // getSkillsByType: (skillType) => { dispatch(skillActions.getByType(skillType)); },
+  getSkillsByType: (skillType) => { dispatch(skillActions.getByType(skillType)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(EmployeeCard);
