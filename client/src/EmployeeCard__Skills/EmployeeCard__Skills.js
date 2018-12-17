@@ -2,13 +2,15 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link, Redirect, Route} from 'react-router-dom';
 
 import './EmployeeCard__Skills.scss';
 import StarRating from '../StarRating';
 import CardTableActions from '../CardTableActions';
 import SkillForm from '../SkillForm';
 import { Modal, Button } from 'react-bootstrap';
+import Dashboard from "../Dashboard";
+import {ConfirmationModal, PrivateRoute} from "../_components";
 
 export default class EmployeeCard__Skills extends Component {
   static propTypes = {
@@ -35,6 +37,7 @@ export default class EmployeeCard__Skills extends Component {
     stateSkills: JSON.parse(JSON.stringify(this.props.employee.skills)),
     editableRow: null,
     showModal: false,
+    showConfirmationModal: false,
   };
 
   constructor(props) {
@@ -62,6 +65,14 @@ export default class EmployeeCard__Skills extends Component {
     }));
   };
 
+  hideConfirmationModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showConfirmationModal: false,
+      editableRow: null,
+    }));
+  };
+
   onEditClickHandler = index => {
     this.setState({
       editableRow: index
@@ -69,12 +80,31 @@ export default class EmployeeCard__Skills extends Component {
   };
 
   onDeleteClickHandler = index => {
+    // const { employee, deleteSkill } = this.props;
+    // employee.skills.splice(index, 1);
+    // deleteSkill(employee);
+    // this.setState(state => ({
+    //   ...state,
+    //   stateSkills: JSON.parse(JSON.stringify(employee.skills)),
+    //   editableRow: null,
+    // }));
+    this.setState(state => ({
+      ...state,
+      showConfirmationModal: true,
+      editableRow: index,
+    }));
+  };
+
+  //@TODO: make it without dependency in editableRow from state
+  deleteSkill = () => {
+    const { editableRow } = this.state;
     const { employee, deleteSkill } = this.props;
-    employee.skills.splice(index, 1);
+    employee.skills.splice(editableRow, 1);
     deleteSkill(employee);
     this.setState(state => ({
       ...state,
       stateSkills: JSON.parse(JSON.stringify(employee.skills)),
+      showConfirmationModal: false,
       editableRow: null,
     }));
   };
@@ -144,7 +174,7 @@ export default class EmployeeCard__Skills extends Component {
   };
 
   render() {
-    const { editableRow, stateSkills } = this.state;
+    const { editableRow, stateSkills, showConfirmationModal } = this.state;
     const { skills, skillsTypes, getSkillsByType, employee: { skills: employeeSkills, attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
 
     return (
@@ -239,6 +269,17 @@ export default class EmployeeCard__Skills extends Component {
               getSkillsByType={ getSkillsByType }
               hideModal={ this.hideModal }
               addSkill={ this.addSkill }/>
+        </Modal>
+
+        <Modal
+          dialogClassName="add-skill-modal"
+          show={ showConfirmationModal }>
+          <ConfirmationModal
+            text='Вы действительно хотите удалить этот навык?'
+            submit={ this.deleteSkill }
+            cancel={ this.hideConfirmationModal }
+            showConfirmationModal={ showConfirmationModal }
+          />
         </Modal>
       </>
     );
