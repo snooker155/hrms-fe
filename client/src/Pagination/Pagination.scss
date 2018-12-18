@@ -1,0 +1,24 @@
+.pagination {
+  @media only screen and (max-width: 992px) {
+    & {
+      width: initial;
+    }
+  }
+
+  li {
+    cursor: pointer;
+    user-select: none;
+
+    &:not(:last-child) {
+      margin-right: .5rem;
+    }
+
+    &.active {
+      background: hsla(211, 31%, 20%, .8);
+    }
+  }
+
+  .material-icons {
+    vertical-align: -.55rem;
+  }
+}

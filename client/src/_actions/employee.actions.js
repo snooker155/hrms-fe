@@ -17,8 +17,9 @@ function getAll() {
 
     employeeService.getAll()
       .then(
-        users => {
-          dispatch(success(users))
+        employees => {
+          console.log(employees);
+          dispatch(success(employees))
         },
         error => {
           dispatch(failure(error.toString()))
@@ -27,7 +28,7 @@ function getAll() {
   };
 
   function request() { return { type: employeeConstants.GETALL_REQUEST } }
-  function success(users) { return { type: employeeConstants.GETALL_SUCCESS, users } }
+  function success(employees) { return { type: employeeConstants.GETALL_SUCCESS, employees } }
   function failure(error) { return { type: employeeConstants.GETALL_FAILURE, error } }
 }
 

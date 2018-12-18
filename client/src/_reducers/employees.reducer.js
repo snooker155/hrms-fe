@@ -5,20 +5,26 @@ import {employeeConstants} from '../_constants';
 const initialState = {
   loading: false,
   employee: null,
+  employees: null,
 };
 
 export function employeesReducer(state = initialState, action) {
   switch (action.type) {
     case employeeConstants.GETALL_REQUEST:
       return {
+        ...state,
         loading: true
       };
     case employeeConstants.GETALL_SUCCESS:
       return {
-        items: action.employees
+        ...state,
+        loading: false,
+        employees: action.employees
       };
     case employeeConstants.GETALL_FAILURE:
       return {
+        ...state,
+        loading: false,
         error: action.error
       };
     case employeeConstants.GETBYID_REQUEST:

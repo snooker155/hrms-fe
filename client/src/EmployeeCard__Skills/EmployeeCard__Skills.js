@@ -35,6 +35,7 @@ export default class EmployeeCard__Skills extends Component {
 
   state = {
     stateSkills: JSON.parse(JSON.stringify(this.props.employee.skills)),
+    index: null,
     editableRow: null,
     showModal: false,
     showConfirmationModal: false,
@@ -69,7 +70,7 @@ export default class EmployeeCard__Skills extends Component {
     this.setState((state) => ({
       ...state,
       showConfirmationModal: false,
-      editableRow: null,
+      index: null,
     }));
   };
 
@@ -91,21 +92,20 @@ export default class EmployeeCard__Skills extends Component {
     this.setState(state => ({
       ...state,
       showConfirmationModal: true,
-      editableRow: index,
+      index: index,
     }));
   };
 
-  //@TODO: make it without dependency in editableRow from state
   deleteSkill = () => {
-    const { editableRow } = this.state;
+    const { index } = this.state;
     const { employee, deleteSkill } = this.props;
-    employee.skills.splice(editableRow, 1);
+    employee.skills.splice(index, 1);
     deleteSkill(employee);
     this.setState(state => ({
       ...state,
       stateSkills: JSON.parse(JSON.stringify(employee.skills)),
       showConfirmationModal: false,
-      editableRow: null,
+      index: null,
     }));
   };
 

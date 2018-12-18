@@ -16,6 +16,7 @@ import EmployeeCard from '../EmployeeCard';
 // import Technologies from '../../components/Technologies';
 import { authActions } from "../_actions";
 import Spinner from "react-spinner-material";
+import Employees from "../Employees/Employees";
 
 class Dashboard extends Component {
   static propTypes = {
@@ -54,7 +55,7 @@ class Dashboard extends Component {
 
         { user &&
         <Switch>
-          <Route path="/employees/:employeeUsername" component={EmployeeCard}/>
+          <Route path="/employees/:employeeUsername" component={ EmployeeCard }/>
 
           {/*<Route exact={ true } path='/projects/:id' render={ () => (*/}
           {/*<ProjectCard projects={ projects } currentUserId={ user_id } />*/}
@@ -66,9 +67,7 @@ class Dashboard extends Component {
           {/*<DepartmentCard departments={ departments } currentUserId={ user_id } />*/}
           {/*)} />*/}
 
-          {/*<Route exact={ true } path='/employees' render={ () => (*/}
-          {/*<Employees employees={ employees } projects={ projects } skills={ skills } />*/}
-          {/*)} />*/}
+          <Route exact={ true } path='/employees' component={ Employees }/>
           {/*<Route exact={ true } path='/projects' render={ () => (*/}
           {/*<Projects employees={ employees } projects={ projects } skills={ skills } />*/}
           {/*)}/>*/}

@@ -33,7 +33,7 @@ const propTypes = {
     }),
     manager: PropTypes.object,
   })
-}
+};
 
 function EmployeeCard__Info(props) {
   const { employee } = props;
