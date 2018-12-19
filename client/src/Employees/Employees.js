@@ -10,6 +10,7 @@ import Pagination from '../Pagination';
 import {employeeActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
+import Pager from "react-bootstrap/es/Pager";
 // import type {EmployeeType} from "../../_types";
 
 // type EmployeeListProps = {|
@@ -25,19 +26,21 @@ class Employees extends Component {
     projects: PropTypes.array,
     skills: PropTypes.array,
     getAllEmployees: PropTypes.func,
+    count: PropTypes.number,
   };
 
   state = {
     // catalog: this.props.employees.slice(),
     // chips: [],
     activePage: 1,
-    itemsCountPerPage: 12
+    itemsCountPerPage: 24
   };
 
   componentDidMount() {
     window.scroll(0, 0);
+    const { itemsCountPerPage } = this.state;
     const { getAllEmployees } = this.props;
-    getAllEmployees();
+    getAllEmployees(itemsCountPerPage);
     // const { skills } = this.props;
     // const data = { };
     // for (let i = 0; i < skills.length; i++) {
@@ -136,9 +139,19 @@ class Employees extends Component {
   //   });
   // };
 
+  _changePage = (limit, page) => {
+    const { getAllEmployees } = this.props;
+    getAllEmployees(limit, page);
+    console.log(page);
+    this.setState((state) => ({
+      ...state,
+      activePage: page,
+    }));
+  };
+
   render() {
     const { catalog, activePage, itemsCountPerPage } = this.state;
-    const { employees, projects } = this.props;
+    const { employees, projects, count, getAllEmployees } = this.props;
 
     // * EMPLOYEES NOT LOADED *
     if (!employees) {
@@ -217,23 +230,11 @@ class Employees extends Component {
           {/*}*/}
         {/*</div>*/}
 
-        {/*<div className="employees__pagination">*/}
-          {/*{ Math.ceil(catalog.length / itemsCountPerPage) > 1*/}
-              {/*? <Pagination*/}
-                  {/*activePage={ activePage }*/}
-                  {/*itemsCountPerPage={ itemsCountPerPage }*/}
-                  {/*totalItemsCount={ catalog.length }*/}
-                  {/*onChange={ this.handlePageChange }*/}
-                {/*/>*/}
-              {/*: null*/}
-          {/*}*/}
-        {/*</div>*/}
-
 
         <div className="employees__catalog">
           {
             employees.length
-              ? employees.slice((activePage - 1) * itemsCountPerPage, activePage * itemsCountPerPage).map(employee => {
+              ? employees.map(employee => {
                 return (
                   <Employee key={ employee.id } employee={ employee } />
                 );
@@ -243,12 +244,12 @@ class Employees extends Component {
         </div>
 
         <div className="employees__pagination">
-          { Math.ceil(employees.length / itemsCountPerPage) > 1
+          { Math.ceil(count / itemsCountPerPage) > 1
             ? <Pagination
               activePage={ activePage }
               itemsCountPerPage={ itemsCountPerPage }
-              totalItemsCount={ employees.length }
-              onChange={ this.handlePageChange }
+              totalItemsCount={ count }
+              onChange={ this._changePage }
             />
             : null
           }
@@ -261,6 +262,7 @@ class Employees extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   employees: state.employees.employees,
+  count: state.employees.count,
   // employeeUsername: ownProps.match.params.employeeUsername,
   // currentUserUsername: state.auth.user.attributes.login,
   // currentUserId: ownProps.match.params.employeeId,
@@ -269,7 +271,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllEmployees: () => { dispatch(employeeActions.getAll()); }
+  getAllEmployees: (limit, page) => { dispatch(employeeActions.getAll(limit, page)); }
   // getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
   // updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
   // deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },

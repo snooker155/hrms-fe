@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   employee: null,
   employees: null,
+  count: null,
 };
 
 export function employeesReducer(state = initialState, action) {
@@ -19,7 +20,8 @@ export function employeesReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        employees: action.employees
+        employees: action.employees.employees,
+        count: action.employees.count,
       };
     case employeeConstants.GETALL_FAILURE:
       return {

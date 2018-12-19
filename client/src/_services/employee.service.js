@@ -10,7 +10,7 @@ export const employeeService = {
   update
 };
 
-function getAll() {
+function getAll(limit = 12, page = 1) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -18,7 +18,7 @@ function getAll() {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/users`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/users?limit=${limit}&page=${page}`, requestOptions).then(handleResponse);
 }
 
 function getByUsername(username: string) {

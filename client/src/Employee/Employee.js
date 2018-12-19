@@ -74,28 +74,36 @@ class Employee extends PureComponent {
         <div className="card-content">
           {/*<span className="card-title activator grey-text text-darken-4"><i className="material-icons">info</i></span>*/}
           <div className="employee__presentation">
-            <Link to={`/employees/${ employee.username }`}>
+            <Link to={`/employees/${ employee.attributes.login }`}>
               {/*<img className="employee__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/${ employee.id }.jpg` } />*/}
               <img className="employee__image" src={ avatar } />
             </Link>
-            <p className="employee__position">{ employee.position }</p>
+            {/*<p className="employee__position">{ employee.relationships.position.data.title }</p>*/}
           </div>
           <div className="employee__info">
             <p className="employee__fullname">
-              <Link to={`/employees/${ employee.username }`} className="link">
-                { `${ employee.name } ${ employee.surname }` }
+              <Link to={`/employees/${ employee.attributes.login }`} className="link">
+                { `${ employee.attributes.name } ${ employee.attributes.surname }` }
               </Link>
             </p>
             <p className="employee__department">
               <i className="material-icons">business</i>
-              <Link to={`/departments/${ employee.department }`} >
-                { employee.department }
+              <Link to={`/departments/${ employee.relationships.unit.data.name }`} >
+                { employee.relationships.unit.data.name }
               </Link>
             </p>
-            <p className="employee__email">
-              <i className="material-icons">contact_mail</i>
-              <span className="email">{ employee.email }</span>
-            </p>
+          </div>
+        </div>
+        <div className='card-content-2'>
+          <p className="employee__email">
+            <i className="material-icons">contact_mail</i>
+            <span className="email">{ employee.attributes.email }</span>
+          </p>
+          <p className="employee__title">
+            <i className="material-icons">person</i>
+            <span className="title">{ employee.relationships.position.data.title }</span>
+           </p>
+        </div>
 
             {/*<h3><i className="material-icons">contact_mail</i>Contacts:</h3>*/}
             {/*<div className="employee__contacts">*/}
@@ -107,8 +115,6 @@ class Employee extends PureComponent {
                 {/*))*/}
               {/*}*/}
             {/*</div>*/}
-          </div>
-        </div>
         {/*<div className="card-reveal">*/}
           {/*<span className="card-title grey-text text-darken-4"><i className="material-icons">close</i></span>*/}
           {/*<h3><i className="material-icons">folder</i>Projects:</h3>*/}

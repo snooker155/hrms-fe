@@ -31,7 +31,7 @@
     }
 
     .card-content {
-      padding: 1rem;
+      padding: 1rem 1rem 0 1rem;
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
@@ -130,6 +130,33 @@
             height:  2rem;
             margin-right: .5rem;
           }
+        }
+      }
+    }
+
+    .card-content-2 {
+      padding: .5rem 1rem 0 1rem;
+      justify-content: space-between;
+
+      p {
+        font-size: 1.25rem;
+        margin: .5rem 0 0 0;
+
+        &:last-child {
+          margin: .5rem 0 1rem 0;
+        }
+
+        span {
+          display: inline;
+          position: relative;
+          overflow: hidden;
+          text-decoration: none;
+        }
+
+        .material-icons {
+          font-size: 1.7rem;
+          vertical-align: -.4rem;
+          padding-right: .4rem;
         }
       }
     }

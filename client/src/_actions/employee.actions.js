@@ -11,14 +11,14 @@ export const employeeActions = {
   delete: _delete,
 };
 
-function getAll() {
+function getAll(limit = 12, page = 1) {
   return dispatch => {
     dispatch(request());
 
-    employeeService.getAll()
+    employeeService.getAll(limit, page)
       .then(
         employees => {
-          console.log(employees);
+          console.log(employees.employees);
           dispatch(success(employees))
         },
         error => {
