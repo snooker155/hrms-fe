@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import M from 'materialize-css';
 
@@ -10,7 +10,8 @@ import Pagination from '../Pagination';
 import {employeeActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
-import Pager from "react-bootstrap/es/Pager";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import SearchForm from "../SearchForm/SearchForm";
 // import type {EmployeeType} from "../../_types";
 
 // type EmployeeListProps = {|
@@ -23,17 +24,21 @@ import Pager from "react-bootstrap/es/Pager";
 class Employees extends Component {
   static propTypes = {
     employees: PropTypes.array,
+    searchNames: PropTypes.array,
     projects: PropTypes.array,
     skills: PropTypes.array,
     getAllEmployees: PropTypes.func,
+    getNames: PropTypes.func,
     count: PropTypes.number,
+    isLoading: PropTypes.any,
+    searchEmployees: PropTypes.func,
   };
 
   state = {
     // catalog: this.props.employees.slice(),
     // chips: [],
     activePage: 1,
-    itemsCountPerPage: 24
+    itemsCountPerPage: 24,
   };
 
   componentDidMount() {
@@ -149,9 +154,21 @@ class Employees extends Component {
     }));
   };
 
+  _handleSearch = (e) => {
+    const search_value = e.target.value;
+    console.log(search_value);
+    const { searchEmployees, getAllEmployees } = this.props;
+    const { itemsCountPerPage } = this.state;
+    if( search_value.length >= 3 ) {
+      searchEmployees(search_value);
+    }else {
+      getAllEmployees(itemsCountPerPage);
+    }
+  };
+
   render() {
     const { catalog, activePage, itemsCountPerPage } = this.state;
-    const { employees, projects, count, getAllEmployees } = this.props;
+    const { employees, projects, count } = this.props;
 
     // * EMPLOYEES NOT LOADED *
     if (!employees) {
@@ -176,7 +193,7 @@ class Employees extends Component {
 
     return (
       <section className="employees">
-        {/*<div className="employees__toolbar z-depth-1">*/}
+        <div className="employees__toolbar z-depth-1">
           {/*<div className="tools">*/}
             {/*<div className="tools__filtering">*/}
               {/*<div className="input-field input-field--department">*/}
@@ -216,20 +233,38 @@ class Employees extends Component {
           {/*<div className="chips chips-placeholder chips-autocomplete">*/}
             {/*<input className="js-chips-input" />*/}
           {/*</div>*/}
-        {/*</div>*/}
 
-        {/*<div className="employees__catalog">*/}
-          {/*{*/}
-            {/*catalog.length*/}
-              {/*? catalog.slice((activePage - 1) * itemsCountPerPage, activePage * itemsCountPerPage).map(employee => {*/}
-                  {/*return (*/}
-                    {/*<Employee key={ employee.id } employee={ employee } />*/}
-                  {/*);*/}
-                {/*})*/}
-              {/*: <p className="notFound">No employees were found for a given critetia.</p>*/}
-          {/*}*/}
-        {/*</div>*/}
+          {/*<form>*/}
+            {/*<FormGroup*/}
+              {/*controlId="searchValue"*/}
+              {/*// validationState={this.getValidationState()}*/}
+            {/*>*/}
+              {/*/!*<ControlLabel>Working example with validation</ControlLabel>*!/*/}
+              {/*<FormControl*/}
+                {/*type="text"*/}
+                {/*value={ searchEmployee }*/}
+                {/*placeholder="Search employee..."*/}
+                {/*onChange={ this._searchHandle }*/}
+              {/*/>*/}
+            {/*</FormGroup>*/}
+          {/*</form>*/}
 
+          {/*<SearchForm searchNames={ searchNames } getNames={ getNames } isLoading={ isLoading }/>*/}
+
+          <form>
+            <FormGroup
+              controlId="searchEmployees"
+              // validationState={this.getValidationState()}
+            >
+              <FormControl
+                type="text"
+                // value={this.state.value}
+                placeholder="Search for employees..."
+                onChange={this._handleSearch}
+              />
+            </FormGroup>
+          </form>
+        </div>
 
         <div className="employees__catalog">
           {
@@ -262,6 +297,8 @@ class Employees extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   employees: state.employees.employees,
+  searchNames: state.employees.searchNames,
+  isLoading: state.employees.loading,
   count: state.employees.count,
   // employeeUsername: ownProps.match.params.employeeUsername,
   // currentUserUsername: state.auth.user.attributes.login,
@@ -271,7 +308,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllEmployees: (limit, page) => { dispatch(employeeActions.getAll(limit, page)); }
+  getAllEmployees: (limit, page) => { dispatch(employeeActions.getAll(limit, page)); },
+  getNames: (value) => { dispatch(employeeActions.getNames(value)); },
+  searchEmployees: (value) => { dispatch(employeeActions.search(value)); },
   // getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
   // updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
   // deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },

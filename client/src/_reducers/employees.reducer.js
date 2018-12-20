@@ -29,6 +29,41 @@ export function employeesReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case employeeConstants.SEARCH_EMPLOYEES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case employeeConstants.SEARCH_EMPLOYEES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        employees: action.employees.employees,
+        count: action.employees.count,
+      };
+    case employeeConstants.SEARCH_EMPLOYEES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case employeeConstants.GETALL_EMPLOYEES_NAMES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case employeeConstants.GETALL_EMPLOYEES_NAMES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        searchNames: action.employeesNames,
+      };
+    case employeeConstants.GETALL_EMPLOYEES_NAMES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     case employeeConstants.GETBYID_REQUEST:
       return {
         loading: true

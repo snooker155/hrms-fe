@@ -6,8 +6,10 @@ import { authService } from "./auth.service";
 
 export const employeeService = {
   getAll,
+  getNames,
   getByUsername,
-  update
+  update,
+  search,
 };
 
 function getAll(limit = 12, page = 1) {
@@ -19,6 +21,28 @@ function getAll(limit = 12, page = 1) {
   };
 
   return fetch(`${environment.apiUrl}/users?limit=${limit}&page=${page}`, requestOptions).then(handleResponse);
+}
+
+function search(value) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/users?search_value=${value}`, requestOptions).then(handleResponse);
+}
+
+function getNames(name) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/users?search_name=${name}`, requestOptions).then(handleResponse);
 }
 
 function getByUsername(username: string) {

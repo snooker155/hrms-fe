@@ -6,9 +6,11 @@ import { employeeService } from "../_services";
 
 export const employeeActions = {
   getAll,
+  getNames,
   getByUsername,
   update,
   delete: _delete,
+  search,
 };
 
 function getAll(limit = 12, page = 1) {
@@ -30,6 +32,48 @@ function getAll(limit = 12, page = 1) {
   function request() { return { type: employeeConstants.GETALL_REQUEST } }
   function success(employees) { return { type: employeeConstants.GETALL_SUCCESS, employees } }
   function failure(error) { return { type: employeeConstants.GETALL_FAILURE, error } }
+}
+
+function search(value) {
+  return dispatch => {
+    dispatch(request());
+
+    employeeService.search(value)
+      .then(
+        employees => {
+          console.log(employees);
+          dispatch(success(employees))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.SEARCH_EMPLOYEES_REQUEST } }
+  function success(employees) { return { type: employeeConstants.SEARCH_EMPLOYEES_SUCCESS, employees } }
+  function failure(error) { return { type: employeeConstants.SEARCH_EMPLOYEES_FAILURE, error } }
+}
+
+function getNames(value) {
+  return dispatch => {
+    dispatch(request());
+
+    employeeService.getNames(value)
+      .then(
+        employeesNames => {
+          console.log(employeesNames);
+          dispatch(success(employeesNames))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.GETALL_EMPLOYEES_NAMES_REQUEST } }
+  function success(employeesNames) { return { type: employeeConstants.GETALL_EMPLOYEES_NAMES_SUCCESS, employeesNames } }
+  function failure(error) { return { type: employeeConstants.GETALL_EMPLOYEES_NAMES_FAILURE, error } }
 }
 
 function getByUsername(username: string) {
