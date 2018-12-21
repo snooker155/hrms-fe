@@ -2,15 +2,17 @@
 
 // import type {fetchDataAction} from "../_types/fetchDataAction";
 import { skillConstants } from "../_constants";
-import { skillService } from "../_services/skill.service";
+import { skillService } from "../_services";
 
 export const skillActions = {
   getAll,
   getSkillsTypes,
   getByType,
+  search,
   // update,
   // delete: _delete,
 };
+
 
 function getAll() {
   return dispatch => {
@@ -32,6 +34,29 @@ function getAll() {
   function failure(error) { return { type: skillConstants.GETALL_FAILURE, error } }
 }
 
+
+// @TODO: merge this with search by type and getAll functions
+function search(search_value) {
+  return dispatch => {
+    dispatch(request());
+
+    skillService.search(search_value)
+      .then(
+        skills => {
+          dispatch(success(skills))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: skillConstants.GETALL_REQUEST } }
+  function success(skills) { return { type: skillConstants.GETALL_SUCCESS, skills } }
+  function failure(error) { return { type: skillConstants.GETALL_FAILURE, error } }
+}
+
+// @TODO: merge this with search and getAll functions
 function getSkillsTypes() {
   return dispatch => {
     dispatch(request());

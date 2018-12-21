@@ -3,19 +3,21 @@
 import React, { Component } from 'react';
 import './LoginForm.scss';
 import { FormGroup, Col, Button, FormControl, ControlLabel, HelpBlock } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
-type LoginFormProps = {|
-  loggingIn: boolean,
-  loginAction: (username: string, password: string) => void
-|};
+// type LoginFormProps = {|
+//   loggingIn: boolean,
+//   loginAction: (username: string, password: string) => void
+// |};
+//
+// type LoginFormState = {|
+//   username: string,
+//   password: string,
+//   submitted: boolean
+// |};
 
-type LoginFormState = {|
-  username: string,
-  password: string,
-  submitted: boolean
-|};
-
-export class LoginForm extends Component<LoginFormProps, LoginFormState> {
+// export class LoginForm extends Component<LoginFormProps, LoginFormState> {
+export class LoginForm extends Component {
   state = {
     username: '',
     password: '',
@@ -121,3 +123,8 @@ export class LoginForm extends Component<LoginFormProps, LoginFormState> {
     );
   }
 }
+
+LoginForm.propTypes = {
+  loggingIn: PropTypes.bool,
+  loginAction: PropTypes.func,
+};

@@ -7,11 +7,13 @@ import PropTypes from 'prop-types';
 import './Employees.scss';
 import Employee from '../Employee';
 import Pagination from '../Pagination';
-import {employeeActions, skillActions} from "../_actions";
+import {departmentActions, employeeActions, skillActions, projectActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel, Col, Form, Grid, Row } from "react-bootstrap";
 import SearchForm from "../SearchForm/SearchForm";
+import {DebounceInput} from "react-debounce-input";
+import {Typeahead, Token} from "react-bootstrap-typeahead";
 // import type {EmployeeType} from "../../_types";
 
 // type EmployeeListProps = {|
@@ -28,10 +30,19 @@ class Employees extends Component {
     projects: PropTypes.array,
     skills: PropTypes.array,
     getAllEmployees: PropTypes.func,
-    getNames: PropTypes.func,
+    getAllSkills: PropTypes.func,
+    searchSkills: PropTypes.func,
     count: PropTypes.number,
-    isLoading: PropTypes.any,
+    isSkillsLoading: PropTypes.any,
+    isDepartmentsLoading: PropTypes.any,
     searchEmployees: PropTypes.func,
+    searchEmployeesBySkills: PropTypes.func,
+    getAllDepartments: PropTypes.func,
+    departments: PropTypes.array,
+    searchEmployeesByDepartment: PropTypes.func,
+    getAllProjects: PropTypes.func,
+    getEmployeesByProject: PropTypes.func,
+    searchDepartments: PropTypes.func,
   };
 
   state = {
@@ -39,49 +50,22 @@ class Employees extends Component {
     // chips: [],
     activePage: 1,
     itemsCountPerPage: 24,
+    multiple: false,
   };
 
   componentDidMount() {
     window.scroll(0, 0);
     const { itemsCountPerPage } = this.state;
-    const { getAllEmployees } = this.props;
+    const { getAllEmployees, getAllSkills, getAllDepartments, getAllProjects } = this.props;
     getAllEmployees(itemsCountPerPage);
+    // getAllSkills();
+    // getAllDepartments();
+    getAllProjects();
     // const { skills } = this.props;
     // const data = { };
     // for (let i = 0; i < skills.length; i++) {
     //   data[skills[i].title] = null;
     // }
-
-    // M.Chips.init(document.querySelectorAll('.chips'), {
-    //   placeholder: 'Enter skill',
-    //   secondaryPlaceholder: 'Add skill',
-    //   autocompleteOptions: {
-    //     data,
-    //     limit: 8,
-    //     minLength: 1
-    //   },
-    //   onChipAdd: (undefined, chip) => {
-    //     const chipContent = chip.innerHTML.split('<i').shift();
-    //
-    //     this.setState(state => ({
-    //       chips: [ ...state.chips, chipContent ]
-    //     }));
-    //     this.updateCatalog();
-    //
-    //     document.querySelector('.chips').click();
-    //   },
-    //   onChipDelete: (undefined, chip) => {
-    //     const chipContent = chip.innerHTML.split('<i').shift();
-    //     this.setState(state => ({
-    //       chips: [ ...state.chips.filter(chip => !(chip.toLowerCase() === chipContent.toLowerCase())) ]
-    //     }));
-    //     this.updateCatalog();
-    //   }
-    // });
-
-    // M.FormSelect.init(document.querySelector('.js-select-department'));
-    // M.FormSelect.init(document.querySelector('.js-select-project'));
-    // M.FormSelect.init(document.querySelector('.js-select-sorting'));
   }
 
   // handlePageChange = (newActivePage) => {
@@ -155,23 +139,47 @@ class Employees extends Component {
   };
 
   _handleSearch = (e) => {
-    const search_value = e.target.value;
+    const search_value = e.target.value === '' ? null : e.target.value;
     console.log(search_value);
-    const { searchEmployees, getAllEmployees } = this.props;
-    const { itemsCountPerPage } = this.state;
-    if( search_value.length >= 3 ) {
-      searchEmployees(search_value);
-    }else {
-      getAllEmployees(itemsCountPerPage);
-    }
+    const { searchEmployees } = this.props;
+    searchEmployees(search_value);
+  };
+
+  _handleDepartmentSearch = (selected) => {
+    // const search_value = e.target.value === 'all' ? null : e.target.value;
+    console.log(selected);
+    const search_value = selected.length === 0 ? null : selected[0].id;
+    console.log(search_value);
+    const { searchEmployeesByDepartment } = this.props;
+    searchEmployeesByDepartment(search_value);};
+
+  _handleProjectSearch = (selected) => {
+    // const search_value = e.target.value === 'all' ? null : e.target.value;
+    console.log(selected);
+    const search_value = selected.length === 0 ? null : selected[0].id;
+    console.log(search_value);
+    const { getEmployeesByProject } = this.props;
+    getEmployeesByProject(search_value);
   };
 
   render() {
-    const { catalog, activePage, itemsCountPerPage } = this.state;
-    const { employees, projects, count } = this.props;
+    const { activePage, itemsCountPerPage, multiple } = this.state;
+    const {
+      employees,
+      projects,
+      departments,
+      count,
+      skills,
+      searchSkills,
+      searchDepartments,
+      isSkillsLoading,
+      isDepartmentsLoading,
+      searchEmployeesBySkills,
+      searchEmployeesByDepartment
+    } = this.props;
 
     // * EMPLOYEES NOT LOADED *
-    if (!employees) {
+    if (!employees || !skills || !departments || !projects) {
       return (
         <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
@@ -230,40 +238,112 @@ class Employees extends Component {
               {/*</div>*/}
             {/*</div>*/}
           {/*</div>*/}
-          {/*<div className="chips chips-placeholder chips-autocomplete">*/}
-            {/*<input className="js-chips-input" />*/}
-          {/*</div>*/}
 
-          {/*<form>*/}
-            {/*<FormGroup*/}
-              {/*controlId="searchValue"*/}
-              {/*// validationState={this.getValidationState()}*/}
-            {/*>*/}
-              {/*/!*<ControlLabel>Working example with validation</ControlLabel>*!/*/}
-              {/*<FormControl*/}
-                {/*type="text"*/}
-                {/*value={ searchEmployee }*/}
-                {/*placeholder="Search employee..."*/}
-                {/*onChange={ this._searchHandle }*/}
-              {/*/>*/}
-            {/*</FormGroup>*/}
-          {/*</form>*/}
+          <Form>
+              <Row>
+                <Col md={12}>
+                  <FormGroup
+                    controlId="searchEmployees"
+                    // validationState={this.getValidationState()}
+                  >
+                    <DebounceInput
+                      element={ FormControl }
+                      minLength={ 3 }
+                      debounceTimeout={ 300 }
+                      placeholder="Search for employees..."
+                      onChange={ this._handleSearch } />
+                  </FormGroup>
+                </Col>
+              </Row>
 
-          {/*<SearchForm searchNames={ searchNames } getNames={ getNames } isLoading={ isLoading }/>*/}
+              <Row>
+                <Col sm={4}>
+                  <SearchForm
+                    items={ skills }
+                    search={ searchSkills }
+                    searchEmployeesBy={ searchEmployeesBySkills }
+                    isLoading={ isSkillsLoading }
+                    multiple={ true }
+                    placeholder='Search for skills...'
+                    labelKey={(option) => `${option.title}`}
+                  />
+                </Col>
 
-          <form>
-            <FormGroup
-              controlId="searchEmployees"
-              // validationState={this.getValidationState()}
-            >
-              <FormControl
-                type="text"
-                // value={this.state.value}
-                placeholder="Search for employees..."
-                onChange={this._handleSearch}
-              />
-            </FormGroup>
-          </form>
+                <Col sm={4}>
+                  {/*<FormGroup controlId="searchEmployees">*/}
+                    {/*<FormControl*/}
+                      {/*componentClass="select"*/}
+                      {/*placeholder="Search for department..."*/}
+                      {/*onChange={ this._handleDepartmentSearch }*/}
+                    {/*>*/}
+                      {/*<option value="all">All departments</option>*/}
+                      {/*{*/}
+                        {/*departments && departments.length*/}
+                          {/*? departments.map(department => {*/}
+                            {/*return (*/}
+                              {/*<option key={ department.id } value={ department.id }>{ department.attributes.name }</option>*/}
+                            {/*);*/}
+                          {/*})*/}
+                          {/*: null*/}
+                      {/*}*/}
+                    {/*</FormControl>*/}
+                  {/*</FormGroup>*/}
+
+                  <SearchForm
+                    items={ departments }
+                    search={ searchDepartments }
+                    searchEmployeesBy={ this._handleDepartmentSearch }
+                    isLoading={ isDepartmentsLoading }
+                    multiple={ multiple }
+                    placeholder='Search for department...'
+                    labelKey={ (option) => `${option.attributes.name}` }
+                  />
+                </Col>
+
+                <Col sm={4}>
+                  {/*<FormGroup controlId="searchEmployees">*/}
+                    {/*<FormControl*/}
+                      {/*componentClass="select"*/}
+                      {/*placeholder="Search for project..."*/}
+                      {/*onChange={ this._handleProjectSearch }*/}
+                    {/*>*/}
+                      {/*<option value="all">All projects</option>*/}
+                      {/*{*/}
+                        {/*projects && projects.length*/}
+                          {/*? projects.map(project => {*/}
+                            {/*return (*/}
+                              {/*<option key={ project.id } value={ project.id }>{ project.name }</option>*/}
+                            {/*);*/}
+                          {/*})*/}
+                          {/*: null*/}
+                      {/*}*/}
+                    {/*</FormControl>*/}
+                  {/*</FormGroup>*/}
+
+                  {
+                    projects && projects.length
+                      ? <Fragment>
+                        <Typeahead
+                          labelKey={(option) => `${option.name}`}
+                          multiple={ multiple }
+                          options={projects}
+                          minLength={1}
+                          placeholder="Search for project..."
+                          onChange={this._handleProjectSearch}
+                          renderToken={(option, props, index) => (
+                            <Token
+                              key={index}
+                              onRemove={props.onRemove}>
+                              {`${option.name}`}
+                            </Token>
+                          )}
+                        />
+                      </Fragment>
+                      : <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                  }
+                </Col>
+              </Row>
+          </Form>
         </div>
 
         <div className="employees__catalog">
@@ -297,9 +377,12 @@ class Employees extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   employees: state.employees.employees,
-  searchNames: state.employees.searchNames,
-  isLoading: state.employees.loading,
+  skills: state.skills.skills,
+  isSkillsLoading: state.skills.loading,
+  isDepartmentsLoading: state.departments.loading,
   count: state.employees.count,
+  departments: state.departments.departments,
+  projects: state.projects.projects,
   // employeeUsername: ownProps.match.params.employeeUsername,
   // currentUserUsername: state.auth.user.attributes.login,
   // currentUserId: ownProps.match.params.employeeId,
@@ -309,8 +392,15 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllEmployees: (limit, page) => { dispatch(employeeActions.getAll(limit, page)); },
-  getNames: (value) => { dispatch(employeeActions.getNames(value)); },
   searchEmployees: (value) => { dispatch(employeeActions.search(value)); },
+  getAllSkills: () => { dispatch(skillActions.getAll()); },
+  searchSkills: (search_value) => { dispatch(skillActions.search(search_value)); },
+  searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },
+  searchEmployeesBySkills: (skillsArray) => { dispatch(employeeActions.searchBySkills(skillsArray)); },
+  getAllDepartments: () => { dispatch(departmentActions.getAll()); },
+  searchEmployeesByDepartment: (department) => { dispatch(employeeActions.searchByDepartment(department)); },
+  getAllProjects: () => { dispatch(projectActions.getAll()); },
+  getEmployeesByProject: (project) => { dispatch(employeeActions.searchByProject(project)); },
   // getEmployeeByUsername: (username) => { dispatch(employeeActions.getByUsername(username)); },
   // updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
   // deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },

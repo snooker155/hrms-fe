@@ -7,54 +7,58 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 export default class SearchForm extends Component {
   static propTypes = {
-    searchNames: PropTypes.array,
-    getNames: PropTypes.func,
-    isLoading: PropTypes.any,
+    items: PropTypes.array,
+    //@TODO: should be merged with getAllSkills function, not two different actions
+    search: PropTypes.func,
+    searchEmployeesBy: PropTypes.func,
+    isLoading: PropTypes.bool,
+    multiple: PropTypes.bool,
+    placeholder: PropTypes.string,
+    labelKey: PropTypes.func,
   };
 
-  state = {
-    multiple: true,
-    allowNew: false,
-  };
-
-  _handleNamesSearch = (e) => {
+  _handleSearch = (e) => {
     console.log(e);
-    const { getNames } = this.props;
-    getNames(e);
+    const { search } = this.props;
+    //@TODO: should be merged with getAllSkills function, not two different actions
+    console.log(search);
+    search(e);
   };
 
-  _handleSearch = (selected) => {
+  _handleSearchBy = (selected) => {
     console.log(selected);
+    const { searchEmployeesBy } = this.props;
+    //@TODO: change to direct setting of callback in component props
+    searchEmployeesBy(selected);
   };
 
-  _filter = (option, props) => {
-    return (
-      option.attributes.surname.toLowerCase().indexOf(props.text.toLowerCase()) !== -1 ||
-      option.attributes.name.toLowerCase().indexOf(props.text.toLowerCase()) !== -1
-    );
-  };
+  // _filter = (option, props) => {
+  //   return (
+  //     option.attributes.surname.toLowerCase().indexOf(props.text.toLowerCase()) !== -1 ||
+  //     option.attributes.name.toLowerCase().indexOf(props.text.toLowerCase()) !== -1
+  //   );
+  // };
 
   render() {
-    const { multiple } = this.state;
-    const { searchNames, isLoading } = this.props;
+    const { items, isLoading, multiple, placeholder, labelKey } = this.props;
 
     return (
       <Fragment>
         <AsyncTypeahead
           isLoading={ isLoading }
-          labelKey={(option) => `${option.attributes.surname} ${option.attributes.name}`}
+          labelKey={labelKey }
           multiple={ multiple }
-          options={ searchNames }
-          minLength={ 3 }
-          onSearch={ this._handleNamesSearch }
-          placeholder="Search for employees..."
-          filterBy={ this._filter }
-          onChange={ this._handleSearch }
+          options={ items }
+          minLength={ 1 }
+          onSearch={ this._handleSearch }
+          placeholder={ placeholder }
+          // filterBy={ this._filter }
+          onChange={ this._handleSearchBy }
           renderToken ={(option, props, index) => (
             <Token
               key={index}
               onRemove={props.onRemove}>
-              {`${option.attributes.surname} ${option.attributes.name}`}
+              {`${option.title}`}
             </Token>
           )}
         />

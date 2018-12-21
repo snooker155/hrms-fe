@@ -20,9 +20,9 @@ import Employees from "../Employees/Employees";
 
 class Dashboard extends Component {
   static propTypes = {
-    logoutAction: PropTypes.func.isRequired,
+    logoutAction: PropTypes.func,
     user: PropTypes.object,
-    getCurrentUser: PropTypes.func.isRequired,
+    getCurrentUser: PropTypes.func,
     // employees: PropTypes.array.isRequired,
     // projects: PropTypes.array.isRequired,
     // skills: PropTypes.array.isRequired,
@@ -34,7 +34,9 @@ class Dashboard extends Component {
 
   componentDidMount(): void {
     const { getCurrentUser } = this.props;
+    //TODO: remove server delay mock
     setTimeout(() => { getCurrentUser() }, 1000);
+    // getCurrentUser();
   }
 
   render() {

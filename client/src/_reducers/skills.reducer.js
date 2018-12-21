@@ -4,7 +4,7 @@ import { skillConstants } from '../_constants';
 
 const initialState = {
   loading: false,
-  skills: null,
+  skills: [],
   skillsTypes: null,
 };
 

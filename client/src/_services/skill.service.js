@@ -4,14 +4,20 @@ import { environment } from '../_environments/environment';
 import { authHeader } from '../_helpers';
 import { authService } from "./auth.service";
 
+// let skills = [];
+
 export const skillService = {
   getAll,
   getSkillsTypes,
   getByType,
+  search,
   // update
 };
 
 function getAll() {
+  // if (skills.length !== 0){
+  //   return skills;
+  // }
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -20,6 +26,17 @@ function getAll() {
   };
 
   return fetch(`${environment.apiUrl}/skills`, requestOptions).then(handleResponse);
+}
+
+function search(search_value) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/skills?search_value=${search_value}`, requestOptions).then(handleResponse);
 }
 
 function getSkillsTypes() {
@@ -72,7 +89,7 @@ function handleResponse(response) {
       const error = (data && data.message) || response.statusText;
       return Promise.reject(error);
     }
-
+    // skills = data;
     return data;
   });
 }

@@ -6,11 +6,13 @@ import { employeeService } from "../_services";
 
 export const employeeActions = {
   getAll,
-  getNames,
   getByUsername,
   update,
   delete: _delete,
   search,
+  searchBySkills,
+  searchByDepartment,
+  searchByProject,
 };
 
 function getAll(limit = 12, page = 1) {
@@ -39,6 +41,69 @@ function search(value) {
     dispatch(request());
 
     employeeService.search(value)
+      .then(
+        employees => {
+          console.log(employees);
+          dispatch(success(employees))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.SEARCH_EMPLOYEES_REQUEST } }
+  function success(employees) { return { type: employeeConstants.SEARCH_EMPLOYEES_SUCCESS, employees } }
+  function failure(error) { return { type: employeeConstants.SEARCH_EMPLOYEES_FAILURE, error } }
+}
+
+function searchBySkills(skillsArray) {
+  return dispatch => {
+    dispatch(request());
+
+    employeeService.searchBySkills(skillsArray)
+      .then(
+        employees => {
+          console.log(employees);
+          dispatch(success(employees))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.SEARCH_EMPLOYEES_REQUEST } }
+  function success(employees) { return { type: employeeConstants.SEARCH_EMPLOYEES_SUCCESS, employees } }
+  function failure(error) { return { type: employeeConstants.SEARCH_EMPLOYEES_FAILURE, error } }
+}
+
+function searchByDepartment(department) {
+  return dispatch => {
+    dispatch(request());
+
+    employeeService.searchByDepartment(department)
+      .then(
+        employees => {
+          console.log(employees);
+          dispatch(success(employees))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: employeeConstants.SEARCH_EMPLOYEES_REQUEST } }
+  function success(employees) { return { type: employeeConstants.SEARCH_EMPLOYEES_SUCCESS, employees } }
+  function failure(error) { return { type: employeeConstants.SEARCH_EMPLOYEES_FAILURE, error } }
+}
+
+function searchByProject(project) {
+  return dispatch => {
+    dispatch(request());
+
+    employeeService.searchByProject(project)
       .then(
         employees => {
           console.log(employees);

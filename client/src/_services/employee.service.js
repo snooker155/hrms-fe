@@ -10,6 +10,9 @@ export const employeeService = {
   getByUsername,
   update,
   search,
+  searchBySkills,
+  searchByDepartment,
+  searchByProject,
 };
 
 function getAll(limit = 12, page = 1) {
@@ -32,6 +35,40 @@ function search(value) {
   };
 
   return fetch(`${environment.apiUrl}/users?search_value=${value}`, requestOptions).then(handleResponse);
+}
+
+function searchBySkills(skillsArray) {
+  const myHeaders = new Headers();
+  skillsArray = skillsArray && skillsArray.map(skill => skill._id).join(',');
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/users?skills=${skillsArray}`, requestOptions).then(handleResponse);
+}
+
+function searchByDepartment(department) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/users?department=${department}`, requestOptions).then(handleResponse);
+}
+
+function searchByProject(project) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/users?project=${project}`, requestOptions).then(handleResponse);
 }
 
 function getNames(name) {
