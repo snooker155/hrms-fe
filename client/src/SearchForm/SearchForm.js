@@ -18,15 +18,15 @@ export default class SearchForm extends Component {
   };
 
   _handleSearch = (e) => {
-    console.log(e);
+    // console.log(e);
     const { search } = this.props;
     //@TODO: should be merged with getAllSkills function, not two different actions
-    console.log(search);
+    // console.log(search);
     search(e);
   };
 
   _handleSearchBy = (selected) => {
-    console.log(selected);
+    // console.log(selected);
     const { searchEmployeesBy } = this.props;
     //@TODO: change to direct setting of callback in component props
     searchEmployeesBy(selected);
