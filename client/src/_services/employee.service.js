@@ -27,6 +27,7 @@ function getAll(limit = 12, page = 1) {
 }
 
 function search(value) {
+  const search = Object.entries(value).map(([key, val]) => val && `${key}=${encodeURIComponent(val)}`).filter(Boolean).join('&');
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -34,7 +35,7 @@ function search(value) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/users?search_value=${value}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/users?${search}`, requestOptions).then(handleResponse);
 }
 
 function searchBySkills(skillsArray) {

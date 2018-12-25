@@ -24,37 +24,39 @@ export default class EmployeesSearchForm extends Component {
   };
 
   state = {
-    employeeName: null,
-    employeeSkills: null,
-    employeeDepartment: null,
-    employeeProject: null,
+    search: {
+      employeeName: null,
+      employeeSkills: null,
+      employeeDepartment: null,
+      employeeProject: null,
+    }
   };
 
   _handleSearch = () => {
-    const search = this.state;
-    console.log(search);
-    // const { handleEmployeesSearch } = this.props;
-    // handleEmployeesSearch(search_value);
+    const { search } = this.state;
+    // console.log(search);
+    const { handleEmployeesSearch } = this.props;
+    handleEmployeesSearch(search);
   };
 
   _handleNameSearch = (e) => {
     const search_value = e.target.value === '' ? null : e.target.value;
-    console.log(search_value);
+    // console.log(search_value);
     this.setState((state) => ({
       ...state,
-      employeeName: search_value,
+      search: {...state.search, employeeName: search_value },
     }), () => { this._handleSearch() });
     // const { handleEmployeesSearch } = this.props;
     // handleEmployeesSearch(search_value);
   };
 
   _handleSkillsSearch = (selected) => {
-    console.log(selected);
+    // console.log(selected);
     const search_value = selected && selected.map(skill => skill._id).join(',');
-    console.log(search_value);
+    // console.log(search_value);
     this.setState((state) => ({
       ...state,
-      employeeSkills: search_value,
+      search: {...state.search, employeeSkills: search_value },
     }), () => { this._handleSearch() });
     // this._handleSearch();
     // const search_value = e.target.value === '' ? null : e.target.value;
@@ -64,12 +66,12 @@ export default class EmployeesSearchForm extends Component {
   };
 
   _handleDepartmentSearch = (selected) => {
-    console.log(selected);
+    // console.log(selected);
     const search_value = selected.length === 0 ? null : selected[0].id;
-    console.log(search_value);
+    // console.log(search_value);
     this.setState((state) => ({
       ...state,
-      employeeDepartment: +search_value,
+      search: {...state.search, employeeDepartment: +search_value },
     }), () => { this._handleSearch() });
     // this._handleSearch();
     // const search_value = e.target.value === '' ? null : e.target.value;
@@ -79,12 +81,12 @@ export default class EmployeesSearchForm extends Component {
   };
 
   _handleProjectSearch = (selected) => {
-    console.log(selected);
+    // console.log(selected);
     const search_value = selected.length === 0 ? null : selected[0].id;
-    console.log(search_value);
+    // console.log(search_value);
     this.setState((state) => ({
       ...state,
-      employeeProject: +search_value,
+      search: {...state.search, employeeProject: +search_value },
     }), () => { this._handleSearch() });
     // this._handleSearch();
     // const search_value = e.target.value === '' ? null : e.target.value;

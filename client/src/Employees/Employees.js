@@ -139,12 +139,10 @@ class Employees extends Component {
     }));
   };
 
-  _handleSearch = (e) => {
-    console.log(e);
-    // const search_value = e.target.value === '' ? null : e.target.value;
-    // console.log(search_value);
-    // const { searchEmployees } = this.props;
-    // searchEmployees(search_value);
+  _handleSearch = (search) => {
+    console.log(search);
+    const { searchEmployees } = this.props;
+    searchEmployees(search);
   };
 
   // _handleDepartmentSearch = (selected) => {
