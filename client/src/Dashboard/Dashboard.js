@@ -12,11 +12,11 @@ import EmployeeCard from '../EmployeeCard';
 // import TechnologyCard from '../../components/TechnologyCard';
 // import DepartmentCard from '../../components/DepartmentCard';
 // import Employees from '../../components/Employees';
-// import Projects from '../../components/Projects';
+import Projects from '../Projects';
 // import Technologies from '../../components/Technologies';
 import { authActions } from "../_actions";
 import Spinner from "react-spinner-material";
-import Employees from "../Employees/Employees";
+import Employees from "../Employees";
 
 class Dashboard extends Component {
   static propTypes = {
@@ -70,9 +70,7 @@ class Dashboard extends Component {
           {/*)} />*/}
 
           <Route exact={ true } path='/employees' component={ Employees }/>
-          {/*<Route exact={ true } path='/projects' render={ () => (*/}
-          {/*<Projects employees={ employees } projects={ projects } skills={ skills } />*/}
-          {/*)}/>*/}
+          <Route exact={ true } path='/projects' component={ Projects }/>
           {/*<Route exact={ true } path='/skills' render={ () => (*/}
           {/*<Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />*/}
           {/*)} />*/}
