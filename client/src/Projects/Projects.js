@@ -10,6 +10,7 @@ import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
 import EmployeesSearchForm from "../EmployeesSearchForm";
 import ProjectsSearchForm from "../ProjectsSearchForm/ProjectsSearchForm";
+import Employee from "../Employee";
 
 class Projects extends Component {
   static propTypes = {
@@ -18,8 +19,9 @@ class Projects extends Component {
     skills: PropTypes.array,
     departments: PropTypes.array,
     count: PropTypes.number,
-    isSkillsLoading: PropTypes.any,
-    isDepartmentsLoading: PropTypes.any,
+    isProjectsLoading: PropTypes.bool,
+    isSkillsLoading: PropTypes.bool,
+    isDepartmentsLoading: PropTypes.bool,
     getAllProjects: PropTypes.func,
     searchSkills: PropTypes.func,
     searchDepartments: PropTypes.func,
@@ -46,7 +48,7 @@ class Projects extends Component {
     this.setState({
       activePage: newActivePage
     });
-  }
+  };
 
   // updateCatalog = () => {
   //   const { chips } = this.state;
@@ -102,16 +104,21 @@ class Projects extends Component {
       searchDepartments,
       isSkillsLoading,
       isDepartmentsLoading,
+      isProjectsLoading
     } = this.props;
 
     // * PROJECTS NOT LOADED *
-    if (!employees || !skills || !departments || !projects) {
+    // if (!projects || !employees || !skills || !departments) {
+    console.log(!projects);
+    if (!projects || isProjectsLoading) {
       return (
         <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )
     }
+
+    console.log(projects[0].id);
 
     // let departmentsOptions = new Set();
     // for (let i = 0; i < employees.length; i++) {
@@ -125,16 +132,16 @@ class Projects extends Component {
       <section className="projects">
         <div className="z-depth-1">
 
-          <ProjectsSearchForm
-            handleEmployeesSearch={ this._handleSearch }
-            skills={ skills }
-            departments={ departments }
-            projects={ projects }
-            searchDepartments={ searchDepartments }
-            searchSkills={ searchSkills }
-            isSkillsLoading={ isSkillsLoading }
-            isDepartmentsLoading={ isDepartmentsLoading }
-          />
+          {/*<ProjectsSearchForm*/}
+            {/*handleEmployeesSearch={ this._handleSearch }*/}
+            {/*skills={ skills }*/}
+            {/*departments={ departments }*/}
+            {/*projects={ projects }*/}
+            {/*searchDepartments={ searchDepartments }*/}
+            {/*searchSkills={ searchSkills }*/}
+            {/*isSkillsLoading={ isSkillsLoading }*/}
+            {/*isDepartmentsLoading={ isDepartmentsLoading }*/}
+          {/*/>*/}
 
           {/*<div className="projects__toolbar">*/}
             {/*<div className="tools">*/}
@@ -169,29 +176,29 @@ class Projects extends Component {
           {/*</div>*/}
 
           <div className="projects__catalog">
-            {/*{*/}
-              {/*catalog.length*/}
-                {/*? catalog.slice((activePage - 1) * itemsCountPerPage, activePage * itemsCountPerPage).map(project => {*/}
-                    {/*return (*/}
-                      {/*<Project key={ project.id } project={ project } />*/}
-                    {/*);*/}
-                  {/*})*/}
-                {/*: <p className="notFound">No projects were found for a given critetia.</p>*/}
-            {/*}*/}
+            {
+              projects.length !== 0
+                ? projects.map(project => {
+                    return (
+                      <Project key={ project.id } project={ project } />
+                    );
+                  })
+                : <p className="notFound">No projects were found for a given critetia.</p>
+            }
           </div>
 
-          {/*{*/}
-            {/*Math.ceil(catalog.length / itemsCountPerPage) > 1*/}
-              {/*? <div className="projects__pagination">*/}
-                  {/*<Pagination*/}
-                    {/*activePage={ activePage }*/}
-                    {/*itemsCountPerPage={ itemsCountPerPage }*/}
-                    {/*totalItemsCount={ catalog.length }*/}
-                    {/*onChange={ this.handlePageChange }*/}
-                  {/*/>*/}
-                {/*</div>*/}
-              {/*: null*/}
-          {/*}*/}
+          {
+            Math.ceil(projects.length / itemsCountPerPage) > 1
+              ? <div className="projects__pagination">
+                  <Pagination
+                    activePage={ activePage }
+                    itemsCountPerPage={ itemsCountPerPage }
+                    totalItemsCount={ count }
+                    onChange={ this.handlePageChange }
+                  />
+                </div>
+              : null
+          }
         </div>
       </section>
     );
@@ -204,7 +211,8 @@ const mapStateToProps = (state, ownProps) => ({
   employees: state.employees.employees,
   skills: state.skills.skills,
   departments: state.departments.departments,
-  count: state.employees.count,
+  count: state.projects.count,
+  isProjectsLoading: state.projects.loading,
   isSkillsLoading: state.skills.loading,
   isDepartmentsLoading: state.departments.loading,
 });

@@ -1,6 +1,6 @@
 // @flow
 
-import { projectConstants } from '../_constants';
+import {employeeConstants, projectConstants} from '../_constants';
 
 const initialState = {
   loading: false,
@@ -18,9 +18,28 @@ export function projectsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        projects: action.projects
+        projects: action.projects.projects,
+        count: action.projects.count,
       };
     case projectConstants.GETALL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case employeeConstants.SEARCH_PROJECTS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case employeeConstants.SEARCH_PROJECTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        projects: action.projects.projects,
+        count: action.projects.count,
+      };
+    case employeeConstants.SEARCH_PROJECTS_FAILURE:
       return {
         ...state,
         loading: false,

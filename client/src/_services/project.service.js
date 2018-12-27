@@ -9,7 +9,7 @@ export const projectService = {
   search,
 };
 
-function getAll() {
+function getAll(page = 1, limit = 20) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -17,7 +17,7 @@ function getAll() {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/projects`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/projects?page=${page}&limit=${limit}`, requestOptions).then(handleResponse);
 }
 
 function search(search_value) {
