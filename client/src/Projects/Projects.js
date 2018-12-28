@@ -10,30 +10,27 @@ import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
 import EmployeesSearchForm from "../EmployeesSearchForm";
 import ProjectsSearchForm from "../ProjectsSearchForm/ProjectsSearchForm";
-import Employee from "../Employee";
 
 class Projects extends Component {
   static propTypes = {
-    employees: PropTypes.array,
     projects: PropTypes.array,
-    skills: PropTypes.array,
-    departments: PropTypes.array,
+    // employees: PropTypes.array,
+    // skills: PropTypes.array,
+    // departments: PropTypes.array,
     count: PropTypes.number,
+    // isSkillsLoading: PropTypes.bool,
     isProjectsLoading: PropTypes.bool,
-    isSkillsLoading: PropTypes.bool,
-    isDepartmentsLoading: PropTypes.bool,
+    // isDepartmentsLoading: PropTypes.bool,
     getAllProjects: PropTypes.func,
-    searchSkills: PropTypes.func,
-    searchDepartments: PropTypes.func,
     searchProjects: PropTypes.func,
+    // searchSkills: PropTypes.func,
+    // searchDepartments: PropTypes.func,
   };
 
   state = {
-    // catalog: this.props.projects.slice(),
     activePage: 1,
-    itemsCountPerPage: 10,
-    // chips: [ ]
-  }
+    itemsCountPerPage: 20,
+  };
 
   componentDidMount() {
     window.scroll(0, 0);
@@ -42,75 +39,55 @@ class Projects extends Component {
     getAllProjects(itemsCountPerPage);
   }
 
-  handlePageChange = (newActivePage) => {
+  handlePageChange = (limit, page) => {
     window.scroll(0, 0);
-
-    this.setState({
-      activePage: newActivePage
-    });
+    const { getAllProjects } = this.props;
+    getAllProjects(limit, page);
+    console.log(page);
+    this.setState((state) => ({
+      ...state,
+      activePage: page,
+    }));
   };
 
   // updateCatalog = () => {
-  //   const { chips } = this.state;
-  //   let newCatalog = [ ...this.props.projects ];
-  //
-  //   const filterByDepartmentsValue = document.querySelector('.js-select-department').value;
-  //   if (filterByDepartmentsValue !== 'all') {
-  //     newCatalog = newCatalog.filter(project => project.department.title === filterByDepartmentsValue);
-  //   }
-  //
-  //   for (let i = 0; i < newCatalog.length; i++) {
-  //     const isProjectSuitable = chips.every(chip => newCatalog[i].technologies.some(technology => technology.title.toLowerCase() === chip.toLowerCase()));
-  //     if (!isProjectSuitable) {
-  //       newCatalog.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  //
-  //   const sortProjectsValue = +document.querySelector('.js-select-sorting').value;
-  //   switch(sortProjectsValue) {
-  //     case 1:
-  //       newCatalog = newCatalog.sort((a, b) => a.title.localeCompare(b.title));
-  //       break;
-  //     case 2:
-  //       newCatalog = newCatalog.sort((a, b) => -a.title.localeCompare(b.title));
-  //       break;
-  //     case 3:
-  //       newCatalog = newCatalog.sort((a, b) => b.employees.length - a.employees.length);
-  //       break;
-  //     case 4:
-  //       newCatalog = newCatalog.sort((a, b) => a.employees.length - b.employees.length);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //
   //   this.setState({
   //     catalog: newCatalog,
   //     activePage: 1
   //   });
   // }
 
+  _handleSearch = (search) => {
+    console.log(search);
+    const { searchProjects } = this.props;
+    searchProjects(search);
+  };
+
 
   render() {
-    const { activePage, itemsCountPerPage, multiple } = this.state;
     const {
-      employees,
+      activePage,
+      itemsCountPerPage,
+      // multiple
+    } = this.state;
+
+    const {
+      // employees,
       projects,
-      departments,
+      // departments,
       count,
-      skills,
-      searchSkills,
-      searchDepartments,
-      isSkillsLoading,
-      isDepartmentsLoading,
+      // skills,
+      // searchSkills,
+      // searchDepartments,
+      // isSkillsLoading,
+      // isDepartmentsLoading,
       isProjectsLoading
     } = this.props;
 
     // * PROJECTS NOT LOADED *
     // if (!projects || !employees || !skills || !departments) {
-    console.log(!projects);
-    if (!projects || isProjectsLoading) {
+    // if (!projects || isProjectsLoading) {
+    if (!projects) {
       return (
         <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
@@ -118,30 +95,20 @@ class Projects extends Component {
       )
     }
 
-    console.log(projects[0].id);
-
-    // let departmentsOptions = new Set();
-    // for (let i = 0; i < employees.length; i++) {
-    //   departmentsOptions.add(employees[i].department.title);
-    // }
-    // departmentsOptions = [ ...departmentsOptions ].map(department => (
-    //   <option key={ department } value={ department }>{ department }</option>
-    // ));
-
     return (
       <section className="projects">
         <div className="z-depth-1">
 
-          {/*<ProjectsSearchForm*/}
-            {/*handleEmployeesSearch={ this._handleSearch }*/}
-            {/*skills={ skills }*/}
-            {/*departments={ departments }*/}
-            {/*projects={ projects }*/}
-            {/*searchDepartments={ searchDepartments }*/}
-            {/*searchSkills={ searchSkills }*/}
-            {/*isSkillsLoading={ isSkillsLoading }*/}
-            {/*isDepartmentsLoading={ isDepartmentsLoading }*/}
-          {/*/>*/}
+          <ProjectsSearchForm
+            handleProjectsSearch={ this._handleSearch }
+            // projects={ projects }
+            // skills={ skills }
+            // departments={ departments }
+            // searchDepartments={ searchDepartments }
+            // searchSkills={ searchSkills }
+            // isSkillsLoading={ isSkillsLoading }
+            // isDepartmentsLoading={ isDepartmentsLoading }
+          />
 
           {/*<div className="projects__toolbar">*/}
             {/*<div className="tools">*/}
@@ -188,7 +155,7 @@ class Projects extends Component {
           </div>
 
           {
-            Math.ceil(projects.length / itemsCountPerPage) > 1
+            Math.ceil(count / itemsCountPerPage) > 1
               ? <div className="projects__pagination">
                   <Pagination
                     activePage={ activePage }
@@ -207,21 +174,21 @@ class Projects extends Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
+  // skills: state.skills.skills,
   projects: state.projects.projects,
-  employees: state.employees.employees,
-  skills: state.skills.skills,
-  departments: state.departments.departments,
+  // employees: state.employees.employees,
+  // departments: state.departments.departments,
   count: state.projects.count,
   isProjectsLoading: state.projects.loading,
-  isSkillsLoading: state.skills.loading,
-  isDepartmentsLoading: state.departments.loading,
+  // isSkillsLoading: state.skills.loading,
+  // isDepartmentsLoading: state.departments.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllProjects: () => { dispatch(projectActions.getAll()); },
-  searchProjects: (value) => { dispatch(employeeActions.search(value)); },
-  searchSkills: (search_value) => { dispatch(skillActions.search(search_value)); },
-  searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },
+  getAllProjects: (limit, page) => { dispatch(projectActions.getAll(limit, page)); },
+  searchProjects: (value) => { dispatch(projectActions.search(value)); },
+  // searchSkills: (search_value) => { dispatch(skillActions.search(search_value)); },
+  // searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Projects);

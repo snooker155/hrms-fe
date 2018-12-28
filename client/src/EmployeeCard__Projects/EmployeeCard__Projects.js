@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './EmployeeCard__Projects.scss';
+import Col from "react-bootstrap/es/Col";
 
 const propTypes = {
   project: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     description: PropTypes.string,
     // technologies: PropTypes.array.isRequired
@@ -22,26 +23,30 @@ function EmployeeCard__Projects(props) {
     <div className="ec-project z-depth-1">
     <div className="ec-project__presentation">
       <div className="ec-project__logo">
-        <Link to={ project._id }>
-          <img className="ec-project__image" src={ require(`../static-assets/img/projects/1.png`)} />
+        <Link to={`/projects/${ project.id }`}>
+          <img className="ec-project__image" src={ require(`../static-assets/img/projects/${ Number(project.id.toString().slice(-1)) + 1 }.png`)} />
         </Link>
       </div>
       <div className="ec-project__info">
         <h4 className="ec-project__title">
-          <Link to={`/projects/${ project._id }`} className="link">
-            { project.title }
+          <Link to={`/projects/${ project.id }`} className="link">
+            { project.name }
           </Link>
-          <span className={ project.status === 'active'
-                          ? 'ec-project__status ec-project__status--active'
-                          : 'ec-project__status ec-project__status--unactive'
-          }>{ project.status }</span>
+          { project.status && project.status.trim()
+            ? <span className={ project.status === 'active'
+              ? 'ec-project__status ec-project__status--active'
+              : 'ec-project__status ec-project__status--unactive'
+            }>{ project.status }</span>
+            : null
+          }
         </h4>
-        <p className="ec-project__position">
-          Position: { position }
-        </p>
+        {/*<p className="ec-project__position">*/}
+          {/*{ position }*/}
+        {/*</p>*/}
+        {/*<p className="ec-project__description">{ project.description }</p>*/}
       </div>
     </div>
-    <p className="ec-project__description">{ project.description }</p>
+    {/*<p className="ec-project__description">{ project.description }</p>*/}
     {/*<div className="ec-project__tecnologies">*/}
       {/*{*/}
         {/*project.technologies.map(technology => (*/}

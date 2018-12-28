@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import avatar from '../static-assets/img/avatar-default.png'
 
 import './Project.scss';
 
@@ -26,76 +27,88 @@ export default class Project extends Component {
   }
 
   state = {
-    maxEmployeesPhotos: 5
+    maxEmployeesPhotos: 10
   };
 
-  renderEmployeesPhoto = () => {
+  renderEmployeesPhoto = (project) => {
     const { maxEmployeesPhotos } = this.state;
-    // const { employees, link } = this.props.project;
 
-    // if (employees.length <= maxEmployeesPhotos) {
-    //   return employees.map(employee => (
-    //       <Link key={ employee.id } to={ employee.link }>
-    //         <img className="employee__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/${ employee.id }.jpg` } />
-    //       </Link>
-    //   ));
-    // } else {
-    //   return (
-    //     <>
-    //       {
-    //         employees.slice(0, maxEmployeesPhotos - 1).map(employee => (
-    //           <Link key={ employee.id } to={ employee.link }>
-    //             <img className="employee__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/${ employee.id }.jpg` } />
-    //           </Link>
-    //         ))
-    //       }
-    //       <Link to={ link }>
-    //         <img className="employee__image" src={ `https://ui-avatars.com/api/?name=%2B${ employees.length - maxEmployeesPhotos + 1 }&background=f3f3f4&color=676a6c&size=128` } />
-    //       </Link>
-    //     </>
-    //   );
-    // }
+    if (project.employees.length <= maxEmployeesPhotos) {
+      return project.employees.map(employee => (
+          <Link key={ employee.id } to={`/employees/${ employee.attributes.login }`}>
+            <img className="employee__image" src={ avatar } />
+          </Link>
+      ));
+    } else {
+      const numberOfStaff = `%2B${ project.employees.length - maxEmployeesPhotos + 1 }`;
+      return (
+        <>
+          {
+            project.employees.slice(0, maxEmployeesPhotos - 1).map(employee => (
+              <Link key={ employee.id } to={`/employees/${ employee.attributes.login }`}>
+                <img className="employee__image" src={ avatar } />
+              </Link>
+            ))
+          }
+          <Link to={ `/projects/${ project.id }`}>
+            <img className="employee__image" src={ `https://ui-avatars.com/api/?name=${ numberOfStaff }&background=f3f3f4&color=676a6c&size=128&length=3&font-size=0.33` } />
+          </Link>
+        </>
+      );
+    }
   };
 
-  // componentDidMount() {
-  //   window.addEventListener('resize', this.windowResizeHandler, false);
-  //   this.windowResizeHandler();
-  // }
+  componentDidMount() {
+    window.addEventListener('resize', this.windowResizeHandler, false);
+    this.windowResizeHandler();
+  }
 
-  // windowResizeHandler = () => {
-  //   const { maxEmployeesPhotos } = this.state;
-  //   const screenWidth = window.screen.width;
-  //
-  //   if (screenWidth >= 700) {
-  //     if (maxEmployeesPhotos !== 5) {
-  //       this.setState({
-  //         maxEmployeesPhotos: 5
-  //       });
-  //     }
-  //   } else if (screenWidth < 700 && screenWidth >= 640) {
-  //     if (maxEmployeesPhotos !== 4) {
-  //       this.setState({
-  //         maxEmployeesPhotos: 4
-  //       });
-  //     }
-  //   } else if (screenWidth < 640 && screenWidth >= 560) {
-  //     if (maxEmployeesPhotos !== 3) {
-  //       this.setState({
-  //         maxEmployeesPhotos: 3
-  //       });
-  //     }
-  //   } else {
-  //     if (maxEmployeesPhotos !== 2) {
-  //       this.setState({
-  //         maxEmployeesPhotos: 2
-  //       });
-  //     }
-  //   }
-  // };
+  windowResizeHandler = () => {
+    const { maxEmployeesPhotos } = this.state;
+    const screenWidth = window.screen.width;
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.windowResizeHandler, false);
-  // }
+    if (screenWidth >= 1000) {
+      if (maxEmployeesPhotos !== 5) {
+        this.setState({
+          maxEmployeesPhotos: 10
+        });
+      }
+    } else if (screenWidth < 1000 && screenWidth >= 840) {
+      if (maxEmployeesPhotos !== 5) {
+        this.setState({
+          maxEmployeesPhotos: 8
+        });
+      }
+    } else if (screenWidth < 840 && screenWidth >= 700) {
+      if (maxEmployeesPhotos !== 5) {
+        this.setState({
+          maxEmployeesPhotos: 6
+        });
+      }
+    } else if (screenWidth < 700 && screenWidth >= 640) {
+      if (maxEmployeesPhotos !== 4) {
+        this.setState({
+          maxEmployeesPhotos: 4
+        });
+      }
+    } else if (screenWidth < 640 && screenWidth >= 560) {
+      if (maxEmployeesPhotos !== 3) {
+        this.setState({
+          maxEmployeesPhotos: 3
+        });
+      }
+    } else {
+      if (maxEmployeesPhotos !== 2) {
+        this.setState({
+          maxEmployeesPhotos: 2
+        });
+      }
+    }
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.windowResizeHandler, false);
+  }
 
   render() {
     const { project } = this.props;
@@ -103,12 +116,12 @@ export default class Project extends Component {
     return (
       <div className="project animated fadeIn fast">
         <div className="project__status">
-          <span className="status" style={ { background: project.status === 'Open' ? 'hsl(120, 32%, 61%)' : 'hsl(0, 0%, 61%)' }}>{ project.status }</span>
+          { project.status && project.status.trim() && <span className="status" style={ { background: project.status === 'Open' ? 'hsl(120, 32%, 61%)' : 'hsl(0, 0%, 61%)' }}>{ project.status }</span> }
         </div>
         <div className="project__presentation">
           <div className="project__logo">
             <Link to={ `/projects/${ project.id }`} >
-              <img className="project__image" src={ require(`../static-assets/img/projects/${ project.id }.png`)} />
+              <img className="project__image" src={ require(`../static-assets/img/projects/${ Number(project.id.toString().slice(-1)) + 1 }.png`)} />
             </Link>
           </div>
           <div className="project__info">
@@ -134,11 +147,11 @@ export default class Project extends Component {
             }
           </div>
         </div>
-        {/*<div className="project__employees">*/}
-          {/*{*/}
-            {/*this.renderEmployeesPhoto()*/}
-          {/*}*/}
-        {/*</div>*/}
+        <div className="project__employees">
+          {
+            this.renderEmployeesPhoto(project)
+          }
+        </div>
       </div>
     );
   }

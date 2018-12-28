@@ -1,0 +1,14 @@
+.pc-info {
+  .content {
+    display: flex;
+    flex-flow: row nowrap;
+
+    span:not(:last-child) {
+        margin-right: 2rem;
+    }
+  }
+
+  &__project-info {
+    margin-bottom: 3rem;
+  }
+}

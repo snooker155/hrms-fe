@@ -10,6 +10,7 @@ import {employeeActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import avatar from '../static-assets/img/avatar-default.png'
 import Spinner from "react-spinner-material";
+import Grid from "react-bootstrap/es/Grid";
 
 class EmployeeCard extends Component {
   static propTypes = {
@@ -86,16 +87,16 @@ class EmployeeCard extends Component {
       )
     }
 
-    if(employee.projects && employee.project.length !== 0) {
-      for (let i = 0; i < employee.projects.length; i++) {
-        employee.projects[i] = {
-          ...employee.projects[i],
-          description: employee.projects[i].description,
-          // status,
-          // technologies
-        }
-      }
-    }
+    // if(employee.projects && employee.project.length !== 0) {
+    //   for (let i = 0; i < employee.projects.length; i++) {
+    //     employee.projects[i] = {
+    //       ...employee.projects[i],
+    //       description: employee.projects[i].description,
+    //       // status,
+    //       // technologies
+    //     }
+    //   }
+    // }
 
     return (
       <div className="EmployeeCard animated fadeIn fast">
@@ -127,9 +128,9 @@ class EmployeeCard extends Component {
               <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
                 <span>Skills</span>
               </li>
-              {/*<li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>*/}
-                {/*<span>Projects</span>*/}
-              {/*</li>*/}
+              <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>
+                <span>Projects</span>
+              </li>
             </ul>
 
             <div className="c-tabs__content">
@@ -156,15 +157,17 @@ class EmployeeCard extends Component {
                 : null
               }
 
-              {/*{ activeTab === 3*/}
-                {/*? <div className='EmployeeCard__projects animated fadeIn fast'>*/}
-                  {/*<h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Projects</h2>*/}
-                  {/*{*/}
-                    {/*employee.projects.map(project => <EmployeeCard__Projects key={ project._id } project={ project } position={ employee.position } />)*/}
-                  {/*}*/}
-                {/*</div>*/}
-                {/*: null*/}
-              {/*}*/}
+              { activeTab === 3
+                ? <div className='EmployeeCard__projects animated fadeIn fast'>
+                  <h2>{ employee.attributes.login === currentUserUsername ? 'My' : null } Projects</h2>
+                  <div className='EmployeeCard__projects__list'>
+                    {
+                      employee.projects.map(project => <EmployeeCard__Projects key={ project.id } project={ project } position={ employee.relationships.position.data.title } />)
+                    }
+                  </div>
+                </div>
+                : null
+              }
             </div>
           </div>
         </div>
