@@ -150,7 +150,7 @@ const mapStateToProps = (state, ownProps) => ({
   isDepartmentsLoading: state.departments.loading,
   count: state.employees.count,
   departments: state.departments.departments,
-  projects: state.projects.projects,
+  projects: state.projects.list,
 });
 
 const mapDispatchToProps = dispatch => ({

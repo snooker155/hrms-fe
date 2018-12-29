@@ -1,6 +1,6 @@
 // @flow
 
-import { skillConstants } from '../_constants';
+import {projectConstants, skillConstants} from '../_constants';
 
 const initialState = {
   loading: false,
@@ -56,6 +56,23 @@ export function skillsReducer(state = initialState, action) {
         skills: action.skills
       };
     case skillConstants.GETBYTYPE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case skillConstants.GETBYID_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case skillConstants.GETBYID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        skill: action.skill
+      };
+    case skillConstants.GETBYID_FAILURE:
       return {
         ...state,
         loading: false,

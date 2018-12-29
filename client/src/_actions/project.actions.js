@@ -6,16 +6,37 @@ import {employeeService, projectService} from "../_services";
 
 export const projectActions = {
   getAll,
+  getAllWithPages,
   search,
   getById,
 };
 
 
-function getAll(limit = 20, page = 1) {
+function getAll() {
   return dispatch => {
     dispatch(request());
 
-    projectService.getAll(limit, page)
+    projectService.getAll()
+      .then(
+        projects => {
+          dispatch(success(projects))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: projectConstants.GETALL_LIST_REQUEST } }
+  function success(projects) { return { type: projectConstants.GETALL_LIST_SUCCESS, projects } }
+  function failure(error) { return { type: projectConstants.GETALL_LIST_FAILURE, error } }
+}
+
+function getAllWithPages(limit = 20, page = 1) {
+  return dispatch => {
+    dispatch(request());
+
+    projectService.getAllWithPages(limit, page)
       .then(
         projects => {
           dispatch(success(projects))
@@ -33,11 +54,11 @@ function getAll(limit = 20, page = 1) {
 
 
 // @TODO: merge this with search by type and getAll functions
-function search(search_value) {
+function search(search_value, limit = 20, page = 1) {
   return dispatch => {
     dispatch(request());
 
-    projectService.search(search_value)
+    projectService.search(search_value, limit, page)
       .then(
         projects => {
           console.log(projects);

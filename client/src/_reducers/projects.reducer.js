@@ -27,6 +27,23 @@ export function projectsReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case projectConstants.GETALL_LIST_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case projectConstants.GETALL_LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        list: action.projects.projects,
+      };
+    case projectConstants.GETALL_LIST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     case projectConstants.SEARCH_PROJECTS_REQUEST:
       return {
         ...state,

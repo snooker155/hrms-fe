@@ -10,6 +10,7 @@ import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
 import EmployeesSearchForm from "../EmployeesSearchForm";
 import ProjectsSearchForm from "../ProjectsSearchForm/ProjectsSearchForm";
+import ProjectsList from "../ProjectsList/ProjectsList";
 
 class Projects extends Component {
   static propTypes = {
@@ -27,16 +28,15 @@ class Projects extends Component {
     // searchDepartments: PropTypes.func,
   };
 
-  state = {
-    activePage: 1,
-    itemsCountPerPage: 20,
-  };
+  // state = {
+  //   activePage: 1,
+  //   itemsCountPerPage: 20,
+  // };
 
   componentDidMount() {
     window.scroll(0, 0);
-    const { itemsCountPerPage } = this.state;
     const { getAllProjects } = this.props;
-    getAllProjects(itemsCountPerPage);
+    getAllProjects();
   }
 
   handlePageChange = (limit, page) => {
@@ -44,10 +44,10 @@ class Projects extends Component {
     const { getAllProjects } = this.props;
     getAllProjects(limit, page);
     console.log(page);
-    this.setState((state) => ({
-      ...state,
-      activePage: page,
-    }));
+    // this.setState((state) => ({
+    //   ...state,
+    //   activePage: page,
+    // }));
   };
 
   // updateCatalog = () => {
@@ -65,12 +65,6 @@ class Projects extends Component {
 
 
   render() {
-    const {
-      activePage,
-      itemsCountPerPage,
-      // multiple
-    } = this.state;
-
     const {
       // employees,
       projects,
@@ -142,36 +136,18 @@ class Projects extends Component {
             {/*</div>*/}
           {/*</div>*/}
 
-          <div className="projects__catalog">
-            {
-              projects.length !== 0
-                ? projects.map(project => {
-                    return (
-                      <Project key={ project.id } project={ project } />
-                    );
-                  })
-                : <p className="notFound">No projects were found for a given critetia.</p>
-            }
-          </div>
+          <ProjectsList
+            projects={ projects }
+            count={ count }
+            isProjectsLoading={ isProjectsLoading }
+            handlePageChange={ this.handlePageChange }
+          />
 
-          {
-            Math.ceil(count / itemsCountPerPage) > 1
-              ? <div className="projects__pagination">
-                  <Pagination
-                    activePage={ activePage }
-                    itemsCountPerPage={ itemsCountPerPage }
-                    totalItemsCount={ count }
-                    onChange={ this.handlePageChange }
-                  />
-                </div>
-              : null
-          }
         </div>
       </section>
     );
   }
 }
-
 
 const mapStateToProps = (state, ownProps) => ({
   // skills: state.skills.skills,
@@ -185,7 +161,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllProjects: (limit, page) => { dispatch(projectActions.getAll(limit, page)); },
+  getAllProjects: (limit, page) => { dispatch(projectActions.getAllWithPages(limit, page)); },
   searchProjects: (value) => { dispatch(projectActions.search(value)); },
   // searchSkills: (search_value) => { dispatch(skillActions.search(search_value)); },
   // searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },

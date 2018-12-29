@@ -18,6 +18,8 @@ import { authActions } from "../_actions";
 import Spinner from "react-spinner-material";
 import Employees from "../Employees";
 import ProjectCard from "../ProjectCard/ProjectCard";
+import Technologies from "../Technologies/Technologies";
+import TechnologyCard from "../TechnologyCard/TechnologyCard";
 
 class Dashboard extends Component {
   static propTypes = {
@@ -61,18 +63,14 @@ class Dashboard extends Component {
           <Route exact={ true } path="/employees/:employeeUsername" component={ EmployeeCard }/>
 
           <Route exact={ true } path='/projects/:projectId' component={ ProjectCard } />
-          {/*<Route exact={ true } path='/skills/:title' render={ () => (*/}
-          {/*<TechnologyCard employees={ employees } projects={ projects } skills={ skills } />*/}
-          {/*)} />*/}
+          <Route exact={ true } path='/skills/:skillId' component={ TechnologyCard } />
           {/*<Route exact={ true } path='/departments/:title' render={ () => (*/}
           {/*<DepartmentCard departments={ departments } currentUserId={ user_id } />*/}
           {/*)} />*/}
 
           <Route exact={ true } path='/employees' component={ Employees }/>
           <Route exact={ true } path='/projects' component={ Projects }/>
-          {/*<Route exact={ true } path='/skills' render={ () => (*/}
-          {/*<Technologies projects={ projects } technologies={ skills.filter(skill => skill.type === 'technology') } />*/}
-          {/*)} />*/}
+          <Route exact={ true } path='/skills' component={ Technologies } />
 
           <Route path='*'>
             <Redirect to={`/employees/${user.attributes.login}`}/>

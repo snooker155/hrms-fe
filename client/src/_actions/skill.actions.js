@@ -1,14 +1,15 @@
 // @flow
 
 // import type {fetchDataAction} from "../_types/fetchDataAction";
-import { skillConstants } from "../_constants";
-import { skillService } from "../_services";
+import {projectConstants, skillConstants} from "../_constants";
+import {projectService, skillService} from "../_services";
 
 export const skillActions = {
   getAll,
   getSkillsTypes,
   getByType,
   search,
+  getById,
   // update,
   // delete: _delete,
 };
@@ -95,6 +96,26 @@ function getByType(skillType: string) {
   function request(skillType) { return { type: skillConstants.GETBYTYPE_REQUEST, skillType } }
   function success(skills) { return { type: skillConstants.GETBYTYPE_SUCCESS, skills } }
   function failure(skillType, error) { return { type: skillConstants.GETBYTYPE_FAILURE, skillType, error } }
+}
+
+function getById(id: string) {
+  return dispatch => {
+    dispatch(request(id));
+
+    skillService.getById(id)
+      .then(
+        skill => {
+          dispatch(success(skill))
+        },
+        error => {
+          dispatch(failure(id, error.toString()))
+        }
+      );
+  };
+
+  function request(id) { return { type: skillConstants.GETBYID_REQUEST, id } }
+  function success(skill) { return { type: skillConstants.GETBYID_SUCCESS, skill } }
+  function failure(id, error) { return { type: skillConstants.GETBYID_FAILURE, id, error } }
 }
 
 // function update(employee) {

@@ -6,11 +6,23 @@ import { authService } from "./auth.service";
 
 export const projectService = {
   getAll,
+  getAllWithPages,
   search,
   getById,
 };
 
-function getAll(limit = 20, page = 1) {
+function getAll() {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/projects`, requestOptions).then(handleResponse);
+}
+
+function getAllWithPages(limit = 20, page = 1) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -21,7 +33,7 @@ function getAll(limit = 20, page = 1) {
   return fetch(`${environment.apiUrl}/projects?page=${page}&limit=${limit}`, requestOptions).then(handleResponse);
 }
 
-function search(value) {
+function search(value, limit = 20, page = 1) {
   const search = Object.entries(value).map(([key, val]) => val && `${key}=${encodeURIComponent(val)}`).filter(Boolean).join('&');
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
@@ -30,7 +42,7 @@ function search(value) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/projects?${search}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/projects?limit=${limit}&page=${page}&${search}`, requestOptions).then(handleResponse);
 }
 
 function getById(id: number) {

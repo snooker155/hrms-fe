@@ -15,11 +15,21 @@
   }
 
   &__item {
-    width: 25%;
+    min-width: 35%;
     padding: .5rem;
     text-align: center;
     border-top: .1rem solid #ddd;
     border-bottom: .1rem solid #ddd;
+
+    &:first-child {
+      width: 25%;
+      text-align: left;
+    }
+
+    &:last-child {
+      width: 15%;
+      text-align: right;
+    }
 
     a:hover {
       text-decoration: none;
