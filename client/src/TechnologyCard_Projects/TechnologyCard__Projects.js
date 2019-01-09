@@ -19,7 +19,7 @@ function TechnologyCard__Projects(props) {
             <div className="project__presentation">
               <div className="project__logo">
                 <Link to={ project.link }>
-                  <img className="project__image" src={ require(`../../static-assets/img/projects/${ project.id }.png`)} />
+                  <img className="project__image" src={ require(`../static-assets/img/projects/${ project.id }.png`)} />
                 </Link>
               </div>
               <div className="project__info">

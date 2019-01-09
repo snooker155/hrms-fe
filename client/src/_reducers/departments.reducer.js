@@ -1,10 +1,11 @@
 // @flow
 
-import { departmentConstants } from '../_constants';
+import {departmentConstants, skillConstants} from '../_constants';
 
 const initialState = {
   loading: false,
   departments: [],
+  department: null,
 };
 
 export function departmentsReducer(state = initialState, action) {
@@ -21,6 +22,23 @@ export function departmentsReducer(state = initialState, action) {
         departments: action.departments
       };
     case departmentConstants.GETALL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case departmentConstants.GETBYID_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case departmentConstants.GETBYID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        department: action.department
+      };
+    case departmentConstants.GETBYID_FAILURE:
       return {
         ...state,
         loading: false,

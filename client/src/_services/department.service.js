@@ -7,6 +7,7 @@ import { authService } from "./auth.service";
 export const departmentService = {
   getAll,
   search,
+  getById,
 };
 
 function getAll() {
@@ -29,6 +30,17 @@ function search(search_value) {
   };
 
   return fetch(`${environment.apiUrl}/departments?search_value=${search_value}`, requestOptions).then(handleResponse);
+}
+
+function getById(id: string) {
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  const requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  return fetch(`${environment.apiUrl}/departments/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

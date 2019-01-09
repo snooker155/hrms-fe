@@ -8,18 +8,14 @@ import PropTypes from 'prop-types';
 
 import Header from '../Header';
 import EmployeeCard from '../EmployeeCard';
-// import ProjectCard from '../../components/ProjectCard';
-// import TechnologyCard from '../../components/TechnologyCard';
-// import DepartmentCard from '../../components/DepartmentCard';
-// import Employees from '../../components/Employees';
 import Projects from '../Projects';
-// import Technologies from '../../components/Technologies';
 import { authActions } from "../_actions";
 import Spinner from "react-spinner-material";
 import Employees from "../Employees";
-import ProjectCard from "../ProjectCard/ProjectCard";
-import Technologies from "../Technologies/Technologies";
-import TechnologyCard from "../TechnologyCard/TechnologyCard";
+import ProjectCard from "../ProjectCard";
+import Technologies from "../Technologies";
+import TechnologyCard from "../TechnologyCard";
+import DepartmentCard from "../DepartmentCard";
 
 class Dashboard extends Component {
   static propTypes = {
@@ -64,9 +60,7 @@ class Dashboard extends Component {
 
           <Route exact={ true } path='/projects/:projectId' component={ ProjectCard } />
           <Route exact={ true } path='/skills/:skillId' component={ TechnologyCard } />
-          {/*<Route exact={ true } path='/departments/:title' render={ () => (*/}
-          {/*<DepartmentCard departments={ departments } currentUserId={ user_id } />*/}
-          {/*)} />*/}
+          <Route exact={ true } path='/departments/:departmentId' component={ DepartmentCard } />
 
           <Route exact={ true } path='/employees' component={ Employees }/>
           <Route exact={ true } path='/projects' component={ Projects }/>

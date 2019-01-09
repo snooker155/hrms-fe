@@ -8,8 +8,8 @@ import connect from "react-redux/es/connect/connect";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import Spinner from "react-spinner-material";
 import TechnologyCard__Info from "../TechnologyCard_Info/TechnologyCard__Info";
-// import TechnologyCard__Community from '../TechnologyCard__Community';
-// import TechnologyCard__Projects from '../TechnologyCard__Projects';
+import TechnologyCard__Community from "../TechnologyCard_Community/TechnologyCard__Community";
+// import TechnologyCard__Projects from "../TechnologyCard_Projects/TechnologyCard__Projects";
 
 class TechnologyCard extends Component {
   static propTypes = {
@@ -85,9 +85,9 @@ class TechnologyCard extends Component {
                   <a href={ skill.wiki } target='_blank' rel='noopener noreferrer'>Wikipedia</a>
                 </p>
             }
-            {/*<p className="TechnologyCard__staffCount">*/}
-              {/*<i className="material-icons">school</i>Staff count: { filteredEmployees.length }*/}
-            {/*</p>*/}
+            <p className="TechnologyCard__staffCount">
+              <i className="material-icons">school</i>Staff count: { skill.employees.length }
+            </p>
             {/*{ isTechnology*/}
                 {/*? <p className="TechnologyCard__projectsCount">*/}
                     {/*<i className="material-icons">folder</i>Used in projects: { filtetedProjects.length }*/}
@@ -102,9 +102,9 @@ class TechnologyCard extends Component {
               <li className={ activeTab === 1 ? 'current' : null } onClick={ () => this.onTabClick(1) }>
                 <span>Info</span>
               </li>
-              {/*<li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>*/}
-                {/*<span>Community</span>*/}
-              {/*</li>*/}
+              <li className={ activeTab === 2 ? 'current' : null } onClick={ () => this.onTabClick(2) }>
+                <span>Community</span>
+              </li>
               {/*{ isTechnology*/}
                   {/*? <li className={ activeTab === 3 ? 'current' : null } onClick={ () => this.onTabClick(3) }>*/}
                       {/*<span>Projects</span>*/}
@@ -120,17 +120,17 @@ class TechnologyCard extends Component {
                   </div>
                 : null
               }
-              {/*{ activeTab === 2*/}
-                {/*? <div className='TechnologyCard__Community animated fadeIn fast'>*/}
-                    {/*<h2>Community</h2>*/}
-                    {/*<TechnologyCard__Community employees={ filteredEmployees } />*/}
-                  {/*</div>*/}
-                {/*: null*/}
-              {/*}*/}
+              { activeTab === 2
+                ? <div className='TechnologyCard__Community animated fadeIn fast'>
+                    <h2>Community</h2>
+                    <TechnologyCard__Community employees={ skill.employees } />
+                  </div>
+                : null
+              }
               {/*{ activeTab === 3*/}
                 {/*? <div className='TechnologyCard__Projects animated fadeIn fast'>*/}
                     {/*<h2>Projects</h2>*/}
-                    {/*<TechnologyCard__Projects projects={ filtetedProjects } />*/}
+                    {/*<TechnologyCard__Projects projects={ skill.projects } />*/}
                   {/*</div>*/}
                 {/*: null*/}
               {/*}*/}

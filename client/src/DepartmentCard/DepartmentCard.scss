@@ -1,4 +1,4 @@
-.ProjectCard {
+.DepartmentCard {
   margin: 0 auto;
   max-width: 96rem;
   min-width: 40rem;
@@ -37,12 +37,6 @@
       text-decoration: none;
       color: inherit;
     }
-  }
-
-  &__staffCount {
-    margin: 0;
-    padding: 0;
-    margin-bottom: .4rem;
   }
 
   &__officialSite {
@@ -136,7 +130,15 @@
         display: none;
       }
 
-      .ProjectCard__Members, .ProjectCard__Technologies {
+      .DepartmentCard__Staff, .DepartmentCard__Projects {
+        h2 {
+          text-align: center;
+          font-size: 2.4rem;
+          font-weight: 300;
+        }
+      }
+
+      .DepartmentCard__Staff {
         position: relative;
 
         .material-icons {
@@ -153,12 +155,6 @@
             pointer-events: none;
             opacity: 0.4;
           }
-        }
-
-        h2 {
-          text-align: center;
-          font-size: 2.4rem;
-          font-weight: 300;
         }
       }
     }
