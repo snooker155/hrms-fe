@@ -163,8 +163,8 @@ export default class DepartmentCard__Staff extends Component {
                           {/*{ `${ employee.name } ${ employee.surname }` }*/}
                         {/*</Link>*/}
                     {/*}*/}
-                    <Link to={`/employees/${employee.login }`} >
-                      { `${ employee['full-name'] }` }
+                    <Link to={`/employees/${employee.attributes.login }`} >
+                      { `${ employee.attributes.name } ${ employee.attributes.surname }` }
                     </Link>
                   </td>
                   <td className="dc-staff__item">
@@ -176,10 +176,10 @@ export default class DepartmentCard__Staff extends Component {
                         {/*/>*/}
                       {/*: <> { employee.position } </>*/}
                     {/*}*/}
-                    <> { employee.position } </>
+                    <> { employee.relationships.position.data.title } </>
                   </td>
                   <td className="dc-staff__item">
-                    { new Date(employee.startDate).toLocaleDateString() }
+                    { new Date(employee.attributes['start-date']).toLocaleDateString() }
                   </td>
                   {/*{ isDepartmentManager*/}
                     {/*?  <td className="dc-staff__item dc-staff__item--edit">*/}
