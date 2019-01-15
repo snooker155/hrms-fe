@@ -46,7 +46,7 @@ class Pagination extends Component {
         >Previous
         </Pager.Item>
         <Pager.Item
-          disabled={activePage + 1 >= Math.ceil(totalItemsCount / itemsCountPerPage)}
+          disabled={activePage + 1 > Math.ceil(totalItemsCount / itemsCountPerPage)}
           onClick={ this._next }
         >Next
         </Pager.Item>

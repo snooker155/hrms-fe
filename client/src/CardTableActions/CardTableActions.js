@@ -5,10 +5,10 @@ import './CardTableActions.scss';
 
 const propTypes = {
   isActive: PropTypes.bool.isRequired,
-  onApplyClick: PropTypes.func.isRequired,
-  onCancelClick: PropTypes.func.isRequired,
-  onEditClick: PropTypes.func.isRequired,
-  onDeleteClick: PropTypes.func.isRequired
+  onApplyClick: PropTypes.func,
+  onCancelClick: PropTypes.func,
+  onEditClick: PropTypes.func,
+  onDeleteClick: PropTypes.func,
 };
 
 function CardTableActions(props) {
@@ -23,7 +23,7 @@ function CardTableActions(props) {
               <i className="material-icons material-icons--cancel" onClick={ onCancelClick }>close</i>
             </>
           : <>
-              <i className="material-icons" onClick={ onEditClick }>edit</i>
+            { onEditClick && <i className="material-icons" onClick={ onEditClick }>edit</i> }
               <i className="material-icons" onClick={ onDeleteClick }>delete</i>
             </>
       }

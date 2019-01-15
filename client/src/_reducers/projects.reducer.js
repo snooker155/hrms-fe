@@ -79,6 +79,40 @@ export function projectsReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case projectConstants.UPDATE_TECHNOLOGIES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case projectConstants.UPDATE_TECHNOLOGIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        project: action.project
+      };
+    case projectConstants.UPDATE_TECHNOLOGIES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
+    case projectConstants.DELETE_TECHNOLOGIES_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case projectConstants.DELETE_TECHNOLOGIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        project: action.project
+      };
+    case projectConstants.DELETE_TECHNOLOGIES_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     default:
       return state
   }

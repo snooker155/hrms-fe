@@ -54,7 +54,7 @@ class TechnologyCard extends Component {
     // * SKILL NOT FOUND *
     if (!skill) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )

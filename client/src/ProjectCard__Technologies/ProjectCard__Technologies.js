@@ -4,101 +4,140 @@ import { Link } from 'react-router-dom';
 
 import './ProjectCard__Technologies.scss';
 import CardTableActions from '../CardTableActions';
+import {Modal} from "react-bootstrap";
+import SkillForm from "../SkillForm";
+import {ConfirmationModal} from "../_components";
 
 export default class ProjectCard__Technologies extends Component {
   static propTypes = {
-    technologies: PropTypes.array.isRequired,
-    employees: PropTypes.array.isRequired,
-    isProjectManager: PropTypes.bool.isRequired
+    project: PropTypes.object,
+    isProjectManager: PropTypes.bool,
+    updateTechnology: PropTypes.func,
+    deleteTechnology: PropTypes.func,
+    skills: PropTypes.array,
+    skillsTypes: PropTypes.array,
+    getSkillsByType: PropTypes.func,
   };
 
-  // state = {
-  //   technologies: this.props.technologies,
-  //   editableRow: null
-  // };
-  //
-  // onAddClick = () => {
-  //   const newTechnology = {
-  //     title: '',
-  //     version: '',
-  //     link: '/skills'
-  //   };
-  //
-  //   this.setState(state => ({
-  //     technologies: [ ...state.technologies, newTechnology ],
-  //     editableRow: state.technologies.length
-  //   }));
-  // };
-  //
-  // onEditClickHandler = i => {
+  state = {
+    stateTechnologies: JSON.parse(JSON.stringify(this.props.project.technologies)),
+    index: null,
+    editableRow: null,
+    showModal: false,
+    showConfirmationModal: false,
+  };
+
+  showModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showModal: true,
+    }));
+  };
+
+  hideModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showModal: false,
+    }));
+  };
+
+  hideConfirmationModal = () => {
+    this.setState((state) => ({
+      ...state,
+      showConfirmationModal: false,
+      index: null,
+    }));
+  };
+
+  // onEditClickHandler = index => {
   //   this.setState({
-  //     editableRow: i
+  //     editableRow: index
   //   });
   // };
+
+  onDeleteClickHandler = index => {
+    // const { employee, deleteSkill } = this.props;
+    // employee.skills.splice(index, 1);
+    // deleteSkill(employee);
+    // this.setState(state => ({
+    //   ...state,
+    //   stateSkills: JSON.parse(JSON.stringify(employee.skills)),
+    //   editableRow: null,
+    // }));
+    this.setState(state => ({
+      ...state,
+      showConfirmationModal: true,
+      index: index,
+    }));
+  };
+
+  deleteTechnology = () => {
+    const { index } = this.state;
+    const { project, deleteTechnology } = this.props;
+    project.technologies.splice(index, 1);
+    deleteTechnology(project);
+    this.setState(state => ({
+      ...state,
+      stateTechnologies: JSON.parse(JSON.stringify(project.technologies)),
+      showConfirmationModal: false,
+      index: null,
+    }));
+  };
+
+  // onApplyClickHandler = () => {
+  //   const { stateSkills } = this.state;
+  //   const { employee, updateSkill } = this.props;
   //
-  // onDeleteClickHandler = i => {
-  //   this.setState(state => ({
-  //     technologies: [ ...state.technologies.slice(0, i), ...state.technologies.slice(i + 1) ]
-  //   }));
-  // };
+  //   employee.skills = stateSkills;
+  //   updateSkill(employee);
   //
-  // onApplyClickHandler = i => {
-  //   const { technologies } = this.state;
-  //   const newTechnology = document.querySelector('.js-input-field-technology');
-  //   const newVersion = document.querySelector('.js-input-field-version');
-  //
-  //   if (newTechnology.value.trim() === '') {
-  //     newTechnology.classList.add('invalid');
-  //     return;
-  //   }
-  //
-  //   if (newVersion.value.trim() === '') {
-  //     newVersion.classList.add('invalid');
-  //     return;
-  //   }
-  //
-  //   const editedTechnology = {
-  //     ...technologies[i],
-  //     title: newTechnology.value.trim(),
-  //     version: newVersion.value.trim(),
-  //     link: encodeURI(`/skills/${ newTechnology.value.trim() }`)
-  //   };
-  //
-  //   this.setState(state => ({
-  //     technologies: [ ...state.technologies.slice(0, i), editedTechnology,...state.technologies.slice(i + 1) ],
-  //     editableRow: null
-  //   }));
-  // };
-  //
-  // onCancelClickHandler = i => {
-  //   const { technologies } = this.state;
-  //   if (technologies[i].title === '' && technologies[i].version === '') {
-  //     this.setState((state) => ({
-  //       technologies: [ ...state.technologies.slice(0, i), ...state.technologies.slice(i + 1) ],
-  //       editableRow: null
-  //     }));
-  //   } else {
-  //     this.setState({
-  //       editableRow: null
-  //     });
-  //   }
+  //   this.setState({
+  //     editableRow: null,
+  //   });
   // };
 
+  // onCancelClickHandler = () => {
+  //   const { employee: { skills: skills } } = this.props;
+  //
+  //   this.setState({
+  //     stateSkills: JSON.parse(JSON.stringify(skills)),
+  //     editableRow: null
+  //   });
+  // };
+
+  addTechnology = (technologyId) => {
+    const { project, updateTechnology } = this.props;
+
+    project.technologies.push(technologyId);
+    updateTechnology(project);
+
+    this.setState((state) => ({
+      ...state,
+      showModal: false,
+    }));
+  };
+
   render() {
-    // const { technologies, editableRow } = this.state;
-    const { employees, isProjectManager, technologies } = this.props;
+    const { editableRow, showConfirmationModal } = this.state;
+    const {
+      project: { employees: employees, technologies: technologies },
+      isProjectManager,
+      skillsTypes,
+      skills,
+      getSkillsByType
+    } = this.props;
 
     return (
       <>
-        {/*{ isProjectManager*/}
-          {/*? <i className={ editableRow !== null*/}
-                          {/*? 'material-icons material-icons--add material-icons--disabled'*/}
-                          {/*: 'material-icons material-icons--add'}*/}
-                {/*onClick={ this.onAddClick }>*/}
-              {/*note_add*/}
-            {/*</i>*/}
-          {/*: null*/}
-        {/*}*/}
+        { isProjectManager
+          ? <i className={ editableRow !== null
+                          ? 'material-icons material-icons--add material-icons--disabled'
+                          : 'material-icons material-icons--add'}
+               onClick={ this.showModal }>
+              note_add
+            </i>
+          : null
+        }
         <table className="pc-technologies striped">
           <thead>
             <tr className="pc-technologies__row">
@@ -111,12 +150,12 @@ export default class ProjectCard__Technologies extends Component {
               <th className="pc-technologies__item">
                 <span>Staff Count</span>
               </th>
-              {/*{ isProjectManager*/}
-                {/*? <th className="pc-technologies__item">*/}
-                      {/*<span>Actions</span>*/}
-                    {/*</th>*/}
-                {/*: null*/}
-              {/*}*/}
+              { isProjectManager
+                ? <th className="pc-technologies__item">
+                      <span>Actions</span>
+                    </th>
+                : null
+              }
             </tr>
           </thead>
           <tbody>
@@ -158,23 +197,45 @@ export default class ProjectCard__Technologies extends Component {
                     employees.reduce((sum, employee) => employee.skills.find(skill => skill.skill.title === technology.title) ? (sum + 1) : sum, 0)
                   }
                   </td>
-                  {/*{ isProjectManager*/}
-                    {/*?  <td className="pc-technologies__item pc-technologies__item--edit">*/}
-                          {/*<CardTableActions*/}
-                            {/*isActive={ editableRow === i }*/}
-                            {/*onEditClick={ () => { this.onEditClickHandler(i) } }*/}
-                            {/*onDeleteClick={ () => { this.onDeleteClickHandler(i) } }*/}
-                            {/*onApplyClick={ () => { this.onApplyClickHandler(i) } }*/}
-                            {/*onCancelClick={ () => { this.onCancelClickHandler(i) } }*/}
-                          {/*/>*/}
-                        {/*</td>*/}
-                    {/*: null*/}
-                  {/*}*/}
+                  { isProjectManager
+                    ?  <td className="pc-technologies__item pc-technologies__item--edit">
+                          <CardTableActions
+                            isActive={ editableRow === i }
+                            // onEditClick={ () => { this.onEditClickHandler(i) } }
+                            onDeleteClick={ () => { this.onDeleteClickHandler(i) } }
+                            // onApplyClick={ () => { this.onApplyClickHandler(i) } }
+                            // onCancelClick={ () => { this.onCancelClickHandler(i) } }
+                          />
+                        </td>
+                    : null
+                  }
                 </tr>
               ))
             }
           </tbody>
         </table>
+
+        <Modal
+          dialogClassName="add-skill-modal"
+          show={this.state.showModal}>
+          <SkillForm
+            skills={ skills }
+            skillsTypes={ skillsTypes }
+            getSkillsByType={ getSkillsByType }
+            hideModal={ this.hideModal }
+            addSkill={ this.addTechnology }/>
+        </Modal>
+
+        <Modal
+          dialogClassName="add-skill-modal"
+          show={ showConfirmationModal }>
+          <ConfirmationModal
+            text='Вы действительно хотите удалить эту технологию'
+            submit={ this.deleteTechnology }
+            cancel={ this.hideConfirmationModal }
+            showConfirmationModal={ showConfirmationModal }
+          />
+        </Modal>
       </>
     );
   }

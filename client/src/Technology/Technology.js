@@ -24,9 +24,9 @@ function Technology(props) {
                 <img className="technology__img" src={ require(`../static-assets/img/technologies/${ technology.title }.png`) } alt={ technology.title } />
               </Link>
           </div>
-          {/*<div className="technology__popularity">*/}
-              {/*<p><i className="material-icons">whatshot</i>{ technology.popularity }</p>*/}
-          {/*</div>*/}
+          <div className="technology__popularity">
+              <p><i className="material-icons">whatshot</i>{ technology.popularity }</p>
+          </div>
       </div>
       <div className="technology__info">
           <h2 className="technology__title">

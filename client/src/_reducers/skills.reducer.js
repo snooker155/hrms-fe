@@ -5,7 +5,7 @@ import {projectConstants, skillConstants} from '../_constants';
 const initialState = {
   loading: false,
   skills: [],
-  skillsTypes: null,
+  skillsTypes: [],
 };
 
 export function skillsReducer(state = initialState, action) {
@@ -19,7 +19,8 @@ export function skillsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        skills: action.skills
+        skills: action.skills.skills,
+        count: action.skills.count,
       };
     case skillConstants.GETALL_FAILURE:
       return {
@@ -53,7 +54,8 @@ export function skillsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        skills: action.skills
+        skills: action.skills.skills,
+        count: action.skills.count,
       };
     case skillConstants.GETBYTYPE_FAILURE:
       return {

@@ -31,6 +31,7 @@ export default class EmployeeCard__Skills extends Component {
     skills: PropTypes.array,
     skillsTypes: PropTypes.array,
     getSkillsByType: PropTypes.func,
+    superuser: PropTypes.bool,
   };
 
   state = {
@@ -112,8 +113,8 @@ export default class EmployeeCard__Skills extends Component {
   onChangeDegree = (e) => {
     const value = +e.target.value;
     const { stateSkills, editableRow } = this.state;
-    const { employee: { attributes: { manager: { username: employeeManagerUsername }}}, currentUserUsername } = this.props;
-    if(currentUserUsername === employeeManagerUsername){
+    const { employee: { attributes: { manager: { username: employeeManagerUsername }}}, currentUserUsername, superuser } = this.props;
+    if(currentUserUsername === employeeManagerUsername || superuser){
       stateSkills[editableRow].manager_degree = value;
     }else{
       stateSkills[editableRow].employee_degree = value;
@@ -175,11 +176,18 @@ export default class EmployeeCard__Skills extends Component {
 
   render() {
     const { editableRow, stateSkills, showConfirmationModal } = this.state;
-    const { skills, skillsTypes, getSkillsByType, employee: { skills: employeeSkills, attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },  currentUserUsername } = this.props;
+    const {
+      skills,
+      skillsTypes,
+      getSkillsByType,
+      employee: { skills: employeeSkills, attributes: { login: employeeUsername, manager: { username: employeeManagerUsername }} },
+      currentUserUsername,
+      superuser
+    } = this.props;
 
     return (
       <>
-        { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
+        { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername || superuser
           ? <i className={ editableRow !== null ? 'material-icons material-icons--add material-icons--disabled' : 'material-icons material-icons--add'} onClick={ this.showModal }>note_add</i>
           : null
         }
@@ -195,7 +203,7 @@ export default class EmployeeCard__Skills extends Component {
                 <th className="ec-skills__item">
                   <span>Last update</span>
                 </th>
-                { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
+                { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername || superuser
                   ?  <th className="ec-skills__item">
                         <span>Actions</span>
                       </th>
@@ -231,7 +239,7 @@ export default class EmployeeCard__Skills extends Component {
                       <StarRating
                         employee_degree={ skill.employee_degree }
                         manager_degree={ skill.manager_degree }
-                        isManager={ currentUserUsername === employeeManagerUsername }
+                        isManager={ currentUserUsername === employeeManagerUsername || superuser }
                         employeeUsername={ employeeUsername }
                         index={ i }
                         editableRow={ editableRow === i }
@@ -240,7 +248,7 @@ export default class EmployeeCard__Skills extends Component {
                     <td className="ec-skills__item">
                       <span>{ new Date(skill.updated).toLocaleDateString() }</span>
                     </td>
-                    { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername
+                    { currentUserUsername === employeeUsername || currentUserUsername === employeeManagerUsername || superuser
                         ? <td className="ec-skills__item ec-skills__item--edit">
                             <CardTableActions
                               isActive={ editableRow === i }

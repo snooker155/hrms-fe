@@ -9,6 +9,7 @@ export const projectService = {
   getAllWithPages,
   search,
   getById,
+  update,
 };
 
 function getAll() {
@@ -54,6 +55,21 @@ function getById(id: number) {
   };
 
   return fetch(`${environment.apiUrl}/projects/${id}`, requestOptions).then(handleResponse);
+}
+
+function update(project: any) {
+  const { technologies: technologies } = project;
+  console.log(technologies);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  myHeaders.append("Content-type", "application/json");
+  const requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: JSON.stringify({technologies: technologies})
+  };
+
+  return fetch(`${environment.apiUrl}/projects/${project.id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

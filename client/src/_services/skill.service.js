@@ -15,7 +15,7 @@ export const skillService = {
   // update
 };
 
-function getAll() {
+function getAll(limit = 20, page = 1) {
   // if (skills.length !== 0){
   //   return skills;
   // }
@@ -26,10 +26,10 @@ function getAll() {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/skills`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/skills?page=${page}&limit=${limit}`, requestOptions).then(handleResponse);
 }
 
-function search(search_value) {
+function search(value, limit = 20, page = 1) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -37,7 +37,7 @@ function search(search_value) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/skills?search_value=${search_value}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/skills?limit=${limit}&page=${page}&search_value=${value}`, requestOptions).then(handleResponse);
 }
 
 function getSkillsTypes() {
@@ -51,7 +51,7 @@ function getSkillsTypes() {
   return fetch(`${environment.apiUrl}/skills/types`, requestOptions).then(handleResponse);
 }
 
-function getByType(skillType: string) {
+function getByType(skillType: string, limit = 20, page = 1) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -59,7 +59,7 @@ function getByType(skillType: string) {
     headers: myHeaders
   };
 
-  return fetch(`${environment.apiUrl}/skills?type=${skillType}`, requestOptions).then(handleResponse);
+  return fetch(`${environment.apiUrl}/skills?type=${skillType}&page=${page}&limit=${limit}`, requestOptions).then(handleResponse);
 }
 
 function getById(id: string) {

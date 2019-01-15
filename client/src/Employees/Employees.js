@@ -14,7 +14,7 @@ import { FormGroup, FormControl, ControlLabel, Col, Form, Grid, Row } from "reac
 import SearchForm from "../SearchForm/SearchForm";
 import {DebounceInput} from "react-debounce-input";
 import {Typeahead, Token} from "react-bootstrap-typeahead";
-import EmployeesSearchForm from "../EmployeesSearchForm";
+import EmployeesSearchForm from "../Employees__SearchForm";
 // import type {EmployeeType} from "../../_types";
 
 // type EmployeeListProps = {|
@@ -94,7 +94,7 @@ class Employees extends Component {
     // * EMPLOYEES NOT LOADED *
     if (!employees || !skills || !departments || !projects) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )

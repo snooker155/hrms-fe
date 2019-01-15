@@ -6,16 +6,25 @@ import './ProjectCard.scss';
 import ProjectCard__Info from '../ProjectCard__Info';
 import ProjectCard__Members from '../ProjectCard__Members';
 import ProjectCard__Technologies from '../ProjectCard__Technologies';
-import { projectActions } from "../_actions";
+import {projectActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
+import EmployeeCard__Skills from "../EmployeeCard__Skills";
 
 class ProjectCard extends Component {
   static propTypes = {
     project: PropTypes.any,
     projectId: PropTypes.number,
     getProjectById: PropTypes.func,
-    currentUserId: PropTypes.number,
+    currentUserId: PropTypes.string,
+    superuser: PropTypes.bool,
+    updateTechnology: PropTypes.func,
+    deleteTechnology: PropTypes.func,
+    getAllSkills: PropTypes.func,
+    getSkillsTypes: PropTypes.func,
+    skills: PropTypes.array,
+    skillsTypes: PropTypes.array,
+    getSkillsByType: PropTypes.func,
   };
 
   state = {
@@ -25,14 +34,16 @@ class ProjectCard extends Component {
   componentDidMount() {
     window.scroll(0, 0);
 
-    const { projectId, getProjectById } = this.props;
+    const { projectId, getProjectById, getAllSkills, getSkillsTypes } = this.props;
     getProjectById(projectId);
+    getAllSkills();
+    getSkillsTypes();
   }
 
   componentWillReceiveProps(props, context) {
-    this.setState({
-      activeTab: 1
-    });
+    // this.setState({
+    //   activeTab: 1
+    // });
 
     window.scroll(0, 0);
   }
@@ -45,17 +56,25 @@ class ProjectCard extends Component {
 
   render() {
     const { activeTab } = this.state;
-    const { project, currentUserId } = this.props;
+    const {
+      project,
+      currentUserId,
+      superuser,
+      updateTechnology,
+      deleteTechnology,
+      skills,
+      skillsTypes,
+      getSkillsByType
+    } = this.props;
 
     // * PROJECT NOT FOUND *
     if (!project) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )
     }
-
 
     return (
       <div className="ProjectCard animated fadeIn fast">
@@ -110,14 +129,22 @@ class ProjectCard extends Component {
               { activeTab === 2
                 ? <div className='ProjectCard__Members animated fadeIn fast'>
                     <h2>Members</h2>
-                    <ProjectCard__Members employees={ project.employees } isProjectManager={ !!(project.manager && project.manager.id === currentUserId) } />
+                    <ProjectCard__Members employees={ project.employees } isProjectManager={ (project.manager && project.manager.id === currentUserId) || superuser } />
                   </div>
                 : null
               }
               { activeTab === 3
                 ? <div className='ProjectCard__Technologies animated fadeIn fast'>
                     <h2>Technologies</h2>
-                    <ProjectCard__Technologies technologies={ project.technologies } employees={ project.employees } isProjectManager={ !!(project.manager && project.manager.id === currentUserId) } />
+                    <ProjectCard__Technologies
+                      project={ project }
+                      isProjectManager={ (project.manager && project.manager.id === currentUserId) || superuser }
+                      updateTechnology={ updateTechnology }
+                      deleteTechnology={ deleteTechnology }
+                      skills={ skills }
+                      skillsTypes = { skillsTypes }
+                      getSkillsByType = { getSkillsByType }
+                    />
                   </div>
                 : null
               }
@@ -133,19 +160,20 @@ const mapStateToProps = (state, ownProps) => ({
   project: state.projects.project,
   // employee: state.employees.employee,
   projectId: +ownProps.match.params.projectId,
-  currentUserId: state.auth.user.attributes.id,
+  currentUserId: state.auth.user.id,
+  superuser: state.auth.user.superuser,
   // // currentUserId: ownProps.match.params.employeeId,
-  // skills: state.skills.skills,
-  // skillsTypes: state.skills.skillsTypes,
+  skills: state.skills.skills.filter(skill => skill.type === 'technology'),
+  skillsTypes: state.skills.skillsTypes.filter(type => type === 'technology'),
 });
 
 const mapDispatchToProps = dispatch => ({
   getProjectById: (id) => { dispatch(projectActions.getById(id)); },
-  // updateSkill: (employee) => { dispatch(employeeActions.update(employee)); },
-  // deleteSkill: (employee) => { dispatch(employeeActions.delete(employee)); },
-  // getAllSkills: () => { dispatch(skillActions.getAll()); },
-  // getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
-  // getSkillsByType: (skillType) => { dispatch(skillActions.getByType(skillType)); },
+  updateTechnology: (project) => { dispatch(projectActions.update(project)); },
+  deleteTechnology: (project) => { dispatch(projectActions.delete(project)); },
+  getAllSkills: () => { dispatch(skillActions.getAll()); },
+  getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
+  getSkillsByType: (skillType) => { dispatch(skillActions.getByType(skillType)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(ProjectCard);

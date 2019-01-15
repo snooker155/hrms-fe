@@ -9,6 +9,8 @@ export const projectActions = {
   getAllWithPages,
   search,
   getById,
+  update,
+  delete: _delete,
 };
 
 
@@ -93,4 +95,48 @@ function getById(id: number) {
   function request(id) { return { type: projectConstants.GETBYID_REQUEST, id } }
   function success(project) { return { type: projectConstants.GETBYID_SUCCESS, project } }
   function failure(id, error) { return { type: projectConstants.GETBYID_FAILURE, id, error } }
+}
+
+function update(project) {
+  return dispatch => {
+    dispatch(request());
+    console.log(project.technologies);
+
+    projectService.update(project)
+      .then(
+        project => {
+          console.log(project.technologies);
+          dispatch(success(project))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: projectConstants.UPDATE_TECHNOLOGIES_REQUEST } }
+  function success(project) { return { type: projectConstants.UPDATE_TECHNOLOGIES_SUCCESS, project } }
+  function failure(error) { return { type: projectConstants.UPDATE_TECHNOLOGIES_FAILURE, error } }
+}
+
+function _delete(project) {
+  return dispatch => {
+    dispatch(request());
+    console.log(project);
+
+    projectService.update(project)
+      .then(
+        project => {
+          console.log(project);
+          dispatch(success(project))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: projectConstants.DELETE_TECHNOLOGIES_REQUEST } }
+  function success(project) { return { type: projectConstants.DELETE_TECHNOLOGIES_SUCCESS, project } }
+  function failure(error) { return { type: projectConstants.DELETE_TECHNOLOGIES_FAILURE, error } }
 }

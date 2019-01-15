@@ -139,7 +139,7 @@ export default class Project extends Component {
             { project.manager
               ? <p className="project__manager">
                   <i className="material-icons">person_pin</i>
-                  <Link to={`/employees/${project.manager.id}`}>
+                  <Link to={`/employees/${project.manager.attributes.login}`}>
                     {`${project.manager.attributes.name} ${project.manager.attributes.surname}`}
                   </Link>
                 </p>

@@ -28,6 +28,7 @@ class EmployeeCard extends Component {
     skillsTypes: PropTypes.array,
     getSkillsTypes: PropTypes.func,
     getSkillsByType: PropTypes.func,
+    superuser: PropTypes.bool,
   };
 
   state = {
@@ -72,16 +73,25 @@ class EmployeeCard extends Component {
     this.setState({
       activeTab: i
     });
-  }
+  };
 
   render() {
     const { activeTab } = this.state;
-    const { employee, currentUserUsername, updateSkill, deleteSkill, skills, skillsTypes, getSkillsByType } = this.props;
+    const {
+      employee,
+      currentUserUsername,
+      updateSkill,
+      deleteSkill,
+      skills,
+      skillsTypes,
+      getSkillsByType,
+      superuser
+    } = this.props;
 
     // * USER NOT FOUND *
     if (!employee) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )
@@ -152,6 +162,7 @@ class EmployeeCard extends Component {
                     skills={ skills }
                     skillsTypes = { skillsTypes }
                     getSkillsByType = { getSkillsByType }
+                    superuser = { superuser }
                   />
                 </div>
                 : null
@@ -183,6 +194,7 @@ const mapStateToProps = (state, ownProps) => ({
   // currentUserId: ownProps.match.params.employeeId,
   skills: state.skills.skills,
   skillsTypes: state.skills.skillsTypes,
+  superuser: state.auth.user.superuser,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import './App.scss';
 import { history } from '../_helpers';
 import {alertActions, authActions} from '../_actions';
 import { PrivateRoute } from '../_components';
@@ -23,11 +24,11 @@ class App extends Component<AppProps> {
   constructor(props) {
     super(props);
 
-    // const { alertClearAction } = this.props;
-    // history.listen(() => {
-    //   // clear alert on location change
-    //   alertClearAction();
-    // });
+    const { alertClearAction } = this.props;
+    history.listen(() => {
+      // clear alert on location change
+      alertClearAction();
+    });
   }
 
   componentDidMount(): void {
@@ -38,7 +39,7 @@ class App extends Component<AppProps> {
   }
 
   render() {
-    // const { alert } = this.props;
+    const { alert } = this.props;
     const { loggedIn } = this.props;
 
     if ( loggedIn === null ) {
@@ -50,10 +51,10 @@ class App extends Component<AppProps> {
     }
 
     return (
-            // {alert.message &&
-            // <div className={`alert ${alert.type}`}>{alert.message}</div>
-            // }
       <>
+        {alert.message &&
+          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        }
             <Router history={history}>
               <div>
                 <Switch>
@@ -69,7 +70,7 @@ class App extends Component<AppProps> {
 
 const mapStateToProps = state => {
   return {
-    // alert: state.alert,
+    alert: state.alert,
     loggedIn: state.auth.loggedIn,
   }
 }

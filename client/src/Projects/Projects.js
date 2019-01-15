@@ -8,9 +8,9 @@ import Pagination from '../Pagination';
 import {departmentActions, employeeActions, projectActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
-import EmployeesSearchForm from "../EmployeesSearchForm";
-import ProjectsSearchForm from "../ProjectsSearchForm/ProjectsSearchForm";
-import ProjectsList from "../ProjectsList/ProjectsList";
+import EmployeesSearchForm from "../Employees__SearchForm";
+import ProjectsSearchForm from "../Projects__SearchForm/ProjectsSearchForm";
+import Projects__List from "../Projects__List/Projects__List";
 
 class Projects extends Component {
   static propTypes = {
@@ -58,7 +58,7 @@ class Projects extends Component {
   // }
 
   _handleSearch = (search) => {
-    console.log(search);
+    // console.log(search);
     const { searchProjects } = this.props;
     searchProjects(search);
   };
@@ -83,7 +83,7 @@ class Projects extends Component {
     // if (!projects || isProjectsLoading) {
     if (!projects) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )
@@ -136,7 +136,7 @@ class Projects extends Component {
             {/*</div>*/}
           {/*</div>*/}
 
-          <ProjectsList
+          <Projects__List
             projects={ projects }
             count={ count }
             isProjectsLoading={ isProjectsLoading }

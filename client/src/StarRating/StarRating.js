@@ -37,8 +37,9 @@ function StarRating(props) {
                   ? '--manager-degree'
                   : null
               }
+              onChange={ onChangeDegree }
               value={ 5 - i }
-              defaultChecked={ managerDegreeValue === 0 ? employeeDegreeValue === (5 - i) : managerDegreeValue ===(5 - i) }
+              checked={ managerDegreeValue === 0 ? employeeDegreeValue === (5 - i) : managerDegreeValue ===(5 - i) }
                />
             <label
             className={
@@ -57,7 +58,12 @@ function StarRating(props) {
         {
           radioIds.map((item, i)=> (
             <Fragment key={ item }>
-              <input type="radio" id={ item } name={ `star-rating__r${ index }` } onChange={ onChangeDegree } value={ 5 - i } checked={ employeeDegreeValue === (5 - i)} />
+              <input
+                type="radio"
+                id={ item } name={ `star-rating__r${ index }` }
+                onChange={ onChangeDegree }
+                value={ 5 - i }
+                checked={ employeeDegreeValue === (5 - i)} />
               <label htmlFor={ item }></label>
             </Fragment>
           ))

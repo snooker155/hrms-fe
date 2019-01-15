@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import M from 'materialize-css';
 
-import './ProjectsList.scss';
+import './Projects__List.scss';
 import Project from '../Project';
 import Pagination from '../Pagination';
 import {departmentActions, employeeActions, projectActions, skillActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
 import Spinner from "react-spinner-material";
-import EmployeesSearchForm from "../EmployeesSearchForm";
-import ProjectsSearchForm from "../ProjectsSearchForm/ProjectsSearchForm";
+import EmployeesSearchForm from "../Employees__SearchForm";
+import ProjectsSearchForm from "../Projects__SearchForm/ProjectsSearchForm";
 
-class ProjectsList extends Component {
+class Projects__List extends Component {
   static propTypes = {
     projects: PropTypes.array,
     count: PropTypes.number,
@@ -52,7 +52,7 @@ class ProjectsList extends Component {
     // * PROJECTS NOT LOADED *
     if (isProjectsLoading) {
       return (
-        <div style={ { display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center' } }>
+        <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
         </div>
       )
@@ -108,4 +108,4 @@ const mapDispatchToProps = dispatch => ({
   // searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(ProjectsList);
+export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(Projects__List);

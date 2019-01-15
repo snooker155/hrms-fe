@@ -15,11 +15,11 @@ export const skillActions = {
 };
 
 
-function getAll() {
+function getAll(limit = 20, page = 1) {
   return dispatch => {
     dispatch(request());
 
-    skillService.getAll()
+    skillService.getAll(limit, page)
       .then(
         skills => {
           dispatch(success(skills))
@@ -78,11 +78,11 @@ function getSkillsTypes() {
   function failure(error) { return { type: skillConstants.GETALL_SKILLS_TYPES_FAILURE, error } }
 }
 
-function getByType(skillType: string) {
+function getByType(skillType: string, limit = 20, page = 1) {
   return dispatch => {
     dispatch(request(skillType));
 
-    skillService.getByType(skillType)
+    skillService.getByType(skillType, limit, page)
       .then(
         skills => {
           dispatch(success(skills))

@@ -25,8 +25,8 @@ function login(username: string, password: string) {
             history.push('/');
           },
           error => {
-            dispatch(failure(error.toString()));
-            dispatch(alertActions.error(error.toString()));
+            dispatch(failure(error));
+            dispatch(alertActions.error(error));
           }
         );
     }, 3000);
@@ -71,8 +71,8 @@ function getCurrentUser() {
           dispatch(success(user));
         }
         , error => {
-          dispatch(failure(error.toString()));
-          dispatch(alertActions.error(error.toString()));
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
         });
   };
 
