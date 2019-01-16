@@ -80,6 +80,24 @@ export function skillsReducer(state = initialState, action) {
         loading: false,
         error: action.error
       };
+    case skillConstants.CREATE_SKILL_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case skillConstants.CREATE_SKILL_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        skills: action.skills.skills,
+        count: action.skills.count,
+      };
+    case skillConstants.CREATE_SKILL_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      };
     default:
       return state
   }

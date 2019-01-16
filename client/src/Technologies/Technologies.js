@@ -20,6 +20,9 @@ class Technologies extends Component {
     isTechnologiesLoading: PropTypes.bool,
     count: PropTypes.number,
     superuser: PropTypes.bool,
+    getSkillsTypes: PropTypes.func,
+    skillsTypes: PropTypes.array,
+    addNewSkill: PropTypes.func,
   };
 
   // state = {
@@ -30,8 +33,9 @@ class Technologies extends Component {
 
   componentDidMount() {
     window.scroll(0, 0);
-    const { getAllTechnologies } = this.props;
+    const { getAllTechnologies, getSkillsTypes } = this.props;
     getAllTechnologies();
+    getSkillsTypes();
   }
 
   _handlePageChange = (limit, page) => {
@@ -55,12 +59,19 @@ class Technologies extends Component {
     }
   };
 
+  _addNewSkill = (newSkill) => {
+    // console.log(newSkill);
+    const { addNewSkill } = this.props;
+    addNewSkill(newSkill);
+  };
+
   render() {
     const {
       technologies,
       count,
       isTechnologiesLoading,
       superuser,
+      skillsTypes,
     } = this.props;
 
     // * TECHNOLOGIES NOT LOADED *
@@ -103,6 +114,8 @@ class Technologies extends Component {
         <Technologies__SearchForm
           handleTechnologiesSearch={ this._handleSearch }
           superuser={ superuser }
+          skillsTypes={ skillsTypes }
+          addNewSkill={ this._addNewSkill }
         />
 
         <Technologies__List
@@ -129,12 +142,15 @@ const mapStateToProps = (state, ownProps) => ({
   superuser: state.auth.user.superuser,
   // isSkillsLoading: state.skills.loading,
   // isDepartmentsLoading: state.departments.loading,
+  skillsTypes: state.skills.skillsTypes.filter(type => type === 'technology'),
 });
 
 const mapDispatchToProps = dispatch => ({
   //@TODO: slow operation to get popularity of skills
   getAllTechnologies: (limit, page) => { dispatch(skillActions.getByType('technology', limit, page)); },
   searchTechnologies: (value) => { dispatch(skillActions.search(value)); },
+  getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
+  addNewSkill: (newSkill) => { dispatch(skillActions.create(newSkill)); },
   // searchTechnologies: (value) => { dispatch(projectActions.search(value)); },
   // searchSkills: (search_value) => { dispatch(skillActions.search(search_value)); },
   // searchDepartments: (search_value) => { dispatch(departmentActions.search(search_value)); },

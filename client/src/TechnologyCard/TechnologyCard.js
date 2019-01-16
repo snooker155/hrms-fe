@@ -9,6 +9,8 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 import Spinner from "react-spinner-material";
 import TechnologyCard__Info from "../TechnologyCard_Info/TechnologyCard__Info";
 import TechnologyCard__Community from "../TechnologyCard_Community/TechnologyCard__Community";
+import default_tech_image from "../static-assets/img/projects/1.png";
+import TechnologyCard__Presentation from "../TechnologyCard__Presentation/TechnologyCard__Presentation";
 // import TechnologyCard__Projects from "../TechnologyCard_Projects/TechnologyCard__Projects";
 
 class TechnologyCard extends Component {
@@ -18,10 +20,11 @@ class TechnologyCard extends Component {
     skill: PropTypes.any,
     skillId: PropTypes.string,
     getTechnologyById: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
   };
 
   state = {
-    activeTab: 1
+    activeTab: 1,
   };
 
   componentDidMount() {
@@ -43,16 +46,16 @@ class TechnologyCard extends Component {
     this.setState({
       activeTab: i
     });
-  }
+  };
 
   render() {
-    const { activeTab } = this.state;
-    const { skill } = this.props;
+    const { activeTab, image } = this.state;
+    const { skill, isLoading } = this.props;
 
     // const [ skill ] = skills.filter(skill => skill.title === decodeURI(location.pathname).split('/').pop());
 
     // * SKILL NOT FOUND *
-    if (!skill) {
+    if (!skill || isLoading) {
       return (
         <div style={ { display: 'flex', height: '90vh', alignItems: 'center', justifyContent: 'center' } }>
           <Spinner size={ 80 } spinnerColor={ '#233242' } spinnerWidth={ 6 } visible={ true } />
@@ -66,36 +69,9 @@ class TechnologyCard extends Component {
 
     return (
       <div className="TechnologyCard animated fadeIn fast">
-        <div className="TechnologyCard__presentation">
-          <div className="TechnologyCard__avatar">
-            <img className="TechnologyCard__image"
-                 src={ isTechnology
-                        ? require(`../static-assets/img/technologies/${ skill.title }.png` )
-                        : `https://ui-avatars.com/api/?name=${ skill.title }?background=d7dbe0&color=233242&size=128` } />
-          </div>
-          <div>
-            <h3 className="TechnologyCard__title">{ skill.title }</h3>
-            { isTechnology
-              ? <p className="TechnologyCard__officialSite">
-                  <i className="material-icons">public</i>
-                  <a href={ skill.url } target='_blank' rel='noopener noreferrer'>Official Website</a>
-                </p>
-              : <p className="TechnologyCard__officialSite">
-                  <i className="material-icons">public</i>
-                  <a href={ skill.wiki } target='_blank' rel='noopener noreferrer'>Wikipedia</a>
-                </p>
-            }
-            <p className="TechnologyCard__staffCount">
-              <i className="material-icons">school</i>Staff count: { skill.employees.length }
-            </p>
-            {/*{ isTechnology*/}
-                {/*? <p className="TechnologyCard__projectsCount">*/}
-                    {/*<i className="material-icons">folder</i>Used in projects: { filtetedProjects.length }*/}
-                  {/*</p>*/}
-                {/*: null*/}
-            {/*}*/}
-          </div>
-        </div>
+
+        <TechnologyCard__Presentation skill={ skill } isTechnology={ isTechnology } />
+
         <div className="TechnologyCard__tabs">
           <div className="c-tabs">
             <ul className="c-tabs__navbar">
@@ -147,6 +123,7 @@ const mapStateToProps = (state, ownProps) => ({
   // employee: state.employees.employee,
   skillId: ownProps.match.params.skillId,
   currentUserId: state.auth.user.id,
+  isLoading: state.skills.loading,
   // // currentUserId: ownProps.match.params.employeeId,
   // skills: state.skills.skills,
   // skillsTypes: state.skills.skillsTypes,

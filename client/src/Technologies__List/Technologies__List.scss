@@ -121,3 +121,11 @@
     margin-bottom: 3rem;
   }
 }
+
+.addSkill {
+  padding: 2px 6px 0px 6px;
+
+  &:active, &:focus {
+    outline: none;
+  }
+}

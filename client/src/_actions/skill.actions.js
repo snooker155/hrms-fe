@@ -10,6 +10,7 @@ export const skillActions = {
   getByType,
   search,
   getById,
+  create,
   // update,
   // delete: _delete,
 };
@@ -116,6 +117,28 @@ function getById(id: string) {
   function request(id) { return { type: skillConstants.GETBYID_REQUEST, id } }
   function success(skill) { return { type: skillConstants.GETBYID_SUCCESS, skill } }
   function failure(id, error) { return { type: skillConstants.GETBYID_FAILURE, id, error } }
+}
+
+function create(newSkill) {
+  return dispatch => {
+    dispatch(request());
+    console.log(newSkill);
+
+    skillService.create(newSkill)
+      .then(
+        skills => {
+          console.log(skills);
+          dispatch(success(skills))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+        }
+      );
+  };
+
+  function request() { return { type: skillConstants.CREATE_SKILL_REQUEST } }
+  function success(skills) { return { type: skillConstants.CREATE_SKILL_SUCCESS, skills } }
+  function failure(error) { return { type: skillConstants.CREATE_SKILL_FAILURE, error } }
 }
 
 // function update(employee) {

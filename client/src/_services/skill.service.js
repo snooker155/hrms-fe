@@ -12,6 +12,7 @@ export const skillService = {
   getByType,
   search,
   getById,
+  create,
   // update
 };
 
@@ -71,6 +72,20 @@ function getById(id: string) {
   };
 
   return fetch(`${environment.apiUrl}/skills/${id}`, requestOptions).then(handleResponse);
+}
+
+function create(newSkill: any) {
+  console.log(newSkill);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", authHeader());
+  myHeaders.append("Content-type", "application/json");
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(newSkill)
+  };
+
+  return fetch(`${environment.apiUrl}/skills`, requestOptions).then(handleResponse);
 }
 
 // function update(employee: any) {

@@ -1,0 +1,5 @@
+.skillModalButton {
+  &:active:focus, &:focus, &:active, &.focus, &.active {
+    outline: none;
+  }
+}
