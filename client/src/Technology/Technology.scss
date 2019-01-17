@@ -24,6 +24,10 @@
     font-weight: bold;
     font-size: 1.3rem;
 
+    & span:first-child {
+      margin-right: .6rem;
+    }
+
     .material-icons {
       color: #ef6534;
       font-size: 1.6rem;

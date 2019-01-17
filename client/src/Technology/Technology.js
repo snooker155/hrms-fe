@@ -55,7 +55,14 @@ class Technology extends Component {
             </Link>
           </div>
           <div className="technology__popularity">
-            <p><i className="material-icons">whatshot</i>{technology.popularity}</p>
+            <p>
+              <span>
+                <i className="material-icons">whatshot</i>{technology.popularity.projects}
+              </span>
+              <span>
+                <i className="material-icons">person</i>{technology.popularity.employees}
+              </span>
+            </p>
           </div>
         </div>
         <div className="technology__info">
