@@ -34,8 +34,8 @@ class Dashboard extends Component {
   componentDidMount(): void {
     const { getCurrentUser } = this.props;
     //TODO: remove server delay mock
-    setTimeout(() => { getCurrentUser() }, 1000);
-    // getCurrentUser();
+    // setTimeout(() => { getCurrentUser() }, 1000);
+    getCurrentUser();
   }
 
   render() {

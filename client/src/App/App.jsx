@@ -34,8 +34,8 @@ class App extends Component<AppProps> {
   componentDidMount(): void {
     const { isLoggedIn } = this.props;
     //TODO: remove server delay mock
-    setTimeout(() => { isLoggedIn() }, 1000);
-    // isLoggedIn();
+    // setTimeout(() => { isLoggedIn() }, 1000);
+    isLoggedIn();
   }
 
   render() {

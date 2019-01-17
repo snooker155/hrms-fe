@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import avatar from '../static-assets/img/avatar-default.png'
 
 import './Project.scss';
+import Project__EmployeePhoto from "../Project__EmployeePhoto/Project__EmployeePhoto";
 
 export default class Project extends Component {
   static propTypes = {
@@ -35,9 +36,7 @@ export default class Project extends Component {
 
     if (project.employees.length <= maxEmployeesPhotos) {
       return project.employees.map(employee => (
-          <Link key={ employee.id } to={`/employees/${ employee.attributes.login }`}>
-            <img className="employee__image" src={ avatar } />
-          </Link>
+        <Project__EmployeePhoto key={ employee.id } employee={ employee } />
       ));
     } else {
       const numberOfStaff = `%2B${ project.employees.length - maxEmployeesPhotos + 1 }`;
@@ -45,9 +44,7 @@ export default class Project extends Component {
         <>
           {
             project.employees.slice(0, maxEmployeesPhotos - 1).map(employee => (
-              <Link key={ employee.id } to={`/employees/${ employee.attributes.login }`}>
-                <img className="employee__image" src={ avatar } />
-              </Link>
+              <Project__EmployeePhoto key={ employee.id } employee={ employee } />
             ))
           }
           <Link to={ `/projects/${ project.id }`}>

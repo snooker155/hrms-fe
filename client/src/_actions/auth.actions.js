@@ -18,7 +18,7 @@ function login(username: string, password: string) {
     dispatch(request({ username }));
 
     //TODO: remove server delay mock
-    setTimeout(() => {
+    // setTimeout(() => {
       authService.login(username, password)
         .then(user => {
             dispatch(success(user));
@@ -29,7 +29,7 @@ function login(username: string, password: string) {
             dispatch(alertActions.error(error));
           }
         );
-    }, 3000);
+    // }, 3000);
   };
 
   function request() { return { type: authConstants.LOGIN_REQUEST } }
