@@ -22,7 +22,7 @@ export default class Technologies__List extends Component {
 
   state = {
     activePage: 1,
-    itemsCountPerPage: 20,
+    itemsCountPerPage: 7,
   };
 
   handlePageChange = (limit, page) => {

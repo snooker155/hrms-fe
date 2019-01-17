@@ -32,6 +32,7 @@ export default class EmployeeCard__Skills extends Component {
     skillsTypes: PropTypes.array,
     getSkillsByType: PropTypes.func,
     superuser: PropTypes.bool,
+    currentUserId: PropTypes.string,
   };
 
   state = {
@@ -110,11 +111,12 @@ export default class EmployeeCard__Skills extends Component {
     }));
   };
 
-  onChangeDegree = (e) => {
+  _onChangeDegree = (e) => {
     const value = +e.target.value;
+    console.log(value);
     const { stateSkills, editableRow } = this.state;
-    const { employee: { attributes: { manager: { username: employeeManagerUsername }}}, currentUserUsername, superuser } = this.props;
-    if(currentUserUsername === employeeManagerUsername || superuser){
+    const { employee: { attributes: { manager: { id: employeeManagerId }}}, currentUserId, superuser } = this.props;
+    if(currentUserId === employeeManagerId){
       stateSkills[editableRow].manager_degree = value;
     }else{
       stateSkills[editableRow].employee_degree = value;
@@ -239,11 +241,12 @@ export default class EmployeeCard__Skills extends Component {
                       <StarRating
                         employee_degree={ skill.employee_degree }
                         manager_degree={ skill.manager_degree }
-                        isManager={ currentUserUsername === employeeManagerUsername || superuser }
+                        isManager={ currentUserUsername === employeeManagerUsername }
+                        // isSuperuser = { superuser }
                         employeeUsername={ employeeUsername }
                         index={ i }
                         editableRow={ editableRow === i }
-                        onChangeDegree={ this.onChangeDegree }/>
+                        onChangeDegree={ this._onChangeDegree }/>
                     </td>
                     <td className="ec-skills__item">
                       <span>{ new Date(skill.updated).toLocaleDateString() }</span>

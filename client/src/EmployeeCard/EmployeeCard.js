@@ -29,6 +29,7 @@ class EmployeeCard extends Component {
     getSkillsTypes: PropTypes.func,
     getSkillsByType: PropTypes.func,
     superuser: PropTypes.bool,
+    currentUserId: PropTypes.string,
   };
 
   state = {
@@ -85,7 +86,8 @@ class EmployeeCard extends Component {
       skills,
       skillsTypes,
       getSkillsByType,
-      superuser
+      superuser,
+      currentUserId
     } = this.props;
 
     // * USER NOT FOUND *
@@ -144,11 +146,13 @@ class EmployeeCard extends Component {
             </ul>
 
             <div className="c-tabs__content">
-              { activeTab === 1
-                ? <div className='EmployeeCard__info animated fadeIn fast'>
-                    <EmployeeCard__Info employee={ employee } />
-                  </div>
-                : null
+              { activeTab === 1 &&
+                <div className='EmployeeCard__info animated fadeIn fast'>
+                    <EmployeeCard__Info
+                      employee={ employee }
+                      currentUserId={ currentUserId }
+                    />
+                </div>
               }
 
               { activeTab === 2
@@ -157,6 +161,7 @@ class EmployeeCard extends Component {
                   <EmployeeCard__Skills
                     employee={ employee }
                     currentUserUsername={ currentUserUsername }
+                    currentUserId={ currentUserId }
                     updateSkill={ updateSkill }
                     deleteSkill={ deleteSkill }
                     skills={ skills }
@@ -191,6 +196,7 @@ const mapStateToProps = (state, ownProps) => ({
   employee: state.employees.employee,
   employeeUsername: ownProps.match.params.employeeUsername,
   currentUserUsername: state.auth.user.attributes.login,
+  currentUserId: state.auth.user.id,
   // currentUserId: ownProps.match.params.employeeId,
   skills: state.skills.skills,
   skillsTypes: state.skills.skillsTypes,

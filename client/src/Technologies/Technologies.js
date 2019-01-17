@@ -34,7 +34,7 @@ class Technologies extends Component {
   componentDidMount() {
     window.scroll(0, 0);
     const { getAllTechnologies, getSkillsTypes } = this.props;
-    getAllTechnologies();
+    getAllTechnologies(7, 1);
     getSkillsTypes();
   }
 
@@ -55,7 +55,7 @@ class Technologies extends Component {
     if(search) {
       searchTechnologies(search);
     }else{
-      getAllTechnologies();
+      getAllTechnologies(7, 1);
     }
   };
 

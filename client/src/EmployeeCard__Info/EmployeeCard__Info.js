@@ -32,11 +32,12 @@ const propTypes = {
       }),
     }),
     manager: PropTypes.object,
-  })
+  }),
+  currentUserId: PropTypes.string,
 };
 
 function EmployeeCard__Info(props) {
-  const { employee } = props;
+  const { employee, currentUserId } = props;
   const employeeAge = getYearDiff(employee.attributes.birthday);
   const experience = getYearDiff(employee.attributes['start-date']);
 
@@ -45,11 +46,24 @@ function EmployeeCard__Info(props) {
         <div className="ec-info__personal-info">
           <h4>Personal info</h4>
           <div className="content">
-            <span><strong>ID: </strong>{ employee.id }</span>
-            <span><strong>ACC-ID: </strong>{ employee.attributes['acc-id'] }</span>
+            { (currentUserId === employee.id || currentUserId === employee.manager.id) &&
+              <span><strong>ID: </strong>{employee.id}</span>
+            }
+            { (currentUserId === employee.id || currentUserId === employee.manager.id) &&
+              <span><strong>ACC-ID: </strong>{ employee.attributes['acc-id'] }</span>
+            }
             <span><strong>Start Date: </strong>{ dateFormat(employee.attributes['start-date'], 'mmmm dS, yyyy') } ({ experience }&nbsp;y.)</span>
             <span><strong>Gender: </strong>{ employee.attributes.gender === 'м' ? 'Male' : 'Female' }</span>
-            <span><strong>Birthday: </strong>{ dateFormat(employee.attributes.birthday, 'mmmm dS, yyyy') } ({ employeeAge }&nbsp;y.o.)</span>
+            { currentUserId === employee.id || currentUserId === employee.manager.id
+              ? <span>
+                  <strong>Birthday: </strong>
+                    { dateFormat(employee.attributes.birthday, 'mmmm dS, yyyy') } {`(${employeeAge} y.o.)`}
+                </span>
+              : <span>
+                  <strong>Birthday: </strong>
+                { dateFormat(employee.attributes.birthday, 'mmmm dS') }
+                </span>
+            }
           </div>
         </div>
         <div className="ec-info__job-defatils">

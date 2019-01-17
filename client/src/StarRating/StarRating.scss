@@ -37,12 +37,22 @@
       }
     }
 
-    input:checked ~ label {
+    //input:checked ~ label {
+    //  color: hsl(51, 100%, 55%);
+    //  text-shadow: .1rem .1rem .2rem hsl(51, 100%, 20%), 0 0 .1rem rgba(0,0,0,.5);
+    //}
+    //
+    //input.--manager-degree:checked ~ label {
+    //  color: hsl(211, 50%, 55%);
+    //  text-shadow: .1rem .1rem .2rem hsl(211, 50%, 20%), 0 0 .1rem rgba(0,0,0,.5);
+    //}
+
+    input:checked ~ label.--employee-degree {
       color: hsl(51, 100%, 55%);
       text-shadow: .1rem .1rem .2rem hsl(51, 100%, 20%), 0 0 .1rem rgba(0,0,0,.5);
     }
 
-    input.--manager-degree:checked ~ label {
+    input ~ label.--manager-degree {
       color: hsl(211, 50%, 55%);
       text-shadow: .1rem .1rem .2rem hsl(211, 50%, 20%), 0 0 .1rem rgba(0,0,0,.5);
     }
