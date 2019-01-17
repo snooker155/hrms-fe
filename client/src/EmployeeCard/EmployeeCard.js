@@ -11,6 +11,8 @@ import connect from "react-redux/es/connect/connect";
 import avatar from '../static-assets/img/avatar-default.png'
 import Spinner from "react-spinner-material";
 import Grid from "react-bootstrap/es/Grid";
+import EmployeeCard__Presentation from "../EmployeeCard__Presentation/EmployeeCard__Presentation";
+import TechnologyCard__Presentation from "../TechnologyCard__Presentation/TechnologyCard__Presentation";
 
 class EmployeeCard extends Component {
   static propTypes = {
@@ -112,25 +114,7 @@ class EmployeeCard extends Component {
 
     return (
       <div className="EmployeeCard animated fadeIn fast">
-        <div className="EmployeeCard__presentation">
-          <div className="EmployeeCard__avatar">
-            {/*<img className="EmployeeCard__image" src={ `https://randomuser.me/api/portraits/${ employee.attributes.gender === 'м' ? 'men' : 'women' }/65.jpg` } />*/}
-            <img className="EmployeeCard__image" src={ avatar } />
-          </div>
-          <div>
-            <h3 className="EmployeeCard__fullname">{ `${ employee.attributes.name } ${ employee.attributes.surname}` }</h3>
-            <p className="EmployeeCard__department">
-              <i className="material-icons">business</i>
-              <Link to={`/departments/${ employee.relationships.unit.data.id }`} >
-                { employee.relationships.unit.data.name }
-              </Link>
-            </p>
-
-            <h3 className="EmployeeCard__contacts">
-              <i className="material-icons">contact_mail</i>Email: { employee.attributes.email }
-            </h3>
-          </div>
-        </div>
+        <EmployeeCard__Presentation employee={ employee } />
         <div className="EmployeeCard__tabs">
           <div className="c-tabs">
             <ul className="c-tabs__navbar">

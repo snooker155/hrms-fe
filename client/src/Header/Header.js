@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import ClickOutside from 'react-click-outside';
 import './Header.scss';
 import logo from '../static-assets/img/logo.png';
-import avatar from '../static-assets/img/avatar-default.png'
+import default_avatar from '../static-assets/img/avatar-default.png'
 import DropDown from '../Dropdown';
+import {makeCancelable} from "../_helpers";
 
 class Header extends Component {
   static propTypes = {
@@ -20,16 +21,35 @@ class Header extends Component {
     logoutAction: PropTypes.func.isRequired
   };
 
+  cancelablePromise = null;
+
   state = {
-    isDropDownVisible: false
-  }
+    isDropDownVisible: false,
+    image: default_avatar,
+  };
 
   componentDidMount() {
     window.addEventListener('scroll', this.changeBgcOnScroll, false);
+
+    const { user } = this.props;
+
+    this.cancelablePromise = makeCancelable(import(`../static-assets/img/photo/${ user.id }.jpg`));
+
+    this.cancelablePromise
+      .promise
+      .then((image) => {
+        // console.log(image);
+        this.setState({image: image.default});
+      })
+      .catch((reason) => {
+        // console.log('isCanceled', reason.isCanceled);
+        // this.setState({image: default_tech_image});
+      });
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.changeBgcOnScroll, false);
+    this.cancelablePromise.cancel();
   }
 
   changeBgcOnScroll = () => {
@@ -60,7 +80,7 @@ class Header extends Component {
   }
 
   render() {
-    const { isDropDownVisible } = this.state;
+    const { isDropDownVisible, image } = this.state;
     const { user, logoutAction } = this.props;
 
     return (
@@ -90,7 +110,7 @@ class Header extends Component {
               <div className="profile-link js-profileToogle" onClick={ this.changeDropdownVisibility }>
                 <p className="profile-link__username js-profileToogle">{ `${ user.attributes.name } ${ user.attributes.surname }` }</p>
                 {/*<img className="profile-link__image js-profileToogle" src={ `https://randomuser.me/api/portraits/${ user.attributes.gender === 'м' ? 'men' : 'women' }/65.jpg` } />*/}
-                <img className="profile-link__image js-profileToogle" src={ avatar } />
+                <img className="profile-link__image js-profileToogle" src={ image } />
                 <i className="profile-link__dropDownBtn js-profileToogle material-icons">expand_more</i>
               </div>
                 { isDropDownVisible

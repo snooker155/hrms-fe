@@ -23,7 +23,6 @@ function StarRating(props) {
   }
   let employeeDegreeValue = employee_degree;
   let managerDegreeValue = manager_degree;
-  console.log(employeeDegreeValue);
 
   // if (isManager) {
     return (

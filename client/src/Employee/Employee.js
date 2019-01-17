@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import avatar from '../static-assets/img/avatar-default.png'
 
 import './Employee.scss';
+import default_avatar from '../static-assets/img/avatar-default.png'
+import {makeCancelable} from "../_helpers";
 
 const propTypes = {
   // employee: PropTypes.shape({
@@ -66,8 +68,31 @@ const propTypes = {
 class Employee extends PureComponent {
 // function Employee(props) {
 
+  cancelablePromise = null;
+  state = {
+    image: default_avatar,
+  };
+
+  componentDidMount() {
+    const { employee } = this.props;
+
+    this.cancelablePromise = makeCancelable(import(`../static-assets/img/photo/${ employee.id }.jpg`));
+
+    this.cancelablePromise
+      .promise
+      .then((image) => {
+        // console.log(image);
+        this.setState({image: image.default});
+      })
+      .catch((reason) => {
+        // console.log('isCanceled', reason.isCanceled);
+        // this.setState({image: default_tech_image});
+      });
+  }
+
   render() {
     const { employee } = this.props;
+    const { image } = this.state;
 
     return (
       <div className="card employee z-depth-1 animated fadeIn fast">
@@ -76,7 +101,7 @@ class Employee extends PureComponent {
           <div className="employee__presentation">
             <Link to={`/employees/${ employee.attributes.login }`}>
               {/*<img className="employee__image" src={ `https://randomuser.me/api/portraits/${ employee.gender }/${ employee.id }.jpg` } />*/}
-              <img className="employee__image" src={ avatar } />
+              <img className="employee__image" src={ image } />
             </Link>
             {/*<p className="employee__position">{ employee.relationships.position.data.title }</p>*/}
           </div>
