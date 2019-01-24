@@ -66,12 +66,12 @@ class DepartmentCard extends Component {
           </div>
           <div>
             <h3 className="DepartmentCard__title">{ department.attributes.name }</h3>
-            <p className="DepartmentCard__manager">
-              <i className="material-icons">person_pin</i>
+            {/*<p className="DepartmentCard__manager">*/}
+              {/*<i className="material-icons">person_pin</i>*/}
               {/*<Link to={`/employees/${department.manager.attributes.username}`}>*/}
                 {/*{ `${ department.manager.attributes.name } ${ department.manager.attributes.surname }`}*/}
               {/*</Link>*/}
-            </p>
+            {/*</p>*/}
             <p className="DepartmentCard__staffCount">
               <i className="material-icons">people</i>{ `Staff count: ${ department.relationships.employees.data.length }` }
             </p>

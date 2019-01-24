@@ -115,7 +115,7 @@ export default class EmployeeCard__Skills extends Component {
     const value = +e.target.value;
     console.log(value);
     const { stateSkills, editableRow } = this.state;
-    const { employee: { attributes: { manager: { id: employeeManagerId }}}, currentUserId, superuser } = this.props;
+    const { employee: { manager: { id: employeeManagerId }}, currentUserId, superuser } = this.props;
     if(currentUserId === employeeManagerId){
       stateSkills[editableRow].manager_degree = value;
     }else{
@@ -182,7 +182,7 @@ export default class EmployeeCard__Skills extends Component {
       skills,
       skillsTypes,
       getSkillsByType,
-      employee: { skills: employeeSkills, id: employeeId, attributes: { login: employeeUsername, manager: { id: employeeManagerId }} },
+      employee: { skills: employeeSkills, id: employeeId, attributes: { login: employeeUsername }, manager: { id: employeeManagerId } },
       currentUserUsername,
       superuser,
       currentUserId

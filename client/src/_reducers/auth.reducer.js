@@ -10,6 +10,7 @@ const initialState = {
 };
 
 export function authReducer(state = initialState, action) {
+  // let user = {};
   switch (action.type) {
     case authConstants.LOGIN_REQUEST:
       return {
@@ -51,9 +52,14 @@ export function authReducer(state = initialState, action) {
         ...state,
       };
     case authConstants.CURRENT_USER_SUCCESS:
+      // user = {
+      //   ...action.user,
+      //   id: '66'
+      // };
       return {
         ...state,
         user: action.user
+        // user: user
       };
     case authConstants.CURRENT_USER_FAILURE:
       return {
