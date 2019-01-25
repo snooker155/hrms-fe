@@ -25,11 +25,9 @@ class Technologies extends Component {
     addNewSkill: PropTypes.func,
   };
 
-  // state = {
-  //   catalog: this.props.technologies.slice(),
-  //   activePage: 1,
-  //   itemsCountPerPage: 10
-  // };
+  state = {
+    search: null,
+  };
 
   componentDidMount() {
     window.scroll(0, 0);
@@ -39,9 +37,15 @@ class Technologies extends Component {
   }
 
   _handlePageChange = (limit, page) => {
+    console.log(limit + " : " + page);
     window.scroll(0, 0);
-    const { getAllTechnologies } = this.props;
-    getAllTechnologies(limit, page);
+    const { getAllTechnologies, searchTechnologies } = this.props;
+    const { search } = this.state;
+    if(search) {
+      searchTechnologies(search, limit, page);
+    }else {
+      getAllTechnologies(limit, page);
+    }
     // console.log(page);
     // this.setState((state) => ({
     //   ...state,
@@ -51,6 +55,10 @@ class Technologies extends Component {
 
   _handleSearch = (search) => {
     // console.log(search);
+    this.setState((state) => ({
+      ...state,
+      search: search,
+    }));
     const { searchTechnologies, getAllTechnologies } = this.props;
     if(search) {
       searchTechnologies(search);
@@ -148,7 +156,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   //@TODO: slow operation to get popularity of skills
   getAllTechnologies: (limit, page) => { dispatch(skillActions.getByType('technology', limit, page)); },
-  searchTechnologies: (value) => { dispatch(skillActions.search(value)); },
+  searchTechnologies: (value, limit, page) => { dispatch(skillActions.search(value, limit, page)); },
   getSkillsTypes: () => { dispatch(skillActions.getSkillsTypes()); },
   addNewSkill: (newSkill) => { dispatch(skillActions.create(newSkill)); },
   // searchTechnologies: (value) => { dispatch(projectActions.search(value)); },

@@ -16,7 +16,7 @@ export const skillService = {
   // update
 };
 
-function getAll(limit = 20, page = 1) {
+function getAll(limit = 7, page = 1) {
   // if (skills.length !== 0){
   //   return skills;
   // }
@@ -30,7 +30,7 @@ function getAll(limit = 20, page = 1) {
   return fetch(`${environment.apiUrl}/skills?page=${page}&limit=${limit}`, requestOptions).then(handleResponse);
 }
 
-function search(value, limit = 20, page = 1) {
+function search(value, limit = 7, page = 1) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
@@ -52,7 +52,7 @@ function getSkillsTypes() {
   return fetch(`${environment.apiUrl}/skills/types`, requestOptions).then(handleResponse);
 }
 
-function getByType(skillType: string, limit = 20, page = 1) {
+function getByType(skillType: string, limit, page) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", authHeader());
   const requestOptions = {
