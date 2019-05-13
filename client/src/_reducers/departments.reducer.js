@@ -1,6 +1,6 @@
 // @flow
 
-import {departmentConstants, skillConstants} from '../_constants';
+import {departmentConstants} from '../_constants';
 
 const initialState = {
   loading: false,
