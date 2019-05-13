@@ -1,12 +1,13 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from "./_helpers/configureStore";
+import { store } from "./store/configureStore";
+
 
 import './index.scss';
 import './static-assets/css/animate.scss';
-import { App } from './App';
+import App from './App';
 
 const application = (
   <Provider store={ store }>
@@ -16,4 +17,4 @@ const application = (
   </Provider>
 );
 
-render(application, document.getElementById('root'));
+ReactDOM.render(application, document.getElementById('root'));
